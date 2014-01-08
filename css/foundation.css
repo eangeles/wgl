@@ -2546,7 +2546,7 @@ a.th {
   animation-timing-function: linear; }
 
 .orbit-container {
-  overflow: hidden;
+  /*overflow: hidden;*/
   width: 100%;
   position: relative;
   background: none; }
@@ -2568,7 +2568,7 @@ a.th {
       .orbit-container .orbit-slides-container > * .orbit-caption {
         position: absolute;
         bottom: 0;
-        background-color: rgba(51, 51, 51, 0.8);
+        background-color: rgba(0, 0, 0, 0.3);
         color: white;
         width: 100%;
         padding: 10px 14px;
@@ -2593,7 +2593,7 @@ a.th {
     z-index: 10; }
     .orbit-container .orbit-timer .orbit-progress {
       height: 3px;
-      background-color: rgba(255, 255, 255, 0.3);
+      background-color: rgba(23, 169, 204, 0.6);
       display: block;
       width: 0%;
       position: relative;
@@ -2649,7 +2649,7 @@ a.th {
     .orbit-container .orbit-prev > span {
       border-right-style: solid;
       border-color: transparent;
-      border-right-color: white; }
+      border-right-color: #17A9CC; }
     .orbit-container .orbit-prev:hover > span {
       border-right-color: white; }
   .orbit-container .orbit-next {
@@ -2657,7 +2657,7 @@ a.th {
     .orbit-container .orbit-next > span {
       border-color: transparent;
       border-left-style: solid;
-      border-left-color: white;
+      border-left-color: #17A9CC;
       left: 50%;
       margin-left: -4px; }
     .orbit-container .orbit-next:hover > span {
@@ -2684,7 +2684,7 @@ a.th {
     -webkit-border-radius: 1000px;
     border-radius: 1000px; }
     .orbit-bullets li.active {
-      background: #999999; }
+      background: #17A9CC; }
     .orbit-bullets li:last-child {
       margin-right: 0; }
 

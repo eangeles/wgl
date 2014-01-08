@@ -1,0 +1,85 @@
+/*******
+ General
+ *******/
+li{
+    list-style: none;
+}
+.header-bg{
+    background: #444;
+    border-bottom: 5px solid #17A9CC ;
+    padding-left: 5px;
+}
+.header-bg h1{
+    margin-bottom: 0;
+    text-transform: uppercase;
+    color: #17A9CC;
+    text-shadow: 0px 1px 1px #000;
+}
+.header-bg h1 span{
+    font-weight: 500;
+    color: #fff;
+}
+
+/*******
+ Navigation
+ *******/
+.top_bar{
+    background-color: #ccc;
+    height: 45px;
+    border-bottom: 1px solid #999;
+}
+.desktop-logo{
+    height: 45px;
+}
+.right-nav{
+    text-transform: uppercase;
+}
+.right-nav li a{
+    color: #444;
+    font-size: 1.050em;
+    font-weight: 500;
+    font-family: 'Lato', sans-serif;
+    margin-top: 7px;
+}
+/*******
+ Orbit/Slider Content
+ *******/
+.orbit-content{
+    background: #333;
+    font-family: 'Lato', sans-serif;
+}
+.captions{
+    position: relative!important;
+    margin-top: -250px!important;
+    width: 35%!important;
+    float: right;
+}
+.slider-info{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin-right: 200px;
+    margin-top: 30px;
+    padding: 0 10px 0 10px;
+    background: rgba(0, 0 ,0 , 0.8);
+    border-radius: 5px;
+}
+.slider-info h1, p{
+    font-family: 'Lato', sans-serif;
+    color: #fff;
+}
+.slider-info h1{
+    text-transform: uppercase;
+    color: #17A9CC;
+}
+.slider-info p{
+    font-weight: 100;
+    padding: 0 30px 0 30px;
+}
+/*******
+ Home Page
+ *******/
+.home-upcoming-matches{
+    background: #f2f2f2;
+    height: 200px;
+}
