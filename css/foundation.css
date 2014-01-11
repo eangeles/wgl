@@ -31,7 +31,7 @@ body {
   font-size: 100%; }
 
 body {
-  background: white;
+  background: url(../img/office.png) repeat;
   color: #222222;
   padding: 0;
   margin: 0;

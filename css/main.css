@@ -5,8 +5,9 @@ li{
     list-style: none;
 }
 .header-bg{
-    background: #444;
-    border-bottom: 5px solid #17A9CC ;
+    background: -webkit-linear-gradient(#17A9CC 0%, #0f596f 25%, #0d5165 75%, #0c3142 100%);
+    background: -moz-linear-gradient(#727272 0%, #6b6b6b 47%, #545353 100%);
+    /*border-bottom: 5px solid #17A9CC ;*/
     padding-left: 10px;
 }
 .header-bg h3{
@@ -27,7 +28,7 @@ a:hover{
  Navigation
  *******/
 .top_bar{
-    background-color: #ccc;
+    background: url(../img/honey_im_subtle.png) repeat;
     height: 45px;
     border-bottom: 1px solid #999;
 }
@@ -82,6 +83,9 @@ a:hover{
 /*******
  Home Page
  *******/
+.home-upcoming-matches-container{
+
+}
 .home-upcoming-matches{
     background: #f2f2f2;
     max-height: 100%;
