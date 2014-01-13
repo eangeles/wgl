@@ -1,51 +1,38 @@
-<!doctype html>
-<html class="no-js" lang="en" ng-app="WGL">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>WGL| Win Gaming Lounge</title>
+<ul class="orbit-content" data-orbit>
+    <div>
+        <li>
+            <img src="img/header.jpg" alt="slide 1">
+            <div class="orbit-caption">
+                <div class="row">
+                    Welcome to Win Gaming Lounge <a href="#/about">READ MORE</a>
+                </div>
+            </div>
+        </li>
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="css/foundation.css" />
-    <link rel="stylesheet" href="css/normalize.css" />
-    <link rel="stylesheet" href="css/main.css" />
-    <link rel="stylesheet" href="css/font-awesome.css" />
 
-    <!-- Fonts -->
-    <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900' rel='stylesheet' type='text/css'>
-
-    <script src="js/modernizr.js"></script>
-</head>
-    
-<body>
-
-<nav class="top_bar" data-topbar>
-    <div class="row">
-        <ul class="title-area left">
-            <li>
-                <a href="#/"><img class="desktop-logo" src="img/logo.png" alt="Win Gaming Lounge Logo"></a>
-            </li>
-        </ul>
-
-        <div class="hide-for-small">
-            <!-- Right Nav Section -->
-            <ul class="right-nav inline-list right">
-                <li><a href="#">News</a></li>
-                <li><a href="#">Ladder</a></li>
-                <li><a href="#">Tournaments</a></li>
-            </ul>
-        </div>
+        <!--<div class="slider-info large-4 hide-for-small">-->
+            <!--<h1 class="text-center">Win Gaming Lounge</h1>-->
+            <!--<p>Welcome to our place!</p>-->
+        <!--</div>-->
     </div>
-</nav>
+    <div>
+        <li>
+            <img src="img/cod.jpg" alt="slide 1">
+            <div class="orbit-caption">
+                <div class="row">
+                    Got skills? Come and compete with other Gamers for a chance to win cash and bragging rights! <a href="#">READ MORE</a>
+                </div>
+            </div>
+        </li>
+    </div>
+</ul>
 
-
-<<<<<<< HEAD
 <div class="home-upcoming-matches-container">
     <div class="row">
-        <div class="header-bg">
-            <h3>Upcoming<span>Matches</span></h3>
-        </div>
-        <div class="home-upcoming-matches large-12 small-12 columns">
+        <div class="home-upcoming-matches">
+            <div class="header-bg">
+                <h3>Upcoming<span>Matches</span></h3>
+            </div>
             <div class="matches-panel-container text-center">
                 <a class="matches-link" href="#">
                     <div class="matches-panel large-4 medium-4 small-12 columns">
@@ -102,41 +89,8 @@
             </div>
         </div>
     </div>
-=======
-
-<!--Container for the view templates-->
-<div id="container" ng-view="">
->>>>>>> d57a20ce7116df4db196637185e33ea1ad68df68
 </div>
-
-
-
-<!--Jquery and Foundation-->
-<script src="js/jquery.js"></script>
-<script src="js/foundation.min.js"></script>
-
-<!-- Firebase Connections -->
-<script src="https://cdn.firebase.com/v0/firebase.js"></script>
-
-<!--simple login-->
-<script src="https://cdn.firebase.com/v0/firebase-simple-login.js"></script>
-
-<!--angular-->
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular.js"></script>
-
-<!--angular route-->
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-route.js"></script>
-
-<!--angular sanitize-->   
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-sanitize.min.js"></script>
-
-<!--angularFire-->
-<script src="https://cdn.firebase.com/libs/angularfire/0.3.0/angularfire.js"></script>
-
-<!--Main JS-->
-<script src="js/main.js"></script>
-
-
-
-</body>
-</html>
+<!--must be added for orbital specifically-->
+<script>
+    $(document).foundation();
+</script>
