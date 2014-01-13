@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js" lang="en">
+<html class="no-js" lang="en" ng-app="WGL">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -16,6 +16,7 @@
 
     <script src="js/modernizr.js"></script>
 </head>
+    
 <body>
 
 <nav class="top_bar" data-topbar>
@@ -42,7 +43,17 @@
 <!--Container for the view templates-->
 <div id="container" ng-view="">
 </div>
+    
+    
 
+
+<!--Jquery and Foundation-->
+<script src="js/jquery.js"></script>
+<script src="js/foundation.min.js"></script>
+    
+<script>
+    $(document).foundation();
+</script>
 
 <!-- Firebase Connections -->
 <script src="https://cdn.firebase.com/v0/firebase.js"></script>
@@ -64,14 +75,8 @@
 
 <!--Main JS-->
 <script src="js/main.js"></script>
+ 
 
-<!--Jquery and Foundation-->
-<script src="js/jquery.js"></script>
-<script src="js/foundation.min.js"></script>
-    
-<script>
-    $(document).foundation();
-</script>
     
 </body>
 </html>
