@@ -28,14 +28,6 @@ wgl.config(function ($routeProvider){
                 factory: checkPermission
             }
         })
-        .when("/games", {
-            title: 'Games',
-            authRequired: true,
-            templateUrl:"partials/games.html",
-            resolve:{
-                factory: checkPermission
-            }
-        })
         .otherwise({
         	redirectTo:"/",
         	title: "Home"
