@@ -4160,14 +4160,14 @@ table {
   border: solid 1px #dddddd; }
   table thead,
   table tfoot {
-    background: whitesmoke;
+    background: #117e9b;
     font-weight: bold; }
     table thead tr th,
     table thead tr td,
     table tfoot tr th,
     table tfoot tr td {
       padding: 0.5rem 0.625rem 0.625rem;
-      font-size: 0.875rem;
+      font-size: 0.800rem;
       color: #222222;
       text-align: left; }
   table tr th,

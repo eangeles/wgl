@@ -22,8 +22,16 @@ wgl.config(function ($routeProvider){
         })
         .when("/gts", {
             title: 'Gamer Tracking System',
-            authRequired: true,
+            authRequired: false,
             templateUrl:"partials/gts.html",
+            resolve: {
+                factory: checkPermission
+            }
+        })
+        .when("/ladder", {
+            title: 'Ladder',
+            authRequired: false,
+            templateUrl:"partials/ladder.html",
             resolve: {
                 factory: checkPermission
             }
@@ -48,10 +56,10 @@ wgl.config(function ($routeProvider){
 
 var checkPermission = function ($q, $rootScope, $location){
 
-    if(!$rootScope.user || $rootScope.user.userType == 'Gamer'){
-        $location.path('/');
-    }
-    
+//    if(!$rootScope.user || $rootScope.user.userType == 'Gamer'){
+//        $location.path('/');
+//    }
+
 }
 
 
