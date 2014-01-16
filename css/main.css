@@ -17,6 +17,11 @@
     color: orange;
     text-shadow: 0px 1px 1px #000;
 }
+footer{
+    background: url(../img/stardust.png) repeat;
+    height: 400px;
+    border-top: 3px solid #17A9CC ;
+}
 .result{
     color: green;
     text-transform: uppercase;
@@ -130,11 +135,13 @@ li{
 /*******
  Home Page
  *******/
-
+.home-upcoming-matches-container{
+    padding-bottom: 50px;
+}
 .home-upcoming-matches{
     background: #f2f2f2;
     overflow: hidden;
-    border: 1px solid #ccc;
+    border: 1px solid #444;
     box-shadow: 0px 1px 5px #17a9cc;
 }
 .matches-panel-container{
