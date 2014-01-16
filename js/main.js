@@ -36,6 +36,14 @@ wgl.config(function ($routeProvider){
                 factory: checkPermission
             }
         })
+        .when("/team", {
+            title: 'Ladder',
+            authRequired: false,
+            templateUrl:"partials/team.html",
+            resolve: {
+                factory: checkPermission
+            }
+        })
         .otherwise({
         	redirectTo:"/",
         	title: "Home"

@@ -7,6 +7,9 @@
     box-shadow: 0px 1px 5px #17a9cc;
     overflow: hidden;
 }
+.page-content{
+    padding-top: 20px;
+}
 .content-h3{
     text-transform: uppercase;
     font-weight: 700;
@@ -14,9 +17,7 @@
     color: orange;
     text-shadow: 0px 1px 1px #000;
 }
-li{
-    list-style: none;
-}
+
 .header-bg{
     background: -webkit-linear-gradient(#17A9CC 0%, #0f596f 25%, #0d5165 75%, #0c3142 100%);
     background: -moz-linear-gradient(#17A9CC 0%, #0f596f 25%, #0d5165 75%, #0c3142 100%);
@@ -58,6 +59,10 @@ li{
     font-weight: 500;
     color: orange;
 }
+li{
+    list-style: none;
+}
+
 
 /*******
  Navigation
@@ -149,4 +154,14 @@ li{
 }
 .teams h6{
     color: #17A9CC;
+}
+
+/*******
+ Team Page
+ *******/
+.team-profile-logo{
+    height: 100px;
+}
+.team-profile-name{
+    padding-left: 10px;
 }
