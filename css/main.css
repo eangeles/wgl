@@ -26,6 +26,9 @@ footer{
     color: green;
     text-transform: uppercase;
 }
+.page{
+    padding-bottom: 50px;
+}
 
 .header-bg{
     background: -webkit-linear-gradient(#17A9CC 0%, #0f596f 25%, #0d5165 75%, #0c3142 100%);
@@ -176,3 +179,11 @@ li{
 .team-profile-name{
     padding-left: 10px;
 }
+
+/*******
+ Matches Page
+ *******/
+.match-vs{
+    margin-top:  60px;
+}
+

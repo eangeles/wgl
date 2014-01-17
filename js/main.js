@@ -44,6 +44,14 @@ wgl.config(function ($routeProvider){
                 factory: checkPermission
             }
         })
+        .when("/matches", {
+            title: 'Matches',
+            authRequired: false,
+            templateUrl:"partials/matches.html",
+            resolve: {
+                factory: checkPermission
+            }
+        })
         .otherwise({
         	redirectTo:"/",
         	title: "Home"
