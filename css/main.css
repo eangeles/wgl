@@ -293,3 +293,57 @@ section > div:nth-child(2n) {
     margin-top: 250px;
 }
 
+.tourney-match-panel .tourney-team-home, .tourney-team-away{
+    background: #ccc;
+    height: 20px;
+}
+.tourney-team-name h6, .tourney-match-info h6, .tourney-match-date h6, .tourney-home-record h6, .tourney-away-record h6{
+    font-size: 0.8em;
+}
+.tourney-match-panel{
+    margin: 50px 0 0 20px;
+}
+
+.team-connect {
+    width: 30px;
+    height: 1px;
+    margin: -100px 0 0 170px;
+    float: left;
+}
+.lines {
+    width: 30px;
+    height: 1px;
+    margin: -520px 0 0 202px;
+    float: left;
+}
+.team-connect div {
+    border: 1px solid #ccc;
+    border-left: none;
+    height: 50px;
+    width: 100%;
+    margin: 80px 0 0 1px;
+}
+
+.team-connect div:first-child {
+    margin: 32px 0 0 1px;
+}
+
+.lines div {
+    border-top: 1px solid #ccc;
+    margin: 133px 0 0 1px;
+}
+
+.lines div:first-child {
+    margin-top: 55px;
+}
+.second-round-tourney-bracket{
+
+}
+
+/*.team-connect div{*/
+    /*border: 1px solid #000;*/
+    /*border-left: none;*/
+    /*height: 50px;*/
+    /*width: 10%;*/
+    /*margin: 80px 0 0 1px;*/
+/*}*/
