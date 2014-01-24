@@ -92,6 +92,7 @@ li{
 }
 .right-nav{
     text-transform: uppercase;
+    padding-right: 10px;
 }
 .right-nav li a{
     color: #444;
@@ -99,6 +100,23 @@ li{
     font-weight: 700;
     font-family: 'Lato', sans-serif;
     margin-top: 7px;
+}
+.home-login{
+    height: 42px;
+    width: 80px;
+    color: #17a9cc;
+    text-transform: uppercase;
+    font-size: 1.5em;
+}
+.home-login i{
+    margin-left: -60px;
+    font-size: 1.2em;
+}
+.home-login h6{
+    color: white;
+    font-weight: 500;
+    margin-top: -35px;
+    margin-left: 5px;
 }
 /*******
  Orbit/Slider Content
