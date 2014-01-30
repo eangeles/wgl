@@ -28,6 +28,14 @@ wgl.config(function ($routeProvider){
                 factory: checkPermission
             }
         })
+        .when("/users", {
+            title: 'Users',
+            authRequired: false,
+            templateUrl:"partials/users.html",
+            resolve: {
+                factory: checkPermission
+            }
+        })
         .when("/ladder", {
             title: 'Ladder',
             authRequired: false,

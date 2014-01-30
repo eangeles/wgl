@@ -1,164 +1,169 @@
-<!-- This is the Content below Navigation -->
-<div class="row" ng-controller="GTS">
-    <div class="page-container">
-        <div class="top-bar">
+<div class="page">
+    <div class="row">
+        <!-- Header BG -->
+        <div class="header-top"></div>
+        <!-- Page Container -->
+        <div class="page-content-container">
+            <div class="page-content">
+                <!-- Add To GTS Form -->
+                <div class="large-6 columns">
+                    <h6 class="text-center">Add To GTS</h6>
+                    <form class="large-10 columns large-centered">
+                        <div class="row">
+                            <div class="email-input large-12 columns">
 
-        </div>
-        <!-- GTS Navigation -->
-        <div class="page-nav">
-            <div class="large-6 medium-6 columns">
-                <h1 class="text-center page-title">Add To GTS</h1>
-                <!-- Add to gts form -->
-                <form class="large-8 columns large-centered" ng-submit="addActiveStation(tempStation)">
-                    <!-- Available Stations -->
-                    <div class="row">
-                        <div>
-                            <label>Stations</label>
-                            <select id="one" class="page-select" ng-model="tempStation.stationNumber">
-                                <option value="" disabled selected>Select A Station</option>
-                                <option ng-repeat="emptyStation in emptyStations | orderBy:'stationNumber'">{{emptyStation.stationNumber}}</option>
-                            </select>
+                                <input type="text" placeholder="Enter Email">
+                            </div>
                         </div>
-                    </div>
-                    <!-- Search Gamer Name -->
-                    <div class="row">
-                        <div>
-                            <label>Search User</label>
-                            <input type="text" autocomplete="off" placeholder="Search User" ng-model="userInfos.displayName" ng-change="userTyping=true" required>
-                            <ul ng-show="userTyping">
-                                <li ng-repeat="user in users | filter:userInfos.displayName | limitTo:limit | orderBy:'displayName'">
-                                    <a ng-click="selectUser(user)">
-                                        <div class="searchOutcome large-12 columns">
-                                            <h6 class="left inline-list">{{user.displayName}}</h6>
-                                            <img class="searchImg right" src="{{user.profilePic}}">
-                                        </div>
-                                    </a>
-                                </li>
-                            </ul>
+                        <div class="row">
+                            <div class="select-station large-12 columns">
+                                <select>
+                                    <option value="" disabled selected>Select A Station</option>
+                                    <option>Dropdown</option>
+                                </select>
+                            </div>
                         </div>
-                    </div>
-                    <!-- Select Game to play -->
-                    <div class="row">
-                        <div>
-                            <label>Select Game</label>
-                            <input type="text" autocomplete="off" placeholder="Search Or Add Game" ng-model="gameInfos.gameTitle" ng-change="gameTyping=true" required>
-                            <ul ng-show="gameTyping">
-                                <li ng-repeat="(index,game) in games | filter:gameInfos.gameTitle | limitTo:limit | orderBy:'gameTitle'">
-                                    <a ng-click="selectGame(game)">
-                                        <div class="searchOutcome large-12 columns">
-                                            <h6 class="left inline-list">{{game.gameTitle}}</h6>
-                                            <img class="searchImg right" src="{{game.gameArtUrl}}">
-                                        </div>
-                                    </a>
-                                </li>
-                            </ul>
+                        <div class="row">
+                            <div class="select-game large-12 columns">
+                                <input type="text" placeholder="Select Game">
+                            </div>
                         </div>
-                    </div>
-                    <!-- select time -->
-                    <div class="row">
-                        <div>
-                            <select ng-model="tempStation.countdown" required>
-                                <option value="" disabled selected>How Long?</option>
-                                <option>30</option>
-                                <option>60</option>
-                            </select>
+                        <div class="row">
+                            <div class="select-time large-12 columns">
+                                <select>
+                                    <option value="" disabled selected>How Long</option>
+                                    <option>30mins</option>
+                                </select>
+                            </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div>
-                            <button id="add_active_btn" class="large-12 medium-12 small-12 columns large-centered medium-centered">Start</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <!-- Queue List -->
-            <div class="large-6 medium-6 columns">
-                <h1 class="text-center page-title">Queue List</h1>
-                <div id="alert-container">
-                    <div class="custom-alert" ng-animate=" 'animate' " ng-repeat="tempAlert in alerts">
-                        <i class="fa fa-exclamation-circle"></i>
-                        <h1>{{tempAlert.stationNumber}}</h1>
-                        <!--<p>The time at station {{tempAlert.stationNumber}} is up!</p>-->
-                        <a id="close-alert" ng-click="removeAlert(tempAlert.$id)">X</a>
-                    </div>
-                </div>
-                <div class="large-8 columns large-centered">
-                    <div class="row">
-                        <div class="queue-list" ng-repeat="queuedPlayer in playerQueue | limitTo:limit">
+                        <div class="row">
                             <div class="large-12 columns">
-                                <h6 class="queue-name left">{{queuedPlayer.playerName}}</h6>
-                                <a class="queue-remove right" ng-click="removeFromQueue(queuedPlayer.$id)">&#215;</a>
-                                <h6 class="check-in right">{{queuedPlayer.checkedIn}}</h6>
-                            </div>
-                            <div class="queue-system">
-                                <h6 class="large-12 columns left">{{queuedPlayer.systemPreference}}</h6>
+                                <button class="button large-12 columns">Play</button>
                             </div>
                         </div>
+                    </form>
+                </div>
+                <!-- Queue List -->
+                <div class="large-6 columns">
+                    <h6 class="text-center">Waiting List</h6>
+                    <!-- Queue List -->
+                    <div class="queue-list large-10 columns large-centered">
+                        <div class="">
+                            <h6 class="queue-name left">Erwin Angeles</h6>
+                            <a class="queue-remove right">&#215;</a>
+                            <h6 class="check-in right">3:30 PM</h6>
+                        </div>
+                        <div class="queue-system">
+                            <h6 class="large-12 left">PS4</h6>
+                        </div>
                     </div>
-                    <button class="small-12 medium-12 large-12 columns" data-reveal-id="add-to-waiting-list">Add To Queue</button>
+                    <div class="queue-list large-10 columns large-centered">
+                        <div class="">
+                            <h6 class="queue-name left">Erwin Angeles</h6>
+                            <a class="queue-remove right">&#215;</a>
+                            <h6 class="check-in right">3:30 PM</h6>
+                        </div>
+                        <div class="queue-system">
+                            <h6 class="large-12 left">PS4</h6>
+                        </div>
+                    </div>
+                    <div class="large-10 columns large-centered">
+                        <button class="button large-12 columns">Add To Queue</button>
+                    </div>
                 </div>
 
-            </div>
-            <div class="gts-hr"><hr /> </div>
-        </div>
+                <div class="gts-hr"><hr /> </div>
 
-        <div class="gts large-12 columns">
-            <!-- This is the start of the GTS Panel -->
-            <div class="gts-panel small-12 medium-6 large-4 columns left" ng-repeat="activeStation in activeStations | orderBy:'stationNumber'">
-                <div class="panel small-12 medium-12 large-12 columns left collapse gts-panels">
-                    <div class="station-number left" ng-hide="gameChange">
-                        <h2>{{activeStation.stationNumber}}</h2>
-                    </div>
-                    <div class="station-time-remaining left" ng-hide="gameChange">
-                        <h2>{{activeStation.displayTime}}</h2>
-                        <h5>MIN</h5>
-                    </div>
-                    <div ng-show="gameChange">
-                        <select ng-change="switchGame(switchedGame, activeStation)" ng-model="switchedGame">
-                            <option value={{game.gameArtUrl}} ng-repeat="game in games | orderBy:'gameTitle'">{{game.gameTitle}}</option>
-                        </select>
-                    </div>
-                    <div class="gamer-cancel">
-                        <a class="right" ng-click="removeActiveStation(activeStation)">X</a>
-                    </div>
-                    <div class="station-game right" ng-hide="gameChange">
-                        <img src="{{activeStation.gameArt}}" alt="Game Box Art">
-                        <a class="right" ng-click="showGameChange()"><i class="fa fa-exchange"></i> </a>
+                <div id="gts">
+                    <div class="large-12 columns">
+                        <!-- GTS Panel -->
+                        <div class="large-4 columns left">
+                            <div class="gts-panels large-12">
+                                <div class="large-2 columns">
+                                    <h1 class="station-number left">12</h1>
+                                </div>
+                                <div class="large-4 columns">
+                                    <h1 class="station-timer">00:50</h1>
+                                </div>
+                                <div class="large-5 columns">
+                                    <img class="gts-game right" src="http://www.gamestop.com/common/images/lbox/150011b.jpg" alt="Game Image">
+                                </div>
+                            </div>
+                        </div> <!-- End GTS Panel -->
+                        <!-- GTS Panel -->
+                        <div class="large-4 columns left">
+                            <div class="gts-panels large-12">
+                                <div class="large-2 columns">
+                                    <h1 class="station-number left">12</h1>
+                                </div>
+                                <div class="large-4 columns">
+                                    <h1 class="station-timer">00:50</h1>
+                                </div>
+                                <div class="large-5 columns">
+                                    <img class="gts-game right" src="http://www.gamestop.com/common/images/lbox/150011b.jpg" alt="Game Image">
+                                </div>
+                            </div>
+                        </div> <!-- End GTS Panel -->
+                        <!-- GTS Panel -->
+                        <div class="large-4 columns left">
+                            <div class="gts-panels large-12">
+                                <div class="large-2 columns">
+                                    <h1 class="station-number left">12</h1>
+                                </div>
+                                <div class="large-4 columns">
+                                    <h1 class="station-timer">00:50</h1>
+                                </div>
+                                <div class="large-5 columns">
+                                    <img class="gts-game right" src="http://www.gamestop.com/common/images/lbox/150011b.jpg" alt="Game Image">
+                                </div>
+                            </div>
+                        </div> <!-- End GTS Panel -->
+                        <!-- GTS Panel -->
+                        <div class="large-4 columns left">
+                            <div class="gts-panels large-12">
+                                <div class="large-2 columns">
+                                    <h1 class="station-number left">12</h1>
+                                </div>
+                                <div class="large-4 columns">
+                                    <h1 class="station-timer">00:50</h1>
+                                </div>
+                                <div class="large-5 columns">
+                                    <img class="gts-game right" src="http://www.gamestop.com/common/images/lbox/150011b.jpg" alt="Game Image">
+                                </div>
+                            </div>
+                        </div> <!-- End GTS Panel -->
+                        <!-- GTS Panel -->
+                        <div class="large-4 columns left">
+                            <div class="gts-panels large-12">
+                                <div class="large-2 columns">
+                                    <h1 class="station-number left">12</h1>
+                                </div>
+                                <div class="large-4 columns">
+                                    <h1 class="station-timer">00:50</h1>
+                                </div>
+                                <div class="large-5 columns">
+                                    <img class="gts-game right" src="http://www.gamestop.com/common/images/lbox/150011b.jpg" alt="Game Image">
+                                </div>
+                            </div>
+                        </div> <!-- End GTS Panel -->
+                        <!-- GTS Panel -->
+                        <div class="large-4 columns left">
+                            <div class="gts-panels large-12">
+                                <div class="large-2 columns">
+                                    <h1 class="station-number left">12</h1>
+                                </div>
+                                <div class="large-4 columns">
+                                    <h1 class="station-timer">00:50</h1>
+                                </div>
+                                <div class="large-5 columns">
+                                    <img class="gts-game right" src="http://www.gamestop.com/common/images/lbox/150011b.jpg" alt="Game Image">
+                                </div>
+                            </div>
+                        </div> <!-- End GTS Panel -->
                     </div>
                 </div>
-            </div> <!-- end .gts-panel -->
+            </div><!-- Page Content -->
+        </div><!-- End Page Container -->
+    </div> <!-- End Row -->
+</div><!-- End Page -->
 
-            <!-- Available Station -->
-            <div class="gts-panel small-12 medium-6 large-4 columns left" ng-repeat="emptyStation in emptyStations | orderBy:'stationNumber'">
-                <div class="panel small-12 medium-12 large-12 columns left collapse empty-panels">
-                    <div class="station-number left" ng-model="gamer">
-                        <h2>{{emptyStation.stationNumber}}</h2>
-                    </div>
-                    <h3>{{emptyStation.stationSystem}}</h3>
-                </div>
-            </div> <!-- end .gts-panel -->
-        </div><!-- end .gts -->
-    </div> <!-- end page-content -->
-</div>
-
-
-<!-- Add to waiting list modal -->
-<div id="add-to-waiting-list" class="reveal-modal small" data-reveal>
-    <form class="large-8 small-12 large-centered columns">
-        <input type="text" ng-model="tempPlayer.playerName" placeholder="Player Name" required>
-        <label>System</label>
-        <select ng-model="tempPlayer.systemPreference" required>
-            <option>Playstation 4</option>
-            <option>Playstation 3</option>
-            <option>Xbox One</option>
-            <option>Wii U</option>
-        </select>
-        <a id="add_queue_btn" ng-click="addToPlayerQueue(tempPlayer)" class="button large-12 small-12 button-form">Add</a>
-    </form>
-    <a class="close-reveal-modal">&#215;</a>
-</div>
-
-<!-- Need scripts here for modal to work -->
-<script>
-    $(document).foundation();
-</script> 
