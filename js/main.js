@@ -76,6 +76,7 @@ wgl.config(function ($routeProvider){
                 factory: checkPermission
             }
         })
+
         .otherwise({
         	redirectTo:"/",
         	title: "Home"
