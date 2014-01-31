@@ -248,10 +248,10 @@ h1,h2,h3,h4,h5,h6{
 .gts-panels{
     /*background: -webkit-linear-gradient(#818181 0%, #575756 10%, #575756 85%, #6e6e6e 100%);*/
     /*background: -moz-linear-gradient(#818181 0%, #575756 10%, #575756 85%, #6e6e6e 100%);*/
-    background: #444;
+    background: #333;
     height: 80px;
     margin-bottom: 20px;
-    border: 3px solid #0f596f;
+    border: 1px solid #444;
 }
 .station-number{
     color: #17cdef;
