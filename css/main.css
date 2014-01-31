@@ -11,7 +11,7 @@
 }
 .content-h3{
     text-transform: uppercase;
-    font-weight: 700;
+    font-weight: 300;
     letter-spacing: -1.7px;
     color: orange;
     text-shadow: 0px 1px 1px #000;
@@ -41,7 +41,7 @@ footer{
     margin-bottom: 0;
     text-transform: uppercase;
     color: #fff;
-    font-weight: 500;
+    font-weight: 300;
     text-shadow: 0px 1px 1px #000;
 }
 .header-bg h3 span{
@@ -172,7 +172,8 @@ h1,h2,h3,h4,h5,h6{
     min-height: 190px;
 }
 .match-event-name h6{
-    font-weight: 500;
+    font-weight: 200;
+    text-transform: uppercase;
 }
 .matches-panel{
     height: 100%;
