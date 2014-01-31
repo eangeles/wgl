@@ -2,9 +2,8 @@
  General
  *******/
 .page-content-container{
-    background: #f2f2f2;
-    border: 1px solid #ccc;
-    box-shadow: 0px 1px 5px #17a9cc;
+    background: #2d2d33;
+    border: 1px solid #333;
     overflow: hidden;
 }
 .page-content{
@@ -31,12 +30,12 @@ footer{
 }
 
 .header-bg{
-    background: -webkit-linear-gradient(#17A9CC 0%, #0f596f 25%, #0d5165 75%, #0c3142 100%);
-    background: -moz-linear-gradient(#17A9CC 0%, #0f596f 25%, #0d5165 75%, #0c3142 100%);
+    /*background: -webkit-linear-gradient(#17A9CC 0%, #0f596f 25%, #0d5165 75%, #0c3142 100%);*/
+    /*background: -moz-linear-gradient(#17A9CC 0%, #0f596f 25%, #0d5165 75%, #0c3142 100%);*/
+    background: #0f596f;
     /*border-bottom: 5px solid #17A9CC ;*/
     padding-left: 10px;
-    border: 1px solid #108ca4;
-    box-shadow: 0px 1px 3px #17a9cc;
+    border: 1px solid #0f596f;
 }
 .header-bg h3{
     margin-bottom: 0;
@@ -50,14 +49,14 @@ footer{
     color: orange;
 }
 .header-top{
-    background: -webkit-linear-gradient(#17A9CC 0%, #0f596f 25%, #0d5165 75%, #0c3142 100%);
-    background: -moz-linear-gradient(#17A9CC 0%, #0f596f 25%, #0d5165 75%, #0c3142 100%);
+    /*background: -webkit-linear-gradient(#17A9CC 0%, #0f596f 25%, #0d5165 75%, #0c3142 100%);*/
+    /*background: -moz-linear-gradient(#17A9CC 0%, #0f596f 25%, #0d5165 75%, #0c3142 100%);*/
+    background: #0f596f;
     /*border-bottom: 5px solid #17A9CC ;*/
     padding-left: 10px;
     margin-top: 100px;
-    border: 1px solid #108ca4;
-    height: 40px;
-    box-shadow: 0px 1px 3px #17a9cc;
+    border: 1px solid #0f596f;
+    height: 5px;
 
 }
 .header-top h3{
@@ -74,15 +73,19 @@ footer{
 li{
     list-style: none;
 }
+h1,h2,h3,h4,h5,h6{
+    color: #ccc;
+}
 
 
 /*******
  Navigation
  *******/
 .top_bar{
-    background: url(../img/honey_im_subtle.png) repeat;
+    /*background: url(../img/honey_im_subtle.png) repeat;*/
+    /*background: #2d2d33;*/
+    background: rgba(45, 45, 51, 0.8);
     height: 45px;
-    border-bottom: 3px solid #17A9CC;
 
 }
 .desktop-logo{
@@ -95,9 +98,9 @@ li{
     padding-right: 10px;
 }
 .right-nav li a{
-    color: #444;
+    color: darkgray;
     font-size: 1.050em;
-    font-weight: 700;
+    font-weight: 300;
     font-family: 'Lato', sans-serif;
     margin-top: 7px;
 }
@@ -248,11 +251,12 @@ li{
     margin-top: -10px;
 }
 .gts-panels{
-    background: -webkit-linear-gradient(#818181 0%, #575756 10%, #575756 85%, #6e6e6e 100%);
-    background: -moz-linear-gradient(#818181 0%, #575756 10%, #575756 85%, #6e6e6e 100%);
+    /*background: -webkit-linear-gradient(#818181 0%, #575756 10%, #575756 85%, #6e6e6e 100%);*/
+    /*background: -moz-linear-gradient(#818181 0%, #575756 10%, #575756 85%, #6e6e6e 100%);*/
+    background: #444;
     height: 80px;
     margin-bottom: 20px;
-    border: 1px solid #ccc;
+    border: 3px solid #0f596f;
 }
 .station-number{
     color: #17cdef;

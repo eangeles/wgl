@@ -291,8 +291,10 @@ input,
 select,
 textarea {
     font-family: inherit; /* 1 */
-    font-size: 100%; /* 2 */
+    font-size: 80%; /* 2 */
     margin: 0; /* 3 */
+    color: darkgray;
+    background: #444;
 }
 
 /**
