@@ -34,7 +34,7 @@ footer{
     background: #33333a;
     /*border-bottom: 5px solid #17A9CC ;*/
     padding-left: 10px;
-    border: 1px solid #445;
+    border: 1px solid #333;
     /*box-shadow: 1px 1px 1px #008cba;*/
 }
 .header-bg h3{
@@ -174,7 +174,7 @@ h1,h2,h3,h4,h5,h6{
 .teams h6{
     color: #17A9CC;
 }
-.match-comments, i{
+.match-comments, .match-chevron{
     font-size: 0.8em;
     margin: 5px 20px 0px 0px;
 }
