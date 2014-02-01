@@ -76,6 +76,14 @@ wgl.config(function ($routeProvider){
                 factory: checkPermission
             }
         })
+        .when("/staff_news", {
+            title: 'Staff News',
+            authRequired: false,
+            templateUrl:"partials/staff_news.html",
+            resolve: {
+                factory: checkPermission
+            }
+        })
 
         .otherwise({
         	redirectTo:"/",
