@@ -184,6 +184,15 @@ h1,h2,h3,h4,h5,h6{
 .news-info h6{
     font-size: 0.8em;
 }
+.news-title{
+    position: relative;
+    z-index: 1;
+}
+.news-image{
+    height: 440px;
+    margin-top: -30px;
+    position: absolute;
+}
 
 
 /*******
