@@ -46,7 +46,17 @@ footer{
     text-shadow: 0px 1px 1px #444;
 }
 .header-bg h3 span{
-    font-weight: 500;
+    font-weight: 300;
+    color: orange;
+}
+.page-title{
+    font-weight: 200;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 1.3em;
+}
+.page-title span{
+    font-weight: 300;
     color: orange;
 }
 .header-top{
@@ -101,6 +111,10 @@ h1,h2,h3,h4,h5,h6{
     font-weight: 300;
     font-family: 'Lato', sans-serif;
     margin-top: 7px;
+}
+.right-nav li a:hover{
+    color: #008cba;
+    transition: color 0.3s ease-in-out;
 }
 .login i{
     color: #3B5998;
@@ -182,16 +196,20 @@ h1,h2,h3,h4,h5,h6{
  News Page
  *******/
 .news-info h6{
-    font-size: 0.8em;
+    font-size: 0.7em;
+    font-style: oblique;
+    margin-top: -10px;
 }
 .news-title{
     position: relative;
     z-index: 1;
 }
+.news-title h5{
+    color: #fff;
+}
 .news-image{
-    height: 440px;
-    margin-top: -30px;
-    position: absolute;
+    height: 80px;
+    margin-bottom: 10px;
 }
 
 
