@@ -223,6 +223,10 @@ h1,h2,h3,h4,h5,h6{
 .featured-matches{
     border-top: 1px solid #000;
 }
+.home-more-news{
+    font-style: oblique;
+    margin-top: 15px;
+}
 /*******
  News Page
  *******/
