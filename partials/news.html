@@ -7,7 +7,8 @@
             <div class="page-content">
                 <div class="large-12 columns">
 
-                    <h3 class="page-title">Recent<span>News</span></h3>
+                    <h3 class="page-title large-10 small-9 columns">Recent<span>News</span></h3>
+                    <h6 class="add-news large-1 small-3 columns right"><a href="#/addnews">+</a></h6>
                     <!-- Rcent News content -->
                     <a href="#">
                         <div class="news-content large-4 medium-4 small-12 columns">
@@ -64,3 +65,22 @@
         </div><!-- End Page Container -->
     </div> <!-- End Row -->
 </div><!-- End Page -->
+<div id="add-news" class="reveal-modal" data-reveal>
+    <!-- Place this in the body of the page content -->
+    <form>
+        <textarea id="editor1" name="editor1" rows="10" cols="80">
+            This is my textarea to be replaced with CKEditor.
+        </textarea>
+        <script>
+            // Replace the <textarea id="editor1"> with a CKEditor
+            // instance, using default configuration.
+            CKEDITOR.replace( 'editor1' );
+        </script>
+    </form>
+
+    <a class="close-reveal-modal">&#215;</a>
+</div>
+
+<script>
+    $(document).foundation();
+</script>

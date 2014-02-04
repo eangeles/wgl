@@ -92,6 +92,14 @@ wgl.config(function ($routeProvider){
                 factory: checkPermission
             }
         })
+        .when("/addnews", {
+            title: 'Add News',
+            authRequired: false,
+            templateUrl:"partials/addnews.html",
+            resolve: {
+                factory: checkPermission
+            }
+        })
 
         .otherwise({
         	redirectTo:"/",
