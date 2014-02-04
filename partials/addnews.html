@@ -6,12 +6,10 @@
         <div class="page-content-container">
             <div class="page-content">
                 <div class="large-12 columns">
-
-
-                    <form>
-
+                    <form class="large-6 columns large-centered">
+                        <h3 class="page-title text-center">Add<span>News</span></h3>
                         <input type="text" placeholder="Title">
-
+                        <input type="file" placeholder="Image Url">
                         <textarea id="editor1" name="editor1" rows="10" cols="80">
 
                         </textarea>
@@ -20,6 +18,8 @@
                             // instance, using default configuration.
                             CKEDITOR.replace( 'editor1' );
                         </script>
+
+                        <input type="submit" class="button large-12" value="Add">
                     </form>
                 </div>
             </div><!-- Page Content -->
