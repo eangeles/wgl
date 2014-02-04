@@ -267,7 +267,12 @@ h1,h2,h3,h4,h5,h6{
 .newspage-bottom-content p{
     font-weight: 100;
 }
-
+.edit-news{
+    font-style: oblique;
+    font-size: 0.8em;
+    text-transform: uppercase;
+    margin-top: 20px;
+}
 
 /*******
  Team Page
