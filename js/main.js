@@ -100,6 +100,14 @@ wgl.config(function ($routeProvider){
                 factory: checkPermission
             }
         })
+        .when("/editnews", {
+            title: 'Edit News',
+            authRequired: false,
+            templateUrl:"partials/editnews.html",
+            resolve: {
+                factory: checkPermission
+            }
+        })
 
         .otherwise({
         	redirectTo:"/",
