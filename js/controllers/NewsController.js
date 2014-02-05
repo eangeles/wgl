@@ -1,24 +1,29 @@
-wgl.controller('news', ['$scope','$routeParams','angularFireCollection','$rootScope','angularFire', function mtCtrl($scope, $routeParams, angularFireCollection,$rootScope,angularFire){
+wgl.controller('news', ['$scope','$routeParams','$rootScope', '$firebase', function mtCtrl($scope, $routeParams,$rootScope,$firebase) {
     
-    var newsCollection = new Firebase("https://thewgl.firebaseio.com/thewgl/news/");
-    $scope.news = angularFireCollection(newsCollection);
+    var newsURL = "https://thewgl.firebaseio.com/thewgl/news/";
+    $scope.news = $firebase(new Firebase(newsURL));
 
     $scope.addNewsItem = function(newsItem) {
-        //check to see if all properties
         var d = new Date();
         var curr_date = d.getDate();
-        var curr_month = d.getMonth() + 1; //Months are zero based
+        var curr_month = d.getMonth() + 1;
         var curr_year = d.getFullYear();
         
         var dateAdded = curr_month + "/" + curr_date + "/" + curr_year;
-
-        newsItem.date = dateAdded;
-        console.log(newsItem);
+        
+        newsItem.poster = $rootScope.loginObj.user.displayName;
+        newsItem.date   = dateAdded;
+        
         $scope.news.add(newsItem);
     };
     
-    $scope.removeNewsItem = Function(id) {
+    $scope.removeNewsItem = function(id) {
         $scope.news.remove(id);
+    }
+    
+    $scope.updateNewsItem = function(newsItem) {
+        console.log(newsItem);
+
     }
 
 }]);

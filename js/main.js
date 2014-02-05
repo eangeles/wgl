@@ -1,8 +1,10 @@
 var wgl = angular.module('WGL', ['firebase', 'ngRoute']);
 
-wgl.run(['angularFireAuth', '$rootScope', '$route', function(angularFireAuth, $rootScope, $route){
-    var url = new Firebase("https://wingaminglounge.firebaseio.com/");
-    angularFireAuth.initialize(url, {scope: $rootScope, name: "fb_user",path: '/'});
+wgl.run(['$firebaseSimpleLogin', '$rootScope', '$route', function($firebaseSimpleLogin, $rootScope, $route){
+    var url = new Firebase("https://thewgl.firebaseio.com/");
+    $rootScope.loginObj = $firebaseSimpleLogin(url);
+    
+    /*angularFireAuth.initialize(url, {scope: $rootScope, name: "fb_user",path: '/'});*/
 
     $rootScope.$on('$routeChangeSuccess', function (event, current, previous) {
         $rootScope.title = current.$$route.title;
@@ -17,12 +19,10 @@ wgl.config(function ($routeProvider){
         })
         .when("/about", {
             title: 'About Us',
-            authRequired: false,
             templateUrl:"partials/about.html"
         })
         .when("/gts", {
             title: 'Gamer Tracking System',
-            authRequired: false,
             templateUrl:"partials/gts.html",
             resolve: {
                 factory: checkPermission
@@ -30,7 +30,6 @@ wgl.config(function ($routeProvider){
         })
         .when("/users", {
             title: 'Users',
-            authRequired: false,
             templateUrl:"partials/users.html",
             resolve: {
                 factory: checkPermission
@@ -38,7 +37,6 @@ wgl.config(function ($routeProvider){
         })
         .when("/ladder", {
             title: 'Ladder',
-            authRequired: false,
             templateUrl:"partials/ladder.html",
             resolve: {
                 factory: checkPermission
@@ -46,7 +44,6 @@ wgl.config(function ($routeProvider){
         })
         .when("/team", {
             title: 'Ladder',
-            authRequired: false,
             templateUrl:"partials/team.html",
             resolve: {
                 factory: checkPermission
@@ -54,7 +51,6 @@ wgl.config(function ($routeProvider){
         })
         .when("/matches", {
             title: 'Matches',
-            authRequired: false,
             templateUrl:"partials/matches.html",
             resolve: {
                 factory: checkPermission
@@ -62,7 +58,6 @@ wgl.config(function ($routeProvider){
         })
         .when("/tournaments", {
             title: 'Tournaments',
-            authRequired: false,
             templateUrl:"partials/tournament.html",
             resolve: {
                 factory: checkPermission
@@ -70,7 +65,6 @@ wgl.config(function ($routeProvider){
         })
         .when("/news", {
             title: 'News',
-            authRequired: false,
             templateUrl:"partials/news.html",
             resolve: {
                 factory: checkPermission
@@ -78,7 +72,6 @@ wgl.config(function ($routeProvider){
         })
         .when("/staff_news", {
             title: 'Staff News',
-            authRequired: false,
             templateUrl:"partials/staff_news.html",
             resolve: {
                 factory: checkPermission
@@ -86,7 +79,6 @@ wgl.config(function ($routeProvider){
         })
         .when("/newspage", {
             title: 'news',
-            authRequired: false,
             templateUrl:"partials/newspage.html",
             resolve: {
                 factory: checkPermission
@@ -94,7 +86,6 @@ wgl.config(function ($routeProvider){
         })
         .when("/addnews", {
             title: 'Add News',
-            authRequired: false,
             templateUrl:"partials/addnews.html",
             resolve: {
                 factory: checkPermission
@@ -102,7 +93,6 @@ wgl.config(function ($routeProvider){
         })
         .when("/editnews", {
             title: 'Edit News',
-            authRequired: false,
             templateUrl:"partials/editnews.html",
             resolve: {
                 factory: checkPermission
@@ -164,7 +154,7 @@ wgl.config(function ($routeProvider){
                 });
             }
         };
-    });;
+    });
 
 var checkPermission = function ($q, $rootScope, $location){
 

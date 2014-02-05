@@ -1,105 +1,30 @@
-wingaming.controller('Login', ['$scope', '$routeParams', '$location', 'angularFireCollection', 'angularFireAuth','$rootScope','angularFire', '$sce', function mtCtrl($scope, $routeParams, $location, angularFireCollection, angularFireAuth,$rootScope,angularFire,$sce){
+wgl.controller('Login', ['$scope','$rootScope','$firebase', function mtCtrl($scope,$rootScope,$firebase){
 
-    var usersCollection = new Firebase("https://wingaminglounge.firebaseio.com/wingaminglounge/users/");
-    $scope.users = angularFireCollection(usersCollection);
-
-        var theUser;
-        
-        //premade html for mobile admin nav
-        $scope.true_desktop_statement = "<li><a href=\"#gts\"> Gamer Track System</a></li>" +
-                                        "<li><a href=\"#users\"> Users</a></li>" +
-                                        "<li><a href=\"#stations\"> Stations</a></li>" +
-                                        "<li><a href=\"#games\"> Games</a></li>";
-        $scope.true_mobile_statement =  "<a class='right-off-canvas-toggle'><i class='fa fa-lock mobile-bar' id='admin_icon'></i></a>";
-        
-        //angular fire on login event
-        $scope.$on("angularFireAuth:login", function(evt, user) {
-            if (user.provider == "facebook") {
-                theUser = user;
-                
-                //setting a few scope variables for our user navigation
-                $scope.user =               true;
-                $rootScope.displayName =    user.displayName;
-                $scope.profilePic =         "http://graph.facebook.com/" + user.username + "/picture?type=large";
-
-                var urlUser = new Firebase("https://wingaminglounge.firebaseio.com/wingaminglounge/users/"+theUser.id);
-                
-                //sets the user object into the rootscope
-                $rootScope.user = {};
-
-                angularFire(urlUser, $rootScope, 'user').then(function()
-                {
-                    //if nothing is returned in the object then it adds to the database with profile pictures
-                    if (Object.keys($rootScope.user).length === 0) {
-                        
-                        console.log("User does not exist, adding " + theUser.email + " to the database.");
-
-                        var picurl =        "http://graph.facebook.com/" + theUser.username + "/picture?type=small";
-                        var picurlLarge =   "http://graph.facebook.com/" + theUser.username + "/picture?type=large";
-
-                        $rootScope.user = {
-                            "displayName":      theUser.name, 
-                            "email":            theUser.email, 
-                            "profilePic":       picurl, 
-                            "profilePicLarge":  picurlLarge, 
-                            "userType":         "Gamer",
-                            "id":               theUser.id
-                        };
-                        
-                        $scope.mobileNavBar =    $sce.trustAsHtml($scope.true_mobile_statement);
-                        $scope.desktopNavBar =   $sce.trustAsHtml($scope.true_desktop_statement);
-                        
-                        $location.path('/game_page');
-
-                    } else {
-                        //if user exists then it determines what to display based on userType
-                        if ($rootScope.user.userType == "Gamer") {
-                            //asdf
-                        } else if ($rootScope.user.userType == "Admin") {
-                            $scope.mobileNavBar =    $sce.trustAsHtml($scope.true_mobile_statement);
-                            $scope.desktopNavBar =   $sce.trustAsHtml($scope.true_desktop_statement);
-                        };//end usertype loop
-                    };//end else
-                    //dis();
-                });//end angularFire
-            };//end if else
-        });//end scope.on angularfirelogin
-
-        //login function
-        $scope.login = function() {
-            angularFireAuth.login("facebook", {
-                scope: "email"
-            });
-        };
-        
-        //logout function
-        $scope.logout = function() {
-            angularFireAuth.logout();
-            $location.path('/');
-        };
-        
-        //logout event
-        $scope.$on("angularFireAuth:logout", function(evt, user) {
-            $scope.user = false;
+    var usersURL = "https://thewgl.firebaseio.com/thewgl/users/";
+    $scope.users = $firebase(new Firebase(usersURL));
+    
+    $rootScope.$on("$firebaseSimpleLogin:login", function(e, user) {
+        var usersRef = new Firebase(usersURL);
+        usersRef.child(user.id).once('value', function(snapshot) {
+            var exists = (snapshot.val() !== null);
+            if (snapshot.val() !== null) {
+                console.log(snapshot.val());
+                console.log(user);
+                console.log("User id: " + user.id + " exists already, logging in");
+            } else {
+                console.log("User id: " + user.id + " does not exist, adding and logging in");
+                user.profilePicture = "http://graph.facebook.com/" + user.username + "/picture?type=large";
+                user.userType = "Gamer";
+                usersRef.child(user.id).set(user);
+            }
         });
+    });
 
-  /*  }*/
-
-    var id;
-
-    //auto complete 
-    $scope.typing = false;
-    //Filter user search and select to input
-    $scope.limit = 5;
-    $scope.selectUser = function (gamer) {
-        id = gamer.$id;
-        ref = gamer.$ref;
-        $scope.userInfos = angular.fromJson(angular.toJson(gamer));
-        $scope.userInfos.$id = id;
-        $scope.userInfos.$ref = ref;
-        $scope.typing = false;
+    $scope.logout = function() {
+        $rootScope.loginObj.$logout();
+        $location.path('/') 
     };
-    //Filter user types for staff
+
     $scope.staffFilter = function(staff){
         return (staff.userType == 'Admin' || staff.userType == 'Staff');
     }
