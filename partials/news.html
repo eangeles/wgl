@@ -1,4 +1,4 @@
-<div class="page">
+<div class="page" ng-controller="news">
     <div class="row">
         <!-- Header BG -->
         <div class="header-top"></div>
@@ -8,58 +8,26 @@
                 <div class="large-12 columns">
 
                     <h3 class="page-title large-10 small-9 columns">Recent<span>News</span></h3>
-                    <h6 class="add-news large-1 small-3 columns right"><a href="#/addnews">+</a></h6>
-                    <!-- Rcent News content -->
-                    <a href="#">
-                        <div class="news-content large-4 medium-4 small-12 columns">
-                            <div class="news-image">
-                                <img class="news-image large-12 medium-12 small-12" src="./img/dota.jpg" alt="News">
-                            </div>
-                            <div class="news column">
-                                <div class="news-title">
-                                    <h5>Dota League</h5>
+                    <h6 class="add-news large-1 small-3 columns right"><a href="#/addnews">+</a></h6>                    
+                    <!-- Recent News content -->
+                    <div ng-repeat="newsItem in news">
+                        <a href="#">
+                            <div class="news-content large-4 medium-4 small-12 columns">
+                                <div class="news-image">
+                                    <img class="news-image large-12 medium-12 small-12" ng-src="{{newsItem.image}}" alt="News">
                                 </div>
-                                <div class="news-info">
-                                    <h6 class="left">Erwin Angeles</h6>
-                                    <h6 class="right">12 hours 1 min ago</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="#">
-                        <div class="news-content large-4 medium-4 small-12 columns">
-                            <div class="news-image">
-                                <img class="news-image large-12 medium-12 small-12" src="./img/dota.jpg" alt="News">
-                            </div>
-                            <div class="news column">
-                                <div class="news-title">
-                                    <h5>Dota League</h5>
-                                </div>
-                                <div class="news-info">
-                                    <h6 class="left">Erwin Angeles</h6>
-                                    <h6 class="right">12 hours 1 min ago</h6>
+                                <div class="news column">
+                                    <div class="news-title">
+                                        <h5>{{newsItem.title}}</h5>
+                                    </div>
+                                    <div class="news-info">
+                                        <h6 class="left">Erwin Angeles</h6>
+                                        <h6 class="right">{{newsItem.date}}</h6>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </a>
-                    <a href="#">
-                    <div class="news-content large-4 medium-4 small-12 columns">
-                        <div class="news-image">
-                            <img class="news-image large-12 medium-12 small-12" src="./img/dota.jpg" alt="News">
-                        </div>
-                        <div class="news column">
-                            <div class="news-title">
-                                <h5>Dota League</h5>
-                            </div>
-                            <div class="news-info">
-                                <h6 class="left">Erwin Angeles</h6>
-                                <h6 class="right">12 hours 1 min ago</h6>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-
-
+                        </a>
+                    </div>              
                 </div>
             </div><!-- Page Content -->
         </div><!-- End Page Container -->
