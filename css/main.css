@@ -227,6 +227,14 @@ h1,h2,h3,h4,h5,h6{
     font-style: oblique;
     margin-top: 15px;
 }
+.news-small{
+    margin-left: -7px;
+    width: 97%;
+}
+.news-main{
+    width: 97%;
+    margin-left: 15px;
+}
 /*******
  News Page
  *******/
