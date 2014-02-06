@@ -10,7 +10,7 @@
                     <h3 class="page-title large-10 small-9 columns">Recent<span>News</span></h3>
                     <h6 class="add-news large-1 small-3 columns right"><a href="#/addnews">+</a></h6>                    
                     <!-- Recent News content -->
-                    <div ng-repeat="($id, post) in news | limitTo:limit">
+                    <div ng-repeat="post in news | toArray | orderObjectBy: 'date':true">
                         <a ng-href="#/newspage/{{post.$key}}">
                             <div class="news-content large-4 medium-4 small-12 columns">
                                 <div class="news-image">
