@@ -10,16 +10,16 @@
                     <h3 class="page-title large-10 small-9 columns">Recent<span>News</span></h3>
                     <h6 class="add-news large-1 small-3 columns right"><a href="#/addnews">+</a></h6>                    
                     <!-- Recent News content -->
-                    <div ng-repeat="newsItem in news">
-                        {{newsItem.$id}}
-                        <a ng-href="#/newspage/{{newsItem.$id}}">
+                    <div ng-repeat="($id, newsItem) in news">
+
+                        <a ng-href="#/newspage/{{$id}}">
                             <div class="news-content large-4 medium-4 small-12 columns">
                                 <div class="news-image">
                                     <img class="news-image large-12 medium-12 small-12" ng-src="{{newsItem.image}}" alt="News">
                                 </div>
                                 <div class="news column">
                                     <div class="news-title">
-                                        <h5>{{newsItem.title}}</h5>
+                                        <h5>{{newsItem.title}}</h5>{{newsItem.$id}}
                                     </div>
                                     <div class="news-info">
                                         <h6 class="left">{{newsItem.poster}}</h6>
