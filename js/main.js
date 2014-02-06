@@ -3,8 +3,6 @@ var wgl = angular.module('WGL', ['firebase', 'ngRoute']);
 wgl.run(['$firebaseSimpleLogin', '$rootScope', '$route', function($firebaseSimpleLogin, $rootScope, $route){
     var url = new Firebase("https://thewgl.firebaseio.com/");
     $rootScope.loginObj = $firebaseSimpleLogin(url);
-    
-    /*angularFireAuth.initialize(url, {scope: $rootScope, name: "fb_user",path: '/'});*/
 
     $rootScope.$on('$routeChangeSuccess', function (event, current, previous) {
         $rootScope.title = current.$$route.title;
@@ -77,7 +75,7 @@ wgl.config(function ($routeProvider){
                 factory: checkPermission
             }
         })
-        .when("/newspage/:title/:newsId", {
+        .when("/newspage/:newsItemID", {
             title: 'News Article',
             templateUrl:"partials/newspage.html",
             resolve: {
