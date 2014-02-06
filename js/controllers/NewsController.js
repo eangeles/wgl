@@ -4,6 +4,7 @@ wgl.controller('news', ['$scope','$routeParams','$rootScope', '$firebase', funct
     $scope.news = $firebase(new Firebase(newsURL));
     
     $scope.newsItem = $firebase(new Firebase("https://thewgl.firebaseio.com/thewgl/news/" + $routeParams.newsItemID));
+    $scope.limit = 2;
 
     $scope.addNewsItem = function(newsItem) {
         var d = new Date();

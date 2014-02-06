@@ -13,7 +13,8 @@
                             <div class="row">
                                 <!-- Recent News content -->
                                 <div class="large-8 medium-8 small-12 columns">
-                                    <a href="#/newspage">
+                                    <div ng-repeat="($id, post) in news">
+                                        <a ng-href="#/newspage/{{$id}}">
                                         <div class="news-content news-main large-12 medium-12 small-12">
                                             <div>
                                                 <img class="news-main-image large-12 medium-12 small-12" src="./img/gaming2.png" alt="News">

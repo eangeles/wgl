@@ -16,15 +16,15 @@
                                     <a href="#/newspage">
                                         <div class="news-content large-12 medium-4 small-12 columns">
                                             <div>
-                                                <img class="news-main-image large-12 medium-12 small-12" src="./img/gaming2.png" alt="News">
+                                                <img class="news-main-image large-12 medium-12 small-12" ng-src="{{newsItem.image}}" alt="News">
                                             </div>
                                             <div class="news column">
                                                 <div class="news-title">
-                                                    <h5>Welcome to Win Gaming Lounge</h5>
+                                                    <h5>{{newsItem.title}}</h5>
                                                 </div>
                                                 <div class="news-info">
-                                                    <h6 class="left">Erwin Angeles</h6>
-                                                    <h6 class="right">12 hours 1 min ago</h6>
+                                                    <h6 class="left">{{newsItem.poster}}</h6>
+                                                    <h6 class="right">{{newsItem.date}}</h6>
                                                 </div>
                                             </div>
                                         </div>
@@ -32,39 +32,24 @@
                                 </div>
                                 <div class="large-4 columns">
                                     <h3 class="page-title large-12 column">Recent<span>News</span></h3>
-                                    <a href="#">
-                                        <div class="news-content large-12 medium-4 small-12 columns">
-                                            <div class="news-image">
-                                                <img class="news-image large-12 medium-12 small-12" src="./img/dota.jpg" alt="News">
-                                            </div>
-                                            <div class="news column">
-                                                <div class="news-title">
-                                                    <h5>Dota League</h5>
+                                    <div ng-repeat="($id, post) in news | limitTo:limit">
+                                        <a ng-href="#/newspage/{{$id}}">
+                                            <div class="news-content large-12 medium-4 small-12 columns">
+                                                <div class="news-image">
+                                                    <img class="news-image large-12 medium-12 small-12" ng-src="{{post.image}}" alt="News">
                                                 </div>
-                                                <div class="news-info">
-                                                    <h6 class="left">Erwin Angeles</h6>
-                                                    <h6 class="right">12 hours 1 min ago</h6>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-
-                                    <a href="#">
-                                        <div class="news-content large-12 medium-4 small-12 columns">
-                                            <div class="news-image">
-                                                <img class="news-image large-12 medium-12 small-12" src="./img/cod2.png" alt="News">
-                                            </div>
-                                            <div class="news column">
-                                                <div class="news-title">
-                                                    <h5>Call Of Duty Tourney</h5>
-                                                </div>
-                                                <div class="news-info">
-                                                    <h6 class="left">Erwin Angeles</h6>
-                                                    <h6 class="right">12 hours 1 min ago</h6>
+                                                <div class="news column">
+                                                    <div class="news-title">
+                                                        <h5>{{post.title}}</h5>
+                                                    </div>
+                                                    <div class="news-info">
+                                                        <h6 class="left">{{post.poster}}</h6>
+                                                        <h6 class="right">{{post.date}}</h6>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </a>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
 
@@ -73,15 +58,7 @@
                             <div class="newspage-bottom-content">
                                 <div class="large-12 columns">
                                     <div class="large-8 columns">
-                                        <p>
-                                            "But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete
-                                            account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes,
-                                            or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely
-                                            painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur
-                                            in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to
-                                            obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids
-                                            a pain that produces no resultant pleasure?"
-                                        </p>
+                                        <p>{{newsItem.content}}</p>
                                         <div class="row">
                                             <h3 class="page-title large-12 column">News<span>Comment</span></h3>
                                         </div>
