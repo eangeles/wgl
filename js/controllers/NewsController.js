@@ -31,4 +31,17 @@ wgl.controller('news', ['$scope','$routeParams','$rootScope', '$firebase', funct
 
     }
 
+//    var theNewsId;
+//    //news info page
+//    if(typeof $routeParams !== "undefined"){
+//        if(typeof $routeParams.newsId !== "undefined"){
+//            //collects the info from the database for use.
+//            angularFire(newsURL.child($routeParams.newsId),$scope,'news_content');
+//
+//            theNewsId = $routeParams.newsId;
+//        }
+//    }
+
+
+
 }]);
