@@ -11,6 +11,7 @@
                     <h6 class="add-news large-1 small-3 columns right"><a href="#/addnews">+</a></h6>                    
                     <!-- Recent News content -->
                     <div ng-repeat="newsItem in news">
+                        {{newsItem.$id}}
                         <a ng-href="#/newspage/{{newsItem.$id}}">
                             <div class="news-content large-4 medium-4 small-12 columns">
                                 <div class="news-image">
