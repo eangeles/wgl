@@ -8,14 +8,14 @@ wgl.controller('Login', ['$scope','$rootScope','$firebase', function mtCtrl($sco
         usersRef.child(user.id).once('value', function(snapshot) {
             var exists = (snapshot.val() !== null);
             if (snapshot.val() !== null) {
-                console.log(snapshot.val());
-                console.log(user);
+                $rootScope.loginObj.user = snapshot.val();
                 console.log("User id: " + user.id + " exists already, logging in");
             } else {
                 console.log("User id: " + user.id + " does not exist, adding and logging in");
                 user.profilePicture = "http://graph.facebook.com/" + user.username + "/picture?type=large";
                 user.userType = "Gamer";
                 usersRef.child(user.id).set(user);
+                $rootScope.loginObj.user = user;
             }
         });
     });
