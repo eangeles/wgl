@@ -1,6 +1,5 @@
 wgl.controller('news', ['$scope','$routeParams','$rootScope', '$firebase', function mtCtrl($scope, $routeParams,$rootScope,$firebase) {
     $scope.limit = 2;
-    $scope.order = 'title';
 
     var newsURL = "https://thewgl.firebaseio.com/thewgl/news/";
     $scope.news = $firebase(new Firebase(newsURL));
