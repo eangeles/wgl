@@ -11,7 +11,7 @@
                     <h6 class="add-news large-1 small-3 columns right"><a href="#/addnews">+</a></h6>                    
                     <!-- Recent News content -->
                     <div ng-repeat="newsItem in news">
-                        <a href="#">
+                        <a ng-href="#/newspage/{{newsItem.$id}}">
                             <div class="news-content large-4 medium-4 small-12 columns">
                                 <div class="news-image">
                                     <img class="news-image large-12 medium-12 small-12" ng-src="{{newsItem.image}}" alt="News">
@@ -21,7 +21,7 @@
                                         <h5>{{newsItem.title}}</h5>
                                     </div>
                                     <div class="news-info">
-                                        <h6 class="left">Erwin Angeles</h6>
+                                        <h6 class="left">{{newsItem.poster}}</h6>
                                         <h6 class="right">{{newsItem.date}}</h6>
                                     </div>
                                 </div>
@@ -33,21 +33,6 @@
         </div><!-- End Page Container -->
     </div> <!-- End Row -->
 </div><!-- End Page -->
-<div id="add-news" class="reveal-modal" data-reveal>
-    <!-- Place this in the body of the page content -->
-    <form>
-        <textarea id="editor1" name="editor1" rows="10" cols="80">
-            This is my textarea to be replaced with CKEditor.
-        </textarea>
-        <script>
-            // Replace the <textarea id="editor1"> with a CKEditor
-            // instance, using default configuration.
-            CKEDITOR.replace( 'editor1' );
-        </script>
-    </form>
-
-    <a class="close-reveal-modal">&#215;</a>
-</div>
 
 <script>
     $(document).foundation();

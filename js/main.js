@@ -77,7 +77,7 @@ wgl.config(function ($routeProvider){
                 factory: checkPermission
             }
         })
-        .when("/newspage", {
+        .when("/newspage/:newsItemID", {
             title: 'news',
             templateUrl:"partials/newspage.html",
             resolve: {
