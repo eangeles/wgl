@@ -171,7 +171,20 @@ wgl.config(function ($routeProvider){
                 return Object.defineProperty(obj[key], '$key', {__proto__: null, value: key});
             });
         };
-    });;
+    }).filter('orderObjectBy', function() {
+        return function(items, field, reverse) {
+            var filtered = [];
+            angular.forEach(items, function(item) {
+                filtered.push(item);
+            });
+            filtered.sort(function (a, b) {
+                return (a[field] > b[field]);
+            });
+            if(reverse) filtered.reverse();
+            return filtered;
+        };
+    });
+;
 
 var checkPermission = function ($q, $rootScope, $location){
 

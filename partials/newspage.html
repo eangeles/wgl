@@ -33,7 +33,7 @@
                                 <div class="large-4 columns">
                                     <h3 class="page-title large-12 column">Recent<span>News</span></h3>
 
-                                    <div ng-repeat="($id, post) in news | toArray | limitTo: limit | orderBy: 'date'">
+                                    <div ng-repeat="post in news | toArray | orderObjectBy: 'date':true | limitTo: 2 ">
                                         <a ng-href="#/newspage/{{$id}}">
                                             <div class="news-content large-12 medium-4 small-12 columns">
                                                 <div class="news-image">
