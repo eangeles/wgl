@@ -47,6 +47,13 @@ wgl.config(function ($routeProvider){
                 factory: checkPermission
             }
         })
+        .when("/gamer_page", {
+            title: 'Gamer Page',
+            templateUrl:"partials/gamer_page.html",
+            resolve: {
+                factory: checkPermission
+            }
+        })
         .when("/matches", {
             title: 'Matches',
             templateUrl:"partials/matches.html",
