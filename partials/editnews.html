@@ -1,4 +1,4 @@
-<div class="page">
+<div class="page" ng-controller="news">
     <div class="row">
         <!-- Header BG -->
         <div class="header-top"></div>
@@ -7,15 +7,15 @@
             <div class="page-content">
                 <div class="large-12 columns">
                     <form class="large-6 columns large-centered">
-                        <a href="#/newspage">back</a>
+                        <a href="#/news">back</a>
                         <h3 class="page-title text-center">Edit<span>News</span></h3>
-                        <input type="text" placeholder="Title">
-                        <input type="text" placeholder="Image Url">
-                        <textarea id="editor1" name="editor1" rows="10" cols="80">
+                        <input type="text" placeholder="Title" ng-model="newsItem.title">
+                        <input type="text" placeholder="Image Url" ng-model="newsItem.image">
+                        <textarea placeholder="Article content goes here" rows="10" cols="80" ng-model="newsItem.content">
 
                         </textarea>
 
-                        <input type="submit" class="button large-12" value="Edit">
+                        <input type="submit" class="button large-12" value="Edit" ng-click="updateNewsItem(newsItem)">
                     </form>
                 </div>
             </div><!-- Page Content -->

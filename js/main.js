@@ -96,7 +96,7 @@ wgl.config(function ($routeProvider){
                 factory: checkPermission
             }
         })
-        .when("/editnews", {
+        .when("/editnews/:newsItemID", {
             title: 'Edit News',
             templateUrl:"partials/editnews.html",
             resolve: {

@@ -12,6 +12,8 @@
                     <div ng-repeat="post in news | toArray | orderObjectBy: 'date':true">
                         <a ng-href="#/newspage/{{post.$key}}">
                             <div class="news-content large-4 medium-4 small-12 columns">
+                                <a ng-href="#/editnews/{{post.$key}}">Edit</a>
+                                <a ng-click="removeNewsItem(post.$key)">Remove</a>
                                 <div class="news-image">
                                     <img class="news-image large-12 medium-12 small-12" ng-src="{{post.image}}" alt="News">
                                 </div>
