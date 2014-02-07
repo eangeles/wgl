@@ -1,4 +1,4 @@
-wgl.controller('news', ['$scope','$routeParams','$rootScope', '$firebase', function mtCtrl($scope, $routeParams,$rootScope,$firebase) {
+wgl.controller('news', ['$scope','$routeParams','$location','$rootScope','$firebase', function mtCtrl($scope, $routeParams, $location, $rootScope, $firebase) {
 
     var newsURL = "https://thewgl.firebaseio.com/thewgl/news/";
     $scope.news = $firebase(new Firebase(newsURL));
@@ -18,6 +18,7 @@ wgl.controller('news', ['$scope','$routeParams','$rootScope', '$firebase', funct
         newsItem.date   = dateAdded;
         
         $scope.news.$add(newsItem);
+        $location.path("/news");
     };
 
     $scope.removeNewsItem = function(postId) {
@@ -32,6 +33,7 @@ wgl.controller('news', ['$scope','$routeParams','$rootScope', '$firebase', funct
             title: post.title,
             content: post.content
         });
+        $location.path("/news");
     }
 
 }]);
