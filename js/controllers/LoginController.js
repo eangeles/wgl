@@ -12,10 +12,18 @@ wgl.controller('Login', ['$scope','$rootScope','$firebase', function mtCtrl($sco
                 console.log("User id: " + user.id + " exists already, logging in");
             } else {
                 console.log("User id: " + user.id + " does not exist, adding and logging in");
+                
                 user.profilePicture = "http://graph.facebook.com/" + user.username + "/picture?type=large";
                 user.userType = "Gamer";
                 usersRef.child(user.id).set(user);
                 $rootScope.loginObj.user = user;
+                
+                //Display a notification
+                if (!("Notification" in window)) {
+                    console.log("We had some notifications for you but your browser can’t show them.");
+                } else if (Notification.permission === "granted") {
+                    var notification = new Notification("New User!", {body: "Welcome to Wingaming Lounge", icon: user.profilePicture});
+                }
             }
         });
     });
