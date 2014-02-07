@@ -1,5 +1,4 @@
 wgl.controller('news', ['$scope','$routeParams','$rootScope', '$firebase', function mtCtrl($scope, $routeParams,$rootScope,$firebase) {
-    $scope.limit = 2;
 
     var newsURL = "https://thewgl.firebaseio.com/thewgl/news/";
     $scope.news = $firebase(new Firebase(newsURL));
@@ -28,8 +27,5 @@ wgl.controller('news', ['$scope','$routeParams','$rootScope', '$firebase', funct
     $scope.updateNewsItem = function(newsItem) {
         console.log(newsItem);
     }
-
-
-//    $scope.news = angular.fromJson(angular.toJson($scope.newsItem));
 
 }]);

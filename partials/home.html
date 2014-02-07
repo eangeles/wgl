@@ -13,7 +13,7 @@
                             <div class="row" ng-controller="news">
                                 <!-- Recent News content -->
                                 <div class="large-8 medium-8 small-12 columns">
-                                    <div ng-repeat="post in news | toArray | orderObjectBy: 'date':true | limitTo: 1 ">
+                                    <div ng-repeat="post in news | toArray | orderObjectBy: 'date':true | limitTo: 1">
                                         <a ng-href="#/newspage/{{post.$key}}">
                                             <div class="news-content news-main large-12 medium-12 small-12">
                                                 <div>
@@ -33,7 +33,7 @@
                                     </div>
                                 </div>
                                 <div class="large-4 medium-4 small-12 columns">
-                                    <div ng-repeat="post in news | toArray | orderObjectBy: 'date':true | limitTo: 2 ">
+                                    <div ng-repeat="post in news | toArray | orderObjectBy: 'date':true | limitTo: 2">
                                         <a ng-href="#/newspage/{{post.$key}}">
                                             <div class="news-content news-small large-12 medium-6 small-12">
                                                 <div class="news-image">
