@@ -27,7 +27,11 @@ wgl.controller('news', ['$scope','$routeParams','$rootScope', '$firebase', funct
     var updateRef = "";
     $scope.updateNewsItem = function(post) {
         updateRef = new Firebase("https://thewgl.firebaseio.com/thewgl/news/" + $routeParams.newsItemID);
-        updateRef.update(post);
+        updateRef.update({
+            image: post.image,
+            title: post.title,
+            content: post.content
+        });
     }
 
 }]);
