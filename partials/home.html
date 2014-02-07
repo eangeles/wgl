@@ -33,7 +33,7 @@
                                     </div>
                                 </div>
                                 <div class="large-4 medium-4 small-12 columns">
-                                    <div ng-repeat="post in news | toArray | orderObjectBy: 'date':true | limitTo: 2">
+                                    <div ng-repeat="post in news | toArray | orderObjectBy: 'date':true | limitTo: 3" ng-show="!$first">
                                         <a ng-href="#/newspage/{{post.$key}}">
                                             <div class="news-content news-small large-12 medium-6 small-12">
                                                 <div class="news-image">
