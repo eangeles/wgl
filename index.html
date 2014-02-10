@@ -19,36 +19,55 @@
     <script src="ckeditor/ckeditor.js"></script>
 
 </head>
-    
-<body ng-controller="Login">
 
-<nav class="top_bar" data-topbar>
-    <div class="row">
-        <ul class="title-area left">
-            <li>
-                <a href="#/"><img class="desktop-logo" src="img/logo.png" alt="Win Gaming Lounge Logo"></a>
+<body ng-controller="Login">
+<nav class="top-bar" data-topbar>
+    <ul class="title-area">
+        <li class="name">
+            <a href="#/"><img class="desktop-logo" src="img/logo.png" alt="Win Gaming Lounge Logo"></a>
+        </li>
+        <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
+    </ul>
+
+    <section class="top-bar-section">
+        <!-- Right Nav Section -->
+        <ul class="right">
+            <li><a href="#/news">News</a></li>
+            <li class="has-dropdown">
+                <a href="#">Ladder</a>
+                <ul class="dropdown">
+                    <li><a href="#/ladder">Event 1</a></li>
+                </ul>
             </li>
+            <li><a href="#/ladder">Ladder</a></li>
+            <li><a href="#/tournaments">Tournaments</a></li>
+            <li ng-hide="loginObj.user"><a class="login" ng-click="loginObj.$login('facebook')"><i class="fa fa-facebook"></i> Login</a> </li>
+            <li ng-show="loginObj.user"><a class="login" ng-click="loginObj.$logout()"><i class="fa fa-facebook"></i> Logout</a> </li>
         </ul>
 
-        <div class="hide-for-small">
-            <!--<div class="top-bar-section text-center">-->
-                <!--<ul class="right">-->
-                    <!--<li><a class="home-login" href="#/gts"><i class="fa fa-facebook"></i> <h6>Login</h6></a> </li>-->
-                <!--</ul>-->
-            <!--</div>-->
-            <!-- Right Nav Section -->
-            <ul class="right-nav inline-list right">
-                <li><a href="#/news">News</a></li>
-                <li><a href="#/ladder">Ladder</a></li>
-                <li><a href="#/tournaments">Tournaments</a></li>
-                <li ng-hide="loginObj.user"><a class="login" ng-click="loginObj.$login('facebook')"><i class="fa fa-facebook"></i> Login</a> </li>
-                <li ng-show="loginObj.user"><a class="login" ng-click="loginObj.$logout()"><i class="fa fa-facebook"></i> Logout</a> </li>
-            </ul>
-
-        </div>
-
-    </div>
+    </section>
 </nav>
+<!--<nav class="top_bar" data-topbar>-->
+<!--<div class="row">-->
+<!--<ul class="title-area left">-->
+<!--<li>-->
+<!--<a href="#/"><img class="desktop-logo" src="img/logo.png" alt="Win Gaming Lounge Logo"></a>-->
+<!--</li>-->
+<!--</ul>-->
+
+<!--<div class="hide-for-small">-->
+
+<!--Right Nav Section -->
+<!--<ul class="right-nav inline-list right">-->
+<!--<li><a href="#/news">News</a></li>-->
+<!--<li><a href="#/ladder">Ladder</a></li>-->
+<!--<li><a href="#/tournaments">Tournaments</a></li>-->
+<!--<li ng-hide="loginObj.user"><a class="login" ng-click="loginObj.$login('facebook')"><i class="fa fa-facebook"></i> Login</a> </li>-->
+<!--<li ng-show="loginObj.user"><a class="login" ng-click="loginObj.$logout()"><i class="fa fa-facebook"></i> Logout</a> </li>-->
+<!--</ul>-->
+<!--</div>-->
+<!--</div>-->
+<!--</nav>-->
 
 <!--Container for the view templates-->
 <div id="container" ng-view="">
@@ -92,7 +111,7 @@
 <!--angular route-->
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-route.js"></script>
 
-<!--angular sanitize-->   
+<!--angular sanitize-->
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-sanitize.min.js"></script>
 
 <!--angularFire-->
@@ -100,10 +119,10 @@
 
 <!--Main JS-->
 <script src="js/main.js"></script>
-    
+
 <!--News Controller-->
-<script src="js/controllers/NewsController.js"></script>  
-    
+<script src="js/controllers/NewsController.js"></script>
+
 <!--Login Controller-->
 <script src="js/controllers/LoginController.js"></script>
 
