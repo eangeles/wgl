@@ -110,6 +110,13 @@ wgl.config(function ($routeProvider){
                 factory: checkPermission
             }
         })
+        .when("/addteam", {
+            title: 'Add Team',
+            templateUrl:"partials/addteam.html",
+            resolve: {
+                factory: checkPermission
+            }
+        })
 
         .otherwise({
         	redirectTo:"/",
