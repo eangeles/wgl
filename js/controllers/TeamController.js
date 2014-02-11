@@ -1,7 +1,7 @@
 wgl.controller('teams', ['$scope','$routeParams','$location','$rootScope','$firebase', function mtCtrl($scope, $routeParams, $location, $rootScope, $firebase) {
 
     var teamsURL = "https://thewgl.firebaseio.com/thewgl/teams/";
-    $scope.teams = $firebase(new Firebase(newsURL));
+    $scope.teams = $firebase(new Firebase(teamsURL));
     
     $scope.addTeam = function(team) {                
         $scope.teams.$add(team);
@@ -25,8 +25,10 @@ wgl.controller('teams', ['$scope','$routeParams','$location','$rootScope','$fire
         $location.path("/teams");
     }
     
-    $scope.retrieveTeamInfo = function() {
-        $scope.selectedTeam = $firebase(new Firebase("https://thewgl.firebaseio.com/thewgl/teams/" + $routeParams.teamID));
+    $scope.retrieveTeamInfo = function(teamID) {
+        $scope.team = $firebase(new Firebase("https://thewgl.firebaseio.com/thewgl/teams/" + teamID));
     }
+    
+    $scope.selectedTeam = $firebase(new Firebase("https://thewgl.firebaseio.com/thewgl/teams/" + $routeParams.teamID));
 
 }]);

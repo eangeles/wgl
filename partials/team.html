@@ -1,4 +1,4 @@
-<div class="page">
+<div class="page" ng-controller="teams">
     <div class="row">
         <!-- Header BG -->
         <div class="header-top"></div>
@@ -6,11 +6,11 @@
         <div class="page-content-container">
             <div class="page-content">
                 <div class="large-2 columns left">
-                    <img class="team-profile-logo" src="./img/logo.png" alt="team-logo">
+                    <img class="team-profile-logo" ng-src="{{selectedTeam.picture}}" alt="team-logo">
                 </div>
                 <div class="large-4 columns left">
                     <div class="team-profile-name">
-                        <h3>Team Win</h3>
+                        <h3>{{selectedTeam.name}}</h3>
                     </div>
                 </div>
                 <div class="large-6 columns">
