@@ -1,0 +1,25 @@
+<div class="page" ng-controller="news">
+    <div class="row">
+        <!-- Header BG -->
+        <div class="header-top"></div>
+        <!-- Page Container -->
+        <div class="page-content-container">
+            <div class="page-content">
+                <div class="large-12 columns">
+                    <form class="large-6 columns large-centered">
+                        <h3 class="page-title text-center">Add<span>Match</span></h3>
+                        <input type="text" placeholder="Event Name">
+                        <input type="text" placeholder="Team Away">
+                        <input type="text" placeholder="Team Home">
+                        <input type="text" placeholder="Date">
+                        <input type="text" placeholder="Time">
+                        <input type="text" placeholder="Event Type (League or Tournaments)">
+
+                        <input type="submit" class="button large-12" ng-click="addNewsItem(newsItem)" value="Add">
+                    </form>
+                </div>
+            </div><!-- Page Content -->
+        </div><!-- End Page Container -->
+    </div> <!-- End Row -->
+</div><!-- End Page -->
+

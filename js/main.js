@@ -61,6 +61,20 @@ wgl.config(function ($routeProvider){
                 factory: checkPermission
             }
         })
+        .when("/upcomingmatches", {
+            title: 'Upcoming Matches',
+            templateUrl:"partials/upcomingmatches.html",
+            resolve: {
+                factory: checkPermission
+            }
+        })
+        .when("/addmatch", {
+            title: 'New Match',
+            templateUrl:"partials/addmatch.html",
+            resolve: {
+                factory: checkPermission
+            }
+        })
         .when("/tournaments", {
             title: 'Tournaments',
             templateUrl:"partials/tournament.html",
