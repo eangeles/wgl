@@ -14,6 +14,8 @@
                     </div>
                 </div>
                 <div class="large-6 columns">
+                    <a ng-click="addFakeTeam()">Add fake team testing</a>
+                    <a ng-click="addToFakeTeam()">Add player to the team</a>
                     <table class="large-12 columns">
                         <thead>
                         <tr>
@@ -21,11 +23,9 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td> Erwin Angeles</td>
-                        </tr>
-                        <tr>
-                            <td> Michael Fleming</td>
+                        <tr ng-repeat="player in selectedTeamPlayers">
+                            <td>{{player.name}}</td>
+                            <td>{{player.playerID}}</td>
                         </tr>
                         </tbody>
                     </table>

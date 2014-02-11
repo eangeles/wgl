@@ -15,6 +15,7 @@ wgl.controller('teams', ['$scope','$routeParams','$location','$rootScope','$fire
     var updateRef = "";
     $scope.updateTeam = function(post) {
         updateRef = new Firebase("https://thewgl.firebaseio.com/thewgl/teams/" + $routeParams.teamID);
+        //need an update ref for players seperately
         updateRef.update({
             //Update Content
             //1. Array of members
@@ -25,10 +26,42 @@ wgl.controller('teams', ['$scope','$routeParams','$location','$rootScope','$fire
         $location.path("/teams");
     }
     
-    $scope.retrieveTeamInfo = function(teamID) {
-        $scope.team = $firebase(new Firebase("https://thewgl.firebaseio.com/thewgl/teams/" + teamID));
+//    $scope.retreiveTeamInfo = function(teamID) {
+//        console.log(teamID);
+//        console.log($routeParams.teamID);
+//    }
+//    testing purposes
+    
+    $scope.selectedTeam =           $firebase(new Firebase("https://thewgl.firebaseio.com/thewgl/teams/" + $routeParams.teamID));
+    $scope.selectedTeamPlayers =    $firebase(new Firebase("https://thewgl.firebaseio.com/thewgl/teams/" + $routeParams.teamID + "/players")); 
+    
+    //Team member testing
+    var fakeTeam = [
+        {name: "John Doe", playerID: 12345566},
+        {name: "Jane Doe", playerID: 12534534},
+        {name: "Mary Doe", playerID: 34523451}
+    ];
+    
+    $scope.addFakeTeam = function() {
+        $scope.selectedTeamPlayers.$set(fakeTeam);
     }
     
-    $scope.selectedTeam = $firebase(new Firebase("https://thewgl.firebaseio.com/thewgl/teams/" + $routeParams.teamID));
+    $scope.addToFakeTeam = function() {
+        var item = {name: "Michael", playerID: 234346876};
+        $scope.selectedTeamPlayers.$add(item);
+    }
 
 }]);
+
+
+
+
+
+
+
+
+
+
+
+
+
