@@ -1,4 +1,4 @@
-<div class="page" ng-controller="news">
+<div class="page" ng-controller="teams">
     <div class="row">
         <!-- Header BG -->
         <div class="header-top"></div>
@@ -9,23 +9,15 @@
                     <h3 class="page-title large-10 small-9 columns">Teams</h3>
                     <h6 class="add-news large-1 small-3 columns right"><a href="#/addteam">+</a></h6>
                     <!-- Team Panels -->
-<<<<<<< HEAD
-                    <div class="">
-                        <a ng-href="#">
-                            <div class="large-3 medium-4 small-12 columns">
-                                <div>
-                                    <img class="teams-image large-9 medium-12 small-12" src="./img/defaultteamlogo.jpg" alt="Team Logo">
-=======
                     <div class="left" ng-repeat="team in teams | orderByPriority">
                         <a ng-click="removeTeam(team.$id)">X</a>
                         <a ng-href="#/team/{{team.$id}}">
                             <div class="large-12 medium-4 small-12 columns">
                                 <div>
                                     <img class="teams-image large-12 medium-12 small-12" ng-src="{{team.picture}}" alt="Team Logo">
->>>>>>> adec31025a9654147812e9dfa4c53b46e72b81e9
                                 </div>
                                 <div class="team-info">
-                                    <a href="#/team">Team Name</a>
+                                    <a ng-href="">{{team.name}}</a>
                                 </div>
                             </div>
                         </a>
