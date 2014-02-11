@@ -54,9 +54,16 @@ wgl.config(function ($routeProvider){
                 factory: checkPermission
             }
         })
-        .when("/matches", {
-            title: 'Matches',
-            templateUrl:"partials/matches.html",
+        .when("/upcomingmatches", {
+            title: 'Upcoming Matches',
+            templateUrl:"partials/upcomingmatches.html",
+            resolve: {
+                factory: checkPermission
+            }
+        })
+        .when("/match", {
+            title: 'Match',
+            templateUrl:"partials/match.html",
             resolve: {
                 factory: checkPermission
             }
