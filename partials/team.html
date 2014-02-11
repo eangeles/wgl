@@ -22,8 +22,9 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr ng-repeat="player in selectedTeamPlayers">
+                        <tr ng-repeat="player in selectedTeamPlayers | orderByPriority">
                             <td>{{player.name}}</td>
+                            <td><a ng-click="removePlayerFromTeam(player.$id)">X</a></td>
                         </tr>
                         </tbody>
                     </table>

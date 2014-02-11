@@ -1,5 +1,6 @@
 wgl.controller('teams', ['$scope','$routeParams','$location','$rootScope','$firebase', function mtCtrl($scope, $routeParams, $location, $rootScope, $firebase) {
 
+    //TeamCrud
     var teamsURL = "https://thewgl.firebaseio.com/thewgl/teams/";
     $scope.teams = $firebase(new Firebase(teamsURL));
     
@@ -26,13 +27,19 @@ wgl.controller('teams', ['$scope','$routeParams','$location','$rootScope','$fire
         $location.path("/teams");
     }
     
+    //Team specific crud
     $scope.selectedTeam =           $firebase(new Firebase("https://thewgl.firebaseio.com/thewgl/teams/" + $routeParams.teamID));
     $scope.selectedTeamPlayers =    $firebase(new Firebase("https://thewgl.firebaseio.com/thewgl/teams/" + $routeParams.teamID + "/players"));
     $scope.selectedTeamID =         $routeParams.teamID;
     
     $scope.addPlayerToTeam = function(teamMember) {
-        console.log(teamMember);
         $scope.selectedTeamPlayers.$add(teamMember);
+        $location.path("/team/" + $routeParams.teamID);
+    }
+    
+    $scope.removePlayerFromTeam = function(memberID) {
+        console.log(memberID);
+        $scope.selectedTeamPlayers.$remove(memberID);
     }
 
 }]);
