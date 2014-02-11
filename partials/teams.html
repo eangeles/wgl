@@ -10,7 +10,6 @@
                     <h6 class="add-news large-1 small-3 columns right"><a href="#/addteam">+</a></h6>
                     <!-- Team Panels -->
                     <div ng-repeat="team in teams | orderByPriority">
-                        <a ng-click="removeTeam(team.$id)">X</a>
                         <a ng-href="#/team/{{team.$id}}">
                             <div class="large-3 medium-4 small-12 columns">
                                 <div>
@@ -18,6 +17,7 @@
                                 </div>
                                 <div class="team-info">
                                     <a ng-href="">{{team.name}}</a>
+                                    <a ng-click="removeTeam(team.$id)">X</a>
                                 </div>
                             </div>
                         </a>
