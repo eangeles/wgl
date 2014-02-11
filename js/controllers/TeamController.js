@@ -26,16 +26,9 @@ wgl.controller('teams', ['$scope','$routeParams','$location','$rootScope','$fire
         $location.path("/teams");
     }
     
-//    $scope.retreiveTeamInfo = function(teamID) {
-//        console.log(teamID);
-//        console.log($routeParams.teamID);
-//    }
-//    testing purposes
-    
     $scope.selectedTeam =           $firebase(new Firebase("https://thewgl.firebaseio.com/thewgl/teams/" + $routeParams.teamID));
     $scope.selectedTeamPlayers =    $firebase(new Firebase("https://thewgl.firebaseio.com/thewgl/teams/" + $routeParams.teamID + "/players")); 
     
-    //Team member testing
     var fakeTeam = [
         {name: "John Doe", playerID: 12345566},
         {name: "Jane Doe", playerID: 12534534},
