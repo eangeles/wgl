@@ -54,16 +54,9 @@ wgl.config(function ($routeProvider){
                 factory: checkPermission
             }
         })
-        .when("/upcomingmatches", {
-            title: 'Upcoming Matches',
-            templateUrl:"partials/upcomingmatches.html",
-            resolve: {
-                factory: checkPermission
-            }
-        })
-        .when("/match", {
-            title: 'Match',
-            templateUrl:"partials/match.html",
+        .when("/matches", {
+            title: 'Matches',
+            templateUrl:"partials/matches.html",
             resolve: {
                 factory: checkPermission
             }
@@ -127,6 +120,13 @@ wgl.config(function ($routeProvider){
         .when("/team/:teamID", {
             title: 'Team',
             templateUrl:"partials/team.html",
+            resolve: {
+                factory: checkPermission
+            }
+        })
+        .when("/addteammate/:teamID", {
+            title: 'Add TeamMate',
+            templateUrl:"partials/addteammate.html",
             resolve: {
                 factory: checkPermission
             }

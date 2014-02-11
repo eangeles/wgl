@@ -27,21 +27,12 @@ wgl.controller('teams', ['$scope','$routeParams','$location','$rootScope','$fire
     }
     
     $scope.selectedTeam =           $firebase(new Firebase("https://thewgl.firebaseio.com/thewgl/teams/" + $routeParams.teamID));
-    $scope.selectedTeamPlayers =    $firebase(new Firebase("https://thewgl.firebaseio.com/thewgl/teams/" + $routeParams.teamID + "/players")); 
+    $scope.selectedTeamPlayers =    $firebase(new Firebase("https://thewgl.firebaseio.com/thewgl/teams/" + $routeParams.teamID + "/players"));
+    $scope.selectedTeamID =         $routeParams.teamID;
     
-    var fakeTeam = [
-        {name: "John Doe", playerID: 12345566},
-        {name: "Jane Doe", playerID: 12534534},
-        {name: "Mary Doe", playerID: 34523451}
-    ];
-    
-    $scope.addFakeTeam = function() {
-        $scope.selectedTeamPlayers.$set(fakeTeam);
-    }
-    
-    $scope.addToFakeTeam = function() {
-        var item = {name: "Michael", playerID: 234346876};
-        $scope.selectedTeamPlayers.$add(item);
+    $scope.addPlayerToTeam = function(teamMember) {
+        console.log(teamMember);
+        $scope.selectedTeamPlayers.$add(teamMember);
     }
 
 }]);
