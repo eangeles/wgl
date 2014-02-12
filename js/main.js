@@ -36,37 +36,26 @@ wgl.config(function ($routeProvider){
         .when("/ladder", {
             title: 'Ladder',
             templateUrl:"partials/ladder.html",
-            resolve: {
-                factory: checkPermission
-            }
         })
         .when("/team", {
             title: 'Ladder',
             templateUrl:"partials/team.html",
-            resolve: {
-                factory: checkPermission
-            }
         })
         .when("/gamer_page", {
             title: 'Gamer Page',
             templateUrl:"partials/gamer_page.html",
-            resolve: {
-                factory: checkPermission
-            }
+        })
+        .when("/gamer_page/:playerID", {
+            title: 'Gamer Page',
+            templateUrl:"partials/gamer_page.html",
         })
         .when("/match", {
             title: 'Match',
             templateUrl:"partials/match.html",
-            resolve: {
-                factory: checkPermission
-            }
         })
         .when("/upcomingmatches", {
             title: 'Upcoming Matches',
             templateUrl:"partials/upcomingmatches.html",
-            resolve: {
-                factory: checkPermission
-            }
         })
         .when("/addmatch", {
             title: 'New Match',
@@ -78,16 +67,10 @@ wgl.config(function ($routeProvider){
         .when("/tournaments", {
             title: 'Tournaments',
             templateUrl:"partials/tournament.html",
-            resolve: {
-                factory: checkPermission
-            }
         })
         .when("/news", {
             title: 'News',
             templateUrl:"partials/news.html",
-            resolve: {
-                factory: checkPermission
-            }
         })
         .when("/staff_news", {
             title: 'Staff News',
@@ -99,9 +82,6 @@ wgl.config(function ($routeProvider){
         .when("/newspage/:newsItemID", {
             title: 'News Article',
             templateUrl:"partials/newspage.html",
-            resolve: {
-                factory: checkPermission
-            }
         })
         .when("/addnews", {
             title: 'Add News',
