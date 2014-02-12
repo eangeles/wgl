@@ -38,7 +38,6 @@ wgl.controller('teams', ['$scope','$routeParams','$location','$rootScope','$fire
     }
     
     $scope.removePlayerFromTeam = function(memberID) {
-        console.log(memberID);
         $scope.selectedTeamPlayers.$remove(memberID);
     }
 

@@ -1,4 +1,4 @@
-<div class="page">
+<div class="page" ng-controller="matches">
     <div class="row">
         <!-- Header BG -->
         <div class="header-top"></div>
@@ -17,13 +17,9 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td><a href="#/match">Team Crazy vs Team Cool <i class="fa fa-comment">10</i> </a> </td>
-                        <td>7:00 PM</td>
-                    </tr>
-                    <tr>
-                        <td><a href="#/match">Team Hot Shots vs Team Hello Kitty <i class="fa fa-comment">2</i></a></td>
-                        <td>8:00 PM</td>
+                    <tr ng-repeat="match in matches | orderByPriority">
+                        <td><a ng-href="#/match/{{match.$id}}">{{match.homeTeam}} vs. {{match.awayTeam}}<i class="fa fa-comment">10</i> </a> </td>
+                        <td>{{match.time}}</td>
                     </tr>
                     </tbody>
                 </table>
