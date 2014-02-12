@@ -318,7 +318,15 @@ h1,h2,h3,h4,h5,h6{
 .teams-image{
     height: 150px;
 }
-
+.team-profile-name p{
+    color: #fff;
+    font-weight: 100;
+}
+.delete-player{
+    position: relative;
+    margin: 0 5px -20px 0;
+    color: red;
+}
 /* Media Queries */
 @media only screen and (max-width: 40em) {
     .news-small{
