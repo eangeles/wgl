@@ -60,6 +60,7 @@ wgl.controller('Login', ['$scope','$rootScope','$firebase', function mtCtrl($sco
         $scope.player.$id = id;
         $scope.player.$ref = ref;
         $scope.userTyping = false;
+        console.log(gamer);
     };
 
 }]);
