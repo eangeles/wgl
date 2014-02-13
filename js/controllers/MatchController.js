@@ -28,6 +28,8 @@ wgl.controller('matches', ['$scope','$routeParams','$location','$rootScope','$fi
     //$scope.selectedTeamPlayers =    $firebase(new Firebase("https://thewgl.firebaseio.com/thewgl/matches/" + $routeParams.matchID + "/players"));
     //$scope.selectedTeamID =         $routeParams.teamID;
 
+
+
 }]);
 
 

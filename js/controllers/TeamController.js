@@ -44,6 +44,34 @@ wgl.controller('teams', ['$scope','$routeParams','$location','$rootScope','$fire
         $scope.selectedTeamPlayers.$remove(memberID);
     }
 
+    //auto complete
+    $scope.userTyping = false;
+    //Filter user search and select to input
+    $scope.limit = 5;
+    $scope.selectTeam = function (team) {
+        id = team.$id;
+        ref = team.$ref;
+        $scope.match = angular.fromJson(angular.toJson(team));
+        $scope.match.$id = id;
+        $scope.match.$ref = ref;
+        $scope.userTyping = false;
+        console.log(team);
+    };
+    //auto complete
+    $scope.userTypingB = false;
+    //Filter user search and select to input
+    $scope.limit = 5;
+    $scope.selectTeamHome = function (team) {
+        id = team.$id;
+        ref = team.$ref;
+        $scope.match = angular.fromJson(angular.toJson(team));
+        $scope.match.$id = id;
+        $scope.match.$ref = ref;
+        $scope.userTypingB = false;
+        console.log(team);
+    };
+
+
 }]);
 
 
