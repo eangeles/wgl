@@ -8,12 +8,8 @@
                 <div class="large-5 columns">
                     <div class="large-12 columns text-center">
                         <img class="team-profile-logo" ng-src="{{selectedMatch.homeTeam.picture}}" alt="team-logo">
-                        <h3>{{selectedMatch.homeTeam}}</h3>
-
-<!--
-                        <h6>Erwin Angeles</h6>
-                        <h6>Michael Fleming</h6>
--->
+                        <h3>{{selectedMatch.homeTeam.name}}</h3>
+                        <h6 ng-repeat="player in selectedMatch.homeTeam.players">{{player.name}}</h6>
                     </div>
                 </div>
                 <div class="large-2 columns left">
@@ -26,11 +22,8 @@
                 <div class="large-5 columns">
                     <div class="large-12 columns text-center">
                         <img class="team-profile-logo" ng-src="{{selectedMatch.awayTeam.picture}}" alt="team-logo">
-                        <h3>{{selectedMatch.awayTeam}}</h3>
-<!--
-                        <h6>Rick James</h6>
-                        <h6>Michael Jacksun</h6>
--->
+                        <h3>{{selectedMatch.awayTeam.name}}</h3>
+                        <h6 ng-repeat="player in selectedMatch.awayTeam.players"><img ng-src="{{player.profilePicture}}" />{{player.name}}</h6>
                     </div>
                 </div>
 
