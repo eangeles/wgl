@@ -18,7 +18,7 @@
                     </thead>
                     <tbody>
                     <tr ng-repeat="match in matches | orderByPriority">
-                        <td><a ng-href="#/match/{{match.$id}}">{{match.homeTeam}} vs. {{match.awayTeam}}<i class="fa fa-comment">10</i> </a> </td>
+                        <td><a ng-href="#/match/{{match.$id}}">{{match.homeTeam.name}} vs. {{match.awayTeam.name}}<i class="fa fa-comment">10</i> </a> </td>
                         <td>{{match.time}}</td>
                     </tr>
                     </tbody>

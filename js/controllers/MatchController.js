@@ -27,16 +27,20 @@ wgl.controller('matches', ['$scope','$routeParams','$location','$rootScope','$fi
     
     //Team specific crud
     $scope.selectedMatch =           $firebase(new Firebase("https://thewgl.firebaseio.com/thewgl/matches/" + $routeParams.matchID));
+<<<<<<< HEAD
     //$scope.homeTeamPlayers?
     //$scope.awayTeamPlayers?
     //or just pull from thselectedMatch data?
+=======
+>>>>>>> 90242923bff185c0dbceca9dd6966c6575821fe9
         
     $scope.awayTeamTyping = false;
     //Filter user search and select to input
     $scope.selectTeamAway = function (team) {
         id = team.$id;
         ref = team.$ref;
-        $scope.match.awayTeam = angular.fromJson(angular.toJson(team)).name;
+        $scope.match.awayTeam.name = team.name;
+        $scope.match.awayTeam = team;
         $scope.match.awayTeam.$id = id;
         $scope.match.awayTeam.$ref = ref;
         $scope.awayTeamTyping = false;
@@ -47,7 +51,8 @@ wgl.controller('matches', ['$scope','$routeParams','$location','$rootScope','$fi
     $scope.selectTeamHome = function (team) {
         id = team.$id;
         ref = team.$ref;
-        $scope.match.homeTeam = angular.fromJson(angular.toJson(team)).name;
+        $scope.match.homeTeam.name = team.name;
+        $scope.match.homeTeam = team;
         $scope.match.homeTeam.$id = id;
         $scope.match.homeTeam.$ref = ref;
         $scope.homeTeamTyping = false;
