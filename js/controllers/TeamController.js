@@ -27,10 +27,13 @@ wgl.controller('teams', ['$scope','$routeParams','$location','$rootScope','$fire
         $location.path("/teams");
     }
     
-    //Team specific crud
+    //Team Specific crud
     $scope.selectedTeam =           $firebase(new Firebase("https://thewgl.firebaseio.com/thewgl/teams/" + $routeParams.teamID));
     $scope.selectedTeamPlayers =    $firebase(new Firebase("https://thewgl.firebaseio.com/thewgl/teams/" + $routeParams.teamID + "/players"));
     $scope.selectedTeamID =         $routeParams.teamID;
+    
+    //Player Specific crud for gamer pages
+    $scope.selectedPlayer =         $firebase(new Firebase("https://thewgl.firebaseio.com/thewgl/users/" + $routeParams.playerID));
     
     $scope.addPlayerToTeam = function(teamMember) {
         $scope.selectedTeamPlayers.$add(teamMember);

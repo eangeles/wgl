@@ -1,15 +1,15 @@
 
 <!-- This is the Content below Navigation -->
-<div class="row">
+<div class="row" ng-controller="teams">
     <div class="page-container">
         <div class="top-bar"></div>
         <!-- Profile Area-->
         <div class="large-12 medium-12 small-12">
             <div>
-                <img class="gamerProfilePic large-1 medium-6 small-12" ng-src="{{loginObj.user.profilePicture}}">
+                <img class="gamerProfilePic large-1 medium-6 small-12" ng-src="{{selectedPlayer.profilePicture}}">
             </div>
             <div>
-                <h6 class="gamerName">{{loginObj.user.displayName}}</h6>
+                <h6 class="gamerName">{{selectedPlayer.name}}</h6>
             </div>
         </div>
 

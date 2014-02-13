@@ -23,7 +23,7 @@
                     <div class="large-3 columns left" ng-repeat="player in selectedTeamPlayers | orderByPriority">
                         <a class="right delete-player" ng-click="removePlayerFromTeam(player.$id)">X</a>
                         <img ng-src="{{player.profilePicture}}" />
-                        <a ng-href="#/gamer_page/{{player.$id}}">{{player.name}}</a>
+                        <a ng-href="#/gamer_page/{{player.id}}">{{player.name}}</a>
                     </div>
                 </div>
                 <!-- Team Matches -->
