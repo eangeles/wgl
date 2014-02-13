@@ -12,7 +12,7 @@
                         <input type="text" placeholder="Team Away" ng-model="match.awayTeam" ng-change="awayTeamTyping=true">
                         <!-- Autocomplete -->
                         <ul ng-show="awayTeamTyping">
-                            <li ng-repeat="team in teams | toArray | filter:match.awayTeam | limitTo:limit | orderBy:'name'">
+                            <li ng-repeat="team in teams | toArray | filter:match.awayTeam | limitTo:5 | orderBy:'name'">
                                 <a ng-click="selectTeamAway(team)">
                                     <div class="row">
                                         <div class="searchOutcome large-12 columns">
@@ -26,7 +26,7 @@
                         <input type="text" placeholder="Team Home" ng-model="match.homeTeam" ng-change="homeTeamTyping=true">
                         <!-- Autocomplete -->
                         <ul ng-show="homeTeamTyping">
-                            <li ng-repeat="team in teams | toArray | filter:match.homeTeam | limitTo:limit | orderBy:'name'">
+                            <li ng-repeat="team in teams | toArray | filter:match.homeTeam | limitTo:5 | orderBy:'name'">
                                 <a ng-click="selectTeamHome(team)">
                                     <div class="row">
                                         <div class="searchOutcome large-12 columns">
