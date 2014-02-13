@@ -51,7 +51,7 @@ wgl.controller('teams', ['$scope','$routeParams','$location','$rootScope','$fire
     $scope.selectTeam = function (team) {
         id = team.$id;
         ref = team.$ref;
-        $scope.match = angular.fromJson(angular.toJson(team));
+        $scope.match.awayTeam = angular.fromJson(angular.toJson(team.name));
         $scope.match.$id = id;
         $scope.match.$ref = ref;
         $scope.userTyping = false;
@@ -64,7 +64,7 @@ wgl.controller('teams', ['$scope','$routeParams','$location','$rootScope','$fire
     $scope.selectTeamHome = function (team) {
         id = team.$id;
         ref = team.$ref;
-        $scope.match = angular.fromJson(angular.toJson(team));
+        $scope.match.homeTeam = angular.fromJson(angular.toJson(team.name));
         $scope.match.$id = id;
         $scope.match.$ref = ref;
         $scope.userTypingB = false;
