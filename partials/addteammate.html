@@ -9,11 +9,15 @@
                     <form class="large-6 columns large-centered">
                         <h3 class="page-title text-center">Add<span>TeamMate</span></h3>
                         <input type="text" placeholder="TeamMate Name" ng-model="player.name" ng-change="userTyping=true">
+                        <!-- Autocomplete -->
                         <ul ng-show="userTyping">
                             <li ng-repeat="user in users | toArray | filter:player | limitTo:limit | orderBy:'displayName'">
                                 <a ng-click="selectUser(user)">
-                                    <div class="searchOutcome large-12 columns">
-                                        <h6 class="left inline-list">{{user.displayName}}</h6>
+                                    <div class="row">
+                                        <div class="searchOutcome large-12 columns">
+                                            <h6 class="left inline-list">{{user.displayName}}</h6>
+                                            <img class="search-picture right" ng-src="{{user.profilePicture}}" alt="Profile Picture">
+                                        </div>
                                     </div>
                                 </a>
                             </li>
