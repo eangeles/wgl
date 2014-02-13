@@ -50,7 +50,7 @@ wgl.controller('Login', ['$scope','$rootScope','$firebase', function mtCtrl($sco
     }
 
     //auto complete
-    $scope.typing = false;
+    $scope.userTyping = false;
     //Filter user search and select to input
     $scope.limit = 5;
     $scope.selectUser = function (gamer) {
@@ -59,7 +59,7 @@ wgl.controller('Login', ['$scope','$rootScope','$firebase', function mtCtrl($sco
         $scope.player = angular.fromJson(angular.toJson(gamer));
         $scope.player.$id = id;
         $scope.player.$ref = ref;
-        $scope.typing = false;
+        $scope.userTyping = false;
     };
 
 }]);
