@@ -5,7 +5,6 @@ wgl.controller('matches', ['$scope','$routeParams','$location','$rootScope','$fi
     $scope.matches = $firebase(new Firebase(matchesURL));
     
     $scope.addMatch = function(match) {  
-        console.log(match);
         $scope.matches.$add(match);
         $location.path("/upcomingmatches");
     };
@@ -16,10 +15,10 @@ wgl.controller('matches', ['$scope','$routeParams','$location','$rootScope','$fi
     
     var updateRef = "";
     $scope.updateMatch = function(match) {
+        console.log(match);
         updateRef = new Firebase("https://thewgl.firebaseio.com/thewgl/matches/" + $routeParams.matchID);
-        //need an update ref for players seperately
         updateRef.update({
-            //Update Content
+            
         });
         $location.path("/matches");
     }
