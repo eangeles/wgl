@@ -29,7 +29,7 @@ wgl.controller('matches', ['$scope','$routeParams','$location','$rootScope','$fi
     $scope.selectedMatch =           $firebase(new Firebase("https://thewgl.firebaseio.com/thewgl/matches/" + $routeParams.matchID));
     //$scope.homeTeamPlayers?
     //$scope.awayTeamPlayers?
-    //or just pull from the selectedMatch data?
+    //or just pull from thselectedMatch data?
         
     $scope.awayTeamTyping = false;
     //Filter user search and select to input
