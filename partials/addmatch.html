@@ -6,14 +6,14 @@
         <div class="page-content-container">
             <div class="page-content">
                 <div class="large-12 columns">
-                    <form class="large-6 columns large-centered" ng-controller="teams">
+                    <form class="large-6 columns large-centered">
                         <h3 class="page-title text-center">Add<span>Match</span></h3>
                         <input type="text" placeholder="Event Name" ng-model="match.eventName">
-                        <input type="text" placeholder="Team Away" ng-model="match.awayTeam" ng-change="userTyping=true">
+                        <input type="text" placeholder="Team Away" ng-model="match.awayTeam" ng-change="awayTeamTyping=true">
                         <!-- Autocomplete -->
-                        <ul ng-show="userTyping">
-                            <li ng-repeat="team in teams | toArray | filter:match.awayTeam | limitTo:limit | orderBy:'name'">
-                                <a ng-click="selectTeam(team)">
+                        <ul ng-show="awayTeamTyping">
+                            <li ng-repeat="team in teams | toArray | filter:match.awayTeam | limitTo:5 | orderBy:'name'">
+                                <a ng-click="selectTeamAway(team)">
                                     <div class="row">
                                         <div class="searchOutcome large-12 columns">
                                             <h6 class="left inline-list">{{team.name}}</h6>
@@ -23,11 +23,17 @@
                                 </a>
                             </li>
                         </ul>
-                        <input type="text" placeholder="Team Home" ng-model="match.homeTeam" ng-change="userTypingB=true">
+                        <input type="text" placeholder="Team Home" ng-model="match.homeTeam" ng-change="homeTeamTyping=true">
                         <!-- Autocomplete -->
+<<<<<<< HEAD
                         <ul ng-show="userTypingB">
                             <li ng-repeat="team2 in teams | toArray | filter:match.homeTeam | limitTo:limit | orderBy:'name'">
                                 <a ng-click="selectTeamHome(team2)">
+=======
+                        <ul ng-show="homeTeamTyping">
+                            <li ng-repeat="team in teams | toArray | filter:match.homeTeam | limitTo:5 | orderBy:'name'">
+                                <a ng-click="selectTeamHome(team)">
+>>>>>>> 6caaa46cb26574f00bba3175a593a1b9a5b8ee79
                                     <div class="row">
                                         <div class="searchOutcome large-12 columns">
                                             <h6 class="left inline-list">{{team2.name}}</h6>

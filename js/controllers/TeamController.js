@@ -47,7 +47,7 @@ wgl.controller('teams', ['$scope','$routeParams','$location','$rootScope','$fire
     //auto complete
     $scope.userTyping = false;
     //Filter user search and select to input
-    $scope.limit = 5;
+
     $scope.selectTeam = function (team) {
         id = team.$id;
         ref = team.$ref;
@@ -60,7 +60,6 @@ wgl.controller('teams', ['$scope','$routeParams','$location','$rootScope','$fire
     //auto complete
     $scope.userTypingB = false;
     //Filter user search and select to input
-    $scope.limit = 5;
     $scope.selectTeamHome = function (team) {
         id = team.$id;
         ref = team.$ref;
