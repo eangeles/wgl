@@ -9,7 +9,11 @@
                     <div class="large-12 columns text-center">
                         <img class="team-profile-logo" ng-src="{{selectedMatch.homeTeam.picture}}" alt="team-logo">
                         <div ng-controller="teams" ng-repeat="team in teams | orderByPriority | limitTo: 1">
+<<<<<<< HEAD
                             <a ng-href="#/team/{{selectedMatch.homeTeam.$id}}"><h3>{{selectedMatch.homeTeam.name}}</h3></a>
+=======
+                            <a ng-href="#/team/{{selectedMatch.homeTeam.key}}"><h3>{{selectedMatch.homeTeam.name}}</h3></a>
+>>>>>>> 93d41a3dddeb370451c1eed7a6b65e5a02659a63
                         </div>
 
                         <div ng-repeat="player in selectedMatch.homeTeam.players">
@@ -30,7 +34,7 @@
                     <div class="large-12 columns text-center">
                         <img class="team-profile-logo" ng-src="{{selectedMatch.awayTeam.picture}}" alt="team-logo">
                         <div ng-controller="teams">
-                            <a ng-href="#/team/{{team.$id}}"><h3>{{selectedMatch.awayTeam.name}}</h3></a>
+                            <a ng-href="#/team/{{selectedMatch.awayTeam.key}}"><h3>{{selectedMatch.awayTeam.name}}</h3></a>
                         </div>
 
                         <div ng-repeat="player in selectedMatch.awayTeam.players">
