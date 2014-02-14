@@ -6,9 +6,28 @@
         <div class="page-content-container">
             <div class="page-content">
                 <div class="large-12 columns">
-                    <h3 class="page-title large-10 small-9 columns">WGL<span>Leagues</span></h3>
+                    <h3 class="page-title large-10 small-9 columns">WIN<span>Leagues</span></h3>
                     <h6 class="add-news large-1 small-3 columns right"><a href="#/addleague">+</a></h6>
-
+                    <!-- Leagues content -->
+                    <div>
+                        <a ng-href="#/league/{{post.$key}}">
+                            <div class="news-content large-4 medium-4 small-12 columns">
+                                <div class="news-image">
+                                    <img class="news-image large-12 medium-12 small-12" ng-src="./img/dota.jpg" alt="League Image">
+                                </div>
+                                <div class="news column">
+                                    <div class="news-title">
+                                        <a ng-href="#/editnews/{{post.$key}}">Edit</a>
+                                        <a ng-click="removeNewsItem(post.$key)">Remove</a>
+                                        <h5>Dota League</h5>
+                                    </div>
+                                    <div class="news-info large-12">
+                                        <h6 class="left large-12">Season 1</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
                 </div>
             </div><!-- Page Content -->
         </div><!-- End Page Container -->

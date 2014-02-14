@@ -33,13 +33,17 @@ wgl.config(function ($routeProvider){
                 factory: checkPermission
             }
         })
-        .when("/ladder", {
-            title: 'Ladder',
-            templateUrl:"partials/ladder.html"
+        .when("/league", {
+            title: 'League',
+            templateUrl:"partials/league.html"
         })
         .when("/leagues", {
             title: 'Leagues',
             templateUrl:"partials/leagues.html"
+        })
+        .when("/addleague", {
+            title: 'Add League',
+            templateUrl:"partials/addleague.html"
         })
         .when("/team", {
             title: 'Ladder',
