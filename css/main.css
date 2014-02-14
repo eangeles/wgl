@@ -344,6 +344,14 @@ h1,h2,h3,h4,h5,h6{
 .searchOutcome h6{
     color: gray;
 }
+
+/*******
+ Match Page
+ *******/
+.match-player-image{
+
+}
+
 /* Media Queries */
 @media only screen and (max-width: 40em) {
     .news-small{

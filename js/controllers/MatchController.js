@@ -27,13 +27,7 @@ wgl.controller('matches', ['$scope','$routeParams','$location','$rootScope','$fi
     
     //Team specific crud
     $scope.selectedMatch =           $firebase(new Firebase("https://thewgl.firebaseio.com/thewgl/matches/" + $routeParams.matchID));
-<<<<<<< HEAD
-    //$scope.homeTeamPlayers?
-    //$scope.awayTeamPlayers?
-    //or just pull from thselectedMatch data?
-=======
->>>>>>> 90242923bff185c0dbceca9dd6966c6575821fe9
-        
+
     $scope.awayTeamTyping = false;
     //Filter user search and select to input
     $scope.selectTeamAway = function (team) {
@@ -45,7 +39,7 @@ wgl.controller('matches', ['$scope','$routeParams','$location','$rootScope','$fi
         $scope.match.awayTeam.$ref = ref;
         $scope.awayTeamTyping = false;
     };
-    
+
     $scope.homeTeamTyping = false;
     //Filter user search and select to input
     $scope.selectTeamHome = function (team) {

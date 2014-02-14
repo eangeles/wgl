@@ -8,8 +8,15 @@
                 <div class="large-5 columns">
                     <div class="large-12 columns text-center">
                         <img class="team-profile-logo" ng-src="{{selectedMatch.homeTeam.picture}}" alt="team-logo">
-                        <h3>{{selectedMatch.homeTeam.name}}</h3>
-                        <h6 ng-repeat="player in selectedMatch.homeTeam.players">{{player.name}}</h6>
+                        <div ng-controller="teams" ng-repeat="team in teams | orderByPriority | limitTo: 1">
+                            <a ng-href="#/team/{{team.$id}}"><h3>{{selectedMatch.homeTeam.name}}</h3></a>
+                        </div>
+
+                        <div ng-repeat="player in selectedMatch.homeTeam.players">
+                            <img class="match-player-image large-3" ng-src="{{player.profilePicture}}">
+                            <<a ng-href="#/gamer_page/{{player.id}}">{{player.name}}</a>
+                        </div>
+
                     </div>
                 </div>
                 <div class="large-2 columns left">
@@ -22,8 +29,15 @@
                 <div class="large-5 columns">
                     <div class="large-12 columns text-center">
                         <img class="team-profile-logo" ng-src="{{selectedMatch.awayTeam.picture}}" alt="team-logo">
-                        <h3>{{selectedMatch.awayTeam.name}}</h3>
-                        <h6 ng-repeat="player in selectedMatch.awayTeam.players"><img ng-src="{{player.profilePicture}}" />{{player.name}}</h6>
+                        <div ng-controller="teams">
+                            <a ng-href="#/team/{{team.$id}}"><h3>{{selectedMatch.awayTeam.name}}</h3></a>
+                        </div>
+
+                        <div ng-repeat="player in selectedMatch.awayTeam.players">
+                            <img class="match-player-image large-3" ng-src="{{player.profilePicture}}">
+                            <<a ng-href="#/gamer_page/{{player.id}}">{{player.name}}</a>
+                        </div>
+
                     </div>
                 </div>
 
