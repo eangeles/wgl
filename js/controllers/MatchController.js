@@ -6,7 +6,8 @@ wgl.controller('matches', ['$scope','$routeParams','$location','$rootScope','$fi
     $scope.matches = $firebase(new Firebase(matchesURL));
     $scope.teams = $firebase(new Firebase(teamsURL));
     
-    $scope.addMatch = function(match) {  
+    $scope.addMatch = function(match) { 
+        console.log(match);
         $scope.matches.$add(match);
         $location.path("/upcomingmatches");
     };
@@ -19,59 +20,45 @@ wgl.controller('matches', ['$scope','$routeParams','$location','$rootScope','$fi
     $scope.updateMatch = function(match) {
         console.log(match);
         updateRef = new Firebase("https://thewgl.firebaseio.com/thewgl/matches/" + $routeParams.matchID);
-        //updateRef.update({
-            
-        //});
-        //$location.path("/matches");
+//        updateRef.update({
+//            
+//        });
+//        $location.path("/matches");
     }
     
     //Team specific crud
-    $scope.selectedMatch =           $firebase(new Firebase("https://thewgl.firebaseio.com/thewgl/matches/" + $routeParams.matchID));
+    $scope.selectedMatch = $firebase(new Firebase("https://thewgl.firebaseio.com/thewgl/matches/" + $routeParams.matchID));
 
+    //Add Team Auto complete
     $scope.awayTeamTyping = false;
     //Filter user search and select to input
     $scope.selectTeamAway = function (team) {
-        id = team.$id;
-        ref = team.$ref;
         $scope.match.awayTeam.name = team.name;
+        team.key = team.$key;
         $scope.match.awayTeam = team;
-        $scope.match.awayTeam.$id = id;
-        $scope.match.awayTeam.$ref = ref;
+        console.log($scope.match.awayTeam.key);
         $scope.awayTeamTyping = false;
     };
 
     $scope.homeTeamTyping = false;
-    //Filter user search and select to input
     $scope.selectTeamHome = function (team) {
-        id = team.$id;
-        ref = team.$ref;
         $scope.match.homeTeam.name = team.name;
+        team.key = team.$key;
         $scope.match.homeTeam = team;
-        $scope.match.homeTeam.$id = id;
-        $scope.match.homeTeam.$ref = ref;
+        console.log($scope.match.homeTeam.key);
         $scope.homeTeamTyping = false;
     };
     
-    
-    //Filter user search and select to input
-    $scope.updateTeamAway = function (team) {
-        id = team.$id;
-        ref = team.$ref;
+    //Update Team Auto complete
+    $scope.updateTeamAway = function(team) {
         $scope.selectedMatch.awayTeam.name = team.name;
         $scope.selectedMatch.awayTeam = team;
-        $scope.selectedMatch.awayTeam.$id = id;
-        $scope.selectedMatch.awayTeam.$ref = ref;
         $scope.awayTeamTyping = false;
     };
-    
-    //Filter user search and select to input
-    $scope.updateTeamHome = function (team) {
-        id = team.$id;
-        ref = team.$ref;
+
+    $scope.updateTeamHome = function(team) {
         $scope.selectedMatch.homeTeam.name = team.name;
         $scope.selectedMatch.homeTeam = team;
-        $scope.selectedMatch.homeTeam.$id = id;
-        $scope.selectedMatch.homeTeam.$ref = ref;
         $scope.homeTeamTyping = false;
     };
 
