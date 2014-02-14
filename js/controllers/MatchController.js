@@ -19,10 +19,10 @@ wgl.controller('matches', ['$scope','$routeParams','$location','$rootScope','$fi
     $scope.updateMatch = function(match) {
         console.log(match);
         updateRef = new Firebase("https://thewgl.firebaseio.com/thewgl/matches/" + $routeParams.matchID);
-        updateRef.update({
+        //updateRef.update({
             
-        });
-        $location.path("/matches");
+        //});
+        //$location.path("/matches");
     }
     
     //Team specific crud
@@ -49,6 +49,29 @@ wgl.controller('matches', ['$scope','$routeParams','$location','$rootScope','$fi
         $scope.match.homeTeam = team;
         $scope.match.homeTeam.$id = id;
         $scope.match.homeTeam.$ref = ref;
+        $scope.homeTeamTyping = false;
+    };
+    
+    
+    //Filter user search and select to input
+    $scope.updateTeamAway = function (team) {
+        id = team.$id;
+        ref = team.$ref;
+        $scope.selectedMatch.awayTeam.name = team.name;
+        $scope.selectedMatch.awayTeam = team;
+        $scope.selectedMatch.awayTeam.$id = id;
+        $scope.selectedMatch.awayTeam.$ref = ref;
+        $scope.awayTeamTyping = false;
+    };
+    
+    //Filter user search and select to input
+    $scope.updateTeamHome = function (team) {
+        id = team.$id;
+        ref = team.$ref;
+        $scope.selectedMatch.homeTeam.name = team.name;
+        $scope.selectedMatch.homeTeam = team;
+        $scope.selectedMatch.homeTeam.$id = id;
+        $scope.selectedMatch.homeTeam.$ref = ref;
         $scope.homeTeamTyping = false;
     };
 
