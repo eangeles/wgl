@@ -35,23 +35,27 @@ wgl.config(function ($routeProvider){
         })
         .when("/ladder", {
             title: 'Ladder',
-            templateUrl:"partials/ladder.html",
+            templateUrl:"partials/ladder.html"
+        })
+        .when("/leagues", {
+            title: 'Leagues',
+            templateUrl:"partials/leagues.html"
         })
         .when("/team", {
             title: 'Ladder',
-            templateUrl:"partials/team.html",
+            templateUrl:"partials/team.html"
         })
         .when("/gamer_page/:playerID", {
             title: 'Gamer Page',
-            templateUrl:"partials/gamer_page.html",
+            templateUrl:"partials/gamer_page.html"
         })
         .when("/upcomingmatches", {
             title: 'Upcoming Matches',
-            templateUrl:"partials/upcomingmatches.html",
+            templateUrl:"partials/upcomingmatches.html"
         })
         .when("/match/:matchID", {
             title: 'Match',
-            templateUrl:"partials/match.html",
+            templateUrl:"partials/match.html"
         })
         .when("/addmatch", {
             title: 'New Match',
@@ -69,15 +73,15 @@ wgl.config(function ($routeProvider){
         })
         .when("/tournaments", {
             title: 'Tournaments',
-            templateUrl:"partials/tournament.html",
+            templateUrl:"partials/tournament.html"
         })
         .when("/news", {
             title: 'News',
-            templateUrl:"partials/news.html",
+            templateUrl:"partials/news.html"
         })
         .when("/newspage/:newsItemID", {
             title: 'News Article',
-            templateUrl:"partials/newspage.html",
+            templateUrl:"partials/newspage.html"
         })
         .when("/addnews", {
             title: 'Add News',
