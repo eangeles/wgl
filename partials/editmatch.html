@@ -9,8 +9,40 @@
                     <form class="large-6 columns large-centered">
                         <h3 class="page-title text-center">Edit<span>Match</span></h3>
                         <input type="text" placeholder="Event Name" ng-model="selectedMatch.eventName">
-                        <input type="text" placeholder="Team Away" ng-model="selectedMatch.awayTeam">
-                        <input type="text" placeholder="Team Home" ng-model="selectedMatch.homeTeam">
+                                                
+                        <input type="text" placeholder="Team Away" ng-model="selectedMatch.awayTeam.name" ng-change="awayTeamTyping=true">
+                        <!-- Autocomplete -->
+                        <ul ng-show="awayTeamTyping">
+                            <li ng-repeat="team in teams | toArray | filter:selectedMatch.awayTeam.name | limitTo:5 | orderBy:'name'">
+                                <a ng-click="updateTeamAway(team)">
+                                    <div class="row">
+                                        <div class="searchOutcome large-12 columns">
+                                            <h6 class="left inline-list">{{team.name}}</h6>
+                                            <img class="search-picture right" ng-src="{{team.picture}}" alt="Team Logo">
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                        <input type="hidden" ng-model="selectedMatch.awayTeam" />
+                        <input type="text" placeholder="Team Home" ng-model="selectedMatch.homeTeam.name" ng-change="homeTeamTyping=true">
+                        <!-- Autocomplete -->
+                        <ul ng-show="homeTeamTyping">
+                            <li ng-repeat="team in teams | toArray | filter:selectedMatch.homeTeam.name | limitTo:5 | orderBy:'name'">
+                                <a ng-click="updateTeamHome(team)">
+                                    <div class="row">
+                                        <div class="searchOutcome large-12 columns">
+                                            <h6 class="left inline-list">{{team.name}}</h6>
+                                            <img class="search-picture right" ng-src="{{team.picture}}" alt="Team Logo">
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                        <input type="hidden" ng-model="selectedMatch.homeTeam" />
+                        
+                        
+                        
                         <input type="text" placeholder="Date" ng-model="selectedMatch.date">
                         <input type="text" placeholder="Time" ng-model="selectedMatch.time">
 

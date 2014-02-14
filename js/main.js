@@ -62,7 +62,7 @@ wgl.config(function ($routeProvider){
         })
         .when("/editmatch/:matchID", {
             title: 'New Match',
-            templateUrl:"partials/addmatch.html",
+            templateUrl:"partials/editmatch.html",
             resolve: {
                 factory: checkPermission
             }
