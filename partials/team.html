@@ -30,9 +30,9 @@
                 <div class="upcoming-previous-matches large-12 columns left">
                     <div class="upcoming-previous-content">
                         <div class="row">
-                            <h3 class="page-title large-10 small-9 columns">Team<span>Matches</span></h3>
+                            <h3 class="page-title large-10 small-9 columns">Home<span>Matches</span></h3>
                         </div>
-                        <table class="large-12 columns">
+                        <table class="large-12 columns" ng-controller="matches">
                             <thead>
                             <tr>
                                 <td width="350">Opponent</td>
@@ -43,20 +43,40 @@
                             </tr>
                             </thead>
                             <tbody>
+                                <tr ng-repeat="match in matches">
+                                    <td>{{match.homeTeam.name}}</td>
+                                    <td>{{match.event}}</td>
+                                    <td>{{match.date}}</td>
+                                    <td>{{match.time}}</td>
+                                    <td> pending</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="upcoming-previous-matches large-12 columns left">
+                    <div class="upcoming-previous-content">
+                        <div class="row">
+                            <h3 class="page-title large-10 small-9 columns">Away<span>Matches</span></h3>
+                        </div>
+                        <table class="large-12 columns" ng-controller="matches">
+                            <thead>
                             <tr>
-                                <td> Team Suckers</td>
-                                <td> COD Tourney</td>
-                                <td> Thur, Jan 17</td>
-                                <td> 7:00 PM</td>
-                                <td> pending</td>
+                                <td width="350">Opponent</td>
+                                <td width="250">Event</td>
+                                <td width="200">Date</td>
+                                <td width="150">Time</td>
+                                <td width="100">Result</td>
                             </tr>
-                            <tr>
-                                <td> Crazy Girls</td>
-                                <td> COD Tourney</td>
-                                <td> Tue, Jan 15</td>
-                                <td> 7:00 PM</td>
-                                <td class="result"> Win</td>
-                            </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="match in matches">
+                                    <td>{{match.awayTeam.name}}</td>
+                                    <td>{{match.event}}</td>
+                                    <td>{{match.date}}</td>
+                                    <td>{{match.time}}</td>
+                                    <td> pending</td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
