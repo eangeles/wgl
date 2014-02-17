@@ -44,7 +44,9 @@ wgl.controller('teams', ['$scope','$routeParams','$location','$rootScope','$fire
         $scope.selectedTeamPlayers.$remove(memberID);
     }
 
-
+    $scope.teamSort = function(team) {
+        return -team.wins;
+    }
 
 }]);
 

@@ -1,4 +1,4 @@
-<div class="page">
+<div class="page" ng-controller="teams">
     <div class="row">
         <!-- Header BG -->
         <div class="header-top"></div>
@@ -17,24 +17,12 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td><a href="#/team">Team Win</a></td>
-                        <td>12</td>
-                        <td>0</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td><a href="#/team">Team Cool</a></td>
-                        <td>10</td>
-                        <td>1</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td><a href="#/team">Team Crazy</a></td>
-                        <td>9</td>
-                        <td>2</td>
-                    </tr>
+                        <tr ng-repeat="team in teams | toArray | orderBy:teamSort">
+                            <td>{{$index+1}}</td>
+                            <td><a href="#/team/{{team.$key}}">{{team.name}}</a></td>
+                            <td>{{team.wins}}</td>
+                            <td>{{team.losses}}</td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
