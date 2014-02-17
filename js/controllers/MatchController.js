@@ -70,22 +70,23 @@ wgl.controller('matches', ['$scope','$routeParams','$location','$rootScope','$fi
         $scope.homeTeamTyping = false;
     };
 
-}]);
+    $scope.sameTeam = function(test){
+        if($rootScope.selectedTeam === 'A Team'){
+            console.log(test, 'Same');
+        }else{
+            console.log(test,'Not Same');
+        }
+    }
 
-wgl.filter('isHomeGame', function() {
-  return function(input, teamName) {
-      var out = [];
-      for (var i=0; i < numMatches; i++){
-          console.log(input[i]);
-//          if(input[i].homeTeam.name == teamName) {
-//              console.log(input[i]);
-//              out.push(input[i]);
-//          }
-      }
-      
-    return out;
-  };
-});
+    $scope.weDontLike = function(name) {
+        return function(match) {
+            return $scope.match.homeTeam.name != match;
+            console.log(name);
+        }
+    }
+
+
+}]);
 
 
 

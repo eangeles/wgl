@@ -117,7 +117,7 @@ wgl.config(function ($routeProvider){
         })
         .when("/team/:teamID", {
             title: 'Team',
-            templateUrl:"partials/team.html",
+            templateUrl:"partials/team.html"
 //            resolve: {
 //                factory: checkPermission
 //            }
@@ -208,7 +208,33 @@ wgl.config(function ($routeProvider){
             if(reverse) filtered.reverse();
             return filtered;
         };
-    });
+    }).filter('isHomeGame', function() {
+        return function(input, teamName) {
+            var out = [];
+            for (var i=0; i < numMatches; i++){
+                console.log(input[i].homeTeam.name);
+                if(input[i].homeTeam.name === teamName) {
+                    console.log(input[i]);
+                    out.push(input[i]);
+                }
+            }
+
+            return out;
+        };
+    }).filter('isAwayGame', function() {
+    return function(input, teamName) {
+        var ins = [];
+        for (var i=0; i < numMatches; i++){
+                console.log(input[i].awayTeam.name);
+            if(input[i].awayTeam.name === teamName) {
+                console.log(teamName);
+                ins.push(input[i]);
+            }
+        }
+
+        return ins;
+    };
+});
 
 //var checkPermission = function ($q, $rootScope, $location){
 //
@@ -217,6 +243,7 @@ wgl.config(function ($routeProvider){
 //    }
 //
 //}
+
 
 
 
