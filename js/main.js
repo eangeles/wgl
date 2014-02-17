@@ -209,15 +209,14 @@ wgl.config(function ($routeProvider){
             return filtered;
         };
     });
-;
 
-var checkPermission = function ($q, $rootScope, $location){
-
+//var checkPermission = function ($q, $rootScope, $location){
+//
 //    if(!$rootScope.user || $rootScope.user.userType == 'Gamer'){
 //        $location.path('/');
 //    }
-
-}
+//
+//}
 
 
 

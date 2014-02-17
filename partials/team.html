@@ -43,7 +43,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                                <tr ng-repeat="match in matches">
+                                <tr ng-repeat="match in matches | filter:selectedTeam.name">
                                     <td>{{match.homeTeam.name}}</td>
                                     <td>{{match.event}}</td>
                                     <td>{{match.date}}</td>
@@ -70,7 +70,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                                <tr ng-repeat="match in matches">
+                                <tr ng-repeat="match in matches | filter:selectedTeam.name ">
                                     <td>{{match.awayTeam.name}}</td>
                                     <td>{{match.event}}</td>
                                     <td>{{match.date}}</td>
