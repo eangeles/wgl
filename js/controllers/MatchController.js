@@ -1,3 +1,4 @@
+var numMatches;
 wgl.controller('matches', ['$scope','$routeParams','$location','$rootScope','$firebase', function mtCtrl($scope, $routeParams, $location, $rootScope, $firebase) {
 
     //Match Crud
@@ -5,6 +6,15 @@ wgl.controller('matches', ['$scope','$routeParams','$location','$rootScope','$fi
     var teamsURL = "https://thewgl.firebaseio.com/thewgl/teams/";
     $scope.matches = $firebase(new Firebase(matchesURL));
     $scope.teams = $firebase(new Firebase(teamsURL));
+    
+    
+    // TESTING
+    //=========================
+    var dataRef = new Firebase('https://thewgl.firebaseio.com/thewgl/matches/');
+    dataRef.on('value', function(snapshot) {
+        numMatches = snapshot.numChildren();
+    });
+    
     
     $scope.addMatch = function(match) { 
         console.log(match);
@@ -36,7 +46,6 @@ wgl.controller('matches', ['$scope','$routeParams','$location','$rootScope','$fi
         $scope.match.awayTeam.name = team.name;
         team.key = team.$key;
         $scope.match.awayTeam = team;
-        console.log($scope.match.awayTeam.key);
         $scope.awayTeamTyping = false;
     };
 
@@ -45,7 +54,6 @@ wgl.controller('matches', ['$scope','$routeParams','$location','$rootScope','$fi
         $scope.match.homeTeam.name = team.name;
         team.key = team.$key;
         $scope.match.homeTeam = team;
-        console.log($scope.match.homeTeam.key);
         $scope.homeTeamTyping = false;
     };
     
@@ -63,6 +71,21 @@ wgl.controller('matches', ['$scope','$routeParams','$location','$rootScope','$fi
     };
 
 }]);
+
+wgl.filter('isHomeGame', function() {
+  return function(input, teamName) {
+      var out = [];
+      for (var i=0; i < numMatches; i++){
+          console.log(input[i]);
+//          if(input[i].homeTeam.name == teamName) {
+//              console.log(input[i]);
+//              out.push(input[i]);
+//          }
+      }
+      
+    return out;
+  };
+});
 
 
 

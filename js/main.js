@@ -22,16 +22,16 @@ wgl.config(function ($routeProvider){
         .when("/gts", {
             title: 'Gamer Tracking System',
             templateUrl:"partials/gts.html",
-            resolve: {
-                factory: checkPermission
-            }
+//            resolve: {
+//                factory: checkPermission
+//            }
         })
         .when("/users", {
             title: 'Users',
             templateUrl:"partials/users.html",
-            resolve: {
-                factory: checkPermission
-            }
+//            resolve: {
+//                factory: checkPermission
+//            }
         })
         .when("/league", {
             title: 'League',
@@ -64,16 +64,16 @@ wgl.config(function ($routeProvider){
         .when("/addmatch", {
             title: 'New Match',
             templateUrl:"partials/addmatch.html",
-            resolve: {
-                factory: checkPermission
-            }
+//            resolve: {
+//                factory: checkPermission
+//            }
         })
         .when("/editmatch/:matchID", {
             title: 'New Match',
             templateUrl:"partials/editmatch.html",
-            resolve: {
-                factory: checkPermission
-            }
+//            resolve: {
+//                factory: checkPermission
+//            }
         })
         .when("/tournaments", {
             title: 'Tournaments',
@@ -90,44 +90,44 @@ wgl.config(function ($routeProvider){
         .when("/addnews", {
             title: 'Add News',
             templateUrl:"partials/addnews.html",
-            resolve: {
-                factory: checkPermission
-            }
+//            resolve: {
+//                factory: checkPermission
+//            }
         })
         .when("/editnews/:newsItemID", {
             title: 'Edit News',
             templateUrl:"partials/editnews.html",
-            resolve: {
-                factory: checkPermission
-            }
+//            resolve: {
+//                factory: checkPermission
+//            }
         })
         .when("/teams", {
             title: 'Teams',
             templateUrl:"partials/teams.html",
-            resolve: {
-                factory: checkPermission
-            }
+//            resolve: {
+//                factory: checkPermission
+//            }
         })
         .when("/addteam", {
             title: 'Add Team',
             templateUrl:"partials/addteam.html",
-            resolve: {
-                factory: checkPermission
-            }
+//            resolve: {
+//                factory: checkPermission
+//            }
         })
         .when("/team/:teamID", {
             title: 'Team',
             templateUrl:"partials/team.html",
-            resolve: {
-                factory: checkPermission
-            }
+//            resolve: {
+//                factory: checkPermission
+//            }
         })
         .when("/addteammate/:teamID", {
             title: 'Add TeamMate',
             templateUrl:"partials/addteammate.html",
-            resolve: {
-                factory: checkPermission
-            }
+//            resolve: {
+//                factory: checkPermission
+//            }
         })
         .otherwise({
         	redirectTo:"/",
