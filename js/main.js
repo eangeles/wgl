@@ -75,9 +75,13 @@ wgl.config(function ($routeProvider){
 //                factory: checkPermission
 //            }
         })
+        .when("/tournament", {
+            title: 'Tournament',
+            templateUrl:"partials/tournament.html"
+        })
         .when("/tournaments", {
             title: 'Tournaments',
-            templateUrl:"partials/tournament.html"
+            templateUrl:"partials/tournaments.html"
         })
         .when("/news", {
             title: 'News',

@@ -1,0 +1,35 @@
+<div class="page" ng-controller="news">
+    <div class="row">
+        <!-- Header BG -->
+        <div class="header-top"></div>
+        <!-- Page Container -->
+        <div class="page-content-container">
+            <div class="page-content">
+                <div class="large-12 columns">
+                    <h3 class="page-title large-10 small-9 columns">WIN<span>Tournaments</span></h3>
+                    <h6 class="add-news large-1 small-3 columns right"><a href="#/addleague">+</a></h6>
+                    <!-- Leagues content -->
+                    <div>
+                        <a ng-href="#/tournament/{{post.$key}}">
+                            <div class="news-content large-4 medium-4 small-12 columns">
+                                <div class="news-image">
+                                    <img class="news-image large-12 medium-12 small-12" ng-src="./img/dota.jpg" alt="League Image">
+                                </div>
+                                <div class="news column">
+                                    <div class="news-title">
+                                        <a ng-href="#/editnews/{{post.$key}}">Edit</a>
+                                        <a ng-click="removeNewsItem(post.$key)">Remove</a>
+                                        <h5>Dota Tournament</h5>
+                                    </div>
+                                    <div class="news-info large-12">
+                                        <h6 class="left large-12">Season 1</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div><!-- Page Content -->
+        </div><!-- End Page Container -->
+    </div> <!-- End Row -->
+</div><!-- End Page -->
