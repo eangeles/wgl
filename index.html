@@ -34,10 +34,10 @@
         <!-- Right Nav Section -->
         <ul class="right">
             <li><a href="#/news">News</a></li>
-            <li class="has-dropdown">
+            <li class="has-dropdown" ng-controller="leagues">
                 <a href="#/leagues">Leagues</a>
                 <ul class="dropdown">
-                    <li><a href="#/league">Event 1</a></li>
+                    <li ng-repeat="league in leagues"><a ng-href="#/league/{{league.$key}}">{{league.name}}</a></li>
                 </ul>
             </li>
             <li><a href="#/tournaments">Tournaments</a></li>
