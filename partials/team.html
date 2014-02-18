@@ -44,8 +44,8 @@
                             </thead>
                             <tbody>
                                 <tr ng-repeat="match in matches | toArray | isHomeGame:selectedTeam.name">
-                                    <td>{{match.awayTeam.name}}</td>
-                                    <td>{{match.eventName}}</td>
+                                    <td><a ng-href="#/team/{{match.awayTeam.key}}">{{match.awayTeam.name}}</a></td>
+                                    <td><a ng-href="">{{match.eventName}}</a></td>
                                     <td>{{match.date}}</td>
                                     <td>{{match.time}}</td>
                                     <td> pending</td>
@@ -71,8 +71,8 @@
                             </thead>
                             <tbody>
                                 <tr ng-repeat="match in matches | toArray | isAwayGame:selectedTeam.name ">
-                                    <td>{{match.homeTeam.name}}</td>
-                                    <td>{{match.eventName}}</td>
+                                    <td><a ng-href="#/team/{{match.homeTeam.key}}">{{match.homeTeam.name}}</a></td>
+                                    <td><a ng-href="">{{match.eventName}}</a></td>
                                     <td>{{match.date}}</td>
                                     <td>{{match.time}}</td>
                                     <td> pending</td>

@@ -214,29 +214,29 @@ wgl.config(function ($routeProvider){
         };
     }).filter('isHomeGame', function() {
         return function(input, teamName) {
-            var out = [];
-            for (var i=0; i < numMatches; i++){
-                console.log(input[i].homeTeam.name);
-                if(input[i].homeTeam.name === teamName) {
-                    console.log(input[i]);
-                    out.push(input[i]);
+            var homeGames = [];
+            for (var i=0;i<numMatches;i++){
+                if (input[i] && input[i].homeTeam) {
+                    if (input[i].homeTeam.name === teamName) {
+                        homeGames.push(input[i]);
+                    }
                 }
             }
 
-            return out;
+            return homeGames;
         };
     }).filter('isAwayGame', function() {
     return function(input, teamName) {
-        var ins = [];
-        for (var i=0; i < numMatches; i++){
-                console.log(input[i].awayTeam.name);
-            if(input[i].awayTeam.name === teamName) {
-                console.log(teamName);
-                ins.push(input[i]);
+        var awayGames = [];
+        for (var i=0;i<numMatches;i++){
+            if (input[i] && input[i].awayTeam) {
+                if (input[i].awayTeam.name === teamName) {
+                    awayGames.push(input[i]);
+                }
             }
         }
 
-        return ins;
+        return awayGames;
     };
 });
 
