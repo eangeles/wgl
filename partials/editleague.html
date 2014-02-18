@@ -7,12 +7,12 @@
             <div class="page-content">
                 <div class="large-12 columns">
                     <form class="large-6 columns large-centered">
-                        <h3 class="page-title text-center">Add<span>League</span></h3>
-                        <input type="text" placeholder="League Name" ng-model="league.name">
-                        <input type="text" placeholder="League Image" ng-model="league.image">
-                        <input type="text" placeholder="Season" ng-model="league.season">
+                        <h3 class="page-title text-center">Edit<span>League</span></h3>
+                        <input type="text" placeholder="League Name" ng-model="selectedLeague.name">
+                        <input type="text" placeholder="League Image" ng-model="selectedLeague.image">
+                        <input type="text" placeholder="Season" ng-model="selectedLeague.season">
 
-                        <input type="submit" class="button large-12" ng-click="addLeague(league)" value="Add">
+                        <input type="submit" class="button large-12" ng-click="updateLeague(selectedLeague)" value="Edit">
                     </form>
                 </div>
             </div><!-- Page Content -->
