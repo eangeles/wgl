@@ -1,8 +1,7 @@
-wgl.controller('leagues', ['$scope','$routeParams','$location','$rootScope','$firebase', function mtCtrl($scope, $routeParams, $location, $rootScope, $firebase) {
+wgl.controller('leagues', ['$scope','$routeParams','$location','$rootScope','$firebase', 'sharedProperties', function mtCtrl($scope, $routeParams, $location, $rootScope, $firebase, sharedProperties) {
 
     //Match Crud
-    var leaguesURL = "https://thewgl.firebaseio.com/thewgl/leagues/";
-    $scope.leagues = $firebase(new Firebase(leaguesURL));
+    $scope.leagues = $firebase(new Firebase("https://thewgl.firebaseio.com/thewgl/leagues/")); 
     
     $scope.addLeague = function(league) { 
         $scope.leagues.$add(league);
@@ -14,18 +13,34 @@ wgl.controller('leagues', ['$scope','$routeParams','$location','$rootScope','$fi
     }
     
     $scope.updateLeague = function(league) {
-        console.log(league);
         var updateRef = new Firebase("https://thewgl.firebaseio.com/thewgl/leagues/" + $routeParams.leagueID);
         updateRef.update({
-            image: league.image,
-            name: league.name,
+            image:  league.image,
+            name:   league.name,
             season: league.season
         });
         $location.path("/leagues");
     }
     
     //Team specific crud
-    $scope.selectedLeague = $firebase(new Firebase("https://thewgl.firebaseio.com/thewgl/leagues/" + $routeParams.leagueID));
+    var leagueRef = new Firebase("https://thewgl.firebaseio.com/thewgl/leagues/" + $routeParams.leagueID);
+    $scope.selectedLeague = $firebase(leagueRef);
+    $scope.selectedLeagueTeams = $firebase(new Firebase("https://thewgl.firebaseio.com/thewgl/leagues/" + $routeParams.leagueID + "/teams"));
+    
+    leagueRef.on('value', function(snapshot) {
+        if(snapshot.val() === null) {
+            //console.log("nothing recieved");
+        } else {
+            var leagueName = snapshot.val().name;
+            sharedProperties.setProperty(leagueName);
+            //console.log(sharedProperties.getProperty());
+        }
+    });
+    
+    $scope.addTeamToEvent = function(team) {
+        console.log(team);
+        $scope.selectedLeagueTeams.$add(team);
+    }
 
 }]);
 

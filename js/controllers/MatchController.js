@@ -1,5 +1,5 @@
 var numMatches;
-wgl.controller('matches', ['$scope','$routeParams','$location','$rootScope','$firebase', function mtCtrl($scope, $routeParams, $location, $rootScope, $firebase) {
+wgl.controller('matches', ['$scope','$routeParams','$location','$rootScope','$firebase', 'sharedProperties', function mtCtrl($scope, $routeParams, $location, $rootScope, $firebase, sharedProperties) {
 
     //Match Crud
     var matchesURL = "https://thewgl.firebaseio.com/thewgl/matches/";
@@ -69,8 +69,21 @@ wgl.controller('matches', ['$scope','$routeParams','$location','$rootScope','$fi
         $scope.selectedMatch.homeTeam = team;
         $scope.homeTeamTyping = false;
     };
+    
+    var leagueName = sharedProperties.getProperty();
+    $scope.isLeagueMatch = function(match) {
+        if (leagueName != "") {
+            return (match.eventName == leagueName);
+        } else {
+            console.log(leagueName, "does not exist");
+        }
+        
+    };
 
 }]);
+
+
+
 
 
 

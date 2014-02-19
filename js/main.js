@@ -1,6 +1,6 @@
 var wgl = angular.module('WGL', ['firebase', 'ngRoute']);
 
-wgl.run(['$firebaseSimpleLogin', '$rootScope', '$route', function($firebaseSimpleLogin, $rootScope, $route){
+wgl.run(['$firebaseSimpleLogin', '$rootScope', '$route', 'sharedProperties', function($firebaseSimpleLogin, $rootScope, $route, sharedProperties){
     var url = new Firebase("https://thewgl.firebaseio.com/");
     $rootScope.loginObj = $firebaseSimpleLogin(url);
 
@@ -226,23 +226,34 @@ wgl.config(function ($routeProvider){
                     }
                 }
             }
-
             return homeGames;
         };
     }).filter('isAwayGame', function() {
-    return function(input, teamName) {
-        var awayGames = [];
-        for (var i=0;i<numMatches;i++){
-            if (input[i] && input[i].awayTeam) {
-                if (input[i].awayTeam.name === teamName) {
-                    awayGames.push(input[i]);
+        return function(input, teamName) {
+            var awayGames = [];
+            for (var i=0;i<numMatches;i++){
+                if (input[i] && input[i].awayTeam) {
+                    if (input[i].awayTeam.name === teamName) {
+                        awayGames.push(input[i]);
+                    }
                 }
             }
-        }
+            return awayGames;
+        };
+    }).service('sharedProperties', function () {
+        var leagueName = '';
 
-        return awayGames;
-    };
+        return {
+            getProperty: function () {
+                return leagueName;
+            },
+            setProperty: function(value) {
+                leagueName = value;
+            }
+        };
 });
+
+
 
 //var checkPermission = function ($q, $rootScope, $location){
 //

@@ -1,4 +1,4 @@
-<div class="page" ng-controller="teams">
+<div class="page" ng-controller="leagues">
     <div class="row">
         <!-- Header BG -->
         <div class="header-top"></div>
@@ -27,38 +27,21 @@
                 </table>
             </div>
             <!-- Upcoming Matches Column-->
-            <div class="large-5 columns">
+            <div class="large-5 columns" ng-controller="matches">
                 <h3 class="content-h3">Upcoming Matches</h3>
                 <table>
                     <thead>
                     <tr>
-                        <th width="850">Mon, Feb 14</th>
-                        <th width="150">Time</th>
+                        <th width="850">01/03/2014</th>
+                        <th width="150">8:00 P.M.</th>
                     </tr>
                     </thead>
-                    <tbody>
+                    <tbody ng-repeat="match in matches | toArray | filter:isLeagueMatch">
                     <tr>
-                        <td><a href="#/match">Team Crazy vs Team Cool <i class="fa fa-comment">10</i> </a> </td>
-                        <td>7:00 PM</td>
-                    </tr>
-                    <tr>
-                        <td><a href="#/match">Team Hot Shots vs Team Hello Kitty <i class="fa fa-comment">2</i></a></td>
-                        <td>8:00 PM</td>
+                        <td><a ng-href="#/match/{{match.$key}}">{{match.awayTeam.name}} vs {{match.homeTeam.name}} <i class="fa fa-comment">10</i> </a> </td>
+                        <td>{{match.time}}</td>
                     </tr>
                     </tbody>
-                </table>
-                <table>
-                    <thead>
-                    <tr>
-                        <th width="850">Tues, Feb 15</th>
-                        <th width="150">Time</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td><a href="#/match">Team Death vs Team Hot <i class="fa fa-comment">129</i></a></td>
-                        <td>7:00 PM</td>
-                    </tr>
                 </table>
             </div>
         </div><!-- End Page Container -->
