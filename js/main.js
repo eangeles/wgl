@@ -33,7 +33,7 @@ wgl.config(function ($routeProvider){
 //                factory: checkPermission
 //            }
         })
-        .when("/league", {
+        .when("/league/:leagueID", {
             title: 'League',
             templateUrl:"partials/league.html"
         })

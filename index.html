@@ -37,7 +37,7 @@
             <li class="has-dropdown" ng-controller="leagues">
                 <a href="#/leagues">Leagues</a>
                 <ul class="dropdown">
-                    <li ng-repeat="league in leagues"><a ng-href="#/league/{{league.$key}}">{{league.name}}</a></li>
+                    <li ng-repeat="league in leagues | toArray"><a ng-href="#/league/{{league.$key}}">{{league.name}}</a></li>
                 </ul>
             </li>
             <li><a href="#/tournaments">Tournaments</a></li>
