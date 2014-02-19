@@ -276,7 +276,33 @@ h1,h2,h3,h4,h5,h6{
     font-size: 0.8em;
 }
 .tourney-match-panel{
-    margin: 50px 0 0 20px;
+    margin: 10px 0 0 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid #444;
+    padding: 0 5px 0 5px;
+    border-radius: 1px;
+}
+.team-tourney-img{
+    height: 25px;
+    border: 2px solid #fff;
+    margin-right: 5px;
+}
+.tourney-away-team, .tourney-home-team{
+    height: 100%;
+}
+.tourney-away-team h6, .tourney-home-team h6{
+    color: #fff;
+    font-weight: 100;
+}
+.tourney-date h6{
+    font-style: oblique;
+    font-size: 0.8em;
+}
+.vs-tourney h6{
+    color: orange;
+    font-weight: 700;
+    font-size: 1.5em;
+    text-shadow: -2px 3px 5px #222;
 }
 
 /*******
