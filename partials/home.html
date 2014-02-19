@@ -60,29 +60,42 @@
                         <div class="row">
                             <h3 class="page-title large-12 column">Upcoming<span>Matches</span></h3>
                             <div class="matches-panel-container text-center" ng-controller="matches">
+                                <!-- Upcoming Matches -->
                                 <a class="matches-link" href="#/match/{{match.$key}}" ng-repeat="match in matches | toArray | limitTo:3">
                                     <div class="large-4 medium-4 small-12 columns">
-                                        <div class="matches-panel">
-                                            <div class="match-event-name">
-                                                <h6>{{match.eventName}}</h6>
+                                        <div class="upcoming-match-view">
+                                            <div class="match-div large-5 left">
+                                                <img class="upcoming-match-img" src="{{match.homeTeam.picture}}" alt="Team Logo">
+
                                             </div>
-                                            <div class="match-teams">
-                                                <div class="teams">
-                                                    <h6>(1){{match.homeTeam.name}} vs (2){{match.awayTeam.name}}</h6>
-                                                </div>
-                                                <hr class="date-hr large-centered small-centered columns" />
-                                                <div class="matches-schedule">
-                                                    <div class="match-date large-10 columns large-centered">
-                                                        <h6 class="left">{{match.date}}, {{match.time}}</h6>
-                                                        <i class="match-chevron fa fa-chevron-right right"></i>
-                                                        <i class="match-comments right fa fa-comment">110</i>
-                                                    </div>
-                                                    <!--<hr class="show-for-small" />-->
-                                                </div>
+                                            <div class="match-div large-5 left">
+                                                <img class="upcoming-match-img" src="{{match.awayTeam.picture}}" alt="Team Logo">
                                             </div>
                                         </div>
                                     </div>
                                 </a>
+                                <!--<a class="matches-link" href="#/match/{{match.$key}}" ng-repeat="match in matches | toArray | limitTo:3">-->
+                                    <!--<div class="large-4 medium-4 small-12 columns">-->
+                                        <!--<div class="matches-panel">-->
+                                            <!--<div class="match-event-name">-->
+                                                <!--<h6>{{match.eventName}}</h6>-->
+                                            <!--</div>-->
+                                            <!--<div class="match-teams">-->
+                                                <!--<div class="teams">-->
+                                                    <!--<h6>(1){{match.homeTeam.name}} vs (2){{match.awayTeam.name}}</h6>-->
+                                                <!--</div>-->
+                                                <!--<hr class="date-hr large-centered small-centered columns" />-->
+                                                <!--<div class="matches-schedule">-->
+                                                    <!--<div class="match-date large-10 columns large-centered">-->
+                                                        <!--<h6 class="left">{{match.date}}, {{match.time}}</h6>-->
+                                                        <!--<i class="match-chevron fa fa-chevron-right right"></i>-->
+                                                        <!--<i class="match-comments right fa fa-comment">110</i>-->
+                                                    <!--</div>-->
+                                                <!--</div>-->
+                                            <!--</div>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                <!--</a>-->
                             </div>
                         </div>
 

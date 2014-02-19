@@ -6,14 +6,14 @@
         <div class="page-content-container">
             <div class="page-content">
                 <div class="large-12 columns large-centered">
-                    <h3 class="page-title large-10 small-9 columns">Teams</h3>
+                    <h3 class="page-title large-11 small-9 columns">Teams</h3>
                     <h6 class="add-news large-1 small-3 columns right"><a href="#/addteam">+</a></h6>
                     <!-- Team Panels -->
                     <div ng-repeat="team in teams | orderByPriority">
                         <a ng-href="#/team/{{team.$id}}">
-                            <div class="large-3 medium-4 small-12 columns">
+                            <div class="large-2 medium-4 small-6 columns">
                                 <div>
-                                    <img class="teams-image large-12 medium-12 small-12" ng-src="{{team.picture}}" alt="Team Logo">
+                                    <img class="teams-image large-11 medium-12 small-12" ng-src="{{team.picture}}" alt="Team Logo">
                                 </div>
                                 <div class="team-info">
                                     <a ng-href="">{{team.name}}</a>
