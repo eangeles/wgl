@@ -7,35 +7,56 @@
 
             <!-- Upcoming Matches Column-->
             <div class="large-12 columns">
+
                 <h3 class="page-title large-10 small-9 columns">Upcoming<span>Matches</span></h3>
                 <h6 class="add-news large-1 small-3 columns right"><a href="#/addmatch">+</a></h6>
-                <table class="large-5 columns">
-                    <thead>
-                    <tr>
-                        <th width="850">Mon, Feb 14</th>
-                        <th width="150">Time</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr ng-repeat="match in matches | orderByPriority">
-                        <td><a ng-href="#/match/{{match.$id}}">{{match.homeTeam.name}} vs. {{match.awayTeam.name}}<i class="fa fa-comment">10</i> </a> </td>
-                        <td>{{match.time}}</td>
-                    </tr>
-                    </tbody>
-                </table>
-                <table class="large-5 columns">
-                    <thead>
-                    <tr>
-                        <th width="850">Tues, Feb 15</th>
-                        <th width="150">Time</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td><a href="#/match">Team Death vs Team Hot <i class="fa fa-comment">129</i></a></td>
-                        <td>7:00 PM</td>
-                    </tr>
-                </table>
+                <!-- Upcoming Matches -->
+                <a class="matches-link" href="#/match/{{match.$key}}" ng-repeat="match in matches | toArray">
+                    <div class="large-4 medium-4 small-12 columns">
+                        <div class="upcoming-match-info large-9 columns large-centered">
+                            <h6 class="match-event-name">{{match.eventName}}</h6>
+                            <h6 class="match-team-vs">{{match.awayTeam.name}} <span>vs</span> {{match.homeTeam.name}}</h6>
+                            <h6 class="match-date">{{match.date}}, {{match.time}}</h6>
+                        </div>
+                        <div class="upcoming-match-view">
+                            <div class="match-div large-6 columns">
+                                <img class="upcoming-away-img" src="{{match.awayTeam.picture}}" alt="Team Logo">
+                            </div>
+                            <div class="match-div large-6 columns">
+                                <img class="upcoming-home-img" src="{{match.homeTeam.picture}}" alt="Team Logo">
+
+                            </div>
+
+                        </div>
+                    </div>
+                </a>
+                <!--<table class="large-5 columns">-->
+                    <!--<thead>-->
+                    <!--<tr>-->
+                        <!--<th width="850">Mon, Feb 14</th>-->
+                        <!--<th width="150">Time</th>-->
+                    <!--</tr>-->
+                    <!--</thead>-->
+                    <!--<tbody>-->
+                    <!--<tr ng-repeat="match in matches | orderByPriority">-->
+                        <!--<td><a ng-href="#/match/{{match.$id}}">{{match.homeTeam.name}} vs. {{match.awayTeam.name}}<i class="fa fa-comment">10</i> </a> </td>-->
+                        <!--<td>{{match.time}}</td>-->
+                    <!--</tr>-->
+                    <!--</tbody>-->
+                <!--</table>-->
+                <!--<table class="large-5 columns">-->
+                    <!--<thead>-->
+                    <!--<tr>-->
+                        <!--<th width="850">Tues, Feb 15</th>-->
+                        <!--<th width="150">Time</th>-->
+                    <!--</tr>-->
+                    <!--</thead>-->
+                    <!--<tbody>-->
+                    <!--<tr>-->
+                        <!--<td><a href="#/match">Team Death vs Team Hot <i class="fa fa-comment">129</i></a></td>-->
+                        <!--<td>7:00 PM</td>-->
+                    <!--</tr>-->
+                <!--</table>-->
             </div>
         </div><!-- End Page Container -->
     </div> <!-- End Row -->
