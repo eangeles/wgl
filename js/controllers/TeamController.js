@@ -54,10 +54,11 @@ wgl.controller('teams', ['$scope','$routeParams','$location','$rootScope','$fire
         id = team.$id;
         ref = team.$ref;
         $scope.team.name = angular.fromJson(angular.toJson(team.name));
+        $scope.team.picture = angular.fromJson(angular.toJson(team.picture));
         $scope.team.name.$id = id;
         $scope.team.name.$ref = ref;
         $scope.userTyping = false;
-
+        console.log( $scope.team.picture);
     };
 
 

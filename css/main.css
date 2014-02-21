@@ -114,6 +114,13 @@ h1,h2,h3,h4,h5,h6{
 .search-picture{
     width: 45px;
 }
+.search-img{
+    width: 35%;
+}
+.search-img img{
+    margin-bottom: 15px;
+}
+
 
 /*******
  Navigation
