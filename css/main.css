@@ -275,6 +275,16 @@ h1,h2,h3,h4,h5,h6{
 .match-vs{
     margin-top:  60px;
 }
+.match-vs h4{
+    color: orange;
+    text-transform: uppercase;
+}
+.player-pics img{
+    margin-bottom: 5px;
+}
+.player-names{
+    margin-top: 15px;
+}
 .upcoming-home-img{
     margin-left: -31px;
 }
