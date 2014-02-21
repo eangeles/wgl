@@ -51,10 +51,11 @@ wgl.controller('leagues', ['$scope','$routeParams','$location','$rootScope','$fi
         
         $scope.selectedLeagueTeams.$add(team);
         $location.path("/league/" + $routeParams.leagueID);
-    }
     
+    
+    //add team to league
     $scope.userTyping = false;
-    $scope.selectTeam = function (team) {
+    $scope.selectTeam = function(team) {
         id = team.$id;
         ref = team.$ref;
         $scope.team.name = angular.fromJson(angular.toJson(team.name));
@@ -62,6 +63,25 @@ wgl.controller('leagues', ['$scope','$routeParams','$location','$rootScope','$fi
         $scope.team.name.$id = id;
         $scope.team.name.$ref = ref;
         $scope.userTyping = false;
+    };
+    
+    //add match to league
+    //Add Team Auto complete
+    $scope.awayTeamTyping = false;
+    //Filter user search and select to input
+    $scope.selectTeamAway = function(team) {
+        $scope.match.awayTeam.name = team.name;
+        team.key = team.$key;
+        $scope.match.awayTeam = team;
+        $scope.awayTeamTyping = false;
+    };
+
+    $scope.homeTeamTyping = false;
+    $scope.selectTeamHome = function(team) {
+        $scope.match.homeTeam.name = team.name;
+        team.key = team.$key;
+        $scope.match.homeTeam = team;
+        $scope.homeTeamTyping = false;
     };
 
 }]);

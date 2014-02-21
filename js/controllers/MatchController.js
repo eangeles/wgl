@@ -38,7 +38,6 @@ wgl.controller('matches', ['$scope','$routeParams','$location','$rootScope','$fi
     
     //Team specific crud
     $scope.selectedMatch = $firebase(new Firebase("https://thewgl.firebaseio.com/thewgl/matches/" + $routeParams.matchID));
-    console.log($scope.selectedMatch);
 
     //Add Team Auto complete
     $scope.awayTeamTyping = false;
@@ -69,13 +68,6 @@ wgl.controller('matches', ['$scope','$routeParams','$location','$rootScope','$fi
         $scope.selectedMatch.homeTeam.name = team.name;
         $scope.selectedMatch.homeTeam = team;
         $scope.homeTeamTyping = false;
-    };
-    
-    var leagueName = sharedProperties.getProperty();
-    $scope.isLeagueMatch = function(match) {
-        if (leagueName != "") {
-            return (match.eventName == leagueName);
-        } 
     };
 
 }]);
