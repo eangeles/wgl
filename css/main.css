@@ -286,34 +286,46 @@ h1,h2,h3,h4,h5,h6{
     overflow: hidden;
 }
 .upcoming-match-info{
-    background: rgba(0, 0, 0, 0.9);
+    /*background: rgba(0, 0, 0, 0.9);*/
+    background: #333;
+    height: 180px;
     /*position: relative;*/
     /*top: 90px;*/
     /*border-radius: 5px;*/
     overflow: hidden;
     padding: 1px 0 1px 0;
+    margin-bottom: 20px;
 }
 .upcoming-match-info h6{
-    line-height: 10px;
-
+    line-height: 15px;
+    padding: 10px 0 10px 0;
 }
 .upcoming-match-info h6 span{
     color: orange;
 }
 .match-event-name{
     font-size: 0.8em;
+    text-transform: uppercase;
 }
 .match-team-vs{
-    font-size: 0.8em;
+    font-size: 1.5em;
+    font-weight: 700;
 }
 .match-date{
     font-size: 0.7em;
+    margin-top: -15px;
+}
+.match-time{
+    font-size: 0.7em;
+    margin-top: -30px;
 }
 .match-event-name {
     margin-top: 10px;
 }
 .upcoming-small-img{
-    height: 50px;
+    height: 100px;
+    margin-top: 15px;
+    border: 2px solid #222;
 }
 
 /*******
