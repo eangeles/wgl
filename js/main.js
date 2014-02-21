@@ -53,6 +53,10 @@ wgl.config(function ($routeProvider){
             title: 'Add Team To League',
             templateUrl:"partials/leagueaddteam.html"
         })
+        .when("/leagueaddmatch/:leagueID", {
+            title: 'Add Match To League',
+            templateUrl:"partials/leagueaddmatch.html"
+        })
         .when("/team", {
             title: 'Ladder',
             templateUrl:"partials/team.html"
