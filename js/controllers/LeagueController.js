@@ -50,7 +50,7 @@ wgl.controller('leagues', ['$scope','$routeParams','$location','$rootScope','$fi
         console.log(team);
         
         $scope.selectedLeagueTeams.$add(team);
-        //$location.path("/leagues/" + $routeParams.leagueID);
+        $location.path("/league/" + $routeParams.leagueID);
     }
     
     $scope.userTyping = false;
@@ -62,7 +62,6 @@ wgl.controller('leagues', ['$scope','$routeParams','$location','$rootScope','$fi
         $scope.team.name.$id = id;
         $scope.team.name.$ref = ref;
         $scope.userTyping = false;
-        console.log( $scope.team.picture);
     };
 
 }]);
