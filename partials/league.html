@@ -5,7 +5,7 @@
         <!-- Page Container -->
         <div class="page-content-container">
             <h3 class="page-title large-11 small-9 columns">League<span>Standings</span></h3>
-            <h6 class="add-news large-1 small-3 columns right"><a href="#/leagueaddteam">+</a></h6>
+            <h6 class="add-news large-1 small-3 columns right"><a ng-href="#/leagueaddteam/{{tempRouteParam}}">+</a></h6>
             <!-- Standings Column -->
             <div class="large-7 columns">
                 <table>
@@ -18,17 +18,17 @@
                     </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="team in teams | toArray | orderBy:teamSort">
+                        <tr ng-repeat="leagueTeam in selectedLeagueTeams | toArray">
                             <td>{{$index+1}}</td>
-                            <td><a href="#/team/{{team.$key}}">{{team.name}}</a></td>
-                            <td>{{team.wins}}</td>
-                            <td>{{team.losses}}</td>
+                            <td><a href="#/team/{{leagueTeam.$key}}">{{leagueTeam.name}}</a></td>
+                            <td>{{leagueTeam.wins}}</td>
+                            <td>{{leagueTeam.losses}}</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
             <!-- Upcoming Matches Column-->
-            <div class="large-5 columns" ng-controller="matches">
+            <div class="large-5 columns">
                 <table>
                     <thead>
                     <tr>
@@ -36,7 +36,7 @@
                         <th width="150">8:00 P.M.</th>
                     </tr>
                     </thead>
-                    <tbody ng-repeat="match in matches | toArray | filter:isLeagueMatch">
+                    <tbody ng-repeat="leagueMatch in selectedLeagueMatches | toArray">
                     <tr>
                         <td><a ng-href="#/match/{{match.$key}}">{{match.awayTeam.name}} vs {{match.homeTeam.name}} <i class="fa fa-comment">10</i> </a> </td>
                         <td>{{match.time}}</td>

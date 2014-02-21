@@ -1,7 +1,8 @@
 wgl.controller('leagues', ['$scope','$routeParams','$location','$rootScope','$firebase', 'sharedProperties', function mtCtrl($scope, $routeParams, $location, $rootScope, $firebase, sharedProperties) {
 
     //Match Crud
-    $scope.leagues = $firebase(new Firebase("https://thewgl.firebaseio.com/thewgl/leagues/")); 
+    $scope.leagues = $firebase(new Firebase("https://thewgl.firebaseio.com/thewgl/leagues/"));
+    $scope.teams = $firebase(new Firebase("https://thewgl.firebaseio.com/thewgl/teams/"));
     
     $scope.addLeague = function(league) { 
         $scope.leagues.$add(league);
@@ -24,23 +25,45 @@ wgl.controller('leagues', ['$scope','$routeParams','$location','$rootScope','$fi
     
     //Team specific crud
     var leagueRef = new Firebase("https://thewgl.firebaseio.com/thewgl/leagues/" + $routeParams.leagueID);
-    $scope.selectedLeague = $firebase(leagueRef);
+    $scope.tempRouteParam = $routeParams.leagueID;
+    
+    //Standings
     $scope.selectedLeagueTeams = $firebase(new Firebase("https://thewgl.firebaseio.com/thewgl/leagues/" + $routeParams.leagueID + "/teams"));
+    
+    //Matches
+    $scope.selectedLeagueMatches = $firebase(new Firebase("https://thewgl.firebaseio.com/thewgl/leagues/" + $routeParams.leagueID + "/matches"));
     
     leagueRef.on('value', function(snapshot) {
         if(snapshot.val() === null) {
-            //console.log("nothing recieved");
+
         } else {
             var leagueName = snapshot.val().name;
             sharedProperties.setProperty(leagueName);
-            //console.log(sharedProperties.getProperty());
+            $scope.selectedLeague = snapshot.val();
         }
     });
     
-    $scope.addTeamToEvent = function(team) {
+    $scope.addTeamToLeague = function(team) {
+        team.wins =     5;
+        team.losses =   10;
+        
         console.log(team);
+        
         $scope.selectedLeagueTeams.$add(team);
+        //$location.path("/leagues/" + $routeParams.leagueID);
     }
+    
+    $scope.userTyping = false;
+    $scope.selectTeam = function (team) {
+        id = team.$id;
+        ref = team.$ref;
+        $scope.team.name = angular.fromJson(angular.toJson(team.name));
+        $scope.team.picture = angular.fromJson(angular.toJson(team.picture));
+        $scope.team.name.$id = id;
+        $scope.team.name.$ref = ref;
+        $scope.userTyping = false;
+        console.log( $scope.team.picture);
+    };
 
 }]);
 

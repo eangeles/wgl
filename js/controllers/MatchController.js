@@ -38,6 +38,7 @@ wgl.controller('matches', ['$scope','$routeParams','$location','$rootScope','$fi
     
     //Team specific crud
     $scope.selectedMatch = $firebase(new Firebase("https://thewgl.firebaseio.com/thewgl/matches/" + $routeParams.matchID));
+    console.log($scope.selectedMatch);
 
     //Add Team Auto complete
     $scope.awayTeamTyping = false;
@@ -74,10 +75,7 @@ wgl.controller('matches', ['$scope','$routeParams','$location','$rootScope','$fi
     $scope.isLeagueMatch = function(match) {
         if (leagueName != "") {
             return (match.eventName == leagueName);
-        } else {
-            console.log(leagueName, "does not exist");
-        }
-        
+        } 
     };
 
 }]);
