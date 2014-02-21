@@ -48,6 +48,19 @@ wgl.controller('teams', ['$scope','$routeParams','$location','$rootScope','$fire
         return -team.wins;
     }
 
+    //Add Team Auto complete
+    $scope.userTyping = false;
+    $scope.selectTeam = function (team) {
+        id = team.$id;
+        ref = team.$ref;
+        $scope.team.name = angular.fromJson(angular.toJson(team.name));
+        $scope.team.name.$id = id;
+        $scope.team.name.$ref = ref;
+        $scope.userTyping = false;
+
+    };
+
+
 }]);
 
 
