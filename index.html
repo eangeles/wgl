@@ -22,66 +22,95 @@
 </head>
 
 <body ng-controller="Login">
-<nav class="top-bar" data-topbar>
-    <ul class="title-area">
-        <li class="name">
-            <a href="#/"><img class="desktop-logo" src="img/logo.png" alt="Win Gaming Lounge Logo"></a>
-        </li>
-        <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
-    </ul>
+<div class="off-canvas-wrap">
+    <div class="inner-wrap">
 
-    <section class="top-bar-section">
-        <!-- Right Nav Section -->
-        <ul class="right">
-            <li><a href="#/news">News</a></li>
-            <li class="has-dropdown" ng-controller="leagues">
-                <a href="#/leagues">Leagues</a>
-                <ul class="dropdown">
-                    <li ng-repeat="league in leagues | toArray"><a ng-href="#/league/{{league.$key}}">{{league.name}}</a></li>
+        <!-- Show for main mobile nav -->
+        <nav class="tab-bar show-for-small">
+            <a class="left-off-canvas-toggle"><i class="fa fa-bars mobile-bar"></i></a>
+            <div class="div.mobile-logo">
+                <a href="#/home" class="mobile-logo"></a>
+            </div>
+            <div class="right-nav right" ng-bind-html-unsafe="mobileStatement"></div>
+        </nav>
+
+        <!-- Off Canvas Menu -->
+        <aside class="left-off-canvas-menu">
+            <!-- whatever you want goes here -->
+            <ul>
+                <li><a href="#">Item 1</a></li>
+                ...
+            </ul>
+        </aside>
+        <!-- Desktop Nav -->
+        <nav class="top-bar hide-for-small" data-topbar>
+            <ul class="title-area">
+                <li class="name">
+                    <a href="#/"><img class="desktop-logo" src="img/logo.png" alt="Win Gaming Lounge Logo"></a>
+                </li>
+                <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
+            </ul>
+
+            <section class="top-bar-section">
+                <!-- Right Nav Section -->
+                <ul class="right">
+                    <li><a href="#/news">News</a></li>
+                    <li class="has-dropdown" ng-controller="leagues">
+                        <a href="#/leagues">Leagues</a>
+                        <ul class="dropdown">
+                            <li ng-repeat="league in leagues | toArray"><a ng-href="#/league/{{league.$key}}">{{league.name}}</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#/tournaments">Tournaments</a></li>
+                    <li class="has-dropdown">
+                        <a href="javascript: void(0)">Competitors</a>
+                        <ul class="dropdown">
+                            <li><a href="#/teams">Teams</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#/upcomingmatches">Matches</a></li>
+                    <li ng-hide="loginObj.user"><a class="login" ng-click="loginObj.$login('facebook')"><i class="fa fa-facebook"></i> Login</a> </li>
+                    <li class="has-dropdown" ng-show="loginObj.user"><a href="#/gamer_page/{{$key}}"> <img class="login-user-img" src="{{loginObj.user.profilePicture}}">{{loginObj.user.first_name}}</a>
+                        <ul class="dropdown">
+                            <li><a href="#/gts">Admin</a></li>
+                            <li><a class="login" ng-click="loginObj.$logout()">Logout</a></li>
+                        </ul>
+                    </li>
                 </ul>
-            </li>
-            <li><a href="#/tournaments">Tournaments</a></li>
-            <li class="has-dropdown">
-                <a href="javascript: void(0)">Competitors</a>
-                <ul class="dropdown">
-                    <li><a href="#/teams">Teams</a></li>
-                </ul>
-            </li>
-            <li><a href="#/upcomingmatches">Matches</a></li>
-            <li ng-hide="loginObj.user"><a class="login" ng-click="loginObj.$login('facebook')"><i class="fa fa-facebook"></i> Login</a> </li>
-            <li class="has-dropdown" ng-show="loginObj.user"><a href="#/gamer_page/{{$key}}"> <img class="login-user-img" src="{{loginObj.user.profilePicture}}">{{loginObj.user.first_name}}</a>
-                <ul class="dropdown">
-                    <li><a href="#/gts">Admin</a></li>
-                    <li><a class="login" ng-click="loginObj.$logout()">Logout</a></li>
-                </ul>
-            </li>
-        </ul>
+            </section>
+        </nav>
 
-    </section>
-</nav>
+        <!-- OFF CANVASS CONTENT GOES HERE -->
 
+        <!--Container for the view templates-->
+        <div id="container" ng-view="">
 
-<!--Container for the view templates-->
-<div id="container" ng-view="">
+        </div>
 
+        <footer>
+            <div class="row">
+                <div class="large-4 columns">
+                    <h3 class="page-title text-center">WGL<span>Sponsors</span></h3>
+                </div>
+                <div class="large-4 columns">
+                    <h3 class="page-title text-center">WGL<span>Partners</span></h3>
+                </div>
+                <div class="large-4 columns text-center">
+                    <h3 class="page-title">Follow<span>WGL</span></h3>
+                    <i class="follow-facebook fa fa-facebook-square"></i>
+                    <i class="follow-twitter fa fa-twitter-square"></i>
+                    <i class="follow-youtube fa fa-youtube-square"></i>
+                </div>
+            </div>
+        </footer>
+
+        <!-- close the off-canvas menu -->
+        <a class="exit-off-canvas"></a>
+    </div>
 </div>
 
-<footer>
-    <div class="row">
-        <div class="large-4 columns">
-            <h3 class="page-title text-center">WGL<span>Sponsors</span></h3>
-        </div>
-        <div class="large-4 columns">
-            <h3 class="page-title text-center">WGL<span>Partners</span></h3>
-        </div>
-        <div class="large-4 columns text-center">
-            <h3 class="page-title">Follow<span>WGL</span></h3>
-            <i class="follow-facebook fa fa-facebook-square"></i>
-            <i class="follow-twitter fa fa-twitter-square"></i>
-            <i class="follow-youtube fa fa-youtube-square"></i>
-        </div>
-    </div>
-</footer>
+
+
 
 <!--Jquery and Foundation-->
 <script src="js/jquery.js"></script>
