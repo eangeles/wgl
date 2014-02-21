@@ -51,14 +51,9 @@ wgl.controller('leagues', ['$scope','$routeParams','$location','$rootScope','$fi
 
         $scope.selectedLeagueTeams.$add(team);
         $location.path("/league/" + $routeParams.leagueID);
-<<<<<<< HEAD
 
-
-=======
     }
     
-    
->>>>>>> db942a90b8141132f8f8948d743486a776fae30d
     //add team to league
     $scope.userTyping = false;
     $scope.selectTeam = function(team) {
