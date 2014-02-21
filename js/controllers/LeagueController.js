@@ -3,8 +3,8 @@ wgl.controller('leagues', ['$scope','$routeParams','$location','$rootScope','$fi
     //Match Crud
     $scope.leagues = $firebase(new Firebase("https://thewgl.firebaseio.com/thewgl/leagues/"));
     $scope.teams = $firebase(new Firebase("https://thewgl.firebaseio.com/thewgl/teams/"));
-    
-    $scope.addLeague = function(league) { 
+
+    $scope.addLeague = function(league) {
         $scope.leagues.$add(league);
         $location.path("/leagues");
     };
@@ -12,7 +12,7 @@ wgl.controller('leagues', ['$scope','$routeParams','$location','$rootScope','$fi
     $scope.removeLeague = function(leagueID) {
         $scope.leagues.$remove(leagueID);
     }
-    
+
     $scope.updateLeague = function(league) {
         var updateRef = new Firebase("https://thewgl.firebaseio.com/thewgl/leagues/" + $routeParams.leagueID);
         updateRef.update({
@@ -22,17 +22,17 @@ wgl.controller('leagues', ['$scope','$routeParams','$location','$rootScope','$fi
         });
         $location.path("/leagues");
     }
-    
+
     //Team specific crud
     var leagueRef = new Firebase("https://thewgl.firebaseio.com/thewgl/leagues/" + $routeParams.leagueID);
     $scope.tempRouteParam = $routeParams.leagueID;
-    
+
     //Standings
     $scope.selectedLeagueTeams = $firebase(new Firebase("https://thewgl.firebaseio.com/thewgl/leagues/" + $routeParams.leagueID + "/teams"));
-    
+
     //Matches
     $scope.selectedLeagueMatches = $firebase(new Firebase("https://thewgl.firebaseio.com/thewgl/leagues/" + $routeParams.leagueID + "/matches"));
-    
+
     leagueRef.on('value', function(snapshot) {
         if(snapshot.val() === null) {
 
@@ -42,17 +42,17 @@ wgl.controller('leagues', ['$scope','$routeParams','$location','$rootScope','$fi
             $scope.selectedLeague = snapshot.val();
         }
     });
-    
+
     $scope.addTeamToLeague = function(team) {
         team.wins =     5;
         team.losses =   10;
-        
+
         console.log(team);
-        
+
         $scope.selectedLeagueTeams.$add(team);
         $location.path("/league/" + $routeParams.leagueID);
-    
-    
+
+
     //add team to league
     $scope.userTyping = false;
     $scope.selectTeam = function(team) {
@@ -64,7 +64,7 @@ wgl.controller('leagues', ['$scope','$routeParams','$location','$rootScope','$fi
         $scope.team.name.$ref = ref;
         $scope.userTyping = false;
     };
-    
+
     //add match to league
     //Add Team Auto complete
     $scope.awayTeamTyping = false;
