@@ -447,6 +447,9 @@ h1,h2,h3,h4,h5,h6{
 
 /* Media Queries */
 @media only screen and (max-width: 40em) {
+    .desktop-logo{
+        margin: -94px 0 0 10px;
+    }
     .news-small{
         margin-left: 15px;
         width: 90%;

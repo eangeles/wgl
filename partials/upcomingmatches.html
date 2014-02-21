@@ -13,20 +13,25 @@
                     <!-- Upcoming Matches -->
                     <a class="matches-link" href="#/match/{{match.$key}}" ng-repeat="match in matches | toArray">
                         <div class="large-4 medium-4 small-12 columns">
-                            <div class="upcoming-match-info large-9 columns large-centered">
-                                <h6 class="match-event-name">{{match.eventName}}</h6>
-                                <h6 class="match-team-vs">{{match.awayTeam.name}} <span>vs</span> {{match.homeTeam.name}}</h6>
-                                <h6 class="match-date">{{match.date}}, {{match.time}}</h6>
-                            </div>
-                            <div class="upcoming-match-view">
-                                <div class="match-div large-6 columns">
-                                    <img class="upcoming-away-img" src="{{match.awayTeam.picture}}" alt="Team Logo">
+                            <div class="upcoming-match-info large-12 columns large-centered">
+                                <div class="large-4 columns">
+                                    <img class="upcoming-small-img" src="{{match.awayTeam.picture}}" alt="Team Logo">
+                                    <h6>{{match.awayTeam.name}}</h6>
                                 </div>
-                                <div class="match-div large-6 columns">
-                                    <img class="upcoming-home-img" src="{{match.homeTeam.picture}}" alt="Team Logo">
+                                <div class="large-4 columns">
+                                    <div class="row">
+                                        <h6 class="match-event-name">{{match.eventName}}</h6>
+                                    </div>
 
+                                    <h6 class="match-team-vs"><span>vs</span> </h6>
+                                    <h6 class="match-date">{{match.date}} </h6>
+                                    <h6 class="match-time">{{match.time}}</h6>
                                 </div>
 
+                                <div class="large-4 columns">
+                                    <img class="upcoming-small-img" src="{{match.homeTeam.picture}}" alt="Team Logo">
+                                    <h6>{{match.homeTeam.name}}</h6>
+                                </div>
                             </div>
                         </div>
                     </a>

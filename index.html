@@ -29,7 +29,7 @@
         <nav class="tab-bar show-for-small">
             <a class="left-off-canvas-toggle"><i class="fa fa-bars mobile-bar"></i></a>
             <div class="div.mobile-logo">
-                <a href="#/home" class="mobile-logo"></a>
+                <a href="#/"><img class="desktop-logo" src="img/logo.png" alt="Win Gaming Lounge Logo"></a>
             </div>
             <div class="right-nav right" ng-bind-html-unsafe="mobileStatement"></div>
         </nav>
@@ -38,7 +38,21 @@
         <aside class="left-off-canvas-menu">
             <!-- whatever you want goes here -->
             <ul>
-                <li><a href="#">Item 1</a></li>
+                <li><a href="#/news">News</a></li>
+                <li class="has-dropdown" ng-controller="leagues">
+                    <a href="#/leagues">Leagues</a>
+                    <ul class="dropdown">
+                        <li ng-repeat="league in leagues | toArray"><a ng-href="#/league/{{league.$key}}">{{league.name}}</a></li>
+                    </ul>
+                </li>
+                <li><a href="#/tournaments">Tournaments</a></li>
+                <li class="has-dropdown">
+                    <a href="javascript: void(0)">Competitors</a>
+                    <ul class="dropdown">
+                        <li><a href="#/teams">Teams</a></li>
+                    </ul>
+                </li>
+                <li><a href="#/upcomingmatches">Matches</a></li>
                 ...
             </ul>
         </aside>
