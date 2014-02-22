@@ -38,6 +38,7 @@ wgl.controller('matches', ['$scope','$routeParams','$location','$rootScope','$fi
     
     //Team specific crud
     $scope.selectedMatch = $firebase(new Firebase("https://thewgl.firebaseio.com/thewgl/matches/" + $routeParams.matchID));
+    //need to create a seperate match url for the ones coming from a league
 
     //Add Team Auto complete
     $scope.awayTeamTyping = false;

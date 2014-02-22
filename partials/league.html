@@ -4,8 +4,9 @@
         <div class="header-top"></div>
         <!-- Page Container -->
         <div class="page-content-container">
-            <h3 class="page-title large-11 small-9 columns">League<span>Standings</span></h3>
-            <h6 class="add-news large-1 small-3 columns right"><a ng-href="#/leagueaddteam/{{tempRouteParam}}">+</a></h6>
+            <h3 class="page-title large-10 small-9 columns">League<span>Standings</span></h3>
+            <h6 class="add-news large-1 small-3 columns right"><a ng-href="#/leagueaddteam/{{tempRouteParam}}">Add Team +</a></h6>
+            <h6 class="add-news large-1 small-3 columns right"><a ng-href="#/leagueaddmatch/{{tempRouteParam}}">Add Match +</a></h6>
             <!-- Standings Column -->
             <div class="large-7 columns">
                 <table>
@@ -38,8 +39,8 @@
                     </thead>
                     <tbody ng-repeat="leagueMatch in selectedLeagueMatches | toArray">
                     <tr>
-                        <td><a ng-href="#/match/{{match.$key}}">{{match.awayTeam.name}} vs {{match.homeTeam.name}} <i class="fa fa-comment">10</i> </a> </td>
-                        <td>{{match.time}}</td>
+                        <td><a ng-href="#/match/{{leagueMatch.$key}}">{{leagueMatch.awayTeam.name}} vs {{leagueMatch.homeTeam.name}} <i class="fa fa-comment">10</i> </a> </td>
+                        <td>{{leagueMatch.time}}</td>
                     </tr>
                     </tbody>
                 </table>

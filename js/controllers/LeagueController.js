@@ -44,14 +44,18 @@ wgl.controller('leagues', ['$scope','$routeParams','$location','$rootScope','$fi
     });
 
     $scope.addTeamToLeague = function(team) {
+        //hardcoded until we figure out how to manage them
         team.wins =     5;
         team.losses =   10;
 
-        console.log(team);
-
         $scope.selectedLeagueTeams.$add(team);
         $location.path("/league/" + $routeParams.leagueID);
-
+    }
+    
+    $scope.addMatchToLeague = function(match) {
+        console.log(match);
+        $scope.selectedLeagueMatches.$add(match);
+        $location.path("/league/" + $routeParams.leagueID);
     }
 
     //add team to league
