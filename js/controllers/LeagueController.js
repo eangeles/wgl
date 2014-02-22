@@ -53,7 +53,7 @@ wgl.controller('leagues', ['$scope','$routeParams','$location','$rootScope','$fi
         $location.path("/league/" + $routeParams.leagueID);
 
     }
-    
+
     //add team to league
     $scope.userTyping = false;
     $scope.selectTeam = function(team) {
