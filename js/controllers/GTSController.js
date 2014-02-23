@@ -1,4 +1,4 @@
-wgl.controller('gts', ['$scope', '$routeParams', '$location', 'angularFireCollection','angularFire','$timeout','$rootScope', function mtCtrl($scope, $routeParams, $location, angularFireCollection,angularFire,$timeout,$rootScope){
+wgl.controller('gts', ['$scope','$routeParams','$firebase','$location','$timeout','$rootScope', function mtCtrl($scope, $routeParams,$firebase,$location,$timeout,$rootScope){
     
     //Unique naming conventions for style points and creativity
     $rootScope.gameTitleasdf;
@@ -22,9 +22,6 @@ wgl.controller('gts', ['$scope', '$routeParams', '$location', 'angularFireCollec
         $rootScope.stationGamerasdf = $scope.userInfos.displayName;
         $scope.userTyping = false; 
     };
-        
-    //************************************Active stations database***************************************************
-    var urlActiveStations = new Firebase('https://wingaminglounge.firebaseio.com/wingaminglounge/activeStations'); 
     
     //Setting scope to use with the autocomplete
     var urlGames = "https://wingaminglounge.firebaseio.com/wingaminglounge/games";
@@ -67,12 +64,14 @@ wgl.controller('gts', ['$scope', '$routeParams', '$location', 'angularFireCollec
             }
         };
     };
-
-    //collects the info from the database for use.
-    $scope.activeStations = angularFireCollection(urlActiveStations,function()
-    {
+    
+    //************************************Active stations database***************************************************
+    var urlActiveStations = new Firebase('https://wgl.firebaseio.com/wgl/activeStations'); 
+    
+    urlActiveStations.on('value', function(snapshot) {
+        $scope.activeStations = $firebase(urlActiveStations);
         //starts the clocks
-        var startKillWatch = $scope.$watch('activeStations', function(){
+         var startKillWatch = $scope.$watch('activeStations', function(){
             $timeout(wrapper);
             startKillWatch();
         });

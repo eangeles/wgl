@@ -57,12 +57,12 @@
                     <!-- Queue List -->
                     <div class="queue-list large-10 columns large-centered">
                         <div ng-repeat="queuedPlayer in playerQueue | toArray">
-                            <h6 class="queue-name left">queuedPlayer.playerEmail</h6>
+                            <h6 class="queue-name left">{{queuedPlayer.playerEmail}}</h6>
                             <a class="queue-remove right" ng-click="removeFromQueue(queuedPlayer.$key)">&#215;</a>
-                            <h6 class="check-in right">queuedPlayer.timeIn</h6>
+                            <h6 class="check-in right">{{queuedPlayer.timeIn}}</h6>
                         </div>
                         <div class="queue-system">
-                            <h6 class="large-12 left">queuedPlayer.system</h6>
+                            <h6 class="large-12 left">{{queuedPlayer.system}}</h6>
                         </div>
                     </div>
                     <div class="large-10 columns large-centered">
