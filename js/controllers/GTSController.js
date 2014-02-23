@@ -1,4 +1,4 @@
-wingaming.controller('GTS', ['$scope', '$routeParams', '$location', 'angularFireCollection', 'angularFireAuth','angularFire','$timeout','$rootScope', function mtCtrl($scope, $routeParams, $location, angularFireCollection, angularFireAuth,angularFire,$timeout,$rootScope){
+wgl.controller('gts', ['$scope', '$routeParams', '$location', 'angularFireCollection','angularFire','$timeout','$rootScope', function mtCtrl($scope, $routeParams, $location, angularFireCollection,angularFire,$timeout,$rootScope){
     
     //Unique naming conventions for style points and creativity
     $rootScope.gameTitleasdf;
@@ -17,7 +17,7 @@ wingaming.controller('GTS', ['$scope', '$routeParams', '$location', 'angularFire
     }
     
     //Select User from search input
-    $scope.selectUser = function (gamer) {
+    $scope.selectUser = function(gamer) {
         $scope.userInfos = angular.fromJson(angular.toJson(gamer));
         $rootScope.stationGamerasdf = $scope.userInfos.displayName;
         $scope.userTyping = false; 
@@ -27,11 +27,11 @@ wingaming.controller('GTS', ['$scope', '$routeParams', '$location', 'angularFire
     var urlActiveStations = new Firebase('https://wingaminglounge.firebaseio.com/wingaminglounge/activeStations'); 
     
     //Setting scope to use with the autocomplete
-    var urlGames = new Firebase("https://wingaminglounge.firebaseio.com/wingaminglounge/games");
-    var urlUsers = new Firebase("https://wingaminglounge.firebaseio.com/wingaminglounge/users");
+    var urlGames = "https://wingaminglounge.firebaseio.com/wingaminglounge/games";
+    var urlUsers = "https://wingaminglounge.firebaseio.com/wingaminglounge/users";
     
-    $scope.games = angularFireCollection(urlGames);
-    $scope.users = angularFireCollection(urlUsers);
+    $scope.games = $firebase(new Firebase(urlGames));
+    $scope.users = $firebase(new Firebase(urlUsers));
     
     //general overall function for the page to run
     var wrapper = function () {
@@ -57,13 +57,13 @@ wingaming.controller('GTS', ['$scope', '$routeParams', '$location', 'angularFire
                     "user": $scope.activeStations[i].stationGamer,
                     "stationNumber": $scope.activeStations[i].stationNumber
                 }
-                $scope.alerts.add(alert);
+                $scope.alerts.$add(alert);
                 
-                $scope.emptyStations.add({
+                $scope.emptyStations.$add({
                     "stationNumber": $scope.activeStations[i].stationNumber, 
                     "stationSystem": $scope.activeStations[i].stationSystem
                 });
-                $scope.activeStations.remove($scope.activeStations[i].$id);
+                $scope.activeStations.$remove($scope.activeStations[i].$id);
             }
         };
     };
@@ -94,7 +94,7 @@ wingaming.controller('GTS', ['$scope', '$routeParams', '$location', 'angularFire
             //corresponding station and removes it so it only shows in activeStations
             for (var i = 0; i < $scope.emptyStations.length; i++) {
                 if ($scope.emptyStations[i].stationNumber == tempActiveStation.stationNumber) {
-                    $scope.emptyStations.remove($scope.emptyStations[i].$id);
+                    $scope.emptyStations.$remove($scope.emptyStations[i].$id);
                     tempActiveStation.stationSystem = $scope.emptyStations[i].stationSystem;
                 }
             }            
@@ -110,37 +110,38 @@ wingaming.controller('GTS', ['$scope', '$routeParams', '$location', 'angularFire
     
     //Removes station from active and adds to empty
     $scope.removeActiveStation = function(station) {
-        $scope.activeStations.remove(station.$id);
+        $scope.activeStations.$remove(station.$id);
         
         var tempEmptyStation = {
             "stationNumber": station.stationNumber,
             "stationSystem": station.stationSystem
-        };            
-        $scope.emptyStations.add(tempEmptyStation);
+        };
+        
+        $scope.emptyStations.$add(tempEmptyStation);
     }
     
     //************************************Empty stations database***************************************************
-    var urlEmptyStations = new Firebase('https://wingaminglounge.firebaseio.com/wingaminglounge/emptyStations');
-
-    $scope.emptyStations = angularFireCollection(urlEmptyStations);
+    var urlEmptyStations = 'https://wgl.firebaseio.com/wgl/emptyStations';
+    
+    $scope.emptyStations = $firebase(new Firebase(urlEmptyStations));
     
     //*******************************************Alerts database****************************************************
-    var urlAlerts = new Firebase("https://wingaminglounge.firebaseio.com/wingaminglounge/alerts");
+    var urlAlerts = 'https://wgl.firebaseio.com/wgl/alerts';
     
-    $scope.alerts = angularFireCollection(urlAlerts);
+    $scope.alerts = $firebase(new Firebase(urlAlerts));
     
     $scope.addAlert = function(alert) {
-        $scope.alerts.add(alert);
+        $scope.alerts.$add(alert);
     }
     
     $scope.removeAlert = function(alertID) {
-        $scope.alerts.remove(alertID);
+        $scope.alerts.$remove(alertID);
     }
     
     //******************************************Queue database*******************************************************
-    var urlPlayerQueue = new Firebase("https://wingaminglounge.firebaseio.com/wingaminglounge/playerQueue");
+    var urlPlayerQueue = "https://wgl.firebaseio.com/wgl/playerQueue";
     
-    $scope.playerQueue = angularFireCollection(urlPlayerQueue);
+    $scope.playerQueue = $firebase(new Firebase(urlPlayerQueue));
     
     var isQueueClicked = false;
     $scope.addToPlayerQueue = function(playerRequest) { 
@@ -174,7 +175,7 @@ wingaming.controller('GTS', ['$scope', '$routeParams', '$location', 'angularFire
             //sets the checked in time
             playerRequest.checkedIn = dformat;
                         
-            $scope.playerQueue.add(playerRequest);
+            $scope.playerQueue.$add(playerRequest);
             isQueueClicked = false;
             $("#add_queue_btn").css({backgroundColor: "#17A9CC"}).html("Add");
         } else {
@@ -184,19 +185,19 @@ wingaming.controller('GTS', ['$scope', '$routeParams', '$location', 'angularFire
     }
     
     $scope.removeFromQueue = function(playerID) {
-        $scope.playerQueue.remove(playerID);
+        $scope.playerQueue.$remove(playerID);
     }
     
     /*******************************************Change Game************************************************************/
     //sets the boolean for game change html to hide/show
-    $scope.showGameChange = function(){
-        $scope.gameChange = true;
-    }
+//    $scope.showGameChange = function(){
+//        $scope.gameChange = true;
+//    }
 
     //sets the gameArtURL for the switch game to work
-    $scope.switchGame = function(tempGame, tempStation){ 
-        tempStation.gameArt = tempGame;
-        $scope.gameChange = false;
-    }
+//    $scope.switchGame = function(tempGame, tempStation){ 
+//        tempStation.gameArt = tempGame;
+//        $scope.gameChange = false;
+//    }
     
 }])

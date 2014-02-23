@@ -1,4 +1,4 @@
-<div class="page">
+<div class="page" ng-controller="gts">
     <div class="row">
         <!-- Header BG -->
         <div class="header-top"></div>
@@ -11,7 +11,7 @@
                     <dd><a href="#/users">Users</a></dd>
                     <dd><a href="#/stations">Stations</a></dd>
                     <dd><a href="#/games">Games</a></dd>
-                    <dd><a href="#/staff_news">News</a></dd>
+                    <dd><a href="#/news">News</a></dd>
                 </dl>
                 <div class="gts-hr"><hr /> </div>
                 <!-- Add To GTS Form -->
@@ -20,13 +20,12 @@
                     <form class="large-10 columns large-centered">
                         <div class="row">
                             <div class="email-input large-12 columns">
-
-                                <input type="text" placeholder="Enter Email">
+                                <input type="text" ng-model="tempStation.gamerEmail" placeholder="Enter Email">
                             </div>
                         </div>
                         <div class="row">
                             <div class="select-station large-12 columns">
-                                <select>
+                                <select ng-model="tempStation.stationNumber">
                                     <option value="" disabled selected>Select A Station</option>
                                     <option>Dropdown</option>
                                 </select>
@@ -34,12 +33,12 @@
                         </div>
                         <div class="row">
                             <div class="select-game large-12 columns">
-                                <input type="text" placeholder="Select Game">
+                                <input type="text" ng-model="tempStation.game" placeholder="Select Game">
                             </div>
                         </div>
                         <div class="row">
                             <div class="select-time large-12 columns">
-                                <select>
+                                <select ng-model="tempStation.countdown">
                                     <option value="" disabled selected>How Long</option>
                                     <option>30mins</option>
                                 </select>
@@ -47,7 +46,7 @@
                         </div>
                         <div class="row">
                             <div class="large-12 columns">
-                                <button class="button large-12 columns">Play</button>
+                                <button class="button large-12 columns" id="add_active_button" ng-click="addActiveStation(tempStation)">Play</button>
                             </div>
                         </div>
                     </form>
@@ -57,23 +56,13 @@
                     <h6 class="text-center">Waiting List</h6>
                     <!-- Queue List -->
                     <div class="queue-list large-10 columns large-centered">
-                        <div class="">
-                            <h6 class="queue-name left">Erwin Angeles</h6>
-                            <a class="queue-remove right">&#215;</a>
-                            <h6 class="check-in right">3:30 PM</h6>
+                        <div ng-repeat="queuedPlayer in playerQueue | toArray">
+                            <h6 class="queue-name left">queuedPlayer.playerEmail</h6>
+                            <a class="queue-remove right" ng-click="removeFromQueue(queuedPlayer.$key)">&#215;</a>
+                            <h6 class="check-in right">queuedPlayer.timeIn</h6>
                         </div>
                         <div class="queue-system">
-                            <h6 class="large-12 left">PS4</h6>
-                        </div>
-                    </div>
-                    <div class="queue-list large-10 columns large-centered">
-                        <div class="">
-                            <h6 class="queue-name left">Erwin Angeles</h6>
-                            <a class="queue-remove right">&#215;</a>
-                            <h6 class="check-in right">3:30 PM</h6>
-                        </div>
-                        <div class="queue-system">
-                            <h6 class="large-12 left">PS4</h6>
+                            <h6 class="large-12 left">queuedPlayer.system</h6>
                         </div>
                     </div>
                     <div class="large-10 columns large-centered">
