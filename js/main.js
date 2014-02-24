@@ -145,6 +145,13 @@ wgl.config(function ($routeProvider){
 //                factory: checkPermission
 //            }
         })
+        .when("/stations", {
+            title: 'Stations',
+            templateUrl:"partials/stations.html",
+//            resolve: {
+//                factory: checkPermission
+//            }
+        })
         .otherwise({
         	redirectTo:"/",
         	title: "Home"

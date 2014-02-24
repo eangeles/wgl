@@ -1,16 +1,14 @@
-var crudControllers = angular.module('crudControllers', []);
+wgl.controller('gameController', ['$scope', function($scope) {
+	var urlGames = "https://wgl.firebaseio.com/wgl/games";
+    
+    //collects the info from the database for use.
+    $scope.games = $firebase(new Firebase(urlGames));
 
-crudControllers.controller('gameController', ['$scope', 'angularFireCollection','$rootScope', function($scope, angularFireCollection,$rootScope) {
-	var urlGames = new Firebase("https://wingaminglounge.firebaseio.com/wingaminglounge/games");
-	//collects the info from the database for use.
-	$scope.games = angularFireCollection(urlGames);
-
-    var id;
+//    var id;
     $scope.typing = false;
+    $scope.limit = 5;
     //Select Game from search input
     $scope.selectGame = function(game){
-        console.log(game);
-        $scope.limit = 5;
         id = game.$id;
         ref = game.$ref;
         $scope.gameInfos = angular.fromJson(angular.toJson(game));
@@ -69,11 +67,14 @@ crudControllers.controller('gameController', ['$scope', 'angularFireCollection',
 
 
 //Station Crud
-crudControllers.controller('stationController', ['$scope', 'angularFireCollection','$rootScope','$location', function($scope,angularFireCollection,$rootScope,$location) {
+wgl.controller('stationController', ['$scope','$location', function($scope,$location) {
 	//urls to the data needed
-	var urlStations = new Firebase('https://wingaminglounge.firebaseio.com/wingaminglounge/stations'); //Stations Firebase
-	var urlEmptyStations = new Firebase('https://wingaminglounge.firebaseio.com/wingaminglounge/emptyStations')//Empty Stations Firebase
+	var urlStations = "https://wingaminglounge.firebaseio.com/wingaminglounge/stations";
+	var urlEmptyStations = "https://wingaminglounge.firebaseio.com/wingaminglounge/emptyStations";
 	//collects the info from the database for use.
+    $scope.stations = $firebase(new Firebase(urlStations));
+    $scope.emptyStations = $firebase(new Firebase(urlEmptyStations));
+    
 	$scope.stations = angularFireCollection(urlStations);
 	$scope.emptyStations = angularFireCollection(urlEmptyStations);
     

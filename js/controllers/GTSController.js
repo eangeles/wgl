@@ -71,7 +71,7 @@ wgl.controller('gts', ['$scope','$routeParams','$firebase','$location','$timeout
     urlActiveStations.on('value', function(snapshot) {
         $scope.activeStations = $firebase(urlActiveStations);
         //starts the clocks
-         var startKillWatch = $scope.$watch('activeStations', function(){
+        var startKillWatch = $scope.$watch('activeStations', function(){
             $timeout(wrapper);
             startKillWatch();
         });
