@@ -91,8 +91,7 @@ wgl.controller('stationController', ['$scope','$firebase','$location', function(
                     } else if (station.stationTVSerial == "" || station.stationTVSerial == null) { //TV's Serial
                         console.log("Please enter a TV Serial");
                     } else {
-                        console.log("new station");
-                        //hard coded until we find the right way to implement
+                        //need to find a way to get a stationNumber
                         station.stationNumber = 1;
                         console.log(station);
                         $scope.stations.$add(station);
@@ -104,7 +103,6 @@ wgl.controller('stationController', ['$scope','$firebase','$location', function(
                 } //end if else
             } else if(typeof station !== 'undefined') {   
                 //If not new station, form will validate instead.
-                console.log("update station");
                 $scope.stations.update(station.$id);
             }
             $("#save_station_btn").css({backgroundColor: "#17A9CC"}).html("Save");

@@ -11,7 +11,6 @@
                     <dd><a href="#/users">Users</a></dd>
                     <dd><a href="#/stations">Stations</a></dd>
                     <dd><a href="#/games">Games</a></dd>
-                    <dd><a href="#/news">News</a></dd>
                 </dl>
                 <div class="gts-hr"><hr /> </div>
                 <!-- Add To GTS Form -->
@@ -27,7 +26,7 @@
                             <div class="select-station large-12 columns">
                                 <select ng-model="tempStation.stationNumber">
                                     <option value="" disabled selected>Select A Station</option>
-                                    <option>Dropdown</option>
+                                    <option ng-repeat="station in emptyStations">{{station.stationNumber}}</option>
                                 </select>
                             </div>
                         </div>
@@ -39,14 +38,15 @@
                         <div class="row">
                             <div class="select-time large-12 columns">
                                 <select ng-model="tempStation.countdown">
-                                    <option value="" disabled selected>How Long</option>
-                                    <option>30mins</option>
+                                    <option value="" disabled selected>How Long?</option>
+                                    <option>30</option>
+                                    <option>60</option>
                                 </select>
                             </div>
                         </div>
                         <div class="row">
                             <div class="large-12 columns">
-                                <button class="button large-12 columns" id="add_active_button" ng-click="addActiveStation(tempStation)">Play</button>
+                                <button class="button large-12 columns" id="add_active_btn" ng-click="addActiveStation(tempStation)">Play</button>
                             </div>
                         </div>
                     </form>
