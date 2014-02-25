@@ -1,5 +1,5 @@
 wgl.controller('gameController', ['$scope', function($scope) {
-	var urlGames = "https://wgl.firebaseio.com/wgl/games";
+	var urlGames = "https://thewgl.firebaseio.com/thewgl/games";
     
     //collects the info from the database for use.
     $scope.games = $firebase(new Firebase(urlGames));
@@ -19,29 +19,29 @@ wgl.controller('gameController', ['$scope', function($scope) {
 
     var isGameSaveClicked = false;
 	//create a game and adds it to the database
-	$scope.saveGame = function(info) {
+	$scope.saveGame = function(game) {
         if (isGameSaveClicked) {
-            if($scope.selectGames === "New Game"){
-                if ($scope.gameInfos == "" || $scope.gameInfos == null) {
+            if(game.selectGames === "New Game"){
+                if (game == "" || game == null) {
                     console.log("game does not exist");
                 } else {
                     //error checking for if fields are null
-                    if ($scope.gameInfos.gameSystem == "" || $scope.gameInfos.gameSystem == null) { //System
+                    if (game.gameSystem == "" || game.gameSystem == null) { //System
                         console.log("No game system given");
-                    } else if ($scope.gameInfos.gameTitle == "" || $scope.gameInfos.gameTitle == null) { //Game Title
+                    } else if (game.gameTitle == "" || game.gameTitle == null) { //Game Title
                         console.log("No game title given");
-                    } else if ($scope.gameInfos.gameArtUrl == "" || $scope.gameInfos.gameArtUrl == null) { // Game Box Art
+                    } else if (game.gameArtUrl == "" || game.gameArtUrl == null) { // Game Box Art
                         console.log("No game art url given");
-                    } else if ($scope.gameInfos.gameQuantity == "" || $scope.gameInfos.gameQuantity == null) { //Quantity
+                    } else if (game.gameQuantity == "" || game.gameQuantity == null) { //Quantity
                         console.log("No game quantity given");
                     } else {
-                        $scope.games.add($scope.gameInfos); //Adds to Firebase;
-                        console.log('new');
+                        $scope.games.$add($scope.gameInfos); //Adds to Firebase;
                     }
                 } //end if else
-                console.log('new game added');
             }else {
-                $scope.games.update($scope.gameInfos);
+                $scope.games.$update({
+                    //update game
+                });
             }
             $("#add_game_btn").css({backgroundColor: "#17A9CC"}).html("Save");
             isGameSaveClicked = false;
@@ -69,8 +69,8 @@ wgl.controller('gameController', ['$scope', function($scope) {
 //Station Crud
 wgl.controller('stationController', ['$scope','$firebase','$location', function($scope,$firebase,$location) {
 	//urls to the data needed
-	var urlStations = "https://wgl.firebaseio.com/wgl/stations";
-	var urlEmptyStations = "https://wgl.firebaseio.com/wgl/emptyStations";
+	var urlStations = "https://thewgl.firebaseio.com/thewgl/stations";
+	var urlEmptyStations = "https://thewgl.firebaseio.com/thewgl/emptyStations";
 	//collects the info from the database for use.
     $scope.stations = $firebase(new Firebase(urlStations));
     $scope.emptyStations = $firebase(new Firebase(urlEmptyStations));
