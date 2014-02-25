@@ -120,7 +120,17 @@ h1,h2,h3,h4,h5,h6{
 .search-img img{
     margin-bottom: 15px;
 }
-
+.admin-add button{
+    background: #008cba!important;
+    color: #fff;
+    height: 30px;
+    margin-top: 9px;
+}
+.admin-add button h6{
+    font-size: 0.8em;
+    margin-top: -7px;
+    text-transform: uppercase;
+}
 
 /*******
  Navigation
@@ -210,6 +220,7 @@ h1,h2,h3,h4,h5,h6{
     border: 2px solid #fff;
     /*margin: 5px 5px 0 -20px;*/
 }
+
 /*******
  News Page
  *******/

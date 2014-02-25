@@ -68,6 +68,8 @@ wgl.controller('leagues', ['$scope','$routeParams','$location','$rootScope','$fi
         $scope.team.name.$id = id;
         $scope.team.name.$ref = ref;
         $scope.userTyping = false;
+
+
     };
 
     //add match to league
