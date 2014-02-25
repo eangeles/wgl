@@ -1,16 +1,14 @@
-var crudControllers = angular.module('crudControllers', []);
+wgl.controller('gameController', ['$scope', function($scope) {
+	var urlGames = "https://thewgl.firebaseio.com/thewgl/games";
+    
+    //collects the info from the database for use.
+    $scope.games = $firebase(new Firebase(urlGames));
 
-crudControllers.controller('gameController', ['$scope', 'angularFireCollection','$rootScope', function($scope, angularFireCollection,$rootScope) {
-	var urlGames = new Firebase("https://wingaminglounge.firebaseio.com/wingaminglounge/games");
-	//collects the info from the database for use.
-	$scope.games = angularFireCollection(urlGames);
-
-    var id;
+//    var id;
     $scope.typing = false;
+    $scope.limit = 5;
     //Select Game from search input
     $scope.selectGame = function(game){
-        console.log(game);
-        $scope.limit = 5;
         id = game.$id;
         ref = game.$ref;
         $scope.gameInfos = angular.fromJson(angular.toJson(game));
@@ -21,29 +19,29 @@ crudControllers.controller('gameController', ['$scope', 'angularFireCollection',
 
     var isGameSaveClicked = false;
 	//create a game and adds it to the database
-	$scope.saveGame = function(info) {
+	$scope.saveGame = function(game) {
         if (isGameSaveClicked) {
-            if($scope.selectGames === "New Game"){
-                if ($scope.gameInfos == "" || $scope.gameInfos == null) {
+            if(game.selectGames === "New Game"){
+                if (game == "" || game == null) {
                     console.log("game does not exist");
                 } else {
                     //error checking for if fields are null
-                    if ($scope.gameInfos.gameSystem == "" || $scope.gameInfos.gameSystem == null) { //System
+                    if (game.gameSystem == "" || game.gameSystem == null) { //System
                         console.log("No game system given");
-                    } else if ($scope.gameInfos.gameTitle == "" || $scope.gameInfos.gameTitle == null) { //Game Title
+                    } else if (game.gameTitle == "" || game.gameTitle == null) { //Game Title
                         console.log("No game title given");
-                    } else if ($scope.gameInfos.gameArtUrl == "" || $scope.gameInfos.gameArtUrl == null) { // Game Box Art
+                    } else if (game.gameArtUrl == "" || game.gameArtUrl == null) { // Game Box Art
                         console.log("No game art url given");
-                    } else if ($scope.gameInfos.gameQuantity == "" || $scope.gameInfos.gameQuantity == null) { //Quantity
+                    } else if (game.gameQuantity == "" || game.gameQuantity == null) { //Quantity
                         console.log("No game quantity given");
                     } else {
-                        $scope.games.add($scope.gameInfos); //Adds to Firebase;
-                        console.log('new');
+                        $scope.games.$add($scope.gameInfos); //Adds to Firebase;
                     }
                 } //end if else
-                console.log('new game added');
             }else {
-                $scope.games.update($scope.gameInfos);
+                $scope.games.$update({
+                    //update game
+                });
             }
             $("#add_game_btn").css({backgroundColor: "#17A9CC"}).html("Save");
             isGameSaveClicked = false;
@@ -69,39 +67,45 @@ crudControllers.controller('gameController', ['$scope', 'angularFireCollection',
 
 
 //Station Crud
-crudControllers.controller('stationController', ['$scope', 'angularFireCollection','$rootScope','$location', function($scope,angularFireCollection,$rootScope,$location) {
+wgl.controller('stationController', ['$scope','$firebase','$location', function($scope,$firebase,$location) {
 	//urls to the data needed
-	var urlStations = new Firebase('https://wingaminglounge.firebaseio.com/wingaminglounge/stations'); //Stations Firebase
-	var urlEmptyStations = new Firebase('https://wingaminglounge.firebaseio.com/wingaminglounge/emptyStations')//Empty Stations Firebase
+	var urlStations = "https://thewgl.firebaseio.com/thewgl/stations";
+	var urlEmptyStations = "https://thewgl.firebaseio.com/thewgl/emptyStations";
 	//collects the info from the database for use.
-	$scope.stations = angularFireCollection(urlStations);
-	$scope.emptyStations = angularFireCollection(urlEmptyStations);
+    $scope.stations = $firebase(new Firebase(urlStations));
+    $scope.emptyStations = $firebase(new Firebase(urlEmptyStations));
     
     var isStationSaveClicked = false;
-    $scope.saveStation = function(){
+    $scope.saveStation = function(station){
         if (isStationSaveClicked) {
             // If new station, new station will be added to firebase
-            if($scope.selectStations === "New Station")
+            if(station.stationNumber === "New Station")
             {
-                if ($scope.stationInfos == "" || $scope.stationInfos == null) {
+                if (station == "" || station == null) {
                     console.log("Station does not exist");
                 } else {
-                    if ($scope.stationInfos.stationSystem == "" || $scope.stationInfos.stationSystem == null) { // The Station System
+                    if (station.stationSystem == "" || station.stationSystem == null) { // The Station System
                         console.log("No SystemTV given");
-                    } else if ($scope.stationInfos.stationTV == "" || $scope.stationInfos.stationTV == null) { //Station TV
+                    } else if (station.stationTV == "" || station.stationTV == null) { //Station TV
                         console.log("Please enter a TV");
-                    } else if ($scope.stationInfos.stationTVSerial == "" || $scope.stationInfos.stationTVSerial == null) { //TV's Serial
+                    } else if (station.stationTVSerial == "" || station.stationTVSerial == null) { //TV's Serial
                         console.log("Please enter a TV Serial");
                     } else {
-                        var stationsLength = $scope.stations.length+1;
-                        $scope.stationInfos.stationNumber = stationsLength;
-                        $scope.stations.add($scope.stationInfos);
-                        $scope.emptyStations.add({"stationNumber": stationsLength, "stationSystem": $scope.stationInfos.stationSystem});
+                        console.log("new station");
+                        //hard coded until we find the right way to implement
+                        station.stationNumber = 1;
+                        console.log(station);
+                        $scope.stations.$add(station);
+                        $scope.emptyStations.$add({
+                            "stationNumber": station.stationNumber, 
+                            "stationSystem": station.stationSystem
+                        });
                     }
                 } //end if else
-            } else if(typeof $scope.selectStations !== 'undefined') {   
+            } else if(typeof station !== 'undefined') {   
                 //If not new station, form will validate instead.
-                $scope.stations.update($scope.stationInfos.$id);
+                console.log("update station");
+                $scope.stations.update(station.$id);
             }
             $("#save_station_btn").css({backgroundColor: "#17A9CC"}).html("Save");
             isStationSaveClicked = false;

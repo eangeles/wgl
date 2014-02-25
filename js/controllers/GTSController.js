@@ -1,31 +1,13 @@
 wgl.controller('gts', ['$scope','$routeParams','$firebase','$location','$timeout','$rootScope', function mtCtrl($scope, $routeParams,$firebase,$location,$timeout,$rootScope){
     
-    //Unique naming conventions for style points and creativity
-    $rootScope.gameTitleasdf;
-    $rootScope.stationGamerasdf;
-    
     //Testing Integrating the Auto complete functionality
     $scope.gameTyping = false;
     $scope.userTyping = false;
     $scope.limit = 5;
     
-    //Select Game from search input
-    $scope.selectGame = function(game){
-        $scope.gameInfos = angular.fromJson(angular.toJson(game));
-        $rootScope.gameTitleasdf = $scope.gameInfos.gameArtUrl;
-        $scope.gameTyping = false;
-    }
-    
-    //Select User from search input
-    $scope.selectUser = function(gamer) {
-        $scope.userInfos = angular.fromJson(angular.toJson(gamer));
-        $rootScope.stationGamerasdf = $scope.userInfos.displayName;
-        $scope.userTyping = false; 
-    };
-    
     //Setting scope to use with the autocomplete
-    var urlGames = "https://wingaminglounge.firebaseio.com/wingaminglounge/games";
-    var urlUsers = "https://wingaminglounge.firebaseio.com/wingaminglounge/users";
+    var urlGames = "https://thewgl.firebaseio.com/thewgl/games";
+    var urlUsers = "https://thewgl.firebaseio.com/thewgl/users";
     
     $scope.games = $firebase(new Firebase(urlGames));
     $scope.users = $firebase(new Firebase(urlUsers));
@@ -66,12 +48,12 @@ wgl.controller('gts', ['$scope','$routeParams','$firebase','$location','$timeout
     };
     
     //************************************Active stations database***************************************************
-    var urlActiveStations = new Firebase('https://wgl.firebaseio.com/wgl/activeStations'); 
+    var urlActiveStations = new Firebase('https://thewgl.firebaseio.com/thewgl/activeStations'); 
     
     urlActiveStations.on('value', function(snapshot) {
         $scope.activeStations = $firebase(urlActiveStations);
         //starts the clocks
-         var startKillWatch = $scope.$watch('activeStations', function(){
+        var startKillWatch = $scope.$watch('activeStations', function(){
             $timeout(wrapper);
             startKillWatch();
         });
@@ -120,12 +102,12 @@ wgl.controller('gts', ['$scope','$routeParams','$firebase','$location','$timeout
     }
     
     //************************************Empty stations database***************************************************
-    var urlEmptyStations = 'https://wgl.firebaseio.com/wgl/emptyStations';
+    var urlEmptyStations = 'https://thewgl.firebaseio.com/thewgl/emptyStations';
     
     $scope.emptyStations = $firebase(new Firebase(urlEmptyStations));
     
     //*******************************************Alerts database****************************************************
-    var urlAlerts = 'https://wgl.firebaseio.com/wgl/alerts';
+    var urlAlerts = 'https://thewgl.firebaseio.com/thewgl/alerts';
     
     $scope.alerts = $firebase(new Firebase(urlAlerts));
     
@@ -138,7 +120,7 @@ wgl.controller('gts', ['$scope','$routeParams','$firebase','$location','$timeout
     }
     
     //******************************************Queue database*******************************************************
-    var urlPlayerQueue = "https://wgl.firebaseio.com/wgl/playerQueue";
+    var urlPlayerQueue = "https://thewgl.firebaseio.com/thewgl/playerQueue";
     
     $scope.playerQueue = $firebase(new Firebase(urlPlayerQueue));
     
