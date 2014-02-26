@@ -5,6 +5,14 @@ wgl.controller('news', ['$scope','$routeParams','$location','$rootScope','$fireb
     
     $scope.newsItem = $firebase(new Firebase("https://thewgl.firebaseio.com/thewgl/news/" + $routeParams.newsItemID));
     $scope.itemID = $routeParams.newsItemID;
+        
+    //TESTING FOR GTS
+    $scope.news.$on('loaded', function(snapshot) {
+        //var index = $scope.news.$getIndex().length;
+//        for (key in snapshot) {
+//            console.log(key);  
+//        }
+    });
     
     $scope.addNewsItem = function(newsItem) {
         var d = new Date();
