@@ -7,12 +7,12 @@
             <div class="page-content">
                 <div class="large-5 columns">
                     <div class="large-12 columns text-center">
-                        <img class="team-profile-logo" ng-src="{{selectedMatch.homeTeam.picture}}" alt="team-logo">
+                        <img class="team-profile-logo" ng-src="{{selectedLeagueMatch.homeTeam.picture}}" alt="team-logo">
                         <div ng-controller="teams" ng-repeat="team in teams | orderByPriority | limitTo: 1">
-                            <a ng-href="#/team/{{selectedMatch.homeTeam.key}}"><h3>{{selectedMatch.homeTeam.name}}</h3></a>
+                            <a ng-href="#/team/{{selectedLeagueMatch.homeTeam.key}}"><h3>{{selectedLeagueMatch.homeTeam.name}}</h3></a>
                         </div>
 
-                        <div ng-repeat="player in selectedMatch.homeTeam.players">
+                        <div ng-repeat="player in selectedLeagueMatch.homeTeam.players">
                             <div class="player-pics large-12 columns">
                                 <img class="match-player-image large-3" ng-src="{{player.profilePicture}}">
                             </div>
@@ -25,20 +25,20 @@
                 </div>
                 <div class="large-2 columns left">
                     <div class="match-vs large-12 text-center">
-                        <h3>{{selectedMatch.eventName}}</h3>
+                        <h3>{{selectedLeagueMatch.eventName}}</h3>
                         <h4>Versus</h4>
-                        <h6>{{selectedMatch.date}}</h6>
-                        <h6>{{selectedMatch.time}}</h6>
+                        <h6>{{selectedLeagueMatch.date}}</h6>
+                        <h6>{{selectedLeagueMatch.time}}</h6>
                     </div>
                 </div>
                 <div class="large-5 columns">
                     <div class="large-12 columns text-center">
-                        <img class="team-profile-logo" ng-src="{{selectedMatch.awayTeam.picture}}" alt="team-logo">
+                        <img class="team-profile-logo" ng-src="{{selectedLeagueMatch.awayTeam.picture}}" alt="team-logo">
                         <div ng-controller="teams">
-                            <a ng-href="#/team/{{selectedMatch.awayTeam.key}}"><h3>{{selectedMatch.awayTeam.name}}</h3></a>
+                            <a ng-href="#/team/{{selectedLeagueMatch.awayTeam.key}}"><h3>{{selectedLeagueMatch.awayTeam.name}}</h3></a>
                         </div>
 
-                        <div ng-repeat="player in selectedMatch.awayTeam.players">
+                        <div ng-repeat="player in selectedLeagueMatch.awayTeam.players">
                             <div class="player-pics large-12 columns">
                                 <img class="match-player-image large-3" ng-src="{{player.profilePicture}}">
                             </div>

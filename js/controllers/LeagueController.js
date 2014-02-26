@@ -32,8 +32,9 @@ wgl.controller('leagues', ['$scope','$routeParams','$location','$rootScope','$fi
 
     //Matches
     $scope.selectedLeagueMatches = $firebase(new Firebase("https://thewgl.firebaseio.com/thewgl/leagues/" + $routeParams.leagueID + "/matches"));
-
-    $scope.selectedLeagueMatch = $firebase(new Firebase("https://thewgl.firebaseio.com/thewgl/leagues/" + $routeParams.leagueID + "/matches"));
+    
+    //Specific Match
+    $scope.selectedLeagueMatch = $firebase(new Firebase("https://thewgl.firebaseio.com/thewgl/leagues/" + $routeParams.leagueID + "/matches/" + $routeParams.matchID));
     
     leagueRef.on('value', function(snapshot) {
         if(snapshot.val() === null) {
@@ -49,7 +50,7 @@ wgl.controller('leagues', ['$scope','$routeParams','$location','$rootScope','$fi
         //hardcoded until we figure out how to manage them
         team.wins =     5;
         team.losses =   10;
-
+        console.log(team);
         $scope.selectedLeagueTeams.$add(team);
         $location.path("/league/" + $routeParams.leagueID);
     }
@@ -63,15 +64,12 @@ wgl.controller('leagues', ['$scope','$routeParams','$location','$rootScope','$fi
     //add team to league
     $scope.userTyping = false;
     $scope.selectTeam = function(team) {
-        id = team.$id;
-        ref = team.$ref;
+        if (team.players) {
+            $scope.team.players = team.players;
+        }
         $scope.team.name = angular.fromJson(angular.toJson(team.name));
         $scope.team.picture = angular.fromJson(angular.toJson(team.picture));
-        $scope.team.name.$id = id;
-        $scope.team.name.$ref = ref;
         $scope.userTyping = false;
-
-
     };
 
     //add match to league
