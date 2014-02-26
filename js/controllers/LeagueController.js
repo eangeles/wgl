@@ -107,14 +107,11 @@ wgl.controller('leagues', ['$scope','$routeParams','$location','$rootScope','$fi
         console.log(outcome, test);
     }
 
-//    var updateRef = "";
-    $scope.updateStanding = function(standing){
-        console.log(standing);
-        var updateRef = new Firebase("https://thewgl.firebaseio.com/thewgl/leagues/" + $routeParams.leagueID + "/teams/"+ $routeParams.teamID);
+    $scope.updateStanding = function(standing, teamID){
+        var updateRef = new Firebase("https://thewgl.firebaseio.com/thewgl/leagues/" + $routeParams.leagueID + "/teams/"+ teamID);
         updateRef.update({
             wins: standing.wins,
             losses: standing.losses
-
         });
     }
 
