@@ -30,6 +30,8 @@
                         <h6>{{selectedLeagueMatch.date}}</h6>
                         <h6>{{selectedLeagueMatch.time}}</h6>
                     </div>
+
+                    <button id="team-standing" data-reveal-id="team-standing-modal">Update Standings</button>
                 </div>
                 <div class="large-5 columns">
                     <div class="large-12 columns text-center">
@@ -59,13 +61,50 @@
                     </div>
 
                 </div>
-                <div id="disqus_thread" class="large-9 columns large-centered"></div>
+                <div class="large-9 columns large-centered">
+                    <dir-disqus disqus-shortname="wingaming"
+                                disqus-identifier="{{selectedLeagueMatch.time}}"
+                                disqus-title="{{selectedLeagueMatch.date}}"
+                                disqus-url="http://localhost:8888/wgl/#/leaguematch/"
+                                    disqus-category-id="leagueMatch"
+                                disqus-disable-mobile="false">
+                    </dir-disqus>
+                </div>
+
+                <!--<div id="disqus_thread" class="large-9 columns large-centered"></div>-->
             </div><!-- Page Content -->
         </div><!-- End Page Container -->
     </div> <!-- End Row -->
 </div><!-- End Page -->
 <!-- Disqus Script -->
-<dir-disqus disqus-shortname="wingaming"
-            disqus-identifier="{{ article.id }}"
-            disqus-title="{{ article.title }}">
-</dir-disqus>
+<div id="team-standing-modal" class="reveal-modal small" data-reveal>
+    <!-- Standings Column -->
+    <div class="large-12 columns" ng-controller="leagues">
+        <table>
+            <thead>
+            <tr>
+                <th width="50">Rank</th>
+                <th width="750">Team Name</th>
+                <th width="100">Win</th>
+                <th width="100">Lose</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="leagueTeam in selectedLeagueTeams | toArray">
+                <td>{{$index+1}}</td>
+                <td><a href="#/team/{{leagueTeam.$key}}">{{leagueTeam.name}}</a></td>
+                <td><input type="text" placeholder="{{leagueTeam.wins}}" value="" ng-model="standing.wins"></td>
+                <td><input type="text" placeholder="{{leagueTeam.losses}}" value="" ng-model="standing.losses"></td>
+                <td><button class="button" ng-click="updateStanding(standing)">Update</button></td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+    <a class="close-reveal-modal">&#215;</a>
+</div>
+
+<script>
+    $(document).foundation();
+</script>

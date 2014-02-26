@@ -29,9 +29,11 @@
                         <h4>Versus</h4>
                         <h6>{{selectedMatch.date}}</h6>
                         <h6>{{selectedMatch.time}}</h6>
-                        <h6></h6>
+                        <h6>{{selectedMatch.name}}</h6>
                     </div>
+
                 </div>
+
                 <div class="large-5 columns">
                     <div class="large-12 columns text-center">
                         <img class="team-profile-logo" ng-src="{{selectedMatch.awayTeam.picture}}" alt="team-logo">
@@ -64,9 +66,9 @@
             </div><!-- Page Content -->
         </div><!-- End Page Container -->
     </div> <!-- End Row -->
+    <!-- Disqus Script -->
+    <dir-disqus disqus-shortname="wingaming"
+                disqus-identifier="{{selectedMatch.homeTeam.name}}vs{{selectedMatch.awayTeam.name}}"
+                disqus-title="{{selectedmatch.date}}">
+    </dir-disqus>
 </div><!-- End Page -->
-<!-- Disqus Script -->
-<dir-disqus disqus-shortname="wingaming"
-            disqus-identifier="{{test}}"
-            disqus-title="{{selectedmatch.date }}">
-</dir-disqus>

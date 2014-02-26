@@ -36,7 +36,7 @@ wgl.controller('leagues', ['$scope','$routeParams','$location','$rootScope','$fi
 
     //Specific Match
     $scope.selectedLeagueMatch = $firebase(new Firebase("https://thewgl.firebaseio.com/thewgl/leagues/" + $routeParams.leagueID + "/matches/" + $routeParams.matchID));
-    
+
 
     leagueRef.on('value', function(snapshot) {
         if(snapshot.val() === null) {
@@ -56,7 +56,7 @@ wgl.controller('leagues', ['$scope','$routeParams','$location','$rootScope','$fi
         $scope.selectedLeagueTeams.$add(team);
         $location.path("/league/" + $routeParams.leagueID);
     }
-    
+
     $scope.addMatchToLeague = function(match) {
         console.log(match);
         $scope.selectedLeagueMatches.$add(match);
@@ -92,6 +92,42 @@ wgl.controller('leagues', ['$scope','$routeParams','$location','$rootScope','$fi
         $scope.match.homeTeam = team;
         $scope.homeTeamTyping = false;
     };
+
+    $scope.selectWinner = function(outcome, test){
+
+        if($scope.match.selectWinner){
+            $scope.match.selectWinner = outcome;
+            console.log('winner');
+        }
+        if($scope.match.selectLoser){
+            $scope.match.selectLoser = test;
+            console.log($scope.match.selectLoser);
+        }
+
+        console.log(outcome, test);
+    }
+
+//    var updateRef = "";
+    $scope.updateStanding = function(standing){
+        console.log(standing);
+        var updateRef = new Firebase("https://thewgl.firebaseio.com/thewgl/leagues/" + $routeParams.leagueID + "/teams/"+ $routeParams.teamID);
+        updateRef.update({
+            wins: standing.wins,
+            losses: standing.losses
+
+        });
+    }
+
+//    var updateRef = "";
+//    $scope.updateNewsItem = function(post) {
+//        updateRef = $firebase(new Firebase("https://thewgl.firebaseio.com/thewgl/teams/"));
+//        updateRef.update({
+//            image: post.image,
+//            title: post.title,
+//            content: post.content
+//        });
+//        $location.path("/news");
+//    }
 
 }]);
 
