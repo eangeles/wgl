@@ -32,16 +32,12 @@ wgl.controller('leagues', ['$scope','$routeParams','$location','$rootScope','$fi
 
     //Matches
     $scope.selectedLeagueMatches = $firebase(new Firebase("https://thewgl.firebaseio.com/thewgl/leagues/" + $routeParams.leagueID + "/matches"));
-<<<<<<< HEAD
 
-    $scope.selectedLeagueMatch = $firebase(new Firebase("https://thewgl.firebaseio.com/thewgl/leagues/" + $routeParams.leagueID + "/matches"));
 
-=======
-    
     //Specific Match
     $scope.selectedLeagueMatch = $firebase(new Firebase("https://thewgl.firebaseio.com/thewgl/leagues/" + $routeParams.leagueID + "/matches/" + $routeParams.matchID));
     
->>>>>>> 71fc2194998c4d20b90fdc07308c34b700000173
+
     leagueRef.on('value', function(snapshot) {
         if(snapshot.val() === null) {
 
