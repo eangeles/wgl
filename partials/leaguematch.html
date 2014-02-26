@@ -94,7 +94,7 @@
             <tr ng-repeat="leagueTeam in selectedLeagueTeams | toArray">
                 <td>{{$index+1}}</td>
                 <td><a href="#/team/{{leagueTeam.$key}}">{{leagueTeam.name}}</a></td>
-                <td><input type="hidden" ng-model="standing.leagueTeam" value="{{leagueTeam}}"></td>
+                <input type="hidden" ng-model="standing.leagueTeam" value="{{leagueTeam}}">
                 <td><input type="text" placeholder="{{leagueTeam.wins}}" value="" ng-model="standing.wins"></td>
                 <td><input type="text" placeholder="{{leagueTeam.losses}}" value="" ng-model="standing.losses"></td>
                 <td><button class="button" ng-click="updateStanding(standing, leagueTeam.$key)">Update</button></td>
