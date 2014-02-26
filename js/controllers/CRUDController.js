@@ -1,4 +1,4 @@
-wgl.controller('gameController', ['$scope', function($scope) {
+wgl.controller('gameController', ['$scope','$firebase', function($scope,$firebase) {
 	var urlGames = "https://thewgl.firebaseio.com/thewgl/games";
     
     //collects the info from the database for use.
