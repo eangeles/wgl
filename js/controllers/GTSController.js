@@ -25,8 +25,18 @@ wgl.controller('gts', ['$scope','$routeParams','$firebase','$location','$timeout
     //all the timers with the correct time by calculating the change in time between
     //start time and the display time and reflects that in the html.
     var updateTimer = function(){
+        //=========================================
+        //NEW CODE NEEDED TO CONVERT AND GET LENGTH
+        //=========================================
+//        $scope.surveys = $firebase(new Firebase(yourFBUrl));
+//
+//        $scope.surveys.$on("loaded", function() {
+//           var keys = $scope.surveys.$getIndex();
+//           console.log("count: " + keys.length); 
+//        });
         for (var i = $scope.activeStations.length - 1; i >= 0; i--) {
             time = new Date().getTime() - $scope.activeStations[i].startTime;
+            //use $scope.activeStations.$getIndex(i)? instead of [i]
             $scope.activeStations[i].displayTime = parseInt($scope.activeStations[i].countdown - (time/1000/60));
             //Checks if the time is up and removes from active adds to empty and 
             //throws an alert to display the user info of the last station
@@ -63,23 +73,23 @@ wgl.controller('gts', ['$scope','$routeParams','$firebase','$location','$timeout
     //create a active station and adds it to the database
     $scope.addActiveStation = function(tempActiveStation){
         if (isActiveClicked){
-            //Select system by whatever system the chosen game supports?
-            tempActiveStation.stationGamer= $rootScope.stationGamerasdf;
-            tempActiveStation.gameArt = $rootScope.gameTitleasdf;
             tempActiveStation.startTime = new Date().getTime();
             
+            console.log(tempActiveStation);
+            console.log(tempActiveStation.stationNumber)
             //Set to override the countdown dropdown
             /*tempActiveStation.countdown = "number value here";*/
             
             //When adding to active it loops through the empty stations and finds that
             //corresponding station and removes it so it only shows in activeStations
-            for (var i = 0; i < $scope.emptyStations.length; i++) {
+            /*for (var i = 0; i < $scope.emptyStations.length; i++) {
                 if ($scope.emptyStations[i].stationNumber == tempActiveStation.stationNumber) {
                     $scope.emptyStations.$remove($scope.emptyStations[i].$id);
                     tempActiveStation.stationSystem = $scope.emptyStations[i].stationSystem;
                 }
             }            
             $scope.activeStations.add(tempActiveStation);
+            */
             
             $("#add_active_btn").css({backgroundColor: "#17A9CC"}).html("Start");
             isActiveClicked = false;
@@ -125,6 +135,7 @@ wgl.controller('gts', ['$scope','$routeParams','$firebase','$location','$timeout
     $scope.playerQueue = $firebase(new Firebase(urlPlayerQueue));
     
     var isQueueClicked = false;
+    //make a var for queue button so its reusable?
     $scope.addToPlayerQueue = function(playerRequest) { 
         console.log("clicked", isQueueClicked);
         if (isQueueClicked){

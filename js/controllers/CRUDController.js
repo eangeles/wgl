@@ -4,7 +4,6 @@ wgl.controller('gameController', ['$scope', function($scope) {
     //collects the info from the database for use.
     $scope.games = $firebase(new Firebase(urlGames));
 
-//    var id;
     $scope.typing = false;
     $scope.limit = 5;
     //Select Game from search input
@@ -35,7 +34,8 @@ wgl.controller('gameController', ['$scope', function($scope) {
                     } else if (game.gameQuantity == "" || game.gameQuantity == null) { //Quantity
                         console.log("No game quantity given");
                     } else {
-                        $scope.games.$add($scope.gameInfos); //Adds to Firebase;
+                        console.log(game);
+                        //$scope.games.$add(game); 
                     }
                 } //end if else
             }else {
@@ -57,7 +57,7 @@ wgl.controller('gameController', ['$scope', function($scope) {
         if (isGameDeletedClicked) {
             $("#delete_game_btn").html("Delete");
             isGameDeletedClicked = false;
-            $scope.games.remove(game.$id);
+            $scope.games.$remove(game.$id);
         } else {
             $("#delete_game_btn").html("Are you sure?");
             isGameDeletedClicked = true;
@@ -91,8 +91,7 @@ wgl.controller('stationController', ['$scope','$firebase','$location', function(
                     } else if (station.stationTVSerial == "" || station.stationTVSerial == null) { //TV's Serial
                         console.log("Please enter a TV Serial");
                     } else {
-                        console.log("new station");
-                        //hard coded until we find the right way to implement
+                        //need to find a way to get a stationNumber
                         station.stationNumber = 1;
                         console.log(station);
                         $scope.stations.$add(station);
@@ -104,7 +103,6 @@ wgl.controller('stationController', ['$scope','$firebase','$location', function(
                 } //end if else
             } else if(typeof station !== 'undefined') {   
                 //If not new station, form will validate instead.
-                console.log("update station");
                 $scope.stations.update(station.$id);
             }
             $("#save_station_btn").css({backgroundColor: "#17A9CC"}).html("Save");
