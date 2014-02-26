@@ -4,7 +4,6 @@ wgl.controller('gameController', ['$scope', function($scope) {
     //collects the info from the database for use.
     $scope.games = $firebase(new Firebase(urlGames));
 
-//    var id;
     $scope.typing = false;
     $scope.limit = 5;
     //Select Game from search input
@@ -35,7 +34,8 @@ wgl.controller('gameController', ['$scope', function($scope) {
                     } else if (game.gameQuantity == "" || game.gameQuantity == null) { //Quantity
                         console.log("No game quantity given");
                     } else {
-                        $scope.games.$add($scope.gameInfos); //Adds to Firebase;
+                        console.log(game);
+                        //$scope.games.$add(game); 
                     }
                 } //end if else
             }else {
@@ -57,7 +57,7 @@ wgl.controller('gameController', ['$scope', function($scope) {
         if (isGameDeletedClicked) {
             $("#delete_game_btn").html("Delete");
             isGameDeletedClicked = false;
-            $scope.games.remove(game.$id);
+            $scope.games.$remove(game.$id);
         } else {
             $("#delete_game_btn").html("Are you sure?");
             isGameDeletedClicked = true;
