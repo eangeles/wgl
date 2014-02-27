@@ -1,4 +1,4 @@
-wgl.controller('gameController', ['$scope', function($scope) {
+wgl.controller('gameController', ['$scope','$firebase','$location', function($scope,$firebase,$location) {
 	var urlGames = "https://thewgl.firebaseio.com/thewgl/games";
     
     //collects the info from the database for use.
@@ -7,20 +7,25 @@ wgl.controller('gameController', ['$scope', function($scope) {
     $scope.typing = false;
     $scope.limit = 5;
     //Select Game from search input
-    $scope.selectGame = function(game){
-        id = game.$id;
-        ref = game.$ref;
-        $scope.gameInfos = angular.fromJson(angular.toJson(game));
-        $scope.gameInfos.$id = id;
-        $scope.gameInfos.$ref = ref;
-        $scope.typing = false;
+    $scope.selectGame = function(game, type){
+        if (type == "New Game") {
+            //do nothing    
+        } else {
+            console.log(game);
+            id = game.$key;
+            ref = game.$ref;
+            $scope.gameInfos = angular.fromJson(angular.toJson(game));
+            $scope.gameInfos.$id = id;
+            $scope.gameInfos.$ref = ref;
+            $scope.typing = false;
+        }
     }
 
     var isGameSaveClicked = false;
 	//create a game and adds it to the database
-	$scope.saveGame = function(game) {
+	$scope.saveGame = function(game, type) {
         if (isGameSaveClicked) {
-            if(game.selectGames === "New Game"){
+            if(type === "New Game"){
                 if (game == "" || game == null) {
                     console.log("game does not exist");
                 } else {
@@ -35,13 +40,15 @@ wgl.controller('gameController', ['$scope', function($scope) {
                         console.log("No game quantity given");
                     } else {
                         console.log(game);
-                        //$scope.games.$add(game); 
+                        $scope.games.$add(game); 
+                        $location.path("/gts");
                     }
                 } //end if else
             }else {
-                $scope.games.$update({
+                console.log("update");
+                //$scope.games.$update({
                     //update game
-                });
+                //});
             }
             $("#add_game_btn").css({backgroundColor: "#17A9CC"}).html("Save");
             isGameSaveClicked = false;
