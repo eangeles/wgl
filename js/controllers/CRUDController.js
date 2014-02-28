@@ -3,24 +3,7 @@ wgl.controller('gameController', ['$scope','$firebase','$location', function($sc
     
     //collects the info from the database for use.
     $scope.games = $firebase(new Firebase(urlGames));
-
-    $scope.typing = false;
-    $scope.limit = 5;
-    //Select Game from search input
-    $scope.selectGame = function(game, type){
-        if (type == "New Game") {
-            //do nothing    
-        } else {
-            console.log(game);
-            id = game.$key;
-            ref = game.$ref;
-            $scope.gameInfos = angular.fromJson(angular.toJson(game));
-            $scope.gameInfos.$id = id;
-            $scope.gameInfos.$ref = ref;
-            $scope.typing = false;
-        }
-    }
-
+    
     var isGameSaveClicked = false;
 	//create a game and adds it to the database
 	$scope.saveGame = function(game, type) {
