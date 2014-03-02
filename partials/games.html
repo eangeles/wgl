@@ -104,8 +104,8 @@
         <div class="large-12 medium-5 small-12 columns medium-centered large-centered">
             <input type="text" autocomplete="off" placeholder="Search Or Add Game" ng-model="gameInfos.gameTitle" ng-change="typing=true" required>
             <ul ng-show="typing">
-                <li ng-repeat="game in games | filter:gameInfos.gameTitle | limitTo:limit | orderBy:'gameTitle'">
-                    <a ng-click="selectGame(game)">
+                <li ng-repeat="game in games | toArray | filter:gameInfos.gameTitle | limitTo:limit | orderBy:'gameTitle'">
+                    <a ng-click="selectGame(game, game.$key, game.$id, game.$post)">
                         <div class="row">
                             <div class="searchOutcome large-12 columns">
                                 <h6 class="left inline-list">{{game.gameTitle}}</h6>
