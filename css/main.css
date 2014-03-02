@@ -399,7 +399,7 @@ h1,h2,h3,h4,h5,h6{
 .gts-hr {
     padding: 0 20px 0 20px;
 }
-.select-station, .select-time, .select-margin{
+.select-station, .select-time, .select-margin, textarea{
     margin-bottom: 15px;
 }
 .queue-remove{
@@ -464,6 +464,15 @@ h1,h2,h3,h4,h5,h6{
  *******/
 .match-player-image{
 
+}
+
+/*******
+ Admin pages
+ *******/
+
+.searchImg{
+    height: 50px;
+    width: 45px;
 }
 
 /* Media Queries */

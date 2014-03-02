@@ -17,7 +17,7 @@ wgl.controller('gts', ['$scope','$routeParams','$firebase','$location','$timeout
         updateTimer();
         $timeout(wrapper, 5000);
     }    
-    
+
     //variables used in updateTimer function
     var time,alert;
     
@@ -36,18 +36,13 @@ wgl.controller('gts', ['$scope','$routeParams','$firebase','$location','$timeout
 //        });
         for (var i = $scope.activeStations.length - 1; i >= 0; i--) {
             time = new Date().getTime() - $scope.activeStations[i].startTime;
-            //use $scope.activeStations.$getIndex(i)? instead of [i]
             $scope.activeStations[i].displayTime = parseInt($scope.activeStations[i].countdown - (time/1000/60));
-            //Checks if the time is up and removes from active adds to empty and 
-            //throws an alert to display the user info of the last station
             if($scope.activeStations[i].displayTime <= 0){ 
-                //throw alert for station time up                   
                 alert = {
                     "user": $scope.activeStations[i].stationGamer,
                     "stationNumber": $scope.activeStations[i].stationNumber
                 }
                 $scope.alerts.$add(alert);
-                
                 $scope.emptyStations.$add({
                     "stationNumber": $scope.activeStations[i].stationNumber, 
                     "stationSystem": $scope.activeStations[i].stationSystem
@@ -168,7 +163,7 @@ wgl.controller('gts', ['$scope','$routeParams','$firebase','$location','$timeout
             playerRequest.checkedIn = dformat;
                         
             $scope.playerQueue.$add(playerRequest);
-            isQueueClicked = false;
+                isQueueClicked = false;
             $("#add_queue_btn").css({backgroundColor: "#17A9CC"}).html("Add");
         } else {
             isQueueClicked = true;

@@ -1909,7 +1909,7 @@ button, .button {
     padding-left: 2rem;
     font-size: 1rem;
     /*     @else                            { font-size: $padding - rem-calc(2); } */
-    background-color: #0f596f;
+    background-color: #008cba;
     border-color: #0079a1;
     color: white;
     -webkit-transition: background-color 300ms ease-out;
@@ -3320,9 +3320,9 @@ blockquote p {
     height: auto;
     margin-left: -40%;
     width: 80%;
-    background-color: white;
+    background-color: #222;
     padding: 1.25rem;
-    border: solid 1px #666666;
+    border: solid 1px #333;
     -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
     top: 50px; }

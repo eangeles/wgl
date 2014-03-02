@@ -6,40 +6,47 @@ wgl.controller('gameController', ['$scope','$firebase','$location', function($sc
     
     var isGameSaveClicked = false;
 	//create a game and adds it to the database
-	$scope.saveGame = function(game, type) {
-        if (isGameSaveClicked) {
-            if(type === "New Game"){
-                if (game == "" || game == null) {
-                    console.log("game does not exist");
-                } else {
-                    //error checking for if fields are null
-                    if (game.gameSystem == "" || game.gameSystem == null) { //System
-                        console.log("No game system given");
-                    } else if (game.gameTitle == "" || game.gameTitle == null) { //Game Title
-                        console.log("No game title given");
-                    } else if (game.gameArtUrl == "" || game.gameArtUrl == null) { // Game Box Art
-                        console.log("No game art url given");
-                    } else if (game.gameQuantity == "" || game.gameQuantity == null) { //Quantity
-                        console.log("No game quantity given");
-                    } else {
-                        console.log(game);
-                        $scope.games.$add(game); 
-                        $location.path("/gts");
-                    }
-                } //end if else
-            }else {
-                console.log("update");
-                //$scope.games.$update({
-                    //update game
-                //});
-            }
-            $("#add_game_btn").css({backgroundColor: "#17A9CC"}).html("Save");
-            isGameSaveClicked = false;
-        } else {
-            $("#add_game_btn").css({backgroundColor: "#458B00"}).html("Are you sure?");
-            isGameSaveClicked = true;
-        }
+	$scope.saveGame = function(game) {
+        $scope.games.$add(game);
+        $location.path("/gts");
+
+//        if (isGameSaveClicked) {
+//            if (game == "" || game == null) {
+//                console.log("game does not exist");
+//            } else {
+//                //error checking for if fields are null
+//                if (game.gameSystem == "" || game.gameSystem == null) { //System
+//                    console.log("No game system given");
+//                } else if (game.gameTitle == "" || game.gameTitle == null) { //Game Title
+//                    console.log("No game title given");
+//                } else if (game.gameArtUrl == "" || game.gameArtUrl == null) { // Game Box Art
+//                    console.log("No game art url given");
+//                } else if (game.gameQuantity == "" || game.gameQuantity == null) { //Quantity
+//                    console.log("No game quantity given");
+//                } else {
+//                    console.log(game);
+//                    $scope.games.$add(game);
+//                    $location.path("/games");
+//                }
+//            } //end if else
+//            $("#add_game_btn").css({backgroundColor: "#17A9CC"}).html("Save");
+//            isGameSaveClicked = false;
+//        } else {
+//            $("#add_game_btn").css({backgroundColor: "#458B00"}).html("Are you sure?");
+//            isGameSaveClicked = true;
+//        }
 	} //end addGame
+
+    $scope.updateGames = function(game, gameId){
+//        var updateRef = new Firebase("https://thewgl.firebaseio.com/thewgl/games/"+ gameId);
+//        updateRef.update({
+//            gameArtUrl: game.gameArtUrl,
+//            gameQuantity: game.gameQuantity,
+//            gameSystem: game.gameSystem,
+//            gameTitle: game.gameTitle
+//        });
+        console.log(game);
+    }
 
     var isGameDeletedClicked = false;
     //removes from firebase
@@ -53,6 +60,18 @@ wgl.controller('gameController', ['$scope','$firebase','$location', function($sc
             isGameDeletedClicked = true;
         }
     }
+
+    $scope.typing = false;
+    $scope.selectGame = function(game) {
+        game.key = game.$key;
+        $scope.gameInfos.gameTitle = game.gameTitle;
+        $scope.gameInfos.gameSystem = game.gameSystem;
+        $scope.gameInfos.gameArtUrl = game.gameArtUrl;
+        $scope.gameInfos.gameQuantity = game.gameQuantity;
+        $scope.typing = false;
+
+        console.log(game.key)
+    };
 }]);
 
 
