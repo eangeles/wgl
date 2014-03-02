@@ -38,13 +38,22 @@ wgl.controller('gameController', ['$scope','$firebase','$location', function($sc
 	} //end addGame
 
     $scope.updateGame = function(game){
+<<<<<<< HEAD
         var updateRef = new Firebase("https://thewgl.firebaseio.com/thewgl/games/"+ game.gameId);
+=======
+        var id = $('#gameId').val();
+        var updateRef = new Firebase("https://thewgl.firebaseio.com/thewgl/games/"+ id);
+>>>>>>> FETCH_HEAD
         updateRef.update({
             gameArtUrl: game.gameArtUrl,
             gameQuantity: game.gameQuantity,
             gameSystem: game.gameSystem,
             gameTitle: game.gameTitle
         });
+<<<<<<< HEAD
+=======
+
+>>>>>>> FETCH_HEAD
     }
 
     var isGameDeletedClicked = false;
@@ -61,13 +70,23 @@ wgl.controller('gameController', ['$scope','$firebase','$location', function($sc
     }
 
     $scope.typing = false;
+<<<<<<< HEAD
     $scope.selectGame = function(game, id) {
+=======
+    $scope.selectGame = function(game,gameId) {
+>>>>>>> FETCH_HEAD
         $scope.gameInfos.gameTitle = game.gameTitle;
         $scope.gameInfos.gameSystem = game.gameSystem;
         $scope.gameInfos.gameArtUrl = game.gameArtUrl;
         $scope.gameInfos.gameQuantity = game.gameQuantity;
+<<<<<<< HEAD
         $scope.gameInfos.gameId = id;
         $scope.typing = false;
+=======
+        $scope.typing = false;
+
+        console.log(id);
+>>>>>>> FETCH_HEAD
     };
 }]);
 
