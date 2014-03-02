@@ -132,7 +132,6 @@ wgl.controller('gts', ['$scope','$routeParams','$firebase','$location','$timeout
     var isQueueClicked = false;
     //make a var for queue button so its reusable?
     $scope.addToPlayerQueue = function(playerRequest) { 
-        console.log("clicked", isQueueClicked);
         if (isQueueClicked){
             //Grabs a date and seperates it into hours and minutes
             var d = new Date();
@@ -163,7 +162,7 @@ wgl.controller('gts', ['$scope','$routeParams','$firebase','$location','$timeout
             playerRequest.checkedIn = dformat;
                         
             $scope.playerQueue.$add(playerRequest);
-                isQueueClicked = false;
+            isQueueClicked = false;
             $("#add_queue_btn").css({backgroundColor: "#17A9CC"}).html("Add");
         } else {
             isQueueClicked = true;
@@ -172,6 +171,7 @@ wgl.controller('gts', ['$scope','$routeParams','$firebase','$location','$timeout
     }
     
     $scope.removeFromQueue = function(playerID) {
+//        console.log(playerID);
         $scope.playerQueue.$remove(playerID);
     }
     
