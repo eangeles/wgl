@@ -55,18 +55,18 @@
                 <div class="large-6 columns">
                     <h6 class="text-center">Waiting List</h6>
                     <!-- Queue List -->
-                    <div class="queue-list large-10 columns large-centered">
-                        <div ng-repeat="queuedPlayer in playerQueue | toArray">
-                            <h6 class="queue-name left">{{queuedPlayer.playerEmail}}</h6>
+                    <div class="queue-list large-10 columns large-centered"  ng-repeat="queuedPlayer in playerQueue | toArray">
+                        <div>
+                            <h6 class="queue-name left">{{queuedPlayer.name}}</h6>
                             <a class="queue-remove right" ng-click="removeFromQueue(queuedPlayer.$key)">&#215;</a>
-                            <h6 class="check-in right">{{queuedPlayer.timeIn}}</h6>
+                            <h6 class="check-in right">{{queuedPlayer.checkedIn}}</h6>
                         </div>
                         <div class="queue-system">
-                            <h6 class="large-12 left">{{queuedPlayer.system}}</h6>
+                            <h6 class="large-12 left">{{queuedPlayer.gameSystem}}</h6>
                         </div>
                     </div>
                     <div class="large-10 columns large-centered">
-                        <button class="button large-12 columns">Add To Queue</button>
+                        <button class="button large-12 columns" data-reveal-id="player-queue">Add To Queue</button>
                     </div>
                 </div>
 
@@ -106,4 +106,38 @@
             </div><!-- Page Content -->
         </div><!-- End Page Container -->
     </div> <!-- End Row -->
+    <div id="player-queue" class="reveal-modal small" data-reveal>
+    <h1 class="text-center">Add to Queue</h1>
+
+    <form class="large-6 columns large-centered" name="form" novalidate>
+        
+        <!-- Add user -->
+        <div class="large-12 medium-5 small-12 medium-centered large-centered">
+            <input type="text" autocomplete="off" placeholder="Add User" ng-model="queueUser.name" required>
+        </div>
+
+        <!-- System -->
+        <div class="large-12 medium-5 small-12 medium-centered large-centered">
+            <select class="select-margin" ng-model="queueUser.gameSystem" required>
+                <option value="" disabled selected>Select The System</option>
+                <option>Playstation 4</option>
+                <option>Playstation 3</option>
+                <option>Xbox One</option>
+                <option>Wii U</option>
+            </select>
+        </div>
+
+        <!-- Form Buttons Save/Delete -->
+        <div class="large-12 medium-5 small-12 medium-centered large-centered">
+            <button id="add_queue_btn" class="add-button form-buttons large-12 medium-12 small-12" ng-click="addToPlayerQueue(queueUser)">Add to Queue</button>
+
+        </div>
+    </form>
+    <a class="close-reveal-modal">&#215;</a>
+</div>
 </div><!-- End Page -->
+
+
+<script>
+    $(document).foundation();
+</script>
