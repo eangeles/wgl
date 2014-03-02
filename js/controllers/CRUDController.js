@@ -38,7 +38,7 @@ wgl.controller('gameController', ['$scope','$firebase','$location', function($sc
 	} //end addGame
 
     $scope.updateGame = function(gameInfo){
-        console.log(gameInfo.$key);
+//        console.log(gameInfo.$key);
         //var updateRef = new Firebase("https://thewgl.firebaseio.com/thewgl/games/"+ gameId);
 //        updateRef.update({
 //            gameArtUrl: game.gameArtUrl,
@@ -63,22 +63,22 @@ wgl.controller('gameController', ['$scope','$firebase','$location', function($sc
     }
 
     $scope.typing = false;
-    $scope.selectGame = function(game, gameKey, gameKey2, gameKey3) {
-        console.log(gameKey, gameKey2, gameKey3);
+    $scope.selectGame = function(game) {
+        id = $scope.gameInfos.gameId;
         $scope.gameInfos.gameTitle = game.gameTitle;
         $scope.gameInfos.gameSystem = game.gameSystem;
         $scope.gameInfos.gameArtUrl = game.gameArtUrl;
         $scope.gameInfos.gameQuantity = game.gameQuantity;
-        $scope.gameInfos.id = gameKey;
+//        $scope.gameInfos.gameId = game.gameId;
         $scope.typing = false;
 
-        console.log($scope.gameInfos);
+        console.log(game);
     };
 }]);
 
 
 //Station Crud
-wgl.controller('stationController', ['$scope','$firebase','$location', function($scope,$firebase,$location) {
+wgl.controller('stationController', ['$scope','$firebase','$location','$rootScope', function($scope,$firebase,$location,$rootScope) {
 	//urls to the data needed
 	var urlStations = "https://thewgl.firebaseio.com/thewgl/stations";
 	var urlEmptyStations = "https://thewgl.firebaseio.com/thewgl/emptyStations";
@@ -145,8 +145,19 @@ wgl.controller('stationController', ['$scope','$firebase','$location', function(
         }
 }
     //Station Firebase information
-    $scope.stationInfo = function(info){
+    $scope.stationInfos = function(info){
         $rootScope.stationInfos = $scope.stations[info];
+
+        console.log(info);
     }
+
+    $scope.typing = false;
+    $scope.selectStation = function(station) {
+        station.key = station.$key;
+        $scope.stationInfos.stationNumber = station.stationNumber;
+        $scope.typing = false;
+
+        console.log(station);
+    };
 
 }]);

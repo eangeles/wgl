@@ -23,13 +23,30 @@
                 <div class="row">
                     <div class="large-8 medium-5 small-12 columns medium-centered large-centered">
                         <label>Stations</label>
-                        <select id="one" class="page-select" ng-model="station.stationNumber">
+                        <select id="one" class="page-select" ng-model="station.stationNumber" ng-change="stationInfos(station)">
                             <option value="" disabled selected>Select An Option</option>
                             <option class="one" value="New Station" selected>New Station</option>
                             <option ng-repeat="(index,station) in stations" value="{{index}}">{{station.stationNumber}}</option>
                         </select>
                     </div>
                 </div>
+
+                <div class="large-12 medium-5 small-12 columns medium-centered large-centered">
+                    <input type="text" autocomplete="off" placeholder="Search Or Add Game" ng-model="stationInfos.stationNumber" ng-change="typing=true" required>
+                    <ul ng-show="typing">
+                        <li ng-repeat="(index,station) in stations | filter:stationInfos.stationNumber | limitTo:limit | orderBy:'stationNumber'">
+                            <a ng-click="selectStation(station)">
+                                <div class="row">
+                                    <div class="searchOutcome large-12 columns">
+                                        <h6 class="left inline-list">{{station.stationNumber}}</h6>
+                                        <h6 class="right inline-list">{{station.stationSystem}}</h6>
+                                        <!--<img class="search-picture right" src="{{game.gameArtUrl}}">-->
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+
                 <!-- System -->
                 <div class="row">
                     <div class="large-8 medium-5 small-12 columns medium-centered large-centered">
