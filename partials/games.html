@@ -33,7 +33,7 @@
                             <input type="text" autocomplete="off" value="{{index}}" placeholder="Search Or Add Game" ng-model="gameInfos.gameTitle" ng-change="typing=true" required>
                             <ul ng-show="typing">
                                 <li ng-repeat="(index,game) in games | filter:gameInfos.gameTitle | limitTo:limit | orderBy:'gameTitle'">
-                                    <a ng-click="selectGame(game,index)">
+                                    <a ng-click="selectGame(game)">
                                         <div class="row">
                                             <div class="searchOutcome large-12 columns">
                                                 <h6 class="left inline-list">{{game.gameTitle}}</h6>
