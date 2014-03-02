@@ -68,13 +68,9 @@ wgl.controller('gameController', ['$scope','$firebase','$location', function($sc
         $scope.gameInfos.gameSystem = game.gameSystem;
         $scope.gameInfos.gameArtUrl = game.gameArtUrl;
         $scope.gameInfos.gameQuantity = game.gameQuantity;
-        $scope.gameInfos.id = gameId;
-        console.log(gameId);
+//        $scope.gameInfos.id = gameId;
+//        console.log(gameId);
         $scope.typing = false;
-<<<<<<< HEAD
-
-=======
->>>>>>> 7bf8f8e36d12a069293e569c6891e3b5c0b73c34
     };
 }]);
 
