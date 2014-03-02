@@ -23,12 +23,12 @@
                             <button data-reveal-id="gts-game-list" class="button large-12 columns large-centered">Add A Game</button>
                         </div>
 
-                    <!-- Game Art -->
+                        <!-- Game Art -->
                         <div class="large-8 medium-5 small-12 columns medium-centered large-centered">
                             <img class="select-margin" src="{{gameInfos.gameArtUrl}}" ng-show="gameInfos.gameArtUrl">
                         </div>
 
-                    <!-- Search or Add new game -->
+                        <!-- Search or Add new game -->
                         <div class="large-12 medium-5 small-12 columns medium-centered large-centered">
                             <input type="text" autocomplete="off" placeholder="Search Or Add Game" ng-model="gameInfos.gameTitle" ng-change="typing=true" required>
                             <ul ng-show="typing">
@@ -40,13 +40,12 @@
                                                 <img class="search-picture right" src="{{game.gameArtUrl}}">
                                             </div>
                                         </div>
-
                                     </a>
                                 </li>
                             </ul>
                         </div>
 
-                    <!-- System -->
+                        <!-- System -->
                         <div class="large-12 medium-5 small-12 columns medium-centered large-centered">
                             <select class="select-margin" ng-model="gameInfos.gameSystem" required>
                                 <option value="" disabled selected>Select The System</option>
@@ -56,7 +55,7 @@
                                 <option>Wii U</option>
                             </select>
                         </div>
-                    <!-- Game Quantity -->
+                        <!-- Game Quantity -->
                         <div class="large-12 medium-5 small-12 columns medium-centered large-centered">
                             <input type="tel"
                                    placeholder="Enter Quantity"
@@ -68,7 +67,7 @@
                             </div>
                         </div>
 
-                    <!-- Game Art Url -->
+                        <!-- Game Art Url -->
                         <div class="large-12 medium-5 small-12 columns medium-centered large-centered">
                             <input type="text"
                                    placeholder="Please enter a URL"
@@ -80,7 +79,7 @@
                             </div>
                         </div>
 
-                    <!-- Form Buttons Save/Delete -->
+                        <!-- Form Buttons Save/Delete -->
                         <div class="large-12 medium-5 small-12 columns medium-centered large-centered">
                             <button id="add_game_btn" class="add-button form-buttons large-12 medium-12 small-12" ng-disabled="form.$invalid" ng-click="updateGame(gameInfos)">Save</button>
 
