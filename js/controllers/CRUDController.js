@@ -38,9 +38,9 @@ wgl.controller('gameController', ['$scope','$firebase','$location', function($sc
 	} //end addGame
 
     $scope.updateGame = function(game){
-        console.log(game);
-        var updateRef = new Firebase("https://thewgl.firebaseio.com/thewgl/games/"+ game.gameId);
-        updateRef.update({
+        console.log(game.id);
+        var updateRef = $firebase(new Firebase("https://thewgl.firebaseio.com/thewgl/games/"+ game.id));
+        updateRef.$set({
             gameArtUrl: game.gameArtUrl,
             gameQuantity: game.gameQuantity,
             gameSystem: game.gameSystem,
@@ -68,8 +68,12 @@ wgl.controller('gameController', ['$scope','$firebase','$location', function($sc
         $scope.gameInfos.gameSystem = game.gameSystem;
         $scope.gameInfos.gameArtUrl = game.gameArtUrl;
         $scope.gameInfos.gameQuantity = game.gameQuantity;
+<<<<<<< HEAD
 //        $scope.gameInfos.id = gameId;
 //        console.log(gameId);
+=======
+        $scope.gameInfos.id = gameId;
+>>>>>>> 4c66aef9bb744a5fb39b4ca7dd50e05e18bd9d09
         $scope.typing = false;
     };
 }]);
