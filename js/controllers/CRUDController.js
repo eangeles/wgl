@@ -37,16 +37,14 @@ wgl.controller('gameController', ['$scope','$firebase','$location', function($sc
 //        }
 	} //end addGame
 
-    $scope.updateGame = function(gameInfo){
-//        console.log(gameInfo.$key);
-        //var updateRef = new Firebase("https://thewgl.firebaseio.com/thewgl/games/"+ gameId);
-//        updateRef.update({
-//            gameArtUrl: game.gameArtUrl,
-//            gameQuantity: game.gameQuantity,
-//            gameSystem: game.gameSystem,
-//            gameTitle: game.gameTitle
-//        });
-        console.log(gameInfo);
+    $scope.updateGame = function(game){
+        var updateRef = new Firebase("https://thewgl.firebaseio.com/thewgl/games/"+ game.gameId);
+        updateRef.update({
+            gameArtUrl: game.gameArtUrl,
+            gameQuantity: game.gameQuantity,
+            gameSystem: game.gameSystem,
+            gameTitle: game.gameTitle
+        });
     }
 
     var isGameDeletedClicked = false;
@@ -63,16 +61,13 @@ wgl.controller('gameController', ['$scope','$firebase','$location', function($sc
     }
 
     $scope.typing = false;
-    $scope.selectGame = function(game) {
-        id = $scope.gameInfos.gameId;
+    $scope.selectGame = function(game, id) {
         $scope.gameInfos.gameTitle = game.gameTitle;
         $scope.gameInfos.gameSystem = game.gameSystem;
         $scope.gameInfos.gameArtUrl = game.gameArtUrl;
         $scope.gameInfos.gameQuantity = game.gameQuantity;
-//        $scope.gameInfos.gameId = game.gameId;
+        $scope.gameInfos.gameId = id;
         $scope.typing = false;
-
-        console.log(game);
     };
 }]);
 
