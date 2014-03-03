@@ -57,42 +57,45 @@
             </ul>
         </aside>
         <!-- Desktop Nav -->
-        <nav class="top-bar hide-for-small" data-topbar>
-            <ul class="title-area">
-                <li class="name">
-                    <a href="#/"><img class="desktop-logo" src="img/logo.png" alt="Win Gaming Lounge Logo"></a>
-                </li>
-                <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
-            </ul>
-
-            <section class="top-bar-section">
-                <!-- Right Nav Section -->
-                <ul class="right">
-                    <li><a href="#/news">News</a></li>
-                    <li class="has-dropdown" ng-controller="leagues">
-                        <a href="#/leagues">Leagues</a>
-                        <ul class="dropdown">
-                            <li ng-repeat="league in leagues | toArray"><a ng-href="#/league/{{league.$key}}">{{league.name}}</a></li>
-                        </ul>
+        <div class="contain-to-grid fixed">
+            <nav class="top-bar hide-for-small" data-topbar>
+                <ul class="title-area">
+                    <li class="name">
+                        <a href="#/"><img class="desktop-logo" src="img/logo.png" alt="Win Gaming Lounge Logo"></a>
                     </li>
-                    <li><a href="#/tournaments">Tournaments</a></li>
-                    <li class="has-dropdown">
-                        <a href="javascript: void(0)">Competitors</a>
-                        <ul class="dropdown">
-                            <li><a href="#/teams">Teams</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#/upcomingmatches">Matches</a></li>
-                    <li ng-hide="loginObj.user"><a class="login" ng-click="loginObj.$login('facebook')"><i class="fa fa-facebook"></i> Login</a> </li>
-                    <li class="has-dropdown" ng-show="loginObj.user"><a href="#/gamer_page/{{$key}}"> <img class="login-user-img" src="{{loginObj.user.profilePicture}}">{{loginObj.user.first_name}}</a>
-                        <ul class="dropdown">
-                            <li><a href="#/gts">Admin</a></li>
-                            <li><a class="login" ng-click="loginObj.$logout()">Logout</a></li>
-                        </ul>
-                    </li>
+                    <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
                 </ul>
-            </section>
-        </nav>
+
+                <section class="top-bar-section">
+                    <!-- Right Nav Section -->
+                    <ul class="right">
+                        <li><a href="#/news">News</a></li>
+                        <li class="has-dropdown" ng-controller="leagues">
+                            <a href="#/leagues">Leagues</a>
+                            <ul class="dropdown">
+                                <li ng-repeat="league in leagues | toArray"><a ng-href="#/league/{{league.$key}}">{{league.name}}</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#/tournaments">Tournaments</a></li>
+                        <li class="has-dropdown">
+                            <a href="javascript: void(0)">Competitors</a>
+                            <ul class="dropdown">
+                                <li><a href="#/teams">Teams</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#/upcomingmatches">Matches</a></li>
+                        <li ng-hide="loginObj.user"><a class="login" ng-click="loginObj.$login('facebook')"><i class="fa fa-facebook"></i> Login</a> </li>
+                        <li class="has-dropdown" ng-show="loginObj.user"><a href="#/gamer_page/{{$key}}"> <img class="login-user-img" src="{{loginObj.user.profilePicture}}">{{loginObj.user.first_name}}</a>
+                            <ul class="dropdown">
+                                <li><a href="#/gts">Admin</a></li>
+                                <li><a class="login" ng-click="loginObj.$logout()">Logout</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+            </nav>
+        </div>
+
 
         <!-- OFF CANVASS CONTENT GOES HERE -->
 
