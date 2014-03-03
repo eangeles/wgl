@@ -85,41 +85,43 @@ wgl.controller('stationController', ['$scope','$firebase','$location','$rootScop
     
     var isStationSaveClicked = false;
     $scope.saveStation = function(station){
-        if (isStationSaveClicked) {
-            // If new station, new station will be added to firebase
-            if(station.stationNumber === "New Station")
-            {
-                if (station == "" || station == null) {
-                    console.log("Station does not exist");
-                } else {
-                    if (station.stationSystem == "" || station.stationSystem == null) { // The Station System
-                        console.log("No SystemTV given");
-                    } else if (station.stationTV == "" || station.stationTV == null) { //Station TV
-                        console.log("Please enter a TV");
-                    } else if (station.stationTVSerial == "" || station.stationTVSerial == null) { //TV's Serial
-                        console.log("Please enter a TV Serial");
-                    } else {
-                        //need to find a way to get a stationNumber
-                        station.stationNumber = 1;
-                        console.log(station);
-                        $scope.stations.$add(station);
-                        $scope.emptyStations.$add({
-                            "stationNumber": station.stationNumber, 
-                            "stationSystem": station.stationSystem
-                        });
-                    }
-                } //end if else
-            } else if(typeof station !== 'undefined') {   
-                //If not new station, form will validate instead.
-                $scope.stations.update(station.$id);
-            }
-            $("#save_station_btn").css({backgroundColor: "#17A9CC"}).html("Save");
-            isStationSaveClicked = false;
-        } else {
-            $("#save_station_btn").css({backgroundColor: "#458B00"}).html("Are you sure?");
-            isStationSaveClicked = true;
-        }
-        
+        $scope.stations.$add(station);
+        $location.path("/gts");
+//        if (isStationSaveClicked) {
+//            // If new station, new station will be added to firebase
+//            if(station.stationNumber === "New Station")
+//            {
+//                if (station == "" || station == null) {
+//                    console.log("Station does not exist");
+//                } else {
+//                    if (station.stationSystem == "" || station.stationSystem == null) { // The Station System
+//                        console.log("No SystemTV given");
+//                    } else if (station.stationTV == "" || station.stationTV == null) { //Station TV
+//                        console.log("Please enter a TV");
+//                    } else if (station.stationTVSerial == "" || station.stationTVSerial == null) { //TV's Serial
+//                        console.log("Please enter a TV Serial");
+//                    } else {
+//                        //need to find a way to get a stationNumber
+//                        station.stationNumber = 1;
+//                        console.log(station);
+//                        $scope.stations.$add(station);
+//                        $scope.emptyStations.$add({
+//                            "stationNumber": station.stationNumber,
+//                            "stationSystem": station.stationSystem
+//                        });
+//                    }
+//                } //end if else
+//            } else if(typeof station !== 'undefined') {
+//                //If not new station, form will validate instead.
+//                $scope.stations.update(station.$id);
+//            }
+//            $("#save_station_btn").css({backgroundColor: "#17A9CC"}).html("Save");
+//            isStationSaveClicked = false;
+//        } else {
+//            $("#save_station_btn").css({backgroundColor: "#458B00"}).html("Are you sure?");
+//            isStationSaveClicked = true;
+//        }
+//
 
     }
 
@@ -148,13 +150,16 @@ wgl.controller('stationController', ['$scope','$firebase','$location','$rootScop
         console.log(info);
     }
 
+    //When typing on station, this is the auto complete
     $scope.typing = false;
     $scope.selectStation = function(station) {
         station.key = station.$key;
         $scope.stationInfos.stationNumber = station.stationNumber;
+        $scope.stationInfos.stationSystem = station.stationSystem;
+        $scope.stationInfos.stationTV = station.stationTV;
+        $scope.stationInfos.stationTVSerial = station.stationTVSerial;
         $scope.typing = false;
 
-        console.log(station);
     };
 
 }]);
