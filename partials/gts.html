@@ -18,10 +18,22 @@
                     <h6 class="text-center">Add To GTS</h6>
                     <form class="large-10 columns large-centered">
                         <div class="row">
+                            <!-- Gamer Selection -->
                             <div class="email-input large-12 columns">
-                                <input type="text" ng-model="tempStation.gamerEmail" placeholder="Enter Email">
+                                <input type="text" ng-model="userInfos.name" placeholder="Enter Email" ng-change="userTyping=true">
+                                <ul ng-show="userTyping">
+                                    <li ng-repeat="user in users | filter:userInfos.name | limitTo:limit | orderBy:'name'">
+                                        <a ng-click="selectUser(user)">
+                                            <div class="searchOutcome large-12 columns">
+                                                <h6 class="left inline-list">{{user.name}}</h6>
+                                                <img class="searchImg right" src="{{user.profilePicture}}">
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
+                        <!-- Station Selection -->
                         <div class="row">
                             <div class="select-station large-12 columns">
                                 <select ng-model="tempStation.stationNumber">
@@ -30,9 +42,20 @@
                                 </select>
                             </div>
                         </div>
+                        <!-- Game Selection -->
                         <div class="row">
                             <div class="select-game large-12 columns">
-                                <input type="text" ng-model="tempStation.game" placeholder="Select Game">
+                                <input type="text" ng-model="tempStation.game" placeholder="Select Game" ng-change="gameTyping=true">
+                                <ul ng-show="gameTyping">
+                                    <li ng-repeat="(index,game) in games | filter:tempStation.game | limitTo:limit | orderBy:'gameTitle'">
+                                        <a ng-click="selectGame(game)">
+                                            <div class="searchOutcome large-12 columns">
+                                                <h6 class="left inline-list">{{game.gameTitle}}</h6>
+                                                <img class="searchImg right" src="{{game.gameArtUrl}}">
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                         <div class="row">

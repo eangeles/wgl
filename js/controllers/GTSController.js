@@ -4,7 +4,22 @@ wgl.controller('gts', ['$scope','$routeParams','$firebase','$location','$timeout
     $scope.gameTyping = false;
     $scope.userTyping = false;
     $scope.limit = 5;
-    
+
+    //Select User from search input
+    $scope.selectUser = function (gamer) {
+        $scope.userInfos.name = angular.fromJson(angular.toJson(gamer.name));
+        $scope.userTyping = false;
+
+    };
+
+    //Select Game from search input
+    $scope.selectGame = function(game){
+        $scope.tempStation.game = angular.fromJson(angular.toJson(game.gameTitle));
+//        $rootScope.gameTitleasdf = $scope.gameInfos.gameArtUrl;
+        $scope.gameTyping = false;
+    }
+
+
     //Setting scope to use with the autocomplete
     var urlGames = "https://thewgl.firebaseio.com/thewgl/games";
     var urlUsers = "https://thewgl.firebaseio.com/thewgl/users";
