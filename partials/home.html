@@ -13,32 +13,14 @@
                             <div class="row" ng-controller="news">
                                 <!-- Recent News content -->
                                 <!-- Medium + Desktop -->
-                                <div class="large-8 medium-8 columns hide-for-small">
+                                <div class="large-8 medium-8 columns">
                                     <div ng-repeat="post in news | toArray | orderObjectBy: 'date':true | limitTo: 1">
                                         <a ng-href="#/newspage/{{post.$key}}">
                                             <div class="news-content news-main large-12 medium-12 small-12">
-                                                <div>
+                                                <div class="hide-for-small">
                                                     <img class="news-main-image large-12 medium-12 small-12" ng-src="{{post.image}}" alt="News">
                                                 </div>
-                                                <div class="news column">
-                                                    <div class="news-title">
-                                                        <h5>{{post.title}}</h5>
-                                                    </div>
-                                                    <div class="news-info">
-                                                        <h6 class="left">{{post.poster}}</h6>
-                                                        <h6 class="right">{{post.date}}</h6>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                                <!-- Small Most Recent News -->
-                                <div class="small-12 columns show-for-small">
-                                    <div ng-repeat="post in news | toArray | orderObjectBy: 'date':true | limitTo: 1">
-                                        <a ng-href="#/newspage/{{post.$key}}">
-                                            <div class="news-content news-main large-12 medium-12 small-12">
-                                                <div>
+                                                <div class="show-for-small">
                                                     <img class="news-image large-12 medium-12 small-12" ng-src="{{post.image}}" alt="News">
                                                 </div>
                                                 <div class="news column">
