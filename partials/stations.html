@@ -45,7 +45,7 @@
                         </div>
 
                         <!-- System -->
-                        <div class="select-margin large-12 medium-5 small-12 columns medium-centered large-centered">
+                        <div class="select-margin large-12 medium-5 small-12 columns medium-centered large-centered" ng-show="tempStation">
                             <select ng-model="tempStation.stationSystem" required>
                                 <option value="" disabled selected>Select the System</option>
                                 <option>Playstation 4</option>
@@ -56,7 +56,7 @@
                         </div>
 
                         <!-- TV Type -->
-                        <div class="large-12 medium-5 small-12 columns medium-centered large-centered">
+                        <div class="large-12 medium-5 small-12 columns medium-centered large-centered" ng-show="tempStation">
                             <input type="text" placeholder="Add New TV Model" name="tv" ng-model="tempStation.stationTV" required>
                             <!-- Form Validation -->
                             <div class="error" ng-show="form.tv.$dirty && form.tv.$invalid">
@@ -65,7 +65,7 @@
                         </div>
 
                         <!-- TV Serial Number -->
-                        <div class="large-12 medium-5 small-12 columns medium-centered large-centered">
+                        <div class="large-12 medium-5 small-12 columns medium-centered large-centered" ng-show="tempStation">
                             <input type="text" placeholder="Enter TV Model Serial" name="tvSerial" ng-model="tempStation.stationTVSerial" required>
                             <!-- Form Validation -->
                             <div class="error" ng-show="form.tvSerial.$dirty && form.tv.$invalid">
@@ -75,8 +75,8 @@
                         <!-- Form Buttons Save/Delete -->
 
                         <div class="large-12 medium-5 small-12 columns medium-centered large-centered">
-                            <button id="save_station_btn" class="add-button form-buttons large-12 medium-12 small-12" ng-disabled="form.$invalid" ng-click="updateStation(tempStation)">Update</button>
-<!--                            <button id="delete_station_btn" class="delete-button form-buttons large-12 medium-12 small-12" ng-show="station" ng-click="deleteStation(stationInfos)">Delete</button>-->
+                            <button type="button" id="update_station_btn" class="add-button form-buttons large-12 medium-12 small-12" ng-show="tempStation" ng-disabled="form.$invalid" ng-click="updateStation(tempStation)">Update</button>
+                            <button type="button" id="delete_station_btn" class="delete-button form-buttons large-12 medium-12 small-12" ng-show="tempStation" ng-click="deleteStation(tempStation)">Delete</button>
                         </div>
 
                     </form>
@@ -123,7 +123,7 @@
         <!-- Form Buttons Save/Delete -->
 
         <div class="large-12 medium-5 small-12 columns medium-centered large-centered">
-            <a id="add_station_btn" class="add-button form-buttons large-12 medium-12 small-12" ng-disabled="form.$invalid" ng-click="saveStation(station)">Add</a>
+            <button type="button" id="save_station_btn" class="add-button form-buttons large-12 medium-12 small-12" ng-click="saveStation(station)">Add</button>
         </div>
 
     </form>

@@ -106,7 +106,7 @@ wgl.controller('stationController', ['$scope','$firebase','$location', function(
                     });
                 }
             }
-            $("#save_station_btn").css({backgroundColor: "#17A9CC"}).html("Save");
+            $("#save_station_btn").css({backgroundColor: "#17A9CC"}).html("Add");
             isStationSaveClicked = false;
         } else {
             $("#save_station_btn").css({backgroundColor: "#458B00"}).html("Are you sure?");
@@ -114,31 +114,35 @@ wgl.controller('stationController', ['$scope','$firebase','$location', function(
         }
     }
     
+    var isUpdateStationClicked = false;
     $scope.updateStation = function(station){
-        var stationURL = new Firebase("https://thewgl.firebaseio.com/thewgl/stations/" + station.id);
-        var updateRef = $firebase(stationURL);
-        updateRef.$set(station);
-        $location.path("/gts");
+        //find a way to update both emptyStations and stations
+        if (isUpdateStationClicked) {
+            $("#update_station_btn").css({backgroundColor: "#17A9CC"}).html("Update");
+            var stationURL = new Firebase("https://thewgl.firebaseio.com/thewgl/stations/" + station.id);
+            var updateRef = $firebase(stationURL);
+            updateRef.$set(station);
+            $location.path("/gts");
+            isUpdateStationClicked = false;
+        } else {
+            $("#update_station_btn").css({backgroundColor: "#458B00"}).html("Are you sure?");
+            isUpdateStationClicked = true;
+        }
     }
 
-    //var isDeleteStationClicked = false;
-    //removes the station from firebase
-//    $scope.deleteStation = function(station){
-//        if (isDeleteStationClicked) {
-//            $scope.stations.remove(station.$id);
-//            //Also deletes from emptystations
-//            for (var i= 0,max=$scope.emptyStations.length;i<max;i++) {
-//                if ($scope.emptyStations[i].stationNumber == station.stationNumber) {
-//                    $scope.emptyStations.remove($scope.emptyStations[i].$id);
-//                }
-//            } 
-//            $("#delete_station_btn").css({backgroundColor: "#ff0000"}).html("Delete");
-//            isDeleteStationClicked = false;
-//        } else {
-//            $("#delete_station_btn").css({backgroundColor: "#458B00"}).html("Are you sure?");
-//            isDeleteStationClicked = true;
-//        }
-//    }
+    var isDeleteStationClicked = false;
+    $scope.deleteStation = function(station){
+        if (isDeleteStationClicked) {
+            console.log(station.id);
+            $scope.stations.$remove(station.$id);
+            //Also should delete from emptystations
+            $("#delete_station_btn").css({backgroundColor: "#ff0000"}).html("Delete");
+            isDeleteStationClicked = false;
+        } else {
+            $("#delete_station_btn").css({backgroundColor: "#458B00"}).html("Are you sure?");
+            isDeleteStationClicked = true;
+        }
+    }
 
     //When typing on station, this is the auto complete
     $scope.typing = false;
