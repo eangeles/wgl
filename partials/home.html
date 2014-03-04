@@ -12,12 +12,34 @@
                             <h6 class="home-more-news large-1 small-3 columns right"><a href="#/news">more...</a></h6>
                             <div class="row" ng-controller="news">
                                 <!-- Recent News content -->
-                                <div class="large-8 medium-8 small-12 columns">
+                                <!-- Medium + Desktop -->
+                                <div class="large-8 medium-8 columns hide-for-small">
                                     <div ng-repeat="post in news | toArray | orderObjectBy: 'date':true | limitTo: 1">
                                         <a ng-href="#/newspage/{{post.$key}}">
                                             <div class="news-content news-main large-12 medium-12 small-12">
                                                 <div>
                                                     <img class="news-main-image large-12 medium-12 small-12" ng-src="{{post.image}}" alt="News">
+                                                </div>
+                                                <div class="news column">
+                                                    <div class="news-title">
+                                                        <h5>{{post.title}}</h5>
+                                                    </div>
+                                                    <div class="news-info">
+                                                        <h6 class="left">{{post.poster}}</h6>
+                                                        <h6 class="right">{{post.date}}</h6>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                                <!-- Small Most Recent News -->
+                                <div class="small-12 columns show-for-small">
+                                    <div ng-repeat="post in news | toArray | orderObjectBy: 'date':true | limitTo: 1">
+                                        <a ng-href="#/newspage/{{post.$key}}">
+                                            <div class="news-content news-main large-12 medium-12 small-12">
+                                                <div>
+                                                    <img class="news-image large-12 medium-12 small-12" ng-src="{{post.image}}" alt="News">
                                                 </div>
                                                 <div class="news column">
                                                     <div class="news-title">
@@ -54,21 +76,21 @@
                                 </div>
                             </div>
                         </div>
-
                     </div>
+                    <!-- Upcoming Matches -->
                     <div class="featured-matches">
                         <div class="row">
                             <h3 class="page-title large-12 column">Upcoming<span>Matches</span></h3>
                             <div class="matches-panel-container text-center" ng-controller="matches">
-                                <!-- Upcoming Matches -->
                                 <a class="matches-link" href="#/match/{{match.$key}}" ng-repeat="match in matches | toArray | limitTo:3">
                                     <div class="large-4 medium-4 small-12 columns">
                                         <div class="upcoming-match-info large-12 columns large-centered">
-                                            <div class="large-4 columns">
+                                            <!-- Team Away -->
+                                            <div class="large-4 medium-4 small-4 columns">
                                                 <img class="upcoming-small-img" src="{{match.awayTeam.picture}}" alt="Team Logo">
                                                 <h6>{{match.awayTeam.name}}</h6>
                                             </div>
-                                            <div class="large-4 columns">
+                                            <div class="large-4 medium-4 small-4 columns">
                                                 <div class="row">
                                                     <h6 class="match-event-name">{{match.eventName}}</h6>
                                                 </div>
@@ -77,8 +99,8 @@
                                                 <h6 class="match-date">{{match.date}} </h6>
                                                 <h6 class="match-time">{{match.time}}</h6>
                                             </div>
-
-                                            <div class="large-4 columns">
+                                            <!-- Team Home -->
+                                            <div class="large-4 medium-4 small-4 columns">
                                                 <img class="upcoming-small-img" src="{{match.homeTeam.picture}}" alt="Team Logo">
                                                 <h6>{{match.homeTeam.name}}</h6>
                                             </div>
@@ -95,8 +117,3 @@
     </div> <!-- End Row -->
 </div><!-- End Page -->
 
-
-<!--must be added for orbital specifically-->
-<script>
-    $(document).foundation();
-</script>
