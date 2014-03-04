@@ -104,7 +104,6 @@ wgl.controller('stationController', ['$scope','$firebase','$location', function(
                         "stationNumber": station.stationNumber,
                         "stationSystem": station.stationSystem
                     });
-                    $location.path("/gts");
                 }
             }
             $("#save_station_btn").css({backgroundColor: "#17A9CC"}).html("Save");
