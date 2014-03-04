@@ -87,7 +87,6 @@ wgl.controller('stationController', ['$scope','$firebase','$location', function(
     $scope.saveStation = function(station){
         if (isStationSaveClicked) {
             console.log(station);
-            // If new station, new station will be added to firebase
             if (station == "" || station == null) {
                 console.log("Station does not exist");
             } else {
@@ -134,7 +133,9 @@ wgl.controller('stationController', ['$scope','$firebase','$location', function(
     $scope.deleteStation = function(station){
         if (isDeleteStationClicked) {
             console.log(station.id);
-            $scope.stations.$remove(station.$id);
+            var stationURL = new Firebase("https://thewgl.firebaseio.com/thewgl/stations/" + station.id);
+            var deleteRef = $firebase(stationURL);
+            deleteRef.$remove();
             //Also should delete from emptystations
             $("#delete_station_btn").css({backgroundColor: "#ff0000"}).html("Delete");
             isDeleteStationClicked = false;
