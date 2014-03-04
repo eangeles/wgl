@@ -1,0 +1,24 @@
+<div class="page" ng-controller="teams">
+    <div class="row">
+        <!-- Header BG -->
+        <div class="header-top"></div>
+        <!-- Page Container -->
+        <div class="page-content-container">
+            <div class="page-content">
+                <div class="large-12 columns">
+                    <form class="large-6 columns large-centered">
+                        <h3 class="page-title text-center">Edit<span>Team</span></h3>
+                        <input type="text" placeholder="Team Name" ng-model="selectedTeam.name">
+                        <input type="text" placeholder="http://localhost:8888/thewgl/wgl/img/defaultteamlogo.jpg" ng-model="selectedTeam.picture">
+                        <textarea placeholder="Team Bio" rows="10" cols="80" ng-model="selectedTeam.bio">
+
+                        </textarea>
+
+                        <input type="submit" id="update_team_btn" class="button large-12" ng-click="updateTeam(selectedTeam)" value="Update">
+                    </form>
+                </div>
+            </div><!-- Page Content -->
+        </div><!-- End Page Container -->
+    </div> <!-- End Row -->
+</div><!-- End Page -->
+

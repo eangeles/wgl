@@ -4,25 +4,23 @@ wgl.controller('teams', ['$scope','$routeParams','$location','$rootScope','$fire
     var teamsURL = "https://thewgl.firebaseio.com/thewgl/teams/";
     $scope.teams = $firebase(new Firebase(teamsURL));
     
-    $scope.addTeam = function(team) {                
+    $scope.addTeam = function(team) {              
         $scope.teams.$add(team);
         $location.path("/teams");
     };
 
     $scope.removeTeam = function(teamID) {
-        $scope.teams.$remove(teamID);
+        console.log(teamID);
+        //$scope.teams.$remove(teamID);
     }
     
-    var updateRef = "";
-    $scope.updateTeam = function(post) {
-        updateRef = new Firebase("https://thewgl.firebaseio.com/thewgl/teams/" + $routeParams.teamID);
-        //need an update ref for players seperately
-        updateRef.update({
-            //Update Content
-            //1. Array of members
-            //2. Team Name
-            //3. Team Picture
-            //4. Upcoming matches?
+    $scope.updateTeam = function(team) {
+        var updateRef = $firebase(new Firebase("https://thewgl.firebaseio.com/thewgl/teams/" + $routeParams.teamID));
+        console.log(team.bio, team.name, team.picture);
+        updateRef.$set({
+            bio:      team.bio,
+            name:     team.name,
+            picture:  team.picture
         });
         $location.path("/teams");
     }

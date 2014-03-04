@@ -46,7 +46,7 @@ wgl.config(function ($routeProvider){
             templateUrl:"partials/addleague.html"
         })
         .when("/editleague/:leagueID", {
-            title: 'Add League',
+            title: 'Edit League',
             templateUrl:"partials/editleague.html"
         })
         .when("/leagueaddteam/:leagueID", {
@@ -62,8 +62,12 @@ wgl.config(function ($routeProvider){
             templateUrl:"partials/leagueMatch.html"
         })
         .when("/team", {
-            title: 'Ladder',
+            title: 'Team Page',
             templateUrl:"partials/team.html"
+        })
+        .when("/editteam/:teamID", {
+            title: 'Edit Team',
+            templateUrl:"partials/editteam.html"
         })
         .when("/gamer_page/:playerID", {
             title: 'Gamer Page',
