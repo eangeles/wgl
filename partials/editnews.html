@@ -6,16 +6,15 @@
         <div class="page-content-container">
             <div class="page-content">
                 <div class="large-12 columns">
+                    <!-- Edit News Form-->
                     <form class="large-6 columns large-centered">
-                        <a href="#/news">back</a>
                         <h3 class="page-title text-center">Edit<span>News</span></h3>
                         <input type="text" placeholder="Title" ng-model="newsItem.title">
                         <input type="text" placeholder="Image Url" ng-model="newsItem.image">
                         <textarea placeholder="Article content goes here" rows="10" cols="80" ng-model="newsItem.content">
-
                         </textarea>
-
-                        <input type="submit" class="button large-12" value="Edit" ng-click="updateNewsItem(newsItem)">
+                        <input type="submit" class="button large-12 medium-12 small-12" value="Edit" ng-click="updateNewsItem(newsItem)">
+                        <a href="#/news"> <button class="button large-12 medium-12 small-12">back</button></a>
                     </form>
                 </div>
             </div><!-- Page Content -->
