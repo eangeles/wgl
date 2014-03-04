@@ -73,11 +73,15 @@ wgl.controller('gameController', ['$scope','$firebase','$location', function($sc
     //removes from firebase
     $scope.deleteGame = function(game){
         if (isGameDeletedClicked) {
-            $("#delete_game_btn").html("Delete");
+            console.log(game.id);
+            var stationURL = new Firebase("https://thewgl.firebaseio.com/thewgl/games/" + game.id);
+            var deleteRef = $firebase(stationURL);
+            //deleteRef.$remove();
+            $("#delete_game_btn").css({backgroundColor: "#17A9CC"}).html("Delete");
+            $location.path("/gts");
             isGameDeletedClicked = false;
-            $scope.games.$remove(game.$id);
         } else {
-            $("#delete_game_btn").html("Are you sure?");
+            $("#delete_game_btn").css({backgroundColor: "#ff0000"}).html("Are you sure?");
             isGameDeletedClicked = true;
         }
     }

@@ -16,72 +16,75 @@
 
                 <div class="gts-hr"><hr /> </div>
                 <h1 class="text-center">Games</h1>
-                <!-- Game info -->
-                <form class="large-6 columns large-centered" name="form" novalidate>
-                        <!-- Add a game button modal -->
-                        <div class="large-12 columns large-centered">
-                            <button data-reveal-id="gts-game-list" class="button large-12 columns large-centered">Add A Game</button>
-                        </div>
-                        <div class="large-12 columns large-centered">
-                            <hr />
-                            <h4 style="text-align: center;">Or</h4>
-                            <hr />
-                        </div>
-                        <!-- Game Art -->
-                        <div class="large-8 medium-5 small-12 columns medium-centered large-centered">
-                            <img class="select-margin" src="{{gameInfos.gameArtUrl}}" ng-show="tempGame.gameArtUrl">
-                        </div>
+                <!-- Page Content -->
+                <div class="page-content">
+                    <!-- Game info -->
+                    <form class="large-6 columns large-centered" name="form" novalidate>
+                            <!-- Add a game button modal -->
+                            <div class="large-12 columns large-centered">
+                                <button data-reveal-id="gts-game-list" class="button large-12 columns large-centered">Add A Game</button>
+                            </div>
+                            <div class="large-12 columns large-centered">
+                                <hr />
+                                <h4 style="text-align: center;">Or</h4>
+                                <hr />
+                            </div>
+                            <!-- Game Art -->
+                            <div class="large-8 medium-5 small-12 columns medium-centered large-centered">
+                                <img class="select-margin" src="{{gameInfos.gameArtUrl}}" ng-show="tempGame.gameArtUrl">
+                            </div>
 
-                        <!-- Search or Add new game -->
-                        <div class="large-12 medium-5 small-12 columns medium-centered large-centered">
-                            <input type="text" autocomplete="off" placeholder="Search Or Add Game" ng-model="tempGame.gameTitle" ng-change="typing=true" required>
-                            <ul ng-show="typing">
-                                <li ng-repeat="(index,game) in games | filter:tempGame.gameTitle | limitTo:limit | orderBy:'gameTitle'">
-                                    <a ng-click="selectGame(game,index)">
-                                        <div class="row">
-                                            <div class="searchOutcome large-12 columns">
-                                                <h6 class="left inline-list">{{game.gameTitle}}</h6>
-                                                <img class="search-picture right" src="{{game.gameArtUrl}}">
+                            <!-- Search or Add new game -->
+                            <div class="large-12 medium-5 small-12 columns medium-centered large-centered">
+                                <input type="text" autocomplete="off" placeholder="Search Or Add Game" ng-model="tempGame.gameTitle" ng-change="typing=true" required>
+                                <ul ng-show="typing">
+                                    <li ng-repeat="(index,game) in games | filter:tempGame.gameTitle | limitTo:limit | orderBy:'gameTitle'">
+                                        <a ng-click="selectGame(game,index)">
+                                            <div class="row">
+                                                <div class="searchOutcome large-12 columns">
+                                                    <h6 class="left inline-list">{{game.gameTitle}}</h6>
+                                                    <img class="search-picture right" src="{{game.gameArtUrl}}">
+                                                </div>
                                             </div>
-                                        </div>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                        <!-- System -->
-                        <div class="large-12 medium-5 small-12 columns medium-centered large-centered" ng-show="tempGame">
-                            <select class="select-margin" ng-model="tempGame.gameSystem" required>
-                                <option value="" disabled selected>Select The System</option>
-                                <option>Playstation 4</option>
-                                <option>Playstation 3</option>
-                                <option>Xbox One</option>
-                                <option>Wii U</option>
-                            </select>
-                        </div>
-                        <!-- Game Quantity -->
-                        <div class="large-12 medium-5 small-12 columns medium-centered large-centered" ng-show="tempGame">
-                            <input type="number" placeholder="Enter Quantity" name="gameQuantity" ng-model="tempGame.gameQuantity" required>
-                            <!-- Form Validation -->
-                            <div class="error" ng-show="form.gameQuantity.$dirty && form.gameQuantity.$invalid">
-                                <small class="error" ng-show="form.gameQuantity.$error.required">Enter Quantity</small>
+                                        </a>
+                                    </li>
+                                </ul>
                             </div>
-                        </div>
-
-                        <!-- Game Art Url -->
-                        <div class="large-12 medium-5 small-12 columns medium-centered large-centered" ng-show="tempGame">
-                            <input type="text" placeholder="Please enter a URL" name="url" ng-model="tempGame.gameArtUrl" required>
-                            <!-- Form Validation -->
-                            <div class="error" ng-show="form.url.$dirty && form.url.$invalid">
-                                <small class="error" ng-show="form.url.$error.required">Please Enter A Game Art URL</small>
+                            <!-- System -->
+                            <div class="large-12 medium-5 small-12 columns medium-centered large-centered" ng-show="tempGame">
+                                <select class="select-margin" ng-model="tempGame.gameSystem" required>
+                                    <option value="" disabled selected>Select The System</option>
+                                    <option>Playstation 4</option>
+                                    <option>Playstation 3</option>
+                                    <option>Xbox One</option>
+                                    <option>Wii U</option>
+                                </select>
                             </div>
-                        </div>
+                            <!-- Game Quantity -->
+                            <div class="large-12 medium-5 small-12 columns medium-centered large-centered" ng-show="tempGame">
+                                <input type="number" placeholder="Enter Quantity" name="gameQuantity" ng-model="tempGame.gameQuantity" required>
+                                <!-- Form Validation -->
+                                <div class="error" ng-show="form.gameQuantity.$dirty && form.gameQuantity.$invalid">
+                                    <small class="error" ng-show="form.gameQuantity.$error.required">Enter Quantity</small>
+                                </div>
+                            </div>
 
-                        <!-- Form Buttons Save/Delete -->
-                        <div class="large-12 medium-5 small-12 columns medium-centered large-centered" ng-show="tempGame">
-                            <button type="button" id="update_game_btn" class="add-button form-buttons large-12 medium-12 small-12" ng-click="updateGame(tempGame)">Update</button>
-                            <button type="button" id="delete_game_btn" class="add-button form-buttons large-12 medium-12 small-12" ng-click="deleteGame(tempGame)">Delete</button>
-                        </div>
-                </form>
+                            <!-- Game Art Url -->
+                            <div class="large-12 medium-5 small-12 columns medium-centered large-centered" ng-show="tempGame">
+                                <input type="text" placeholder="Please enter a URL" name="url" ng-model="tempGame.gameArtUrl" required>
+                                <!-- Form Validation -->
+                                <div class="error" ng-show="form.url.$dirty && form.url.$invalid">
+                                    <small class="error" ng-show="form.url.$error.required">Please Enter A Game Art URL</small>
+                                </div>
+                            </div>
+
+                            <!-- Form Buttons Save/Delete -->
+                            <div class="large-12 medium-5 small-12 columns medium-centered large-centered" ng-show="tempGame">
+                                <button type="button" id="update_game_btn" class="add-button form-buttons large-12 medium-12 small-12" ng-click="updateGame(tempGame)">Update</button>
+                                <button type="button" id="delete_game_btn" class="add-button form-buttons large-12 medium-12 small-12" ng-click="deleteGame(tempGame)">Delete</button>
+                            </div>
+                    </form>
+                </div>
             </div>
         </div> <!-- end page-container -->
     </div><!-- end row -->
