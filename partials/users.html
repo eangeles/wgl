@@ -1,4 +1,4 @@
-<div class="page">
+<div class="page" ng-controller="Login">
     <div class="row">
         <!-- Header BG -->
         <div class="header-top"></div>
@@ -20,17 +20,27 @@
                     <form class="large-12 columns large-centered">
                         <div class="row">
                             <div class="large-10 columns large-centered">
-                                <input type="text" placeholder="Search User">
+                                <input type="text" placeholder="Search User" ng-model="userInfos.displayName" ng-change="userTyping=true">
+                                <ul ng-show="userTyping">
+                                    <li ng-repeat="(index,user) in users | filter:userInfos.displayName | limitTo:limit | orderBy:'displayName'">
+                                        <a ng-click="selectUser(user, index)">
+                                            <div class="searchOutcome large-12 columns">
+                                                <h6 class="left inline-list">{{user.displayName}}</h6>
+                                                <img class="searchImg right" src="{{user.profilePicture}}">
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                         <div class="row">
                             <div class="large-10 columns large-centered">
-                                <input type="text" placeholder="User Email">
+                                <input type="text" placeholder="User Email" ng-model="userInfos.email">
                             </div>
                         </div>
                         <div class="row">
                             <div class="select-margin large-10 columns large-centered">
-                                <select>
+                                <select ng-model="userInfos.userType">
                                     <option>Admin</option>
                                     <option>Staff</option>
                                     <option>Gamer</option>
