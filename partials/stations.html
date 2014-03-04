@@ -29,9 +29,9 @@
                             <hr />
                         </div>
                         <div class="large-12 medium-5 small-12 columns medium-centered large-centered">
-                            <input type="text" autocomplete="off" placeholder="Search Stations" ng-model="stationInfos.stationNumber" ng-change="typing=true" required>
+                            <input type="text" autocomplete="off" placeholder="Search Stations" ng-model="tempStation.stationNumber" ng-change="typing=true" required>
                             <ul ng-show="typing">
-                                <li ng-repeat="(index,station) in stations | filter:stationInfos.stationNumber | limitTo:limit">
+                                <li ng-repeat="(index,station) in stations | filter:tempStation.stationNumber | limitTo:limit">
                                     <a ng-click="selectStation(station,index)">
                                         <div class="row">
                                             <div class="searchOutcome large-12 columns">
@@ -46,8 +46,8 @@
 
                         <!-- System -->
                         <div class="select-margin large-12 medium-5 small-12 columns medium-centered large-centered">
-                            <select ng-model="stationInfos.stationSystem" required>
-                                <option value="" disabled selected>Select The System</option>
+                            <select ng-model="tempStation.stationSystem" required>
+                                <option value="" disabled selected>Select the System</option>
                                 <option>Playstation 4</option>
                                 <option>Playstation 3</option>
                                 <option>Xbox One</option>
@@ -57,10 +57,7 @@
 
                         <!-- TV Type -->
                         <div class="large-12 medium-5 small-12 columns medium-centered large-centered">
-                            <input type="text"
-                                   placeholder="Add New TV Model"
-                                   name="tv"
-                                   ng-model="stationInfos.stationTV" required>
+                            <input type="text" placeholder="Add New TV Model" name="tv" ng-model="tempStation.stationTV" required>
                             <!-- Form Validation -->
                             <div class="error" ng-show="form.tv.$dirty && form.tv.$invalid">
                                 <small class="error" ng-show="form.tv.$error.required">Please input a TV Model</small>
@@ -69,9 +66,7 @@
 
                         <!-- TV Serial Number -->
                         <div class="large-12 medium-5 small-12 columns medium-centered large-centered">
-                            <input type="text" placeholder="Enter Television Model Serial"
-                                   name="tvSerial"
-                                   ng-model="stationInfos.stationTVSerial" required>
+                            <input type="text" placeholder="Enter TV Model Serial" name="tvSerial" ng-model="tempStation.stationTVSerial" required>
                             <!-- Form Validation -->
                             <div class="error" ng-show="form.tvSerial.$dirty && form.tv.$invalid">
                                 <small class="error" ng-show="form.tvSerial.$error.required">Please input a TV Serial</small>
@@ -80,8 +75,8 @@
                         <!-- Form Buttons Save/Delete -->
 
                         <div class="large-12 medium-5 small-12 columns medium-centered large-centered">
-                            <button id="save_station_btn" class="add-button form-buttons large-12 medium-12 small-12" ng-disabled="form.$invalid" ng-click="saveStation(station)">Save</button>
-                            <button id="delete_station_btn" class="delete-button form-buttons large-12 medium-12 small-12" ng-show="station" ng-click="deleteStation(stationInfos)">Delete</button>
+                            <button id="save_station_btn" class="add-button form-buttons large-12 medium-12 small-12" ng-disabled="form.$invalid" ng-click="updateStation(tempStation)">Update</button>
+<!--                            <button id="delete_station_btn" class="delete-button form-buttons large-12 medium-12 small-12" ng-show="station" ng-click="deleteStation(stationInfos)">Delete</button>-->
                         </div>
 
                     </form>
@@ -92,7 +87,7 @@
     <div id="gts-station-list" class="reveal-modal small" data-reveal>
     <h1 class="text-center">Add A Station</h1>
 
-    <form class="large-6 columns large-centered" name="form" novalidate>
+    <form class="large-6 columns large-centered" name="form2" novalidate>
         <div class="large-12 medium-5 small-12 columns medium-centered large-centered">
             <input type="number" autocomplete="off" placeholder="Station Number" ng-model="station.stationNumber" required>
         </div>
@@ -113,7 +108,7 @@
             <input type="text" placeholder="Add New TV Model" name="tv" ng-model="station.stationTV" required>
             <!-- Form Validation -->
             <div class="error" ng-show="form.tv.$dirty && form.tv.$invalid">
-                <small class="error" ng-show="form.tv.$error.required">Please input a TV Model</small>
+                <small class="error" ng-show="form2.tv.$error.required">Please input a TV Model</small>
             </div>
         </div>
 
@@ -121,8 +116,8 @@
         <div class="large-12 medium-5 small-12 columns medium-centered large-centered">
             <input type="text" placeholder="Enter Television Model Serial" name="tvSerial" ng-model="station.stationTVSerial" required>
             <!-- Form Validation -->
-            <div class="error" ng-show="form.tvSerial.$dirty && form.tv.$invalid">
-                <small class="error" ng-show="form.tvSerial.$error.required">Please input a TV Serial</small>
+            <div class="error" ng-show="form2.tvSerial.$dirty && form.tv.$invalid">
+                <small class="error" ng-show="form2.tvSerial.$error.required">Please input a TV Serial</small>
             </div>
         </div>
         <!-- Form Buttons Save/Delete -->

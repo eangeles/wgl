@@ -113,37 +113,42 @@ wgl.controller('stationController', ['$scope','$firebase','$location', function(
             isStationSaveClicked = true;
         }
     }
-
-    var isDeleteStationClicked = false;
-    //removes the station from firebase
-    $scope.deleteStation = function(station){
-        if (isDeleteStationClicked) {
-            $scope.stations.remove(station.$id);
-            //Also deletes from emptystations
-            for (var i= 0,max=$scope.emptyStations.length;i<max;i++) {
-                if ($scope.emptyStations[i].stationNumber == station.stationNumber) {
-                    $scope.emptyStations.remove($scope.emptyStations[i].$id);
-                }
-            } 
-            $("#delete_station_btn").css({backgroundColor: "#ff0000"}).html("Delete");
-            isDeleteStationClicked = false;
-        } else {
-            $("#delete_station_btn").css({backgroundColor: "#458B00"}).html("Are you sure?");
-            isDeleteStationClicked = true;
-        }
+    
+    $scope.updateStation = function(station){
+        console.log(station.id);
+        var stationURL = new Firebase("https://thewgl.firebaseio.com/thewgl/stations/" + station.id);
+        var updateRef = $firebase(stationURL);
+        updateRef.$set(station);
+        $location.path("/gts");
     }
+
+    //var isDeleteStationClicked = false;
+    //removes the station from firebase
+//    $scope.deleteStation = function(station){
+//        if (isDeleteStationClicked) {
+//            $scope.stations.remove(station.$id);
+//            //Also deletes from emptystations
+//            for (var i= 0,max=$scope.emptyStations.length;i<max;i++) {
+//                if ($scope.emptyStations[i].stationNumber == station.stationNumber) {
+//                    $scope.emptyStations.remove($scope.emptyStations[i].$id);
+//                }
+//            } 
+//            $("#delete_station_btn").css({backgroundColor: "#ff0000"}).html("Delete");
+//            isDeleteStationClicked = false;
+//        } else {
+//            $("#delete_station_btn").css({backgroundColor: "#458B00"}).html("Are you sure?");
+//            isDeleteStationClicked = true;
+//        }
+//    }
 
     //When typing on station, this is the auto complete
     $scope.typing = false;
     $scope.limit = 5;
-    $scope.selectStation = function(station) {
-        station.key = station.$key;
-        $scope.stationInfos.stationNumber = station.stationNumber;
-        $scope.stationInfos.stationSystem = station.stationSystem;
-        $scope.stationInfos.stationTV = station.stationTV;
-        $scope.stationInfos.stationTVSerial = station.stationTVSerial;
+    $scope.selectStation = function(station, index) {
+//        console.log(station, index);
+        $scope.tempStation = station;
+        $scope.tempStation.id = index;
         $scope.typing = false;
-
     };
 
 }]);

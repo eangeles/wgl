@@ -6,9 +6,13 @@ wgl.controller('news', ['$scope','$routeParams','$location','$rootScope','$fireb
     $scope.newsItem = $firebase(new Firebase("https://thewgl.firebaseio.com/thewgl/news/" + $routeParams.newsItemID));
     $scope.itemID = $routeParams.newsItemID;
     
-    console.log($scope.news.length);
-    for (var i=0;i<$scope.news.length;i++) {
-        console.log($scope.news[i]);
+//    console.log($scope.news.length);
+//    for (var i=0;i<$scope.news.length;i++) {
+//        console.log($scope.news[i]);
+//    }
+    
+    for (var key in $scope.news) {
+        console.log($scope.news[key]);
     }
     
     $scope.addNewsItem = function(newsItem) {
