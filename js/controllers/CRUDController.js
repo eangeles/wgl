@@ -76,7 +76,7 @@ wgl.controller('gameController', ['$scope','$firebase','$location', function($sc
             console.log(game.id);
             var stationURL = new Firebase("https://thewgl.firebaseio.com/thewgl/games/" + game.id);
             var deleteRef = $firebase(stationURL);
-            //deleteRef.$remove();
+            deleteRef.$remove();
             $("#delete_game_btn").css({backgroundColor: "#17A9CC"}).html("Delete");
             $location.path("/gts");
             isGameDeletedClicked = false;
