@@ -115,7 +115,6 @@ wgl.controller('stationController', ['$scope','$firebase','$location', function(
     }
     
     $scope.updateStation = function(station){
-        console.log(station.id);
         var stationURL = new Firebase("https://thewgl.firebaseio.com/thewgl/stations/" + station.id);
         var updateRef = $firebase(stationURL);
         updateRef.$set(station);
@@ -145,7 +144,6 @@ wgl.controller('stationController', ['$scope','$firebase','$location', function(
     $scope.typing = false;
     $scope.limit = 5;
     $scope.selectStation = function(station, index) {
-//        console.log(station, index);
         $scope.tempStation = station;
         $scope.tempStation.id = index;
         $scope.typing = false;
