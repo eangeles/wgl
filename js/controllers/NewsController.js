@@ -11,9 +11,29 @@ wgl.controller('news', ['$scope','$routeParams','$location','$rootScope','$fireb
 //        console.log($scope.news[i]);
 //    }
     
-    for (var key in $scope.news) {
-        console.log($scope.news[key]);
-    }
+//    for (var name in $scope.news) {
+//        console.log($scope.news[name]);
+//    }
+    
+//    new Firebase("https://thewgl.firebaseio.com/thewgl/news/").once('value', 
+//        function(dataSnapshot){ 
+//
+//            // dataSnapshot now contains all the videos ids, lines & links
+//            // this causes many performance issues
+//
+//            // Then I need to loop over all elements to extract ids !
+//            var i = 0;
+//            var articles = new Array();
+//
+//            dataSnapshot.forEach(
+//                function(childSnapshot) {
+//                    articles[i++] = childSnapshot.name();
+//                    console.log(childSnapshot.name());
+//                }
+//            );
+//
+//        }
+//    );
     
     $scope.addNewsItem = function(newsItem) {
         var d = new Date();

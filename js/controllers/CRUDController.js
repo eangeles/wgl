@@ -7,45 +7,65 @@ wgl.controller('gameController', ['$scope','$firebase','$location', function($sc
     var isGameSaveClicked = false;
 	//create a game and adds it to the database
 	$scope.saveGame = function(game) {
-        $scope.games.$add(game);
-        $location.path("/gts");
-
-//        if (isGameSaveClicked) {
-//            if (game == "" || game == null) {
-//                console.log("game does not exist");
-//            } else {
-//                //error checking for if fields are null
-//                if (game.gameSystem == "" || game.gameSystem == null) { //System
-//                    console.log("No game system given");
-//                } else if (game.gameTitle == "" || game.gameTitle == null) { //Game Title
-//                    console.log("No game title given");
-//                } else if (game.gameArtUrl == "" || game.gameArtUrl == null) { // Game Box Art
-//                    console.log("No game art url given");
-//                } else if (game.gameQuantity == "" || game.gameQuantity == null) { //Quantity
-//                    console.log("No game quantity given");
-//                } else {
-//                    console.log(game);
-//                    $scope.games.$add(game);
-//                    $location.path("/games");
-//                }
-//            } //end if else
-//            $("#add_game_btn").css({backgroundColor: "#17A9CC"}).html("Save");
-//            isGameSaveClicked = false;
-//        } else {
-//            $("#add_game_btn").css({backgroundColor: "#458B00"}).html("Are you sure?");
-//            isGameSaveClicked = true;
-//        }
+        if (isGameSaveClicked) {
+            if (game == "" || game == null) {
+                console.log("game does not exist");
+            } else {
+                //error checking for if fields are null
+                if (game.gameSystem == "" || game.gameSystem == null) { //System
+                    console.log("No game system given");
+                } else if (game.gameTitle == "" || game.gameTitle == null) { //Game Title
+                    console.log("No game title given");
+                } else if (game.gameArtUrl == "" || game.gameArtUrl == null) { // Game Box Art
+                    console.log("No game art url given");
+                } else if (game.gameQuantity == "" || game.gameQuantity == null) { //Quantity
+                    console.log("No game quantity given");
+                } else {
+                    console.log(game);
+                    $scope.games.$add(game);
+                    $location.path("/gts");
+                }
+            } //end if else
+            $("#add_game_btn").css({backgroundColor: "#17A9CC"}).html("Save");
+            isGameSaveClicked = false;
+        } else {
+            $("#add_game_btn").css({backgroundColor: "#458B00"}).html("Are you sure?");
+            isGameSaveClicked = true;
+        }
 	} //end addGame
 
+    var isGameUpdateClicked = false;
     $scope.updateGame = function(game){
-        console.log(game.id);
-        var updateRef = $firebase(new Firebase("https://thewgl.firebaseio.com/thewgl/games/"+ game.id));
-        updateRef.$set({
-            gameArtUrl: game.gameArtUrl,
-            gameQuantity: game.gameQuantity,
-            gameSystem: game.gameSystem,
-            gameTitle: game.gameTitle
-        });
+        if (isGameUpdateClicked) {
+            if (game == "" || game == null) {
+                console.log("game does not exist");
+            } else {
+                //error checking for if fields are null
+                if (game.gameSystem == "" || game.gameSystem == null) { //System
+                    console.log("No game system given");
+                } else if (game.gameTitle == "" || game.gameTitle == null) { //Game Title
+                    console.log("No game title given");
+                } else if (game.gameArtUrl == "" || game.gameArtUrl == null) { // Game Box Art
+                    console.log("No game art url given");
+                } else if (game.gameQuantity == "" || game.gameQuantity == null) { //Quantity
+                    console.log("No game quantity given");
+                } else {
+                    var updateRef = $firebase(new Firebase("https://thewgl.firebaseio.com/thewgl/games/"+ game.id));
+                    updateRef.$set({
+                        gameArtUrl: game.gameArtUrl,
+                        gameQuantity: game.gameQuantity,
+                        gameSystem: game.gameSystem,
+                        gameTitle: game.gameTitle
+                    });
+                    $location.path("/gts");
+                }
+            } //end if else
+            $("#update_game_btn").css({backgroundColor: "#17A9CC"}).html("Update");
+            isGameUpdateClicked = false;
+        } else {
+            $("#update_game_btn").css({backgroundColor: "#458B00"}).html("Are you sure?");
+            isGameUpdateClicked = true;
+        }
 
     }
 
@@ -63,12 +83,9 @@ wgl.controller('gameController', ['$scope','$firebase','$location', function($sc
     }
 
     $scope.typing = false;
-    $scope.selectGame = function(game,gameId) {
-        $scope.gameInfos.gameTitle = game.gameTitle;
-        $scope.gameInfos.gameSystem = game.gameSystem;
-        $scope.gameInfos.gameArtUrl = game.gameArtUrl;
-        $scope.gameInfos.gameQuantity = game.gameQuantity;
-        $scope.gameInfos.id = gameId;
+    $scope.selectGame = function(game,index) {
+        $scope.tempGame = game;
+        $scope.tempGame.id = index;
         $scope.typing = false;
     };
 }]);
