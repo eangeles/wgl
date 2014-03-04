@@ -144,6 +144,8 @@ wgl.controller('stationController', ['$scope','$firebase','$location', function(
     $scope.typing = false;
     $scope.limit = 5;
     $scope.selectStation = function(station, index) {
+        //sets all the selected station properties into the scope variable on the form
+        //and also adds in the id so we can use it to access later
         $scope.tempStation = station;
         $scope.tempStation.id = index;
         $scope.typing = false;
