@@ -41,6 +41,7 @@
                         <div class="row">
                             <div class="select-margin large-10 columns large-centered">
                                 <select ng-model="userInfos.userType">
+                                    <option value="" disabled selected>Usertype</option>
                                     <option>Admin</option>
                                     <option>Staff</option>
                                     <option>Gamer</option>
@@ -49,7 +50,7 @@
                         </div>
                         <div class="row">
                             <div class="large-10 columns large-centered">
-                                <button type="button" class="button large-12" ng-click="updateUser(userInfos)">Update</button>
+                                <button type="button" id="update_user_btn" class="button large-12" ng-click="updateUser(userInfos)">Update</button>
                             </div>
                         </div>
                     </form>
