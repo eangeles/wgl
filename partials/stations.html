@@ -20,15 +20,15 @@
                     <!-- Station info -->
                     <form class="large-6 columns large-centered" name="form" novalidate>
                         <!-- Add a station button modal -->
-                        <div class="large-12 columns large-centered">
-                            <button data-reveal-id="gts-station-list" class="button large-12 columns large-centered">Add A New Station</button>
+                        <div class="large-12 medium-6 columns large-centered medium-centered">
+                            <button data-reveal-id="gts-station-list" class="button large-12 medium-12 columns large-centered">Add A New Station</button>
                         </div>
                         <div class="large-12 columns large-centered">
                             <hr />
                             <h4 style="text-align: center;">Or</h4>
                             <hr />
                         </div>
-                        <div class="large-12 medium-5 small-12 columns medium-centered large-centered">
+                        <div class="large-12 medium-6 small-12 columns medium-centered large-centered">
                             <input type="text" autocomplete="off" placeholder="Search Stations" ng-model="tempStation.stationNumber" ng-change="typing=true" required>
                             <ul ng-show="typing">
                                 <li ng-repeat="(index,station) in stations | filter:tempStation.stationNumber | limitTo:limit">
@@ -45,7 +45,7 @@
                         </div>
 
                         <!-- System -->
-                        <div class="select-margin large-12 medium-5 small-12 columns medium-centered large-centered" ng-show="tempStation">
+                        <div class="select-margin large-12 medium-6 small-12 columns medium-centered large-centered" ng-show="tempStation">
                             <select ng-model="tempStation.stationSystem" required>
                                 <option value="" disabled selected>Select the System</option>
                                 <option>Playstation 4</option>
@@ -56,7 +56,7 @@
                         </div>
 
                         <!-- TV Type -->
-                        <div class="large-12 medium-5 small-12 columns medium-centered large-centered" ng-show="tempStation">
+                        <div class="large-12 medium-6 small-12 columns medium-centered large-centered" ng-show="tempStation">
                             <input type="text" placeholder="Add New TV Model" name="tv" ng-model="tempStation.stationTV" required>
                             <!-- Form Validation -->
                             <div class="error" ng-show="form.tv.$dirty && form.tv.$invalid">
@@ -65,7 +65,7 @@
                         </div>
 
                         <!-- TV Serial Number -->
-                        <div class="large-12 medium-5 small-12 columns medium-centered large-centered" ng-show="tempStation">
+                        <div class="large-12 medium-6 small-12 columns medium-centered large-centered" ng-show="tempStation">
                             <input type="text" placeholder="Enter TV Model Serial" name="tvSerial" ng-model="tempStation.stationTVSerial" required>
                             <!-- Form Validation -->
                             <div class="error" ng-show="form.tvSerial.$dirty && form.tv.$invalid">
@@ -74,8 +74,8 @@
                         </div>
                         <!-- Form Buttons Save/Delete -->
 
-                        <div class="large-12 medium-5 small-12 columns medium-centered large-centered">
-                            <button type="button" id="update_station_btn" class="add-button form-buttons large-12 medium-12 small-12" ng-show="tempStation" ng-click="updateStation(tempStation)">Update</button>
+                        <div class="large-12 medium-6 small-12 columns medium-centered large-centered">
+                            <button type="button" id="update_station_btn" class="add-button button select-margin form-buttons large-12 medium-12 small-12" ng-show="tempStation" ng-click="updateStation(tempStation)">Update</button>
                             <button type="button" id="delete_station_btn" class="delete-button form-buttons large-12 medium-12 small-12" ng-show="tempStation" ng-click="deleteStation(tempStation)">Delete</button>
                         </div>
 

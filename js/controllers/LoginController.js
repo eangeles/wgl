@@ -41,7 +41,7 @@ wgl.controller('Login', ['$scope','$rootScope','$firebase', function mtCtrl($sco
     $scope.updatePermission = function(info){
         if (isUserClicked) {
             $scope.users.$update({
-                user:
+
             });
             $("#add_user_btn").css({backgroundColor: "#17A9CC"}).html("Save");
             isUserClicked = false;
