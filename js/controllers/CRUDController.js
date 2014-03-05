@@ -188,7 +188,7 @@ wgl.controller('userController', ['$scope','$firebase','$location', function($sc
     
     var isUserUpdateClicked = false;
     $scope.updateUser = function(info){
-        console.log(info, id);
+        console.log(info);
 //        if (isUserUpdateClicked) {
 //            var userRef = new Firebase("https://thewgl.firebaseio.com/thewgl/users/" + userId);
 //            userRef.update({
