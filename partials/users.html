@@ -1,4 +1,4 @@
-<div class="page" ng-controller="Login">
+<div class="page" ng-controller="userController">
     <div class="row">
         <!-- Header BG -->
         <div class="header-top"></div>
@@ -49,7 +49,7 @@
                         </div>
                         <div class="row">
                             <div class="large-10 columns large-centered">
-                                <button class="button large-12">Update</button>
+                                <button type="button" class="button large-12" ng-click="updateUser(userInfos)">Update</button>
                             </div>
                         </div>
                     </form>

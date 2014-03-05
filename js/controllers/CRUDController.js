@@ -179,3 +179,40 @@ wgl.controller('stationController', ['$scope','$firebase','$location', function(
     };
 
 }]);
+
+wgl.controller('userController', ['$scope','$firebase','$location', function($scope,$firebase,$location) {
+	var urlUsers = "https://thewgl.firebaseio.com/thewgl/users";
+    
+    //collects the info from the database for use.
+    $scope.users = $firebase(new Firebase(urlUsers));
+    
+    var isUserUpdateClicked = false;
+    $scope.updateUser = function(info){
+        console.log(info, id);
+//        if (isUserUpdateClicked) {
+//            var userRef = new Firebase("https://thewgl.firebaseio.com/thewgl/users/" + userId);
+//            userRef.update({
+//                userType: info.userType
+//            });
+//            $("#update_user_btn").css({backgroundColor: "#17A9CC"}).html("Update");
+//            isUserUpdateClicked = false;
+//        } else {
+//            $("#update_user_btn").css({backgroundColor: "#458B00"}).html("Are you sure?"); 
+//            isUserUpdateClicked = true;
+//        }
+    }
+
+    //auto complete
+    $scope.userTyping = false;
+    //Filter user search and select to input
+    $scope.limit = 5;
+    $scope.selectUser = function (gamer, id) {
+        $scope.userInfos.displayName = angular.fromJson(angular.toJson(gamer.displayName));
+        $scope.userInfos.email = angular.fromJson(angular.toJson(gamer.email));
+        $scope.userInfos.userType = angular.fromJson(angular.toJson(gamer.userType));
+        $scope.userInfos.id = id;
+
+        $scope.userTyping = false;
+    };
+    
+}]);
