@@ -21,9 +21,10 @@
                     <form class="large-6 columns large-centered" name="form" novalidate>
                         <!-- Add a station button modal -->
                         <div class="large-12 medium-6 columns large-centered medium-centered">
-                            <button data-reveal-id="gts-station-list" class="button large-12 medium-12 columns large-centered">Add A New Station</button>
+                            <a class="button medium-12 show-for-medium" data-reveal-id="gts-station-list" href="games.html">Add A New Station</a>
+                            <button data-reveal-id="gts-station-list" class="button large-12 medium-12 columns large-centered hide-for-medium">Add A New Station</button>
                         </div>
-                        <div class="large-12 columns large-centered">
+                        <div class="large-12 medium-6 columns medium-centered large-centered">
                             <hr />
                             <h4 style="text-align: center;">Or</h4>
                             <hr />
@@ -87,13 +88,13 @@
     <div id="gts-station-list" class="reveal-modal small" data-reveal>
     <h1 class="text-center">Add A Station</h1>
 
-    <form class="large-6 columns large-centered" name="form2" novalidate>
-        <div class="large-12 medium-5 small-12 columns medium-centered large-centered">
+    <form class="large-10 medium-12 columns medium-centered large-centered" name="form2" novalidate>
+        <div class="large-12 medium-12 small-12 columns large-centered">
             <input type="number" autocomplete="off" placeholder="Station Number" ng-model="station.stationNumber" required>
         </div>
 
         <!-- System -->
-        <div class="select-margin large-12 medium-5 small-12 columns medium-centered large-centered">
+        <div class="select-margin large-12 medium-12 small-12 columns medium-centered large-centered">
             <select ng-model="station.stationSystem" required>
                 <option value="" disabled selected>Select The System</option>
                 <option>Playstation 4</option>
@@ -104,7 +105,7 @@
         </div>
 
         <!-- TV Type -->
-        <div class="large-12 medium-5 small-12 columns medium-centered large-centered">
+        <div class="large-12 medium-12 small-12 columns medium-centered large-centered">
             <input type="text" placeholder="Add New TV Model" name="tv" ng-model="station.stationTV" required>
             <!-- Form Validation -->
             <div class="error" ng-show="form.tv.$dirty && form.tv.$invalid">
@@ -113,7 +114,7 @@
         </div>
 
         <!-- TV Serial Number -->
-        <div class="large-12 medium-5 small-12 columns medium-centered large-centered">
+        <div class="large-12 medium-12 small-12 columns medium-centered large-centered">
             <input type="text" placeholder="Enter Television Model Serial" name="tvSerial" ng-model="station.stationTVSerial" required>
             <!-- Form Validation -->
             <div class="error" ng-show="form2.tvSerial.$dirty && form.tv.$invalid">
@@ -122,8 +123,8 @@
         </div>
         <!-- Form Buttons Save/Delete -->
 
-        <div class="large-12 medium-5 small-12 columns medium-centered large-centered">
-            <button type="button" id="save_station_btn" class="add-button form-buttons large-12 medium-12 small-12" ng-click="saveStation(station)">Add</button>
+        <div class="large-12 medium-12 small-12 columns medium-centered large-centered">
+            <button type="button" id="save_station_btn" class="add-button button form-buttons large-12 medium-12 small-12" ng-click="saveStation(station)">Add</button>
         </div>
 
     </form>

@@ -36,7 +36,7 @@ wgl.controller('Login', ['$scope','$rootScope','$firebase', function mtCtrl($sco
     $scope.staffFilter = function(staff){
         return (staff.userType == 'Admin' || staff.userType == 'Staff');
     }
-<<<<<<< HEAD
+
     
     var isUserClicked = false;
     $scope.updatePermission = function(info){
@@ -65,7 +65,5 @@ wgl.controller('Login', ['$scope','$rootScope','$firebase', function mtCtrl($sco
         console.log(id);
 
     };
-=======
->>>>>>> 8307b86f5269ae5004803fa9df7089677ac7dd32
 
 }]);
