@@ -188,18 +188,16 @@ wgl.controller('userController', ['$scope','$firebase','$location', function($sc
     
     var isUserUpdateClicked = false;
     $scope.updateUser = function(info){
-        console.log(info, id);
-//        if (isUserUpdateClicked) {
-//            var userRef = new Firebase("https://thewgl.firebaseio.com/thewgl/users/" + userId);
-//            userRef.update({
-//                userType: info.userType
-//            });
-//            $("#update_user_btn").css({backgroundColor: "#17A9CC"}).html("Update");
-//            isUserUpdateClicked = false;
-//        } else {
-//            $("#update_user_btn").css({backgroundColor: "#458B00"}).html("Are you sure?"); 
-//            isUserUpdateClicked = true;
-//        }
+        if (isUserUpdateClicked) {
+            var userRef = new Firebase("https://thewgl.firebaseio.com/thewgl/users/" + info.id);
+            userRef.update(info);
+            $("#update_user_btn").css({backgroundColor: "#17A9CC"}).html("Update");
+            console.log(info);
+            isUserUpdateClicked = false;
+        } else {
+            $("#update_user_btn").css({backgroundColor: "#458B00"}).html("Are you sure?"); 
+            isUserUpdateClicked = true;
+        }
     }
 
     //auto complete
