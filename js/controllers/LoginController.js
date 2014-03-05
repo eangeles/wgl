@@ -36,44 +36,5 @@ wgl.controller('Login', ['$scope','$rootScope','$firebase', function mtCtrl($sco
     $scope.staffFilter = function(staff){
         return (staff.userType == 'Admin' || staff.userType == 'Staff');
     }
-    
-    var isUserClicked = false;
-    $scope.updatePermission = function(info){
-        if (isUserClicked) {
-            $scope.users.$update({
-                user:
-            });
-            $("#add_user_btn").css({backgroundColor: "#17A9CC"}).html("Save");
-            isUserClicked = false;
-        } else {
-            $("#add_user_btn").css({backgroundColor: "#458B00"}).html("Are you sure?"); 
-            isUserClicked = true;
-        } 
-    }
-
-    var updateRef = "";
-    $scope.updateNewsItem = function(post) {
-        updateRef = new Firebase("https://thewgl.firebaseio.com/thewgl/users/" + $routeParams.newsItemID);
-        updateRef.update({
-            image: post.image,
-            title: post.title,
-            content: post.content
-        });
-        $location.path("/news");
-    }
-
-    //auto complete
-    $scope.userTyping = false;
-    //Filter user search and select to input
-    $scope.limit = 5;
-    $scope.selectUser = function (gamer, id) {
-        $scope.userInfos.displayName = angular.fromJson(angular.toJson(gamer.displayName));
-        $scope.userInfos.email = angular.fromJson(angular.toJson(gamer.email));
-        $scope.userInfos.userType = angular.fromJson(angular.toJson(gamer.userType));
-
-        $scope.userTyping = false;
-        console.log(id);
-
-    };
 
 }]);
