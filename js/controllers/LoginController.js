@@ -41,7 +41,7 @@ wgl.controller('Login', ['$scope','$rootScope','$firebase', function mtCtrl($sco
     $scope.updatePermission = function(info){
         if (isUserClicked) {
             $scope.users.$update({
-                user:
+
             });
             $("#add_user_btn").css({backgroundColor: "#17A9CC"}).html("Save");
             isUserClicked = false;
@@ -49,17 +49,6 @@ wgl.controller('Login', ['$scope','$rootScope','$firebase', function mtCtrl($sco
             $("#add_user_btn").css({backgroundColor: "#458B00"}).html("Are you sure?"); 
             isUserClicked = true;
         } 
-    }
-
-    var updateRef = "";
-    $scope.updateNewsItem = function(post) {
-        updateRef = new Firebase("https://thewgl.firebaseio.com/thewgl/users/" + $routeParams.newsItemID);
-        updateRef.update({
-            image: post.image,
-            title: post.title,
-            content: post.content
-        });
-        $location.path("/news");
     }
 
     //auto complete
