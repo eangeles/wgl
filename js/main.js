@@ -287,6 +287,7 @@ wgl.config(function ($routeProvider){
 
 //var checkPermission = function ($q, $rootScope, $location){
 //
+
 //    if(!$rootScope.user || $rootScope.user.userType == 'Gamer'){
 //        $location.path('/');
 //    }

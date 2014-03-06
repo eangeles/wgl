@@ -19,7 +19,7 @@
                 <!-- Page Content -->
                 <div class="page-content">
                     <!-- Game info -->
-                    <form class="large-6 columns large-centered" name="form" novalidate>
+                    <form class="large-6 medium-6 columns  medium-centered large-centered" name="form" novalidate>
                             <!-- Add a game button modal -->
                             <div class="large-12 columns large-centered">
                                 <button data-reveal-id="gts-game-list" class="button large-12 columns large-centered">Add A Game</button>
@@ -35,7 +35,7 @@
                             </div>
 
                             <!-- Search or Add new game -->
-                            <div class="large-12 medium-5 small-12 columns medium-centered large-centered">
+                            <div class="large-12 medium-12 small-12 columns medium-centered large-centered">
                                 <input type="text" autocomplete="off" placeholder="Search Or Add Game" ng-model="tempGame.gameTitle" ng-change="typing=true" required>
                                 <ul ng-show="typing">
                                     <li ng-repeat="(index,game) in games | filter:tempGame.gameTitle | limitTo:limit | orderBy:'gameTitle'">
@@ -51,7 +51,7 @@
                                 </ul>
                             </div>
                             <!-- System -->
-                            <div class="large-12 medium-5 small-12 columns medium-centered large-centered" ng-show="tempGame">
+                            <div class="large-12 medium-12 small-12 columns medium-centered large-centered" ng-show="tempGame">
                                 <select class="select-margin" ng-model="tempGame.gameSystem" required>
                                     <option value="" disabled selected>Select The System</option>
                                     <option>Playstation 4</option>
@@ -61,7 +61,7 @@
                                 </select>
                             </div>
                             <!-- Game Quantity -->
-                            <div class="large-12 medium-5 small-12 columns medium-centered large-centered" ng-show="tempGame">
+                            <div class="large-12 medium-12 small-12 columns medium-centered large-centered" ng-show="tempGame">
                                 <input type="number" placeholder="Enter Quantity" name="gameQuantity" ng-model="tempGame.gameQuantity" required>
                                 <!-- Form Validation -->
                                 <div class="error" ng-show="form.gameQuantity.$dirty && form.gameQuantity.$invalid">
@@ -70,7 +70,7 @@
                             </div>
 
                             <!-- Game Art Url -->
-                            <div class="large-12 medium-5 small-12 columns medium-centered large-centered" ng-show="tempGame">
+                            <div class="large-12 medium-12 small-12 columns medium-centered large-centered" ng-show="tempGame">
                                 <input type="text" placeholder="Please enter a URL" name="url" ng-model="tempGame.gameArtUrl" required>
                                 <!-- Form Validation -->
                                 <div class="error" ng-show="form.url.$dirty && form.url.$invalid">
@@ -79,8 +79,8 @@
                             </div>
 
                             <!-- Form Buttons Save/Delete -->
-                            <div class="large-12 medium-5 small-12 columns medium-centered large-centered" ng-show="tempGame">
-                                <button type="button" id="update_game_btn" class="add-button form-buttons large-12 medium-12 small-12" ng-click="updateGame(tempGame)">Update</button>
+                            <div class="large-12 medium-12 small-12 columns medium-centered large-centered" ng-show="tempGame">
+                                <button type="button" id="update_game_btn" class="add-button select-margin button form-buttons large-12 medium-12 small-12" ng-click="updateGame(tempGame)">Update</button>
                                 <button type="button" id="delete_game_btn" class="add-button form-buttons large-12 medium-12 small-12" ng-click="deleteGame(tempGame)">Delete</button>
                             </div>
                     </form>
@@ -91,15 +91,15 @@
     <div id="gts-game-list" class="reveal-modal small" data-reveal>
     <h1 class="text-center">Add A Game</h1>
 
-    <form class="large-6 columns large-centered" name="form" novalidate>
+    <form class="large-6 medium-10 columns medium-centered large-centered" name="form" novalidate>
 
         <!-- Search or Add new game -->
-        <div class="large-12 medium-5 small-12 columns medium-centered large-centered">
+        <div class="large-12 medium-12 small-12 columns medium-centered large-centered">
             <input type="text" autocomplete="off" placeholder="Game Name" ng-model="game.gameTitle" required>
         </div>
 
         <!-- System -->
-        <div class="large-12 medium-5 small-12 columns medium-centered large-centered">
+        <div class="large-12 medium-12 small-12 columns medium-centered large-centered">
             <select class="select-margin" ng-model="game.gameSystem" required>
                 <option value="" disabled selected>Game System</option>
                 <option>Playstation 4</option>
@@ -109,7 +109,7 @@
             </select>
         </div>
         <!-- Game Quantity -->
-        <div class="large-12 medium-5 small-12 columns medium-centered large-centered">
+        <div class="large-12 medium-12 small-12 columns medium-centered large-centered">
             <input type="tel" placeholder="Game Quantity" name="gameQuantity" ng-model="game.gameQuantity" required>
             <!-- Form Validation -->
             <div class="error" ng-show="form.gameQuantity.$dirty && form.gameQuantity.$invalid">
@@ -118,7 +118,7 @@
         </div>
 
         <!-- Game Art Url -->
-        <div class="large-12 medium-5 small-12 columns medium-centered large-centered">
+        <div class="large-12 medium-12 small-12 columns medium-centered large-centered">
             <input type="text" placeholder="Please enter a URL" name="url" ng-model="game.gameArtUrl" required>
             <!-- Form Validation -->
             <div class="error" ng-show="form.url.$dirty && form.url.$invalid">
@@ -127,7 +127,7 @@
         </div>
 
         <!-- Form Buttons Save/Delete -->
-        <div class="large-12 medium-5 small-12 columns medium-centered large-centered">
+        <div class="large-12 medium-12 small-12 columns medium-centered large-centered">
             <button type="button" id="add_game_btn" class="add-button form-buttons large-12 medium-12 small-12" ng-disabled="form.$invalid" ng-click="saveGame(game)">Save</button>
         </div>
     </form>
