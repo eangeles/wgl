@@ -14,11 +14,11 @@
                     <a class="matches-link" href="#/match/{{match.$key}}" ng-repeat="match in matches | toArray">
                         <div class="large-4 medium-4 small-12 columns">
                             <div class="upcoming-match-info large-12 columns large-centered">
-                                <div class="large-4 columns text-center">
+                                <div class="large-4 medium-4 small-4 columns text-center">
                                     <img class="upcoming-small-img" src="{{match.awayTeam.picture}}" alt="Team Logo">
                                     <h6>{{match.awayTeam.name}}</h6>
                                 </div>
-                                <div class="large-4 columns">
+                                <div class="large-4 medium-4 small-4 columns">
                                     <div class="row text-center">
                                         <h6 class="match-event-name">{{match.eventName}}</h6>
                                     </div>
@@ -30,7 +30,7 @@
 
                                 </div>
 
-                                <div class="large-4 columns text-center">
+                                <div class="large-4 medium-4 small-4 columns text-center">
                                     <img class="upcoming-small-img" src="{{match.homeTeam.picture}}" alt="Team Logo">
                                     <h6>{{match.homeTeam.name}}</h6>
                                 </div>
