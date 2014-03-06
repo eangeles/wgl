@@ -28,6 +28,7 @@ wgl.controller('gts', ['$scope','$routeParams','$firebase','$location','$timeout
     
     //general overall function for the page to run
     var wrapper = function () {
+//        console.log("ran wrapper");
         updateTimer();
         $timeout(wrapper, 5000);
     }    
@@ -39,6 +40,7 @@ wgl.controller('gts', ['$scope','$routeParams','$firebase','$location','$timeout
     //all the timers with the correct time by calculating the change in time between
     //start time and the display time and reflects that in the html.
     var updateTimer = function(){
+//        console.log("ran update timer");
         //here ============
 //        $scope.activeStations.$on('loaded', function() {
 //            console.log("loaded");
@@ -53,7 +55,7 @@ wgl.controller('gts', ['$scope','$routeParams','$firebase','$location','$timeout
         //to here ===========
 //                    alert = {
 //                        "user": $scope.activeStations[i].stationGamer,
-//                        "stationNumber": $scope.activeStations[i].stationNumber
+//                        "stationNumber": $scope.activeStations[keys[i]].stationNumber
 //                    }
 //                    $scope.alerts.$add(alert);
 //                    $scope.emptyStations.$add({
@@ -88,6 +90,7 @@ wgl.controller('gts', ['$scope','$routeParams','$firebase','$location','$timeout
     var urlActiveStations = new Firebase('https://thewgl.firebaseio.com/thewgl/activeStations'); 
     
     urlActiveStations.on('value', function(snapshot) {
+//        console.log("loaded active stations");
         $scope.activeStations = $firebase(urlActiveStations);
         //starts the clocks
         var startKillWatch = $scope.$watch('activeStations', function(){
@@ -108,13 +111,23 @@ wgl.controller('gts', ['$scope','$routeParams','$firebase','$location','$timeout
             
             //When adding to active it loops through the empty stations and finds that
             //corresponding station and removes it so it only shows in activeStations
-            /*for (var i = 0; i < $scope.emptyStations.length; i++) {
-                if ($scope.emptyStations[i].stationNumber == tempActiveStation.stationNumber) {
-                    $scope.emptyStations.$remove($scope.emptyStations[i].$id);
-                    tempActiveStation.stationSystem = $scope.emptyStations[i].stationSystem;
+            var keys = $scope.emptyStations.$getIndex();
+            console.log(keys);
+            
+            for(var i=0, len = keys.length; i < len; i++) {
+                console.log(keys[i], $scope.emptyStations[keys[i]]);
+            } 
+            
+            for (var i=0, len = keys.length; i < len; i++) {
+                console.log($scope.emptyStations[keys[i]].title);
+                if ($scope.emptyStations[keys[i]].stationNumber == tempActiveStation.stationNumber) {
+                    console.log("match");
+                    //console.log($scope.emptyStations[keys[i]].$id);
+                    //$scope.emptyStations.$remove($scope.emptyStations[keys[i]].$id);
+                    //tempActiveStation.stationSystem = $scope.emptyStations[keys[i]].stationSystem;
                 }
-            }    
-            */            
+            }  
+          
             $scope.activeStations.$add(tempActiveStation);
             
             $("#add_active_btn").css({backgroundColor: "#17A9CC"}).html("Start");
