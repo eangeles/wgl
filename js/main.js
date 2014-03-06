@@ -163,9 +163,9 @@ wgl.config(function ($routeProvider){
         .when("/games", {
             title: 'Games',
             templateUrl:"partials/games.html",
-//            resolve: {
-//                factory: checkPermission
-//            }
+            resolve: {
+                factory: checkPermission
+            }
         })
         .otherwise({
         	redirectTo:"/",
@@ -285,14 +285,15 @@ wgl.config(function ($routeProvider){
 
 
 
-//var checkPermission = function ($q, $rootScope, $location){
-//
-
-//    if(!$rootScope.user || $rootScope.user.userType == 'Gamer'){
-//        $location.path('/');
-//    }
-//
-//}
+var checkPermission = function ($q, $rootScope, $location){
+    //console.log($rootScope.loginObj);
+    //console.log($rootScope.loginObj.user);
+    //console.log($rootScope.loginObj.user.userType);
+    //console.log($rootScope.loginObj.user["userType"]);
+    if(!$rootScope.loginObj || $rootScope.loginObj.user.userType == 'Gamer'){
+        $location.path('/');
+    }
+}
 
 
 

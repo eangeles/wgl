@@ -6,6 +6,10 @@ wgl.controller('news', ['$scope','$routeParams','$location','$rootScope','$fireb
     $scope.newsItem = $firebase(new Firebase("https://thewgl.firebaseio.com/thewgl/news/" + $routeParams.newsItemID));
     $scope.itemID = $routeParams.newsItemID;
     
+//      angular.forEach(keys, function(key) {
+//         console.log(key, $scope.everyone[key]);
+//      });
+
 //    console.log($scope.news.length);
 //    for (var i=0;i<$scope.news.length;i++) {
 //        console.log($scope.news[i]);
