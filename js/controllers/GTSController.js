@@ -1,4 +1,4 @@
-wgl.controller('gts', ['$scope','$routeParams','$firebase','$location','$timeout','$rootScope', function mtCtrl($scope, $routeParams,$firebase,$location,$timeout,$rootScope){
+wgl.controller('gts', ['$scope','$routeParams','$firebase','$location','$timeout', function mtCtrl($scope, $routeParams,$firebase,$location,$timeout){
     
     //Testing Integrating the Auto complete functionality
     $scope.gameTyping = false;
@@ -7,15 +7,14 @@ wgl.controller('gts', ['$scope','$routeParams','$firebase','$location','$timeout
 
     //Select User from search input
     $scope.selectUser = function (gamer) {
-        $scope.userInfos.name = angular.fromJson(angular.toJson(gamer.name));
+        $scope.tempStation.name = angular.fromJson(angular.toJson(gamer.name));
         $scope.userTyping = false;
-
     };
 
     //Select Game from search input
     $scope.selectGame = function(game){
         $scope.tempStation.game = angular.fromJson(angular.toJson(game.gameTitle));
-//        $rootScope.gameTitleasdf = $scope.gameInfos.gameArtUrl;
+        $scope.tempStation.gameArt = angular.fromJson(angular.toJson(game.gameArtUrl));
         $scope.gameTyping = false;
     }
 
@@ -40,31 +39,49 @@ wgl.controller('gts', ['$scope','$routeParams','$firebase','$location','$timeout
     //all the timers with the correct time by calculating the change in time between
     //start time and the display time and reflects that in the html.
     var updateTimer = function(){
-        //=========================================
-        //NEW CODE NEEDED TO CONVERT AND GET LENGTH
-        //=========================================
-//        $scope.surveys = $firebase(new Firebase(yourFBUrl));
+        //here ============
+//        $scope.activeStations.$on('loaded', function() {
+//            console.log("loaded");
+//            var keys = $scope.news.$getIndex();
 //
-//        $scope.surveys.$on("loaded", function() {
-//           var keys = $scope.surveys.$getIndex();
-//           console.log("count: " + keys.length); 
-//        });
-        for (var i = $scope.activeStations.length - 1; i >= 0; i--) {
-            time = new Date().getTime() - $scope.activeStations[i].startTime;
-            $scope.activeStations[i].displayTime = parseInt($scope.activeStations[i].countdown - (time/1000/60));
-            if($scope.activeStations[i].displayTime <= 0){ 
-                alert = {
-                    "user": $scope.activeStations[i].stationGamer,
-                    "stationNumber": $scope.activeStations[i].stationNumber
-                }
-                $scope.alerts.$add(alert);
-                $scope.emptyStations.$add({
-                    "stationNumber": $scope.activeStations[i].stationNumber, 
-                    "stationSystem": $scope.activeStations[i].stationSystem
-                });
-                $scope.activeStations.$remove($scope.activeStations[i].$id);
-            }
-        };
+//            // or as a for loop
+//            for(var i=0, len = keys.length; i < len; i++) {
+//                console.log($scope.news[keys[i]].title);
+//                time = new Date().getTime() - $scope.activeStations[keys[i]].startTime;
+//                $scope.activeStations[keys[i]].displayTime = parseInt($scope.activeStations[keys[i]].countdown - (time/1000/60));
+//                if($scope.activeStations[keys[i]].displayTime <= 0){ 
+        //to here ===========
+//                    alert = {
+//                        "user": $scope.activeStations[i].stationGamer,
+//                        "stationNumber": $scope.activeStations[i].stationNumber
+//                    }
+//                    $scope.alerts.$add(alert);
+//                    $scope.emptyStations.$add({
+//                        "stationNumber": $scope.activeStations[keys[i]].stationNumber, 
+//                        "stationSystem": $scope.activeStations[keys[i]].stationSystem
+//                    });
+                    //$scope.activeStations.$remove($scope.activeStations[keys[i]].$id);
+//                    console.log("times up");
+//                }
+            //}
+            
+        //});
+//        for (var i = $scope.activeStations.length - 1; i >= 0; i--) {
+//            time = new Date().getTime() - $scope.activeStations[i].startTime;
+//            $scope.activeStations[i].displayTime = parseInt($scope.activeStations[i].countdown - (time/1000/60));
+//            if($scope.activeStations[i].displayTime <= 0){ 
+//                alert = {
+//                    "user": $scope.activeStations[i].stationGamer,
+//                    "stationNumber": $scope.activeStations[i].stationNumber
+//                }
+//                $scope.alerts.$add(alert);
+//                $scope.emptyStations.$add({
+//                    "stationNumber": $scope.activeStations[i].stationNumber, 
+//                    "stationSystem": $scope.activeStations[i].stationSystem
+//                });
+//                $scope.activeStations.$remove($scope.activeStations[i].$id);
+//            }
+//        };
     };
     
     //************************************Active stations database***************************************************
@@ -86,7 +103,6 @@ wgl.controller('gts', ['$scope','$routeParams','$firebase','$location','$timeout
             tempActiveStation.startTime = new Date().getTime();
             
             console.log(tempActiveStation);
-            console.log(tempActiveStation.stationNumber)
             //Set to override the countdown dropdown
             /*tempActiveStation.countdown = "number value here";*/
             
@@ -97,9 +113,9 @@ wgl.controller('gts', ['$scope','$routeParams','$firebase','$location','$timeout
                     $scope.emptyStations.$remove($scope.emptyStations[i].$id);
                     tempActiveStation.stationSystem = $scope.emptyStations[i].stationSystem;
                 }
-            }            
-            $scope.activeStations.add(tempActiveStation);
-            */
+            }    
+            */            
+            $scope.activeStations.$add(tempActiveStation);
             
             $("#add_active_btn").css({backgroundColor: "#17A9CC"}).html("Start");
             isActiveClicked = false;
