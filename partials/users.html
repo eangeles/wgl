@@ -16,10 +16,10 @@
                 <div class="gts-hr"><hr /> </div>
                 <h1 class="text-center">Users</h1>
 
-                <div class="large-6 columns large-centered">
+                <div class="large-6 medium-6 columns medium-centered large-centered">
                     <form class="large-12 columns large-centered">
                         <div class="row">
-                            <div class="large-10 columns large-centered">
+                            <div class="large-12 columns">
                                 <input type="text" placeholder="Search User" ng-model="userInfos.displayName" ng-change="userTyping=true">
                                 <ul ng-show="userTyping">
                                     <li ng-repeat="(index,user) in users | filter:userInfos.displayName | limitTo:limit | orderBy:'displayName'">
@@ -34,12 +34,12 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="large-10 columns large-centered">
+                            <div class="large-12 columns large-centered">
                                 <input type="text" placeholder="User Email" ng-model="userInfos.email">
                             </div>
                         </div>
                         <div class="row">
-                            <div class="select-margin large-10 columns large-centered">
+                            <div class="select-margin large-12 columns large-centered">
                                 <select ng-model="userInfos.userType">
                                     <option value="" disabled selected>Usertype</option>
                                     <option>Admin</option>
@@ -49,8 +49,8 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="large-10 columns large-centered">
-                                <button type="button" id="update_user_btn" class="button large-12" ng-click="updateUser(userInfos)">Update</button>
+                            <div class="large-12 medium-12 columns large-centered">
+                                <button type="button" id="update_user_btn" class="button large-12 medium-12 small-12" ng-click="updateUser(userInfos)">Update</button>
                             </div>
                         </div>
                     </form>
