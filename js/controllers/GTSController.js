@@ -39,35 +39,36 @@ wgl.controller('gts', ['$scope','$routeParams','$firebase','$location','$timeout
     //timer event that runs through all the active stations and basically updates
     //all the timers with the correct time by calculating the change in time between
     //start time and the display time and reflects that in the html.
+    /*
+     * move keys up here?
+     * move loaded event up into the wrapper function?
+     */
     var updateTimer = function(){
-//        console.log("ran update timer");
-        //here ============
-//        $scope.activeStations.$on('loaded', function() {
-//            console.log("loaded");
-//            var keys = $scope.news.$getIndex();
-//
-//            // or as a for loop
-//            for(var i=0, len = keys.length; i < len; i++) {
-//                console.log($scope.news[keys[i]].title);
-//                time = new Date().getTime() - $scope.activeStations[keys[i]].startTime;
-//                $scope.activeStations[keys[i]].displayTime = parseInt($scope.activeStations[keys[i]].countdown - (time/1000/60));
-//                if($scope.activeStations[keys[i]].displayTime <= 0){ 
-        //to here ===========
-//                    alert = {
-//                        "user": $scope.activeStations[i].stationGamer,
-//                        "stationNumber": $scope.activeStations[keys[i]].stationNumber
-//                    }
-//                    $scope.alerts.$add(alert);
-//                    $scope.emptyStations.$add({
-//                        "stationNumber": $scope.activeStations[keys[i]].stationNumber, 
-//                        "stationSystem": $scope.activeStations[keys[i]].stationSystem
-//                    });
-                    //$scope.activeStations.$remove($scope.activeStations[keys[i]].$id);
-//                    console.log("times up");
-//                }
-            //}
+        $scope.activeStations.$on('loaded', function() {
+            var keys = $scope.activeStations.$getIndex();
+
+            // or as a for loop
+            for(var i=0, len = keys.length; i < len; i++) {
+                time = new Date().getTime() - $scope.activeStations[keys[i]].startTime;
+                $scope.activeStations[keys[i]].displayTime = parseInt($scope.activeStations[keys[i]].countdown - (time/1000/60));
+                if($scope.activeStations[keys[i]].displayTime <= 0){ 
+                    console.log($scope.activeStations[keys[i]].displayTime);
+                    console.log(keys[i]);
+                    var alert = {
+                        "user": $scope.activeStations[keys[i]].stationGamer,
+                        "stationNumber": $scope.activeStations[keys[i]].stationNumber
+                    }
+                    $scope.alerts.$add(alert);
+                    $scope.emptyStations.$add({
+                        "stationNumber": $scope.activeStations[keys[i]].stationNumber, 
+                        "stationSystem": $scope.activeStations[keys[i]].stationSystem
+                    });
+                    $scope.activeStations.$remove(keys[i]);
+                }
+            }
             
-        //});
+        });
+    };
 //        for (var i = $scope.activeStations.length - 1; i >= 0; i--) {
 //            time = new Date().getTime() - $scope.activeStations[i].startTime;
 //            $scope.activeStations[i].displayTime = parseInt($scope.activeStations[i].countdown - (time/1000/60));
@@ -84,13 +85,12 @@ wgl.controller('gts', ['$scope','$routeParams','$firebase','$location','$timeout
 //                $scope.activeStations.$remove($scope.activeStations[i].$id);
 //            }
 //        };
-    };
+    //});
     
     //************************************Active stations database***************************************************
     var urlActiveStations = new Firebase('https://thewgl.firebaseio.com/thewgl/activeStations'); 
     
     urlActiveStations.on('value', function(snapshot) {
-//        console.log("loaded active stations");
         $scope.activeStations = $firebase(urlActiveStations);
         //starts the clocks
         var startKillWatch = $scope.$watch('activeStations', function(){
@@ -104,27 +104,24 @@ wgl.controller('gts', ['$scope','$routeParams','$firebase','$location','$timeout
     $scope.addActiveStation = function(tempActiveStation){
         if (isActiveClicked){
             tempActiveStation.startTime = new Date().getTime();
-            
-            console.log(tempActiveStation);
+
             //Set to override the countdown dropdown
             /*tempActiveStation.countdown = "number value here";*/
             
             //When adding to active it loops through the empty stations and finds that
             //corresponding station and removes it so it only shows in activeStations
             var keys = $scope.emptyStations.$getIndex();
-            console.log(keys);
-            
-            for(var i=0, len = keys.length; i < len; i++) {
-                console.log(keys[i], $scope.emptyStations[keys[i]]);
-            } 
             
             for (var i=0, len = keys.length; i < len; i++) {
-                console.log($scope.emptyStations[keys[i]].title);
                 if ($scope.emptyStations[keys[i]].stationNumber == tempActiveStation.stationNumber) {
-                    console.log("match");
-                    //console.log($scope.emptyStations[keys[i]].$id);
-                    //$scope.emptyStations.$remove($scope.emptyStations[keys[i]].$id);
-                    //tempActiveStation.stationSystem = $scope.emptyStations[keys[i]].stationSystem;
+                    
+                    //object
+                    //console.log($scope.emptyStations[keys[i]]);
+                    
+                    var index = keys[i];
+                    
+                    $scope.emptyStations.$remove(index);
+                    tempActiveStation.stationSystem = $scope.emptyStations[keys[i]].stationSystem;
                 }
             }  
           
@@ -215,20 +212,7 @@ wgl.controller('gts', ['$scope','$routeParams','$firebase','$location','$timeout
     }
     
     $scope.removeFromQueue = function(playerID) {
-//        console.log(playerID);
         $scope.playerQueue.$remove(playerID);
     }
-    
-    /*******************************************Change Game************************************************************/
-    //sets the boolean for game change html to hide/show
-//    $scope.showGameChange = function(){
-//        $scope.gameChange = true;
-//    }
-
-    //sets the gameArtURL for the switch game to work
-//    $scope.switchGame = function(tempGame, tempStation){ 
-//        tempStation.gameArt = tempGame;
-//        $scope.gameChange = false;
-//    }
     
 }])
