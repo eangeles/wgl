@@ -69,23 +69,6 @@ wgl.controller('gts', ['$scope','$routeParams','$firebase','$location','$timeout
             
         });
     };
-//        for (var i = $scope.activeStations.length - 1; i >= 0; i--) {
-//            time = new Date().getTime() - $scope.activeStations[i].startTime;
-//            $scope.activeStations[i].displayTime = parseInt($scope.activeStations[i].countdown - (time/1000/60));
-//            if($scope.activeStations[i].displayTime <= 0){ 
-//                alert = {
-//                    "user": $scope.activeStations[i].stationGamer,
-//                    "stationNumber": $scope.activeStations[i].stationNumber
-//                }
-//                $scope.alerts.$add(alert);
-//                $scope.emptyStations.$add({
-//                    "stationNumber": $scope.activeStations[i].stationNumber, 
-//                    "stationSystem": $scope.activeStations[i].stationSystem
-//                });
-//                $scope.activeStations.$remove($scope.activeStations[i].$id);
-//            }
-//        };
-    //});
     
     //************************************Active stations database***************************************************
     var urlActiveStations = new Firebase('https://thewgl.firebaseio.com/thewgl/activeStations'); 
@@ -106,7 +89,7 @@ wgl.controller('gts', ['$scope','$routeParams','$firebase','$location','$timeout
             tempActiveStation.startTime = new Date().getTime();
 
             //Set to override the countdown dropdown
-            /*tempActiveStation.countdown = "number value here";*/
+            /*tempActiveStation.countdown = 2;*/
             
             //When adding to active it loops through the empty stations and finds that
             //corresponding station and removes it so it only shows in activeStations
@@ -114,9 +97,6 @@ wgl.controller('gts', ['$scope','$routeParams','$firebase','$location','$timeout
             
             for (var i=0, len = keys.length; i < len; i++) {
                 if ($scope.emptyStations[keys[i]].stationNumber == tempActiveStation.stationNumber) {
-                    
-                    //object
-                    //console.log($scope.emptyStations[keys[i]]);
                     
                     var index = keys[i];
                     
