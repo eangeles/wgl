@@ -286,11 +286,13 @@ wgl.config(function ($routeProvider){
 
 
 var checkPermission = function ($q, $rootScope, $location){
-    //console.log($rootScope.loginObj);
+    console.log($rootScope.loginObj.user);
     //console.log($rootScope.loginObj.user);
     //console.log($rootScope.loginObj.user.userType);
     //console.log($rootScope.loginObj.user["userType"]);
-    if(!$rootScope.loginObj || $rootScope.loginObj.user.userType == 'Gamer'){
+    if($rootScope.loginObj.user === null){
+        $location.path('/');
+    }else if($rootScope.loginObj.user.userType === 'Gamer'){
         $location.path('/');
     }
 }
