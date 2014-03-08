@@ -28,7 +28,6 @@ wgl.controller('gts', ['$scope','$routeParams','$firebase','$location','$timeout
     
     //general overall function for the page to run
     var wrapper = function () {
-//        console.log("ran wrapper");
         updateTimer();
         $timeout(wrapper, 5000);
     }    
@@ -52,13 +51,11 @@ wgl.controller('gts', ['$scope','$routeParams','$firebase','$location','$timeout
                 time = new Date().getTime() - $scope.activeStations[keys[i]].startTime;
                 $scope.activeStations[keys[i]].displayTime = parseInt($scope.activeStations[keys[i]].countdown - (time/1000/60));
                 if($scope.activeStations[keys[i]].displayTime <= 0){ 
-                    console.log($scope.activeStations[keys[i]].displayTime);
-                    console.log(keys[i]);
                     var alert = {
-                        "user": $scope.activeStations[keys[i]].stationGamer,
+                        "user": $scope.activeStations[keys[i]].name,
                         "stationNumber": $scope.activeStations[keys[i]].stationNumber
                     }
-                    $scope.alerts.$add(alert);
+                    $scope.addAlert(alert);
                     $scope.emptyStations.$add({
                         "stationNumber": $scope.activeStations[keys[i]].stationNumber, 
                         "stationSystem": $scope.activeStations[keys[i]].stationSystem
@@ -89,7 +86,7 @@ wgl.controller('gts', ['$scope','$routeParams','$firebase','$location','$timeout
             tempActiveStation.startTime = new Date().getTime();
 
             //Set to override the countdown dropdown
-            /*tempActiveStation.countdown = 2;*/
+            tempActiveStation.countdown = 2;
             
             //When adding to active it loops through the empty stations and finds that
             //corresponding station and removes it so it only shows in activeStations
@@ -138,11 +135,15 @@ wgl.controller('gts', ['$scope','$routeParams','$firebase','$location','$timeout
     $scope.alerts = $firebase(new Firebase(urlAlerts));
     
     $scope.addAlert = function(alert) {
-        $scope.alerts.$add(alert);
+        if (alert.stationNumber && alert.user) {
+            console.log(alert.stationNumber, alert.user);
+            $scope.alerts.$add(alert);
+        }
     }
     
     $scope.removeAlert = function(alertID) {
-        $scope.alerts.$remove(alertID);
+        console.log(alertID);
+        //$scope.alerts.$remove(alertID);
     }
     
     //******************************************Queue database*******************************************************

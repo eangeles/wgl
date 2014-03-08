@@ -396,6 +396,12 @@ h1,h2,h3,h4,h5,h6{
 /*******
  GTS Page
  *******/
+/*Alerts Styling*/
+.alert-box {
+    height: 35px !important;
+    padding: 4px;
+    margin: 0 10px 3px;
+}
 .gts-hr {
     padding: 0 20px 0 20px;
 }

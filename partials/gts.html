@@ -1,5 +1,12 @@
 <div class="page" ng-controller="gts">
+    
     <div class="row">
+        <div class="row">
+        <div class="alert-box success radius" ng-repeat="alert in alerts | toArray">
+            <p>Station: {{alert.stationNumber}} | {{alert.user}}'s time is up!</p>
+            <a ng-click="removeAlert(alert.$key)" class="close">&times;</a>
+        </div>
+        </div>
         <!-- Header BG -->
         <div class="header-top"></div>
         <!-- Page Container -->
