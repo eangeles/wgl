@@ -136,14 +136,12 @@ wgl.controller('gts', ['$scope','$routeParams','$firebase','$location','$timeout
     
     $scope.addAlert = function(alert) {
         if (alert.stationNumber && alert.user) {
-            console.log(alert.stationNumber, alert.user);
             $scope.alerts.$add(alert);
         }
     }
     
     $scope.removeAlert = function(alertID) {
-        console.log(alertID);
-        //$scope.alerts.$remove(alertID);
+        $scope.alerts.$remove(alertID);
     }
     
     //******************************************Queue database*******************************************************
@@ -152,7 +150,6 @@ wgl.controller('gts', ['$scope','$routeParams','$firebase','$location','$timeout
     $scope.playerQueue = $firebase(new Firebase(urlPlayerQueue));
     
     var isQueueClicked = false;
-    //make a var for queue button so its reusable?
     $scope.addToPlayerQueue = function(playerRequest) { 
         if (isQueueClicked){
             //Grabs a date and seperates it into hours and minutes
