@@ -26,7 +26,7 @@ wgl.controller('gts', ['$scope','$routeParams','$firebase','$location','$timeout
     $scope.games = $firebase(new Firebase(urlGames));
     $scope.users = $firebase(new Firebase(urlUsers));
     
-    //general overall function for the page to run
+    //general overall function for the page/timer to run
     var wrapper = function () {
         updateTimer();
         $timeout(wrapper, 5000);
@@ -38,28 +38,32 @@ wgl.controller('gts', ['$scope','$routeParams','$firebase','$location','$timeout
     //timer event that runs through all the active stations and basically updates
     //all the timers with the correct time by calculating the change in time between
     //start time and the display time and reflects that in the html.
-    /*
-     * move keys up here?
-     * move loaded event up into the wrapper function?
-     */
     var updateTimer = function(){
         $scope.activeStations.$on('loaded', function() {
+            //generates keys 
             var keys = $scope.activeStations.$getIndex();
-
-            // or as a for loop
+            
+            //loops through the keys and modifies each object individually
             for(var i=0, len = keys.length; i < len; i++) {
+                //time calculation to go from the js formatted seconds to minutes
                 time = new Date().getTime() - $scope.activeStations[keys[i]].startTime;
+                //sets the displayTime which is what is seen on the gts using the time calculation
                 $scope.activeStations[keys[i]].displayTime = parseInt($scope.activeStations[keys[i]].countdown - (time/1000/60));
+                //if theres no time left
                 if($scope.activeStations[keys[i]].displayTime <= 0){ 
+                    //create an alert
                     var alert = {
                         "user": $scope.activeStations[keys[i]].name,
                         "stationNumber": $scope.activeStations[keys[i]].stationNumber
                     }
+                    //add/display the alert
                     $scope.addAlert(alert);
+                    //add the empty station back
                     $scope.emptyStations.$add({
                         "stationNumber": $scope.activeStations[keys[i]].stationNumber, 
                         "stationSystem": $scope.activeStations[keys[i]].stationSystem
                     });
+                    //remove the active station
                     $scope.activeStations.$remove(keys[i]);
                 }
             }
@@ -70,6 +74,7 @@ wgl.controller('gts', ['$scope','$routeParams','$firebase','$location','$timeout
     //************************************Active stations database***************************************************
     var urlActiveStations = new Firebase('https://thewgl.firebaseio.com/thewgl/activeStations'); 
     
+    //when stations are loaded run the killwatch function with sets the timeout for the timer to fire
     urlActiveStations.on('value', function(snapshot) {
         $scope.activeStations = $firebase(urlActiveStations);
         //starts the clocks
@@ -95,15 +100,20 @@ wgl.controller('gts', ['$scope','$routeParams','$firebase','$location','$timeout
             for (var i=0, len = keys.length; i < len; i++) {
                 if ($scope.emptyStations[keys[i]].stationNumber == tempActiveStation.stationNumber) {
                     
+                    //unique id for each object(key) in empty stations
                     var index = keys[i];
                     
+                    //removes the corresponding empty station
                     $scope.emptyStations.$remove(index);
+                    //sets the station system based on the empty station
                     tempActiveStation.stationSystem = $scope.emptyStations[keys[i]].stationSystem;
                 }
             }  
-          
+            
+            //adds to active stations
             $scope.activeStations.$add(tempActiveStation);
             
+            //jquery button animation
             $("#add_active_btn").css({backgroundColor: "#17A9CC"}).html("Start");
             isActiveClicked = false;
         } else {
@@ -116,6 +126,7 @@ wgl.controller('gts', ['$scope','$routeParams','$firebase','$location','$timeout
     $scope.removeActiveStation = function(station) {
         $scope.activeStations.$remove(station.$id);
         
+        //temp object for empty station being added
         var tempEmptyStation = {
             "stationNumber": station.stationNumber,
             "stationSystem": station.stationSystem
@@ -134,12 +145,14 @@ wgl.controller('gts', ['$scope','$routeParams','$firebase','$location','$timeout
     
     $scope.alerts = $firebase(new Firebase(urlAlerts));
     
+    //adds the alert if all fields exist and no errors are found
     $scope.addAlert = function(alert) {
         if (alert.stationNumber && alert.user) {
             $scope.alerts.$add(alert);
         }
     }
     
+    //removes alert based on id being passed in
     $scope.removeAlert = function(alertID) {
         $scope.alerts.$remove(alertID);
     }
@@ -150,6 +163,7 @@ wgl.controller('gts', ['$scope','$routeParams','$firebase','$location','$timeout
     $scope.playerQueue = $firebase(new Firebase(urlPlayerQueue));
     
     var isQueueClicked = false;
+    //adds a player to the queue when the form is filled out
     $scope.addToPlayerQueue = function(playerRequest) { 
         if (isQueueClicked){
             //Grabs a date and seperates it into hours and minutes
@@ -179,7 +193,8 @@ wgl.controller('gts', ['$scope','$routeParams','$firebase','$location','$timeout
             
             //sets the checked in time
             playerRequest.checkedIn = dformat;
-                        
+                
+            //adds the object to the queue
             $scope.playerQueue.$add(playerRequest);
             isQueueClicked = false;
             $("#add_queue_btn").css({backgroundColor: "#17A9CC"}).html("Add");
@@ -189,6 +204,7 @@ wgl.controller('gts', ['$scope','$routeParams','$firebase','$location','$timeout
         }
     }
     
+    //removes the player from the queue
     $scope.removeFromQueue = function(playerID) {
         $scope.playerQueue.$remove(playerID);
     }
