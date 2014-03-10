@@ -76,7 +76,10 @@ wgl.config(function ($routeProvider,$locationProvider){
         })
         .when("/teams", {
             title: 'Teams',
-            templateUrl:"partials/teams.html"
+            templateUrl:"partials/teams.html",
+            resolve: {
+                factory: teamsPermission
+            }
         })
 
         // ***********
@@ -307,7 +310,7 @@ wgl.config(function ($routeProvider,$locationProvider){
 // Checks Permission if User is Gamer/Admin, it will redirect the User if they are not
 // Staff or Admin. If a user that is not logged in, tries to go to the Admin section, they
 // will be redirect to the homepage.
-var checkPermission = function ($q, $rootScope, $location,$sce){
+var checkPermission = function ($q, $rootScope, $location){
 
     if($rootScope.loginObj.user === null){
         $location.path('/');
@@ -334,7 +337,7 @@ var leaguesPermission = function ($q, $rootScope, $location,$sce){
     if($rootScope.loginObj.user.userType === 'Admin'){
         console.log('ADMIN');
 
-        $rootScope.html = '<a href="#/addleague">add</a>';
+        $rootScope.html = '<a href="#\addleague">add</a>';
         $rootScope.addLeagues = $sce.trustAsHtml($rootScope.html);
 
         $rootScope.html2 = 'Edit';
@@ -342,6 +345,21 @@ var leaguesPermission = function ($q, $rootScope, $location,$sce){
 
         $rootScope.html3 = 'Remove';
         $rootScope.removeLeagues = $sce.trustAsHtml($rootScope.html3);
+    }
+}
+// If the userType is Admin, Admin function will show for that page.
+var teamsPermission = function ($q, $rootScope, $location,$sce){
+    if($rootScope.loginObj.user.userType === 'Admin'){
+        console.log('ADMIN');
+
+        $rootScope.html = "<a href='#/addteam'>+</a>";
+        $rootScope.addTeams = $sce.trustAsHtml($rootScope.html);
+
+        $rootScope.html2 = 'Edit';
+        $rootScope.editTeams = $sce.trustAsHtml($rootScope.html2);
+
+        $rootScope.html3 = 'Remove';
+        $rootScope.removeTeams = $sce.trustAsHtml($rootScope.html3);
     }
 }
 
