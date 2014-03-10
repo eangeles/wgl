@@ -19,6 +19,8 @@
 
     <script src="ckeditor/ckeditor.js"></script>
 
+
+
 </head>
 
 <body ng-controller="Login">
@@ -40,7 +42,7 @@
             <ul>
                 <li><a href="#/news">News</a></li>
                 <li class="has-dropdown" ng-controller="leagues">
-                    <a href="#/leagues">Leagues</a>
+                    <a href="#/leagues"><i class="fa fa-trophy"></i> Leagues</a>
                     <ul class="dropdown">
                         <li ng-repeat="league in leagues | toArray"><a ng-href="#/league/{{league.$key}}">{{league.name}}</a></li>
                     </ul>
@@ -88,7 +90,7 @@
                         <li ng-hide="loginObj.user"><a class="login" ng-click="loginObj.$login('facebook')"><i class="fa fa-facebook"></i> Login</a> </li>
                         <li class="has-dropdown" ng-show="loginObj.user"><a href="#/gamer_page/{{$key}}"> <img class="login-user-img" src="{{loginObj.user.profilePicture}}">{{loginObj.user.first_name}}</a>
                             <ul class="dropdown">
-                                <li><a href="#/gts">Admin</a></li>
+                                <li ng-bind-html="adminView"></li>
                                 <li><a class="login" ng-click="loginObj.$logout()">Logout</a></li>
                             </ul>
                         </li>

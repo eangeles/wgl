@@ -1,15 +1,29 @@
-wgl.controller('Login', ['$scope','$rootScope','$firebase', function mtCtrl($scope,$rootScope,$firebase){
+wgl.controller('Login', ['$scope','$rootScope','$firebase', '$sce', function mtCtrl($scope,$rootScope,$firebase,$sce){
 
     var usersURL = "https://thewgl.firebaseio.com/thewgl/users/";
     $scope.users = $firebase(new Firebase(usersURL));
-    
+
+
+
+
     $rootScope.$on("$firebaseSimpleLogin:login", function(e, user) {
         var usersRef = new Firebase(usersURL);
         usersRef.child(user.id).once('value', function(snapshot) {
             var exists = (snapshot.val() !== null);
+
+
+            $scope.userType = false;
             if (snapshot.val() !== null) {
                 $rootScope.loginObj.user = snapshot.val();
                 console.log("User id: " + user.id + " exists already, logging in");
+                console.log($rootScope.loginObj.user.userType);
+                if($rootScope.loginObj.user.userType === "Admin" || $rootScope.loginObj.user.userType === "Staff"){
+
+                    $scope.html = '<li><a href="#\gts\">Admin</a></li>';
+                    $scope.adminView = $sce.trustAsHtml($scope.html);
+                    console.log('is a staff');
+
+                }
             } else {
                 console.log("User id: " + user.id + " does not exist, adding and logging in");
                 
@@ -17,7 +31,7 @@ wgl.controller('Login', ['$scope','$rootScope','$firebase', function mtCtrl($sco
                 user.userType = "Gamer";
                 usersRef.child(user.id).set(user);
                 $rootScope.loginObj.user = user;
-                
+
                 //Display a notification
                 if (!("Notification" in window)) {
                     console.log("We had some notifications for you but your browser can’t show them.");

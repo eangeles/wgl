@@ -9,7 +9,8 @@ wgl.run(['$firebaseSimpleLogin', '$rootScope', '$route', 'sharedProperties', fun
     });
 }]);
 
-wgl.config(function ($routeProvider){
+wgl.config(function ($routeProvider,$locationProvider){
+//    $locationProvider.html5Mode(true);
     $routeProvider
         .when("/" , {
             title: 'Home',
@@ -19,20 +20,6 @@ wgl.config(function ($routeProvider){
             title: 'About Us',
             templateUrl:"partials/about.html"
         })
-        .when("/gts", {
-            title: 'Gamer Tracking System',
-            templateUrl:"partials/gts.html",
-//            resolve: {
-//                factory: checkPermission
-//            }
-        })
-        .when("/users", {
-            title: 'Users',
-            templateUrl:"partials/users.html",
-//            resolve: {
-//                factory: checkPermission
-//            }
-        })
         .when("/league/:leagueID", {
             title: 'League',
             templateUrl:"partials/league.html"
@@ -41,22 +28,6 @@ wgl.config(function ($routeProvider){
             title: 'Leagues',
             templateUrl:"partials/leagues.html"
         })
-        .when("/addleague", {
-            title: 'Add League',
-            templateUrl:"partials/addleague.html"
-        })
-        .when("/editleague/:leagueID", {
-            title: 'Edit League',
-            templateUrl:"partials/editleague.html"
-        })
-        .when("/leagueaddteam/:leagueID", {
-            title: 'Add Team To League',
-            templateUrl:"partials/leagueaddteam.html"
-        })
-        .when("/leagueaddmatch/:leagueID", {
-            title: 'Add Match To League',
-            templateUrl:"partials/leagueaddmatch.html"
-        })
         .when("/leaguematch/:leagueID/:matchID", {
             title: 'League Match',
             templateUrl:"partials/leagueMatch.html"
@@ -64,10 +35,6 @@ wgl.config(function ($routeProvider){
         .when("/team", {
             title: 'Team Page',
             templateUrl:"partials/team.html"
-        })
-        .when("/editteam/:teamID", {
-            title: 'Edit Team',
-            templateUrl:"partials/editteam.html"
         })
         .when("/gamer_page/:playerID", {
             title: 'Gamer Page',
@@ -80,20 +47,6 @@ wgl.config(function ($routeProvider){
         .when("/match/:matchID", {
             title: 'Match',
             templateUrl:"partials/match.html"
-        })
-        .when("/addmatch", {
-            title: 'New Match',
-            templateUrl:"partials/addmatch.html",
-//            resolve: {
-//                factory: checkPermission
-//            }
-        })
-        .when("/editmatch/:matchID", {
-            title: 'New Match',
-            templateUrl:"partials/editmatch.html",
-//            resolve: {
-//                factory: checkPermission
-//            }
         })
         .when("/tournament", {
             title: 'Tournament',
@@ -111,54 +64,116 @@ wgl.config(function ($routeProvider){
             title: 'News Article',
             templateUrl:"partials/newspage.html"
         })
+        .when("/team/:teamID", {
+            title: 'Team',
+            templateUrl:"partials/team.html"
+        })
+        .when("/teams", {
+            title: 'Teams',
+            templateUrl:"partials/teams.html"
+        })
+
+        // ***********
+        // Admin Section
+        // ***********
+
+        .when("/addleague", {
+            title: 'Add League',
+            templateUrl:"partials/addleague.html",
+            resolve: {
+                factory: checkPermission
+            }
+        })
+        .when("/editleague/:leagueID", {
+            title: 'Edit League',
+            templateUrl:"partials/editleague.html",
+            resolve: {
+                factory: checkPermission
+            }
+        })
+        .when("/leagueaddteam/:leagueID", {
+            title: 'Add Team To League',
+            templateUrl:"partials/leagueaddteam.html",
+            resolve: {
+                factory: checkPermission
+            }
+        })
+        .when("/leagueaddmatch/:leagueID", {
+            title: 'Add Match To League',
+            templateUrl:"partials/leagueaddmatch.html",
+            resolve: {
+                factory: checkPermission
+            }
+        })
+        .when("/addmatch", {
+            title: 'New Match',
+            templateUrl:"partials/addmatch.html",
+            resolve: {
+                factory: checkPermission
+            }
+        })
+        .when("/editmatch/:matchID", {
+            title: 'Edit Match',
+            templateUrl:"partials/editmatch.html",
+            resolve: {
+                factory: checkPermission
+            }
+        })
         .when("/addnews", {
             title: 'Add News',
             templateUrl:"partials/addnews.html",
-//            resolve: {
-//                factory: checkPermission
-//            }
+            resolve: {
+                factory: checkPermission
+            }
         })
         .when("/editnews/:newsItemID", {
             title: 'Edit News',
             templateUrl:"partials/editnews.html",
-//            resolve: {
-//                factory: checkPermission
-//            }
+            resolve: {
+                factory: checkPermission
+            }
         })
-        .when("/teams", {
-            title: 'Teams',
-            templateUrl:"partials/teams.html",
-//            resolve: {
-//                factory: checkPermission
-//            }
+        .when("/editteam/:teamID", {
+            title: 'Edit Team',
+            templateUrl:"partials/editteam.html",
+            resolve: {
+                factory: checkPermission
+            }
         })
         .when("/addteam", {
             title: 'Add Team',
             templateUrl:"partials/addteam.html",
-//            resolve: {
-//                factory: checkPermission
-//            }
-        })
-        .when("/team/:teamID", {
-            title: 'Team',
-            templateUrl:"partials/team.html"
-//            resolve: {
-//                factory: checkPermission
-//            }
+            resolve: {
+                factory: checkPermission
+            }
         })
         .when("/addteammate/:teamID", {
             title: 'Add TeamMate',
             templateUrl:"partials/addteammate.html",
-//            resolve: {
-//                factory: checkPermission
-//            }
+            resolve: {
+                factory: checkPermission
+            }
         })
         .when("/stations", {
             title: 'Stations',
             templateUrl:"partials/stations.html",
-//            resolve: {
-//                factory: checkPermission
-//            }
+            resolve: {
+                factory: checkPermission
+            }
+        })
+        .when("/gts", {
+            title: 'Gamer Tracking System',
+            templateUrl:"partials/gts.html",
+            resolve: {
+                factory: checkPermission
+            }
+        })
+        .when("/users", {
+            title: 'Users',
+            templateUrl:"partials/users.html",
+            resolve: {
+                factory: checkPermission
+            }
         })
         .when("/games", {
             title: 'Games',
@@ -283,13 +298,11 @@ wgl.config(function ($routeProvider){
         };
 });
 
-
-
+// Checks Permission if User is Gamer/Admin, it will redirect the User if they are not
+// Staff or Admin. If a user that is not logged in, tries to go to the Admin section, they
+// will be redirect to the homepage.
 var checkPermission = function ($q, $rootScope, $location){
-    console.log($rootScope.loginObj.user);
-    //console.log($rootScope.loginObj.user);
-    //console.log($rootScope.loginObj.user.userType);
-    //console.log($rootScope.loginObj.user["userType"]);
+
     if($rootScope.loginObj.user === null){
         $location.path('/');
     }else if($rootScope.loginObj.user.userType === 'Gamer'){
