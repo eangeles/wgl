@@ -58,7 +58,10 @@ wgl.config(function ($routeProvider,$locationProvider){
         })
         .when("/news", {
             title: 'News',
-            templateUrl:"partials/news.html"
+            templateUrl:"partials/news.html",
+            resolve: {
+                factory: newsPermission
+            }
         })
         .when("/newspage/:newsItemID", {
             title: 'News Article',
@@ -301,12 +304,21 @@ wgl.config(function ($routeProvider,$locationProvider){
 // Checks Permission if User is Gamer/Admin, it will redirect the User if they are not
 // Staff or Admin. If a user that is not logged in, tries to go to the Admin section, they
 // will be redirect to the homepage.
-var checkPermission = function ($q, $rootScope, $location){
+var checkPermission = function ($q, $rootScope, $location,$sce){
 
     if($rootScope.loginObj.user === null){
         $location.path('/');
     }else if($rootScope.loginObj.user.userType === 'Gamer'){
         $location.path('/');
+    }
+}
+// If the userType is Admin, Admin function will show.
+var newsPermission = function ($q, $rootScope, $location,$sce){
+    if($rootScope.loginObj.user.userType === 'Admin'){
+        console.log('ADMIN');
+        //News
+        $rootScope.html = '<a href="#\addnews">+</a>';
+        $rootScope.addNews = $sce.trustAsHtml($rootScope.html);
     }
 }
 

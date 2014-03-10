@@ -7,7 +7,7 @@
             <div class="page-content">
                 <div class="large-12 columns">
                     <h3 class="page-title large-10 small-9 columns">Recent<span>News</span></h3>
-                    <h6 class="add-news large-1 small-3 columns right"><a href="#/addnews">+</a></h6>                    
+                    <h6 class="add-news large-1 small-3 columns right" ng-bind-html="addNews"></h6>
                     <!-- Recent News content -->
                     <div ng-repeat="post in news | toArray | orderObjectBy: 'date':true">
                         <a ng-href="#/newspage/{{post.$key}}" ng-click="retrieveNewsItem()">

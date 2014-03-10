@@ -4,24 +4,19 @@ wgl.controller('Login', ['$scope','$rootScope','$firebase', '$sce', function mtC
     $scope.users = $firebase(new Firebase(usersURL));
 
 
-
-
     $rootScope.$on("$firebaseSimpleLogin:login", function(e, user) {
         var usersRef = new Firebase(usersURL);
         usersRef.child(user.id).once('value', function(snapshot) {
             var exists = (snapshot.val() !== null);
 
-
-            $scope.userType = false;
             if (snapshot.val() !== null) {
                 $rootScope.loginObj.user = snapshot.val();
-                console.log("User id: " + user.id + " exists already, logging in");
-                console.log($rootScope.loginObj.user.userType);
+
+                //Check userType, if userType is Admin/Staff, Admin Link will show.
                 if($rootScope.loginObj.user.userType === "Admin" || $rootScope.loginObj.user.userType === "Staff"){
 
                     $scope.html = '<li><a href="#\gts\">Admin</a></li>';
                     $scope.adminView = $sce.trustAsHtml($scope.html);
-                    console.log('is a staff');
 
                 }
             } else {
@@ -42,6 +37,7 @@ wgl.controller('Login', ['$scope','$rootScope','$firebase', '$sce', function mtC
         });
     });
 
+    //Logout for Facebook
     $scope.logout = function() {
         $rootScope.loginObj.$logout();
         $location.path('/') 
@@ -51,12 +47,11 @@ wgl.controller('Login', ['$scope','$rootScope','$firebase', '$sce', function mtC
         return (staff.userType == 'Admin' || staff.userType == 'Staff');
     }
 
-    
+    //
     var isUserClicked = false;
     $scope.updatePermission = function(info){
         if (isUserClicked) {
             $scope.users.$update({
-
             });
             $("#add_user_btn").css({backgroundColor: "#17A9CC"}).html("Save");
             isUserClicked = false;
@@ -74,9 +69,7 @@ wgl.controller('Login', ['$scope','$rootScope','$firebase', '$sce', function mtC
         $scope.userInfos.displayName = angular.fromJson(angular.toJson(gamer.displayName));
         $scope.userInfos.email = angular.fromJson(angular.toJson(gamer.email));
         $scope.userInfos.userType = angular.fromJson(angular.toJson(gamer.userType));
-
         $scope.userTyping = false;
-        console.log(id);
 
     };
 
