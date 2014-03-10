@@ -17,8 +17,8 @@
                                 </div>
                                 <div class="news column">
                                     <div class="news-title">
-                                        <a ng-href="#/editnews/{{post.$key}}">Edit</a>
-                                        <a ng-click="removeNewsItem(post.$key)">Remove</a>
+                                        <a ng-href="#/editnews/{{post.$key}}" ng-bind-html="editNews"></a>
+                                        <a ng-click="removeNewsItem(post.$key)" ng-bind-html="removeNews"></a>
                                         <h5>{{post.title}}</h5>
                                     </div>
                                     <div class="news-info">

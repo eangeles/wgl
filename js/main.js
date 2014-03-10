@@ -26,7 +26,10 @@ wgl.config(function ($routeProvider,$locationProvider){
         })
         .when("/leagues", {
             title: 'Leagues',
-            templateUrl:"partials/leagues.html"
+            templateUrl:"partials/leagues.html",
+            resolve: {
+                factory: leaguesPermission
+            }
         })
         .when("/leaguematch/:leagueID/:matchID", {
             title: 'League Match',
@@ -312,13 +315,33 @@ var checkPermission = function ($q, $rootScope, $location,$sce){
         $location.path('/');
     }
 }
-// If the userType is Admin, Admin function will show.
+// If the userType is Admin, Admin function will show for that page.
 var newsPermission = function ($q, $rootScope, $location,$sce){
     if($rootScope.loginObj.user.userType === 'Admin'){
-        console.log('ADMIN');
-        //News
+
         $rootScope.html = '<a href="#\addnews">+</a>';
         $rootScope.addNews = $sce.trustAsHtml($rootScope.html);
+
+        $rootScope.html2 = 'Edit';
+        $rootScope.editNews = $sce.trustAsHtml($rootScope.html2);
+
+        $rootScope.html3 = 'Remove';
+        $rootScope.removeNews = $sce.trustAsHtml($rootScope.html3);
+    }
+}
+// If the userType is Admin, Admin function will show for that page.
+var leaguesPermission = function ($q, $rootScope, $location,$sce){
+    if($rootScope.loginObj.user.userType === 'Admin'){
+        console.log('ADMIN');
+
+        $rootScope.html = '<a href="#/addleague">add</a>';
+        $rootScope.addLeagues = $sce.trustAsHtml($rootScope.html);
+
+        $rootScope.html2 = 'Edit';
+        $rootScope.editLeagues = $sce.trustAsHtml($rootScope.html2);
+
+        $rootScope.html3 = 'Remove';
+        $rootScope.removeLeagues = $sce.trustAsHtml($rootScope.html3);
     }
 }
 
