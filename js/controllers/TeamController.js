@@ -4,14 +4,15 @@ wgl.controller('teams', ['$scope','$routeParams','$location','$rootScope','$fire
     var teamsURL = "https://thewgl.firebaseio.com/thewgl/teams/";
     $scope.teams = $firebase(new Firebase(teamsURL));
     
-    $scope.addTeam = function(team) {              
+    $scope.addTeam = function(team) { 
+        console.log(team);
         $scope.teams.$add(team);
         $location.path("/teams");
     };
 
     $scope.removeTeam = function(teamID) {
         console.log(teamID);
-        //$scope.teams.$remove(teamID);
+        $scope.teams.$remove(teamID);
     }
     
     $scope.updateTeam = function(team) {
