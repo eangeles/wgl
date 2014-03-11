@@ -1,0 +1,23 @@
+<div class="page" ng-controller="tournaments">
+    <div class="row">
+        <!-- Header BG -->
+        <div class="header-top"></div>
+        <!-- Page Container -->
+        <div class="page-content-container">
+            <div class="page-content">
+                <div class="large-12 columns">
+                    <form class="large-6 columns large-centered">
+                        <h3 class="page-title text-center">Edit<span>Tournament</span></h3>
+                        <input type="text" placeholder="Tournament Name" ng-model="selectedTournament.name">
+                        <input type="text" placeholder="Tournament Image" ng-model="selectedTournament.image">
+                        <input type="date" placeholder="Season" ng-model="selectedTournament.startDate">
+                        <input type="date" placeholder="Season" ng-model="selectedTournament.endDate">
+
+                        <input type="submit" class="button large-12" ng-click="updateTournament(selectedTournament)" value="Update">
+                    </form>
+                </div>
+            </div><!-- Page Content -->
+        </div><!-- End Page Container -->
+    </div> <!-- End Row -->
+</div><!-- End Page -->
+

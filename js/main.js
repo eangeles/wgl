@@ -63,7 +63,7 @@ wgl.config(function ($routeProvider,$locationProvider){
             title: 'Add Tournament',
             templateUrl:"partials/addtournament.html"
         })
-        .when("/editTournament", {
+        .when("/editTournament/:tournamentID", {
             title: 'Edit Tournament',
             templateUrl:"partials/edittournament.html"
         })
