@@ -59,6 +59,14 @@ wgl.config(function ($routeProvider,$locationProvider){
             title: 'Tournaments',
             templateUrl:"partials/tournaments.html"
         })
+        .when("/addTournament", {
+            title: 'Add Tournament',
+            templateUrl:"partials/addtournament.html"
+        })
+        .when("/editTournament", {
+            title: 'Edit Tournament',
+            templateUrl:"partials/edittournament.html"
+        })
         .when("/news", {
             title: 'News',
             templateUrl:"partials/news.html",
