@@ -25,7 +25,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="leagueTeam in selectedLeagueTeams | toArray">
+                        <tr ng-repeat="leagueTeam in selectedLeagueTeams | toArray | orderBy: winSort">
                             <td>{{$index+1}}</td>
                             <td><a href="#/team/{{leagueTeam.$key}}">{{leagueTeam.name}}</a></td>
                             <td>{{leagueTeam.wins}}</td>

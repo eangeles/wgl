@@ -349,19 +349,32 @@ var leaguesPermission = function ($q, $rootScope, $location,$sce){
 }
 // If the userType is Admin, Admin function will show for that page.
 var teamsPermission = function ($q, $rootScope, $location,$sce){
-    if($rootScope.loginObj.user.userType === 'Admin'){
-        console.log('ADMIN');
 
-        $rootScope.html = "<a href='#/addteam'>+</a>";
-        $rootScope.addTeams = $sce.trustAsHtml($rootScope.html);
+    $rootScope.loginObj.$getCurrentUser().then(function(user){
 
-        $rootScope.html2 = 'Edit';
-        $rootScope.editTeams = $sce.trustAsHtml($rootScope.html2);
+//        console.log($rootScope.loginObj.user.userType);
+        if($rootScope.loginObj.user.userType === 'Admin'){
+            console.log('ADMIN');
 
-        $rootScope.html3 = 'Remove';
-        $rootScope.removeTeams = $sce.trustAsHtml($rootScope.html3);
+            $rootScope.html = "<a href='#/addteam'>+</a>";
+            $rootScope.addTeams = $sce.trustAsHtml($rootScope.html);
+
+            $rootScope.html2 = 'Edit';
+            $rootScope.editTeams = $sce.trustAsHtml($rootScope.html2);
+
+            $rootScope.html3 = 'Remove';
+            $rootScope.removeTeams = $sce.trustAsHtml($rootScope.html3);
+        }
+    });
+
+    $rootScope.test = function(){
+
     }
+
 }
+
+
+
 
 
 

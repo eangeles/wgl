@@ -115,6 +115,10 @@ wgl.controller('leagues', ['$scope','$routeParams','$location','$rootScope','$fi
         });
     }
 
+    $scope.winSort = function(team) {
+        return -team.wins;
+    }
+
 //    var updateRef = "";
 //    $scope.updateNewsItem = function(post) {
 //        updateRef = $firebase(new Firebase("https://thewgl.firebaseio.com/thewgl/teams/"));
