@@ -3,7 +3,7 @@ wgl.controller('tournaments', ['$scope','$routeParams','$location','$rootScope',
     //Tournament Crud
     $scope.tournaments = $firebase(new Firebase("https://thewgl.firebaseio.com/thewgl/tournaments/"));
 
-    $scope.addLeague = function(tournament) {
+    $scope.addTournament = function(tournament) {
         $scope.tournaments.$add(tournament);
         $location.path("/tournaments");
     };
@@ -15,13 +15,16 @@ wgl.controller('tournaments', ['$scope','$routeParams','$location','$rootScope',
     $scope.updateTournament = function(tournament) {
         var updateRef = new Firebase("https://thewgl.firebaseio.com/thewgl/tournaments/" + $routeParams.tournamentID);
         updateRef.update({
-            name:   tournament.name,
+            name:       tournament.name,
+            image:      tournament.image,
+            startDate:  tournament.startDate,
+            endDate:    tournament.endDate
         });
         $location.path("/tournaments");
     }
 
     //Standings
-    $scope.selectedTournamentTeams = $firebase(new Firebase("https://thewgl.firebaseio.com/thewgl/tournaments/" + $routeParams.tournamentID + "/teams"));
+    $scope.selectedTournament = $firebase(new Firebase("https://thewgl.firebaseio.com/thewgl/tournaments/" + $routeParams.tournamentID));
 
     //Matches
     $scope.selectedTournamentMatches = $firebase(new Firebase("https://thewgl.firebaseio.com/thewgl/tournaments/" + $routeParams.tournamentID + "/matches"));
@@ -32,8 +35,8 @@ wgl.controller('tournaments', ['$scope','$routeParams','$location','$rootScope',
 
     $scope.addMatchToTournament = function(match) {
         console.log(match);
-        $scope.selectedLeagueMatches.$add(match);
-        $location.path("/tournaments");
+        //$scope.selectedLeagueMatches.$add(match);
+        //$location.path("/tournaments");
     }
 
     //add match to tournament
