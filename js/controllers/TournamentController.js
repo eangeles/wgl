@@ -3,7 +3,7 @@ wgl.controller('tournaments', ['$scope','$routeParams','$location','$rootScope',
     //Tournament Crud
     $scope.tournaments = $firebase(new Firebase("https://thewgl.firebaseio.com/thewgl/tournaments/"));
 
-    $scope.addLeague = function(tournament) {
+    $scope.addTournament = function(tournament) {
         $scope.tournaments.$add(tournament);
         $location.path("/tournaments");
     };
