@@ -10,7 +10,8 @@ wgl.run(['$firebaseSimpleLogin', '$rootScope', '$route', 'sharedProperties', fun
 }]);
 
 wgl.config(function ($routeProvider,$locationProvider){
-//    $locationProvider.html5Mode(true);
+//    $locationProvider.html5Mode(false);
+//    $locationProvider.hashPrefix('!');
     $routeProvider
         .when("/" , {
             title: 'Home',
@@ -63,7 +64,7 @@ wgl.config(function ($routeProvider,$locationProvider){
             title: 'Add Tournament',
             templateUrl:"partials/addtournament.html"
         })
-        .when("/editTournament", {
+        .when("/editTournament/:tournamentID", {
             title: 'Edit Tournament',
             templateUrl:"partials/edittournament.html"
         })
@@ -228,27 +229,27 @@ wgl.config(function ($routeProvider,$locationProvider){
                 readyToBind: "@"
             },
             template: '<div id="disqus_thread"></div><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>',
-            link: function(scope) {
+            link: function($rootScope) {
 
-                scope.$watch("readyToBind", function(isReady) {
+                $rootScope.$watch("readyToBind", function(isReady) {
 
                     // If the directive has been called without the 'ready-to-bind' attribute, we
                     // set the default to "true" so that Disqus will be loaded straight away.
                     if ( !angular.isDefined( isReady ) ) {
                         isReady = "true";
                     }
-                    if (scope.$eval(isReady)) {
+                    if ($rootScope.$eval(isReady)) {
                         // put the config variables into separate global vars so that the Disqus script can see them
-                        $window.disqus_shortname = scope.disqus_shortname;
-                        $window.disqus_identifier = scope.disqus_identifier;
-                        $window.disqus_title = scope.disqus_title;
-                        $window.disqus_url = scope.disqus_url;
-                        $window.disqus_category_id = scope.disqus_category_id;
-                        $window.disqus_disable_mobile = scope.disqus_disable_mobile;
+                        $window.disqus_shortname = $rootScope.disqus_shortname;
+                        $window.disqus_identifier = $rootScope.disqus_identifier;
+                        $window.disqus_title = $rootScope.disqus_title;
+                        $window.disqus_url = $rootScope.disqus_url;
+                        $window.disqus_category_id = $rootScope.disqus_category_id;
+                        $window.disqus_disable_mobile = $rootScope.disqus_disable_mobile;
 
                         // get the remote Disqus script and insert it into the DOM
                         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-                        dsq.src = '//' + scope.disqus_shortname + '.disqus.com/embed.js';
+                        dsq.src = '//' + $rootScope.disqus_shortname + '.disqus.com/embed.js';
                         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
                     }
                 });
