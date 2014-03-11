@@ -1,4 +1,4 @@
-<div class="page" ng-controller="news">
+<div class="page" ng-controller="tournaments">
     <div class="row">
         <!-- Header BG -->
         <div class="header-top"></div>
@@ -7,22 +7,22 @@
             <div class="page-content">
                 <div class="large-12 columns">
                     <h3 class="page-title large-10 small-9 columns">WIN<span>Tournaments</span></h3>
-                    <h6 class="add-news large-1 small-3 columns right"><a href="#/addleague">+</a></h6>
-                    <!-- Leagues content -->
-                    <div>
-                        <a ng-href="#/tournament/{{post.$key}}">
+                    <h6 class="add-news large-1 small-3 columns right"><a href="#/addTournament">+</a></h6>
+                    <!-- Tournament content -->
+                    <div ng-repeat="tournament in tournaments | toArray">
+                        <a ng-href="#/tournament/{{tournament.$key}}">
                             <div class="news-content large-4 medium-4 small-12 columns">
                                 <div class="news-image">
-                                    <img class="news-image large-12 medium-12 small-12" ng-src="./img/dota.jpg" alt="League Image">
+                                    <img class="news-image large-12 medium-12 small-12" ng-src="{{tournament.image}}" alt="Tournament Image">
                                 </div>
                                 <div class="news column">
                                     <div class="news-title">
-                                        <a ng-href="#/editnews/{{post.$key}}">Edit</a>
-                                        <a ng-click="removeNewsItem(post.$key)">Remove</a>
-                                        <h5>Dota Tournament</h5>
+                                        <a ng-href="#/editTournament/{{tournament.$key}}">Edit</a>
+                                        <a ng-click="removeTournament(tournament.$key)">Remove</a>
+                                        <h5>{{tournament.name}}</h5>
                                     </div>
                                     <div class="news-info large-12">
-                                        <h6 class="left large-12">02/16/2014    </h6>
+                                        <h6 class="left large-12">{{tournament.date}}</h6>
                                     </div>
                                 </div>
                             </div>
