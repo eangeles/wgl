@@ -15,16 +15,10 @@ wgl.controller('tournaments', ['$scope','$routeParams','$location','$rootScope',
     $scope.updateTournament = function(tournament) {
         var updateRef = new Firebase("https://thewgl.firebaseio.com/thewgl/tournaments/" + $routeParams.tournamentID);
         updateRef.update({
-            image:  league.image,
-            name:   league.name,
-            season: league.season
+            name:   tournament.name,
         });
         $location.path("/tournaments");
     }
-
-    //Team specific crud
-    var tournamentRef = new Firebase("https://thewgl.firebaseio.com/thewgl/tournaments/" + $routeParams.tournamentID);
-    $scope.tempRouteParam = $routeParams.leagueID;
 
     //Standings
     $scope.selectedTournamentTeams = $firebase(new Firebase("https://thewgl.firebaseio.com/thewgl/tournaments/" + $routeParams.tournamentID + "/teams"));
@@ -34,46 +28,15 @@ wgl.controller('tournaments', ['$scope','$routeParams','$location','$rootScope',
 
 
     //Specific Match
-    $scope.selectedLeagueMatch = $firebase(new Firebase("https://thewgl.firebaseio.com/thewgl/tournaments/" + $routeParams.leagueID + "/matches/" + $routeParams.matchID));
+    $scope.selectedTournamentMatch = $firebase(new Firebase("https://thewgl.firebaseio.com/thewgl/tournaments/" + $routeParams.tournamentID + "/tournament/" + $routeParams.matchID));
 
-
-    leagueRef.on('value', function(snapshot) {
-        if(snapshot.val() === null) {
-
-        } else {
-            var leagueName = snapshot.val().name;
-            sharedProperties.setProperty(leagueName);
-            $scope.selectedLeague = snapshot.val();
-        }
-    });
-
-    $scope.addTeamToLeague = function(team) {
-        //hardcoded until we figure out how to manage them
-        team.wins =     5;
-        team.losses =   10;
-        console.log(team);
-        $scope.selectedLeagueTeams.$add(team);
-        $location.path("/league/" + $routeParams.leagueID);
-    }
-
-    $scope.addMatchToLeague = function(match) {
+    $scope.addMatchToTournament = function(match) {
         console.log(match);
         $scope.selectedLeagueMatches.$add(match);
-        $location.path("/league/" + $routeParams.leagueID);
+        $location.path("/tournaments");
     }
 
-    //add team to league
-    $scope.userTyping = false;
-    $scope.selectTeam = function(team) {
-        if (team.players) {
-            $scope.team.players = team.players;
-        }
-        $scope.team.name = angular.fromJson(angular.toJson(team.name));
-        $scope.team.picture = angular.fromJson(angular.toJson(team.picture));
-        $scope.userTyping = false;
-    };
-
-    //add match to league
+    //add match to tournament
     //Add Team Auto complete
     $scope.awayTeamTyping = false;
     //Filter user search and select to input
@@ -91,28 +54,6 @@ wgl.controller('tournaments', ['$scope','$routeParams','$location','$rootScope',
         $scope.match.homeTeam = team;
         $scope.homeTeamTyping = false;
     };
-
-    $scope.selectWinner = function(outcome, test){
-
-        if($scope.match.selectWinner){
-            $scope.match.selectWinner = outcome;
-            console.log('winner');
-        }
-        if($scope.match.selectLoser){
-            $scope.match.selectLoser = test;
-            console.log($scope.match.selectLoser);
-        }
-
-        console.log(outcome, test);
-    }
-
-    $scope.updateStanding = function(standing, teamID){
-        var updateRef = new Firebase("https://thewgl.firebaseio.com/thewgl/leagues/" + $routeParams.leagueID + "/teams/"+ teamID);
-        updateRef.update({
-            wins: standing.wins,
-            losses: standing.losses
-        });
-    }
 
 }]);
 
