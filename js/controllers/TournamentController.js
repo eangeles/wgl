@@ -1,6 +1,6 @@
 wgl.controller('tournaments', ['$scope','$routeParams','$location','$rootScope','$firebase', function mtCtrl($scope, $routeParams, $location, $rootScope, $firebase) {
 
-    //Match Crud
+    //Tournament Crud
     $scope.tournaments = $firebase(new Firebase("https://thewgl.firebaseio.com/thewgl/tournaments/"));
 
     $scope.addLeague = function(tournament) {
