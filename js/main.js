@@ -52,7 +52,7 @@ wgl.config(function ($routeProvider,$locationProvider){
             title: 'Match',
             templateUrl:"partials/match.html"
         })
-        .when("/tournament", {
+        .when("/tournament/:tournamentID", {
             title: 'Tournament',
             templateUrl:"partials/tournament.html"
         })
