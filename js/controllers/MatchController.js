@@ -71,6 +71,12 @@ wgl.controller('matches', ['$scope','$routeParams','$location','$rootScope','$fi
         $scope.homeTeamTyping = false;
     };
 
+    $scope.url ='http://localhost:8888/wgl/#/match/' + $routeParams.matchID;
+    $scope.uniqueID = $routeParams.matchID;
+    $scope.matchCategory = 1111;
+    $scope.title = $routeParams.matchID;
+
+
 }]);
 
 

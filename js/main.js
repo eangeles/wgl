@@ -201,10 +201,10 @@ wgl.config(function ($routeProvider,$locationProvider){
             }
         })
         .otherwise({
-        	redirectTo:"/",
-        	title: "Home"
+            redirectTo:"/",
+            title: "Home"
         });
-        
+
 }).directive('autoComplete', function($timeout) {
         return function(scope, iElement, iAttrs) {
             iElement.autocomplete({
@@ -229,28 +229,34 @@ wgl.config(function ($routeProvider,$locationProvider){
                 readyToBind: "@"
             },
             template: '<div id="disqus_thread"></div><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>',
-            link: function($rootScope) {
+            link: function(scope) {
 
-                $rootScope.$watch("readyToBind", function(isReady) {
+                scope.$watch("readyToBind", function(isReady) {
 
                     // If the directive has been called without the 'ready-to-bind' attribute, we
                     // set the default to "true" so that Disqus will be loaded straight away.
                     if ( !angular.isDefined( isReady ) ) {
                         isReady = "true";
                     }
-                    if ($rootScope.$eval(isReady)) {
+                    if (scope.$eval(isReady)) {
                         // put the config variables into separate global vars so that the Disqus script can see them
-                        $window.disqus_shortname = $rootScope.disqus_shortname;
-                        $window.disqus_identifier = $rootScope.disqus_identifier;
-                        $window.disqus_title = $rootScope.disqus_title;
-                        $window.disqus_url = $rootScope.disqus_url;
-                        $window.disqus_category_id = $rootScope.disqus_category_id;
-                        $window.disqus_disable_mobile = $rootScope.disqus_disable_mobile;
+                        $window.disqus_shortname = scope.disqus_shortname;
+                        $window.disqus_identifier = scope.disqus_identifier;
+                        $window.disqus_title = scope.disqus_title;
+                        $window.disqus_url = scope.disqus_url;
+                        $window.disqus_category_id = scope.disqus_category_id;
+                        $window.disqus_disable_mobile = scope.disqus_disable_mobile;
 
-                        // get the remote Disqus script and insert it into the DOM
-                        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-                        dsq.src = '//' + $rootScope.disqus_shortname + '.disqus.com/embed.js';
-                        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                        // get the remote Disqus script and insert it into the DOM, but only if it not already loaded (as that will cause warnings)
+                        if (!$window.DISQUS) {
+                            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                            dsq.src = '//' + scope.disqus_shortname + '.disqus.com/embed.js';
+                            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                        } else {
+                            $window.DISQUS.reset({
+                                reload: true
+                            });
+                        }
                     }
                 });
             }
@@ -314,7 +320,7 @@ wgl.config(function ($routeProvider,$locationProvider){
                 leagueName = value;
             }
         };
-});
+    });
 
 // Checks Permission if User is Gamer/Admin, it will redirect the User if they are not
 // Staff or Admin. If a user that is not logged in, tries to go to the Admin section, they
@@ -329,41 +335,42 @@ var checkPermission = function ($q, $rootScope, $location){
 }
 // If the userType is Admin, Admin function will show for that page.
 var newsPermission = function ($q, $rootScope, $location,$sce){
-    if($rootScope.loginObj.user.userType === 'Admin'){
+    $rootScope.loginObj.$getCurrentUser().then(function(){
+        if($rootScope.loginObj.user.userType === 'Admin'){
 
-        $rootScope.html = '<a href="#\addnews">+</a>';
-        $rootScope.addNews = $sce.trustAsHtml($rootScope.html);
+            $rootScope.html = '<a href="#\addnews">+</a>';
+            $rootScope.addNews = $sce.trustAsHtml($rootScope.html);
 
-        $rootScope.html2 = 'Edit';
-        $rootScope.editNews = $sce.trustAsHtml($rootScope.html2);
+            $rootScope.html2 = 'Edit';
+            $rootScope.editNews = $sce.trustAsHtml($rootScope.html2);
 
-        $rootScope.html3 = 'Remove';
-        $rootScope.removeNews = $sce.trustAsHtml($rootScope.html3);
-    }
+            $rootScope.html3 = 'Remove';
+            $rootScope.removeNews = $sce.trustAsHtml($rootScope.html3);
+        }
+    });
 }
 // If the userType is Admin, Admin function will show for that page.
 var leaguesPermission = function ($q, $rootScope, $location,$sce){
-    if($rootScope.loginObj.user.userType === 'Admin'){
-        console.log('ADMIN');
 
-        $rootScope.html = '<a href="#\addleague">add</a>';
-        $rootScope.addLeagues = $sce.trustAsHtml($rootScope.html);
+    $rootScope.loginObj.$getCurrentUser().then(function(){
+        if($rootScope.loginObj.user.userType === 'Admin'){
 
-        $rootScope.html2 = 'Edit';
-        $rootScope.editLeagues = $sce.trustAsHtml($rootScope.html2);
+            $rootScope.html = '<a href="#\addleague">add</a>';
+            $rootScope.addLeagues = $sce.trustAsHtml($rootScope.html);
 
-        $rootScope.html3 = 'Remove';
-        $rootScope.removeLeagues = $sce.trustAsHtml($rootScope.html3);
-    }
+            $rootScope.html2 = 'Edit';
+            $rootScope.editLeagues = $sce.trustAsHtml($rootScope.html2);
+
+            $rootScope.html3 = 'Remove';
+            $rootScope.removeLeagues = $sce.trustAsHtml($rootScope.html3);
+        }
+    });
 }
 // If the userType is Admin, Admin function will show for that page.
 var teamsPermission = function ($q, $rootScope, $location,$sce){
 
-    $rootScope.loginObj.$getCurrentUser().then(function(user){
-
-//        console.log($rootScope.loginObj.user.userType);
+    $rootScope.loginObj.$getCurrentUser().then(function(){
         if($rootScope.loginObj.user.userType === 'Admin'){
-            console.log('ADMIN');
 
             $rootScope.html = "<a href='#/addteam'>+</a>";
             $rootScope.addTeams = $sce.trustAsHtml($rootScope.html);
@@ -375,11 +382,6 @@ var teamsPermission = function ($q, $rootScope, $location,$sce){
             $rootScope.removeTeams = $sce.trustAsHtml($rootScope.html3);
         }
     });
-
-    $rootScope.test = function(){
-
-    }
-
 }
 
 
