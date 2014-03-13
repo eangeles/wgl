@@ -4,7 +4,48 @@ wgl.controller('tournaments', ['$scope','$routeParams','$location','$rootScope',
     $scope.tournaments = $firebase(new Firebase("https://thewgl.firebaseio.com/thewgl/tournaments/"));
 
     $scope.addTournament = function(tournament) {
-        $scope.tournaments.$add(tournament);
+        tournament.firstRound = [
+            {
+                homeTeam: {name: "Placeholder Home Team"},
+                awayTeam: {name: "Placeholder Away Team"},
+                date: "01/02/2014"
+            },
+            {
+                homeTeam: {name: "Placeholder Home Team"},
+                awayTeam: {name: "Placeholder Away Team"},
+                date: "01/02/2014"
+            },
+            {
+                homeTeam: {name: "Placeholder Home Team"},
+                awayTeam: {name: "Placeholder Away Team"},
+                date: "01/02/2014"
+            },
+            {
+                homeTeam: {name: "Placeholder Home Team"},
+                awayTeam: {name: "Placeholder Away Team"},
+                date: "01/02/2014"
+            }
+        ];
+        tournament.secondRound = [
+            {
+                homeTeam: {name: "Placeholder Home Team"},
+                awayTeam: {name: "Placeholder Away Team"},
+                date: "01/02/2014"
+            },
+            {
+                homeTeam: {name: "Placeholder Home Team"},
+                awayTeam: {name: "Placeholder Away Team"},
+                date: "01/02/2014"
+            }
+        ];
+        tournament.thirdRound = [
+            {
+                homeTeam: {name: "Placeholder Home Team"},
+                awayTeam: {name: "Placeholder Away Team"},
+                date: "01/02/2014"
+            }
+        ];
+        console.log(tournament);
         $location.path("/tournaments");
     };
 
@@ -26,10 +67,6 @@ wgl.controller('tournaments', ['$scope','$routeParams','$location','$rootScope',
     //Standings
     $scope.selectedTournament = $firebase(new Firebase("https://thewgl.firebaseio.com/thewgl/tournaments/" + $routeParams.tournamentID));
 
-    //Matches
-    $scope.selectedTournamentMatches = $firebase(new Firebase("https://thewgl.firebaseio.com/thewgl/tournaments/" + $routeParams.tournamentID + "/matches"));
-
-
     //Specific Match
     $scope.selectedTournamentMatch = $firebase(new Firebase("https://thewgl.firebaseio.com/thewgl/tournaments/" + $routeParams.tournamentID + "/tournament/" + $routeParams.matchID));
 
@@ -39,7 +76,7 @@ wgl.controller('tournaments', ['$scope','$routeParams','$location','$rootScope',
         //$location.path("/tournaments");
     }
 
-    //add match to tournament
+    
     //Add Team Auto complete
     $scope.awayTeamTyping = false;
     //Filter user search and select to input

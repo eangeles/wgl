@@ -1,4 +1,4 @@
-<div class="page">
+<div class="page" ng-controller="tournaments">
     <div class="row">
         <!-- Header BG -->
         <div class="header-top"></div>
@@ -12,94 +12,30 @@
                         <h3 class="page-title large-10 small-9 columns">Round<span>One</span></h3>
                     </div>
                     <!-- Tourney Match Panels -->
-                    <a href="#/match">
-                        <div class="row">
-                            <div class="tourney-match-panel large-12 clearfix">
-                                <div class="tourney-date text-center">
-                                    <h6 class="large-12 columns">02/19/2014 10:00AM</h6>
-                                </div>
-                                <div class="tourney-away-team clearfix">
-                                    <img class="team-tourney-img left" src="http://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/A-Team-Logo.svg/600px-A-Team-Logo.svg.png">
-                                    <h6 class="left">A Team</h6>
-                                    <h6 class="right">4</h6>
-                                </div>
-                                <div class="vs-tourney clearfix text-center">
-                                    <h6>vs</h6>
-                                </div>
-                                <div class="tourney-home-team">
-                                    <img class="team-tourney-img left" src="http://blog.kandrac-kole.com/wp-content/uploads/2013/06/barbie-logo-centre.jpg">
-                                    <h6 class="left">Barbie Girls</h6>
-                                    <h6 class="right">0</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="#/match">
-                        <div class="row">
-                            <div class="tourney-match-panel large-12 clearfix">
-                                <div class="tourney-date text-center">
-                                    <h6 class="large-12 columns">02/19/2014 10:00AM</h6>
-                                </div>
-                                <div class="tourney-away-team clearfix">
-                                    <img class="team-tourney-img left" src="http://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/A-Team-Logo.svg/600px-A-Team-Logo.svg.png">
-                                    <h6 class="left">A Team</h6>
-                                    <h6 class="right">4</h6>
-                                </div>
-                                <div class="vs-tourney clearfix text-center">
-                                    <h6>vs</h6>
-                                </div>
-                                <div class="tourney-home-team">
-                                    <img class="team-tourney-img left" src="http://blog.kandrac-kole.com/wp-content/uploads/2013/06/barbie-logo-centre.jpg">
-                                    <h6 class="left">Barbie Girls</h6>
-                                    <h6 class="right">0</h6>
+                    <div ng-repeat="match in selectedTournament.firstRound | toArray">
+                        <a href="#/tournamentmatch/firstRound/{{match.$key}}">
+                            <div class="row">
+                                <div class="tourney-match-panel large-12 clearfix">
+                                    <div class="tourney-date text-center">
+                                        <h6 class="large-12 columns">{{match.date}}</h6>
+                                    </div>
+                                    <div class="tourney-away-team clearfix">
+                                        <img class="team-tourney-img left" ng-src="{{match.homeTeam.picture}}">
+                                        <h6 class="left">{{match.homeTeam.name}}</h6>
+                                        <h6 class="right">4</h6>
+                                    </div>
+                                    <div class="vs-tourney clearfix text-center">
+                                        <h6>vs</h6>
+                                    </div>
+                                    <div class="tourney-home-team">
+                                        <img class="team-tourney-img left" ng-src="{{match.awayTeam.picture}}">
+                                        <h6 class="left">{{match.awayTeam.name}}</h6>
+                                        <h6 class="right">0</h6>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </a>
-                    <a href="#/match">
-                        <div class="row">
-                            <div class="tourney-match-panel large-12 clearfix">
-                                <div class="tourney-date text-center">
-                                    <h6 class="large-12 columns">02/19/2014 10:00AM</h6>
-                                </div>
-                                <div class="tourney-away-team clearfix">
-                                    <img class="team-tourney-img left" src="http://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/A-Team-Logo.svg/600px-A-Team-Logo.svg.png">
-                                    <h6 class="left">A Team</h6>
-                                    <h6 class="right">4</h6>
-                                </div>
-                                <div class="vs-tourney clearfix text-center">
-                                    <h6>vs</h6>
-                                </div>
-                                <div class="tourney-home-team">
-                                    <img class="team-tourney-img left" src="http://blog.kandrac-kole.com/wp-content/uploads/2013/06/barbie-logo-centre.jpg">
-                                    <h6 class="left">Barbie Girls</h6>
-                                    <h6 class="right">0</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="#/match">
-                        <div class="row">
-                            <div class="tourney-match-panel large-12 clearfix">
-                                <div class="tourney-date text-center">
-                                    <h6 class="large-12 columns">02/19/2014 10:00AM</h6>
-                                </div>
-                                <div class="tourney-away-team clearfix">
-                                    <img class="team-tourney-img left" src="http://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/A-Team-Logo.svg/600px-A-Team-Logo.svg.png">
-                                    <h6 class="left">A Team</h6>
-                                    <h6 class="right">4</h6>
-                                </div>
-                                <div class="vs-tourney clearfix text-center">
-                                    <h6>vs</h6>
-                                </div>
-                                <div class="tourney-home-team">
-                                    <img class="team-tourney-img left" src="http://blog.kandrac-kole.com/wp-content/uploads/2013/06/barbie-logo-centre.jpg">
-                                    <h6 class="left">Barbie Girls</h6>
-                                    <h6 class="right">0</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
+                        </a>
+                    </div>
                 </div><!-- End 1st Round -->
 
 
@@ -109,50 +45,30 @@
                         <div class="row">
                             <h3 class="page-title large-10 small-9 columns">Round<span>Two</span></h3>
                         </div>
-
-                        <a href="#/match">
-                            <div class="row">
-                                <div class="tourney-match-panel large-12 clearfix">
-                                    <div class="tourney-date text-center">
-                                        <h6 class="large-12 columns">02/19/2014 10:00AM</h6>
+                        <div ng-repeat="match in selectedTournament.secondRound | toArray">
+                            <a href="#/tournamentmatch/secondRound/{{match.$key}}">
+                                <div class="row">
+                                    <div class="tourney-match-panel large-12 clearfix">
+                                        <div class="tourney-date text-center">
+                                            <h6 class="large-12 columns">{{match.date}}</h6>
+                                        </div>
+                                        <div class="tourney-away-team clearfix">
+                                            <img class="team-tourney-img left" ng-src="{{match.homeTeam.picture}}">
+                                            <h6 class="left">{{match.homeTeam.name}}</h6>
+                                            <h6 class="right">4</h6>
+                                        </div>
+                                        <div class="vs-tourney clearfix text-center">
+                                            <h6>vs</h6>
+                                        </div>
+                                        <div class="tourney-home-team">
+                                            <img class="team-tourney-img left" ng-src="{{match.awayTeam.picture}}">
+                                            <h6 class="left">{{match.awayTeam.name}}</h6>
+                                            <h6 class="right">0</h6>
+                                        </div>
                                     </div>
-                                    <div class="tourney-away-team clearfix">
-                                        <img class="team-tourney-img left" src="http://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/A-Team-Logo.svg/600px-A-Team-Logo.svg.png">
-                                        <h6 class="left">A Team</h6>
-                                        <h6 class="right">4</h6>
-                                    </div>
-                                    <div class="vs-tourney clearfix text-center">
-                                        <h6>vs</h6>
-                                    </div>
-                                    <div class="tourney-home-team">
-                                        <img class="team-tourney-img left" src="http://blog.kandrac-kole.com/wp-content/uploads/2013/06/barbie-logo-centre.jpg">
-                                        <h6 class="left">Barbie Girls</h6>
-                                        <h6 class="right">0</h6>
-                                    </div>
                                 </div>
-                            </div>
-                        </a><a href="#/match">
-                        <div class="row">
-                            <div class="tourney-match-panel large-12 clearfix">
-                                <div class="tourney-date text-center">
-                                    <h6 class="large-12 columns">02/19/2014 10:00AM</h6>
-                                </div>
-                                <div class="tourney-away-team clearfix">
-                                    <img class="team-tourney-img left" src="http://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/A-Team-Logo.svg/600px-A-Team-Logo.svg.png">
-                                    <h6 class="left">A Team</h6>
-                                    <h6 class="right">4</h6>
-                                </div>
-                                <div class="vs-tourney clearfix text-center">
-                                    <h6>vs</h6>
-                                </div>
-                                <div class="tourney-home-team">
-                                    <img class="team-tourney-img left" src="http://blog.kandrac-kole.com/wp-content/uploads/2013/06/barbie-logo-centre.jpg">
-                                    <h6 class="left">Barbie Girls</h6>
-                                    <h6 class="right">0</h6>
-                                </div>
-                            </div>
+                            </a>
                         </div>
-                    </a>
                     </div>
                     <!-- Final Round -->
                     <div class="row">
@@ -161,30 +77,32 @@
                                 <h3 class="page-title large-10 small-9 columns">Final<span>Round</span></h3>
                             </div>
 
-                            <a href="#/match">
-                                <div class="row">
-                                    <div class="tourney-match-panel large-12 clearfix">
-                                        <div class="tourney-date text-center">
-                                            <h6 class="large-12 columns">02/19/2014 10:00AM</h6>
-                                        </div>
-                                        <div class="tourney-away-team clearfix">
-                                            <img class="team-tourney-img left" src="http://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/A-Team-Logo.svg/600px-A-Team-Logo.svg.png">
-                                            <h6 class="left">A Team</h6>
-                                            <h6 class="right">4</h6>
-                                        </div>
-                                        <div class="vs-tourney clearfix text-center">
-                                            <h6>vs</h6>
-                                        </div>
-                                        <div class="tourney-home-team">
-                                            <img class="team-tourney-img left" src="http://blog.kandrac-kole.com/wp-content/uploads/2013/06/barbie-logo-centre.jpg">
-                                            <h6 class="left">Barbie Girls</h6>
-                                            <h6 class="right">0</h6>
+                            <div ng-repeat="match in selectedTournament.thirdRound | toArray">
+                                <a href="#/tournamentmatch/thirdRound/{{match.$key}}">
+                                    <div class="row">
+                                        <div class="tourney-match-panel large-12 clearfix">
+                                            <div class="tourney-date text-center">
+                                                <h6 class="large-12 columns">{{match.date}}</h6>
+                                            </div>
+                                            <div class="tourney-away-team clearfix">
+                                                <img class="team-tourney-img left" ng-src="{{match.homeTeam.picture}}">
+                                                <h6 class="left">{{match.homeTeam.name}}</h6>
+                                                <h6 class="right">4</h6>
+                                            </div>
+                                            <div class="vs-tourney clearfix text-center">
+                                                <h6>vs</h6>
+                                            </div>
+                                            <div class="tourney-home-team">
+                                                <img class="team-tourney-img left" ng-src="{{match.awayTeam.picture}}">
+                                                <h6 class="left">{{match.awayTeam.name}}</h6>
+                                                <h6 class="right">0</h6>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </a>
+                                </a>
+                            </div>
                         </div>
-                </div>
+                    </div><!-- End Final Round -->
 
                 </div><!-- Page Content -->
             </div><!-- End Page Container -->
