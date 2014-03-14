@@ -1,4 +1,4 @@
-<div class="page" ng-controller="matches">
+<div class="page" ng-controller="tournaments">
     <div class="row">
         <!-- Header BG -->
         <div class="header-top"></div>
@@ -7,8 +7,8 @@
             <div class="page-content">
                 <div class="large-12 columns">
                     <form class="large-6 columns large-centered">
-                        <h3 class="page-title text-center">Edit<span>Tournament Match</span></h3>
-                        <input type="text" placeholder="Team Away" ng-model="selectedMatch.awayTeam.name" ng-change="awayTeamTyping=true">
+                        <h3 class="page-title text-center">Edit<span> Tournament Match</span></h3>
+                        <input type="text" placeholder="Team Away" ng-model="selectedTournamentMatch.awayTeam.name" ng-change="awayTeamTyping=true">
                         <!-- Autocomplete -->
                         <ul ng-show="awayTeamTyping">
                             <li ng-repeat="team in teams | toArray | filter:selectedMatch.awayTeam.name | limitTo:5 | orderBy:'name'">
@@ -22,11 +22,11 @@
                                 </a>
                             </li>
                         </ul>
-                        <input type="hidden" ng-model="selectedMatch.awayTeam" />
-                        <input type="text" placeholder="Team Home" ng-model="selectedMatch.homeTeam.name" ng-change="homeTeamTyping=true">
+                        <input type="hidden" ng-model="selectedTournamentMatch.awayTeam" />
+                        <input type="text" placeholder="Team Home" ng-model="selectedTournamentMatch.homeTeam.name" ng-change="homeTeamTyping=true">
                         <!-- Autocomplete -->
                         <ul ng-show="homeTeamTyping">
-                            <li ng-repeat="team in teams | toArray | filter:selectedMatch.homeTeam.name | limitTo:5 | orderBy:'name'">
+                            <li ng-repeat="team in teams | toArray | filter:selectedTournamentMatch.homeTeam.name | limitTo:5 | orderBy:'name'">
                                 <a ng-click="updateTeamHome(team)">
                                     <div class="row">
                                         <div class="searchOutcome large-12 columns">
@@ -37,14 +37,11 @@
                                 </a>
                             </li>
                         </ul>
-                        <input type="hidden" ng-model="selectedMatch.homeTeam" />
+                        <input type="hidden" ng-model="selectedTournamentMatch.homeTeam" />
                         
-                        
-                        
-                        <input type="text" placeholder="Date" ng-model="selectedMatch.date">
-                        <input type="text" placeholder="Time" ng-model="selectedMatch.time">
+                        <input type="text" placeholder="Date" ng-model="selectedTournamentMatch.date">
 
-                        <input type="submit" class="button large-12" ng-click="updateMatch(selectedMatch)" value="Update">
+                        <input type="submit" class="button large-12" ng-click="updateMatch(selectedTournamentMatch)" value="Update">
                     </form>
                 </div>
             </div><!-- Page Content -->
