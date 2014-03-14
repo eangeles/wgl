@@ -77,7 +77,7 @@ wgl.controller('tournaments', ['$scope','$routeParams','$location','$rootScope',
     $scope.updateMatch = function(match) {
         console.log(match);
         tournyMatchRef.update(match);
-        $location.path("/tournaments");
+//        $location.path("/tournaments");
     }
 
     
