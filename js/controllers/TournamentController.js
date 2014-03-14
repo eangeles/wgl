@@ -188,6 +188,7 @@ wgl.controller('tournaments', ['$scope','$routeParams','$location','$rootScope',
     $scope.selectedTournamentMatch = $firebase(tournyMatchRef);
 
     $scope.updateMatch = function(match) {
+<<<<<<< HEAD
         tournyMatchRef.update({
                 homeTeam: {
                     name:       match.homeTeam.name,
@@ -200,6 +201,11 @@ wgl.controller('tournaments', ['$scope','$routeParams','$location','$rootScope',
                 }
         });
         $location.path("/tournaments");
+=======
+        console.log(match);
+        tournyMatchRef.update(match);
+//        $location.path("/tournaments");
+>>>>>>> FETCH_HEAD
     }
 
     
