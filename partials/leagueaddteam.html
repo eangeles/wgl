@@ -6,15 +6,13 @@
         <div class="page-content-container">
             <div class="page-content">
                 <div class="large-12 columns">
-                    <form class="large-6 columns large-centered">
+                    <form class="large-6 medium-6 columns medium-centered large-centered">
                         <h3 class="page-title text-center">Add<span>Team</span></h3>
-
                         <div class="row">
                             <div class="search-img large-12 columns large-centered">
                                 <img class="columns" src="{{team.picture}}">
                             </div>
                         </div>
-
                         <input type="text" placeholder="Team Name" ng-model="team.name" ng-change="userTyping=true">
                         <!-- Autocomplete -->
                         <ul ng-show="userTyping">
@@ -29,10 +27,8 @@
                                 </a>
                             </li>
                         </ul>
-
-
-
-                        <input type="submit" class="button large-12" ng-click="addTeamToLeague(team)" value="Add">
+                        <input type="submit" class="button large-12 medium-12 small-12" ng-click="addTeamToLeague(team)" value="Add">
+                        <a href="#/leagues"> <button class="button large-12 medium-12 small-12">back</button></a>
                     </form>
                 </div>
             </div><!-- Page Content -->

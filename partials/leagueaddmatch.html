@@ -6,7 +6,7 @@
         <div class="page-content-container">
             <div class="page-content">
                 <div class="large-12 columns">
-                    <form class="large-6 columns large-centered">
+                    <form class="large-6 medium-6 columns medium-centered large-centered">
                         <h3 class="page-title text-center">Add <span>Match</span></h3>
                         <input type="text" placeholder="Team Away" ng-model="match.awayTeam.name" ng-change="awayTeamTyping=true">
                         <!-- Autocomplete -->
@@ -41,7 +41,8 @@
                         <input type="text" placeholder="Date" ng-model="match.date">
                         <input type="text" placeholder="Time" ng-model="match.time">
 
-                        <input type="submit" class="button large-12" ng-click="addMatchToLeague(match)" value="Add">
+                        <input type="submit" class="button large-12 medium-12 small-12" ng-click="addMatchToLeague(match)" value="Add">
+                        <a href="#/leagues"> <button class="button large-12 medium-12 small-12">back</button></a>
                     </form>
                 </div>
             </div><!-- Page Content -->
