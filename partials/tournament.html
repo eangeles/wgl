@@ -13,7 +13,7 @@
                     </div>
                     <!-- Tourney Match Panels -->
                     <div ng-repeat="match in selectedTournament.firstRound | toArray">
-                        <a href="#/tournamentmatch/firstRound/{{match.$key}}">
+                        <a href="#/tournamentmatch/{{tournyID}}/firstRound/{{match.$key}}">
                             <div class="row">
                                 <div class="tourney-match-panel large-12 clearfix">
                                     <div class="tourney-date text-center">
@@ -46,7 +46,7 @@
                             <h3 class="page-title large-10 small-9 columns">Round<span>Two</span></h3>
                         </div>
                         <div ng-repeat="match in selectedTournament.secondRound | toArray">
-                            <a href="#/tournamentmatch/secondRound/{{match.$key}}">
+                            <a href="#/tournamentmatch/{{tournyID}}/secondRound/{{match.$key}}">
                                 <div class="row">
                                     <div class="tourney-match-panel large-12 clearfix">
                                         <div class="tourney-date text-center">
@@ -78,7 +78,7 @@
                             </div>
 
                             <div ng-repeat="match in selectedTournament.thirdRound | toArray">
-                                <a href="#/tournamentmatch/thirdRound/{{match.$key}}">
+                                <a href="#/tournamentmatch/{{tournyID}}/thirdRound/{{match.$key}}">
                                     <div class="row">
                                         <div class="tourney-match-panel large-12 clearfix">
                                             <div class="tourney-date text-center">

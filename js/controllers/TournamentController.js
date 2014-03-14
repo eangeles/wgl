@@ -66,9 +66,10 @@ wgl.controller('tournaments', ['$scope','$routeParams','$location','$rootScope',
 
     //Standings
     $scope.selectedTournament = $firebase(new Firebase("https://thewgl.firebaseio.com/thewgl/tournaments/" + $routeParams.tournamentID));
+    $scope.tournyID = $routeParams.tournamentID;
 
     //Specific Match
-    $scope.selectedTournamentMatch = $firebase(new Firebase("https://thewgl.firebaseio.com/thewgl/tournaments/" + $routeParams.tournamentID + "/tournament/" + $routeParams.matchID));
+    $scope.selectedTournamentMatch = $firebase(new Firebase("https://thewgl.firebaseio.com/thewgl/tournament/" + $scope.tournyID + "/" + $routeParams.matchRound + "/" + $routeParams.matchID));
 
     $scope.addMatchToTournament = function(match) {
         console.log(match);
