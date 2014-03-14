@@ -33,10 +33,11 @@ wgl.controller('leagues', ['$scope','$routeParams','$location','$rootScope','$fi
     //Matches
     $scope.selectedLeagueMatches = $firebase(new Firebase("https://thewgl.firebaseio.com/thewgl/leagues/" + $routeParams.leagueID + "/matches"));
 
-
     //Specific Match
     $scope.selectedLeagueMatch = $firebase(new Firebase("https://thewgl.firebaseio.com/thewgl/leagues/" + $routeParams.leagueID + "/matches/" + $routeParams.matchID));
 
+    //SelectedMatch
+    $scope.selectedLeague = $firebase(new Firebase("https://thewgl.firebaseio.com/thewgl/leagues/" + $routeParams.leagueID));
 
     leagueRef.on('value', function(snapshot) {
         if(snapshot.val() === null) {
@@ -118,6 +119,7 @@ wgl.controller('leagues', ['$scope','$routeParams','$location','$rootScope','$fi
     $scope.winSort = function(team) {
         return -team.wins;
     }
+
 
 //    var updateRef = "";
 //    $scope.updateNewsItem = function(post) {
