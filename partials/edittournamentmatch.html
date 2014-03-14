@@ -11,7 +11,7 @@
                         <input type="text" placeholder="Team Away" ng-model="selectedTournamentMatch.awayTeam.name" ng-change="awayTeamTyping=true">
                         <!-- Autocomplete -->
                         <ul ng-show="awayTeamTyping">
-                            <li ng-repeat="team in teams | toArray | filter:selectedMatch.awayTeam.name | limitTo:5 | orderBy:'name'">
+                            <li ng-repeat="team in teams | toArray | filter:selectedTournamentMatch.awayTeam.name | limitTo:5 | orderBy:'name'">
                                 <a ng-click="updateTeamAway(team)">
                                     <div class="row">
                                         <div class="searchOutcome large-12 columns">

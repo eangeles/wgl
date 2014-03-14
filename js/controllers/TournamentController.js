@@ -2,6 +2,7 @@ wgl.controller('tournaments', ['$scope','$routeParams','$location','$rootScope',
 
     //Tournament Crud
     $scope.tournaments = $firebase(new Firebase("https://thewgl.firebaseio.com/thewgl/tournaments/"));
+    $scope.teams = $firebase(new Firebase("https://thewgl.firebaseio.com/thewgl/teams/"));
 
     $scope.addTournament = function(tournament) {
         tournament.firstRound = [
@@ -66,32 +67,35 @@ wgl.controller('tournaments', ['$scope','$routeParams','$location','$rootScope',
 
     //Standings
     $scope.selectedTournament = $firebase(new Firebase("https://thewgl.firebaseio.com/thewgl/tournaments/" + $routeParams.tournamentID));
+    
+    $scope.tournyID = $routeParams.tournamentID;
 
     //Specific Match
-    $scope.selectedTournamentMatch = $firebase(new Firebase("https://thewgl.firebaseio.com/thewgl/tournaments/" + $routeParams.tournamentID + "/" + $routeParams.matchRound + "/" + $routeParams.matchID));
+    var tournyMatchRef = new Firebase("https://thewgl.firebaseio.com/thewgl/tournaments/" + $routeParams.tournamentID + "/" + $routeParams.matchRound + "/" + $routeParams.matchID);
+    $scope.selectedTournamentMatch = $firebase(tournyMatchRef);
 
     $scope.updateMatch = function(match) {
         console.log(match);
-        //$scope.selectedLeagueMatches.$add(match);
-        //$location.path("/tournaments");
+        tournyMatchRef.update(match);
+        $location.path("/tournaments");
     }
 
     
     //Add Team Auto complete
     $scope.awayTeamTyping = false;
     //Filter user search and select to input
-    $scope.selectTeamAway = function(team) {
-        $scope.match.awayTeam.name = team.name;
+    $scope.updateTeamAway = function(team) {
+        $scope.selectedTournamentMatch.awayTeam.name = team.name;
         team.key = team.$key;
-        $scope.match.awayTeam = team;
+        $scope.selectedTournamentMatch.awayTeam = team;
         $scope.awayTeamTyping = false;
     };
 
     $scope.homeTeamTyping = false;
-    $scope.selectTeamHome = function(team) {
-        $scope.match.homeTeam.name = team.name;
+    $scope.updateTeamHome = function(team) {
+        $scope.selectedTournamentMatch.homeTeam.name = team.name;
         team.key = team.$key;
-        $scope.match.homeTeam = team;
+        $scope.selectedTournamentMatch.homeTeam = team;
         $scope.homeTeamTyping = false;
     };
 

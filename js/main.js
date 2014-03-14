@@ -59,9 +59,6 @@ wgl.config(function ($routeProvider,$locationProvider){
         .when("/tournamentmatch/:tournamentID/:matchRound/:matchID", {
             title: 'Edit Match',
             templateUrl:"partials/edittournamentmatch.html",
-//            resolve: {
-//                factory: checkPermission
-//            }
         })
         .when("/tournaments", {
             title: 'Tournaments',
