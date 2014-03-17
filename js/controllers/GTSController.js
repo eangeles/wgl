@@ -8,6 +8,7 @@ wgl.controller('gts', ['$scope','$routeParams','$firebase','$location','$timeout
     //Select User from search input
     $scope.selectUser = function (gamer) {
         $scope.tempStation.name = angular.fromJson(angular.toJson(gamer.name));
+        $scope.tempStation.profilePicture = angular.fromJson(angular.toJson(gamer.profilePicture));
         $scope.userTyping = false;
     };
 
@@ -54,14 +55,16 @@ wgl.controller('gts', ['$scope','$routeParams','$firebase','$location','$timeout
                     //create an alert
                     var alert = {
                         "user": $scope.activeStations[keys[i]].name,
-                        "stationNumber": $scope.activeStations[keys[i]].stationNumber
+                        "stationNumber": $scope.activeStations[keys[i]].stationNumber,
+                        "profilePicture": $scope.activeStations[keys[i]].profilePicture
                     }
                     //add/display the alert
                     $scope.addAlert(alert);
                     //add the empty station back
                     $scope.emptyStations.$add({
                         "stationNumber": $scope.activeStations[keys[i]].stationNumber, 
-                        "stationSystem": $scope.activeStations[keys[i]].stationSystem
+                        "stationSystem": $scope.activeStations[keys[i]].stationSystem,
+                        "profilePicture": $scope.activeStations[keys[i]].profilePicture
                     });
                     //remove the active station
                     $scope.activeStations.$remove(keys[i]);

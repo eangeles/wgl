@@ -3,7 +3,7 @@
     <div class="row">
         <div class="row">
         <div class="alert-box success radius" ng-repeat="alert in alerts | toArray">
-            <p>Station: {{alert.stationNumber}} | {{alert.user}}'s time is up!</p>
+            <p>Station: {{alert.stationNumber}} | <img class="alert-photo" src="{{alert.profilePicture}}"> {{alert.user}}'s time is up!</p>
             <a ng-click="removeAlert(alert.$key)" class="close">&times;</a>
         </div>
         </div>
@@ -109,7 +109,7 @@
                             <div class="gts-panels large-12">
 
                                 <div class="large-2 medium-2 small-2 columns">
-                                    <h1 class="station-number left">{{activeStation.stationNumber}}</h1>
+                                    <h1 class="station-number left has-tip" data-tooltip title="{{activeStation.name}}">{{activeStation.stationNumber}}</h1>
                                 </div>
                                 <div class="large-4 medium-4 small-4 columns">
                                     <h1 class="station-timer">{{activeStation.displayTime}}MIN</h1>

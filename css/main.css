@@ -406,6 +406,11 @@ h1,h2,h3,h4,h5,h6{
     padding: 4px;
     margin: 0 10px 3px;
 }
+.alert-photo{
+    height: 30px;
+    border: 2px solid #fff;
+    margin-top: -4px;
+}
 .gts-hr {
     padding: 0 20px 0 20px;
 }
