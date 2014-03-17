@@ -36,17 +36,23 @@
             <div class="right-nav right" ng-bind-html-unsafe="mobileStatement"></div>
         </nav>
 
-        <!-- Off Canvas Menu -->
+        <!-- Mobile Main Nav -->
         <aside class="left-off-canvas-menu">
-            <!-- whatever you want goes here -->
-            <ul>
+            <ul class="off-canvas-list mobile-nav">
+
+                <li ng-hide="loginObj.user"><label><a class="login" ng-click="loginObj.$login('facebook')"><i class="fa fa-facebook"></i> Login</a></label> </li>
+                <li class="has-dropdown" ng-show="loginObj.user"><a href="#/gamer_page/{{$key}}"> <img class="login-user-img" src="{{loginObj.user.profilePicture}}">{{loginObj.user.first_name}}</a>
+                    <ul class="dropdown">
+                        <li ng-bind-html="adminView"></li>
+                        <li><a class="login" ng-click="loginObj.$logout()">Logout</a></li>
+                    </ul>
+                </li>
                 <li><a href="#/news">News</a></li>
                 <li class="has-dropdown" ng-controller="leagues">
-                    <a href="#/leagues"><i class="fa fa-trophy"></i> Leagues</a>
+                    <a href="#/leagues">Leagues</a>
                     <ul class="dropdown">
                         <li ng-repeat="league in leagues | toArray"><a ng-href="#/league/{{league.$key}}">{{league.name}}</a></li>
                     </ul>
-                </li>
                 <li><a href="#/tournaments">Tournaments</a></li>
                 <li class="has-dropdown">
                     <a href="javascript: void(0)">Competitors</a>
@@ -54,10 +60,10 @@
                         <li><a href="#/teams">Teams</a></li>
                     </ul>
                 </li>
-                <li><a href="#/upcomingmatches">Matches</a></li>
-                ...
+
             </ul>
         </aside>
+
         <!-- Desktop Nav -->
         <div class="contain-to-grid fixed">
 
@@ -86,7 +92,6 @@
                                 <li><a href="#/teams">Teams</a></li>
                             </ul>
                         </li>
-                        <li><a href="#/upcomingmatches">Matches</a></li>
                         <li ng-hide="loginObj.user"><a class="login" ng-click="loginObj.$login('facebook')"><i class="fa fa-facebook"></i> Login</a> </li>
                         <li class="has-dropdown" ng-show="loginObj.user"><a href="#/gamer_page/{{$key}}"> <img class="login-user-img" src="{{loginObj.user.profilePicture}}">{{loginObj.user.first_name}}</a>
                             <ul class="dropdown">

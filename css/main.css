@@ -147,6 +147,10 @@ h1,h2,h3,h4,h5,h6{
 .login i{
     color: #3B5998;
 }
+.mobile-nav li a{
+    color: white;
+    font-weight: 300;
+}
 /*******
  Home Page
  *******/
