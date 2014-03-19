@@ -1,0 +1,31 @@
+<div class="page" ng-controller="tournaments">
+    <div class="row">
+        <!-- Header BG -->
+        <div class="header-top"></div>
+        <!-- Page Container -->
+        <div class="page-content-container">
+            <div class="page-content">
+                <div class="large-12 columns">
+                    <form class="large-6 columns large-centered">
+                        <h3 class="page-title text-center">Update<span> Tournament Outcome</span></h3>
+                        <h6>{{selectedTournamentMatch.awayTeam.name}}</h6>
+                        <select class="select-margin" ng-model="awayStatus">
+                            <option value="" disabled selected>Select Option</option>
+                            <option>Winner</option>
+                            <option>Loser</option>
+                        </select>
+
+                        <h6>{{selectedTournamentMatch.homeTeam.name}}</h6>
+                        <select class="select-margin" ng-model="homeStatus">
+                            <option value="" disabled selected>Select Option</option>
+                            <option>Winner</option>
+                            <option>Loser</option>
+                        </select>
+                        <input type="submit" class="button large-12" ng-click="updateMatch(selectedTournamentMatch)" value="Update">
+                    </form>
+                </div>
+            </div><!-- Page Content -->
+        </div><!-- End Page Container -->
+    </div> <!-- End Row -->
+</div><!-- End Page -->
+

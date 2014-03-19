@@ -13,7 +13,8 @@
                     </div>
                     <!-- Tourney Match Panels -->
                     <div ng-repeat="match in selectedTournament.firstRound | toArray">
-                        <a href="#/tournamentmatch/{{tournyID}}/firstRound/{{match.$key}}">
+                        <a href="#/tournamentmatch/{{tournyID}}/firstRound/{{match.$key}}">Edit</a><a href="#/updatetournamentmatch/{{tournyID}}/firstRound/{{match.$key}}">Update</a>
+
                             <div class="row">
                                 <div class="tourney-match-panel large-12 clearfix">
                                     <div class="tourney-date text-center">
@@ -34,7 +35,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </a>
+
                     </div>
                 </div><!-- End 1st Round -->
 

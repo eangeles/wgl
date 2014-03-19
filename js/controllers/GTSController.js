@@ -211,5 +211,9 @@ wgl.controller('gts', ['$scope','$routeParams','$firebase','$location','$timeout
     $scope.removeFromQueue = function(playerID) {
         $scope.playerQueue.$remove(playerID);
     }
+
+    $scope.stationSort = function(station) {
+        return +station.stationNumber;
+    }
     
 }])

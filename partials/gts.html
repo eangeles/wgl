@@ -45,7 +45,7 @@
                             <div class="select-station large-12 columns">
                                 <select ng-model="tempStation.stationNumber">
                                     <option value="" disabled selected>Select A Station</option>
-                                    <option ng-repeat="station in emptyStations">{{station.stationNumber}}</option>
+                                    <option ng-repeat="station in emptyStations |toArray | orderBy: stationSort">{{station.stationNumber}}</option>
                                 </select>
                             </div>
                         </div>
@@ -120,7 +120,7 @@
                             </div>
                         </div>
                         <!-- Empty Stations -->
-                        <div class="large-4 medium-6 small-12 columns left" ng-repeat="emptyStation in emptyStations | orderBy: emptyStation.stationNumber">
+                        <div class="large-4 medium-6 small-12 columns left" ng-repeat="emptyStation in emptyStations | toArray | orderBy: stationSort">
                             <div class="gts-panels large-12">
                                 <div class="large-2 medium-2 small-4 columns">
                                     <h1 class="station-number left">{{emptyStation.stationNumber}}</h1>
