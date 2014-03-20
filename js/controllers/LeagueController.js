@@ -120,18 +120,6 @@ wgl.controller('leagues', ['$scope','$routeParams','$location','$rootScope','$fi
         return -team.wins;
     }
 
-
-//    var updateRef = "";
-//    $scope.updateNewsItem = function(post) {
-//        updateRef = $firebase(new Firebase("https://thewgl.firebaseio.com/thewgl/teams/"));
-//        updateRef.update({
-//            image: post.image,
-//            title: post.title,
-//            content: post.content
-//        });
-//        $location.path("/news");
-//    }
-
 }]);
 
 

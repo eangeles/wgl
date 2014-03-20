@@ -185,6 +185,10 @@ wgl.controller('tournaments', ['$scope','$routeParams','$location','$rootScope',
 
     //Specific Match
     var tournyMatchRef = new Firebase("https://thewgl.firebaseio.com/thewgl/tournaments/" + $routeParams.tournamentID + "/" + $routeParams.matchRound + "/" + $routeParams.matchID);
+
+    var updateHomeMatchRef = new Firebase("https://thewgl.firebaseio.com/thewgl/tournaments/" + $routeParams.tournamentID + "/" + $routeParams.matchRound + "/" + $routeParams.matchID + '/homeTeam/');
+    var updateAwayMatchRef = new Firebase("https://thewgl.firebaseio.com/thewgl/tournaments/" + $routeParams.tournamentID + "/" + $routeParams.matchRound + "/" + $routeParams.matchID + '/awayTeam/');
+
     $scope.selectedTournamentMatch = $firebase(tournyMatchRef);
 
     $scope.updateMatch = function(match) {
@@ -201,25 +205,16 @@ wgl.controller('tournaments', ['$scope','$routeParams','$location','$rootScope',
                 status: ''
             }
         });
-        $location.path("/tournaments");
+        console.log(match);
     }
 
     $scope.updateStatus = function(match) {
-        tournyMatchRef.$set({
-            homeTeam: {
-//                name:       match.homeTeam.name,
-//                picture:    match.homeTeam.picture,
-                status: match.homeTeam.status
-            },
-//            date: match.date,
-            awayTeam: {
-//                name:       $scope.awayTeamName,
-//                picture:    match.awayTeam.picture,
-                status: match.awayTeam.status
-            }
+        updateHomeMatchRef.update({status: match.homeTeam.status});
 
-        });
-//        $location.path("/tournaments");
+        updateAwayMatchRef.update({
+             status: match.awayTeam.status
+
+        })
         console.log(match);
     }
 

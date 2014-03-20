@@ -27,7 +27,8 @@
                             <option>Winner</option>
                             <option>Loser</option>
                         </select>
-                        <input type="submit" class="button large-12" ng-click="updateStatus(match)" value="Update">
+                        <a href="#/tournament/{{tournyID}}"> <button class="button large-12" ng-click="updateStatus(match)" value="Update">Update</button></a>
+                        <a href="#/tournament/{{tournyID}}"> <button class="button large-12 medium-12 small-12">back</button></a>
                     </form>
                 </div>
             </div><!-- Page Content -->
