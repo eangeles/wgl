@@ -7,21 +7,27 @@
             <div class="page-content">
                 <div class="large-12 columns">
                     <form class="large-6 columns large-centered">
-                        <h3 class="page-title text-center">Update<span> Tournament Outcome</span></h3>
-                        <h6>{{selectedTournamentMatch.awayTeam.name}}</h6>
-                        <select class="select-margin" ng-model="awayStatus">
+                        <h3 class="page-title text-center">Update<span>Status</span></h3>
+                        <img src="{{selectedTournamentMatch.awayTeam.picture}}" alt="Team Logo" class="team-tourney-img" ng-model="match.awayTeam.picture">
+                        <h6 ng-model="awayTeamName">{{selectedTournamentMatch.awayTeam.name}}</h6>
+                        <!--<input type="text" placeholder="{{selectedTournamentMatch.awayTeam.name}}" value="{{selectedTournamentMatch.awayTeam.name}}" >-->
+                        <!--<select class="select-margin" ng-model="match.awayTeam.name">-->
+                            <!--<option SELECTED>{{selectedTournamentMatch.awayTeam.name}}</option>-->
+                        <!--</select>-->
+                        <select class="select-margin" ng-model="match.awayTeam.status">
                             <option value="" disabled selected>Select Option</option>
                             <option>Winner</option>
                             <option>Loser</option>
                         </select>
-
-                        <h6>{{selectedTournamentMatch.homeTeam.name}}</h6>
-                        <select class="select-margin" ng-model="homeStatus">
+                        <h6 ng-model="match.date">{{selectedTournamentMatch.date}}</h6>
+                        <img src="{{selectedTournamentMatch.homeTeam.picture}}" alt="Team Logo" class="team-tourney-img" ng-model="match.homeTeam.picture">
+                        <h6 ng-model="match.homeTeam.name">{{selectedTournamentMatch.homeTeam.name}}</h6>
+                        <select class="select-margin" ng-model="match.homeTeam.status">
                             <option value="" disabled selected>Select Option</option>
                             <option>Winner</option>
                             <option>Loser</option>
                         </select>
-                        <input type="submit" class="button large-12" ng-click="updateMatch(selectedTournamentMatch)" value="Update">
+                        <input type="submit" class="button large-12" ng-click="updateStatus(match)" value="Update">
                     </form>
                 </div>
             </div><!-- Page Content -->

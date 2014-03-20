@@ -91,11 +91,14 @@
     <div id="gts-game-list" class="reveal-modal small" data-reveal>
     <h1 class="text-center">Add A Game</h1>
 
-    <form class="large-6 medium-10 columns medium-centered large-centered" name="form" novalidate>
+    <form class="large-8 medium-10 columns medium-centered large-centered" name="form" novalidate>
 
         <!-- Search or Add new game -->
         <div class="large-12 medium-12 small-12 columns medium-centered large-centered">
-            <input type="text" autocomplete="off" placeholder="Game Name" ng-model="game.gameTitle" required>
+            <input type="text" name="gameTitle" autocomplete="off" placeholder="Game Name" ng-model="game.gameTitle" required>
+            <div class="error" ng-show="form.gameTitle.$dirty && form.gameTitle.$invalid">
+                <small class="error" ng-show="form.gameTitle.$error.required">Enter A Game Title</small>
+            </div>
         </div>
 
         <!-- System -->

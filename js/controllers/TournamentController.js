@@ -180,7 +180,7 @@ wgl.controller('tournaments', ['$scope','$routeParams','$location','$rootScope',
 
     //Standings
     $scope.selectedTournament = $firebase(new Firebase("https://thewgl.firebaseio.com/thewgl/tournaments/" + $routeParams.tournamentID));
-    
+
     $scope.tournyID = $routeParams.tournamentID;
 
     //Specific Match
@@ -189,20 +189,41 @@ wgl.controller('tournaments', ['$scope','$routeParams','$location','$rootScope',
 
     $scope.updateMatch = function(match) {
         tournyMatchRef.update({
-                homeTeam: {
-                    name:       match.homeTeam.name,
-                    picture:    match.homeTeam.picture
-                },
-                date: match.date,
-                awayTeam: {
-                    name:       match.awayTeam.name,
-                    picture:    match.awayTeam.picture 
-                }
+            homeTeam: {
+                name:       match.homeTeam.name,
+                picture:    match.homeTeam.picture,
+                status: ''
+            },
+            date: match.date,
+            awayTeam: {
+                name:       match.awayTeam.name,
+                picture:    match.awayTeam.picture,
+                status: ''
+            }
         });
         $location.path("/tournaments");
     }
 
-    
+    $scope.updateStatus = function(match) {
+        tournyMatchRef.$set({
+            homeTeam: {
+//                name:       match.homeTeam.name,
+//                picture:    match.homeTeam.picture,
+                status: match.homeTeam.status
+            },
+//            date: match.date,
+            awayTeam: {
+//                name:       $scope.awayTeamName,
+//                picture:    match.awayTeam.picture,
+                status: match.awayTeam.status
+            }
+
+        });
+//        $location.path("/tournaments");
+        console.log(match);
+    }
+
+
     //Add Team Auto complete
     $scope.awayTeamTyping = false;
     //Filter user search and select to input

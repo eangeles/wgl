@@ -1986,7 +1986,7 @@ button.round, .button.round {
     -webkit-border-radius: 1000px;
     border-radius: 1000px; }
 button.disabled, button[disabled], .button.disabled, .button[disabled] {
-    background-color: #008cba;
+    background-color: #444;
     border-color: #0079a1;
     color: white;
     cursor: default;
