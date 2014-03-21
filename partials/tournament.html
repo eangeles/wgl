@@ -7,7 +7,7 @@
         <div class="page-content-container">
             <div class="page-content">
                 <!-- 1st round -->
-                <div class="1st-round-tourney-bracket large-3 columns">
+                <div class="1st-round-tourney-bracket large-3 medium-3 columns">
                     <div class="row">
                         <h3 class="page-title large-10 small-9 columns">Round<span>One</span></h3>
                     </div>
@@ -37,75 +37,74 @@
                         </div>
 
                     </div>
-                </div><!-- End 1st Round -->
+                </div>
+                <!-- End 1st Round -->
 
 
                 <!-- 2nd round -->
-                <div class="row">
-                    <div class="second-round-tourney-bracket large-3 columns">
+                <div class="second-round-tourney-bracket large-3 medium-3 columns">
+                    <div class="row">
+                        <h3 class="page-title large-10 small-9 columns">Round<span>Two</span></h3>
+                    </div>
+                    <div ng-repeat="match in selectedTournament.secondRound | toArray">
+                        <a href="#/tournamentmatch/{{tournyID}}/secondRound/{{match.$key}}">Edit</a>
+                        <a href="#/updatetournamentmatch/{{tournyID}}/secondRound/{{match.$key}}">Update</a>
                         <div class="row">
-                            <h3 class="page-title large-10 small-9 columns">Round<span>Two</span></h3>
-                        </div>
-                        <div ng-repeat="match in selectedTournament.secondRound | toArray">
-                            <a href="#/tournamentmatch/{{tournyID}}/secondRound/{{match.$key}}">Edit</a>
-                            <a href="#/updatetournamentmatch/{{tournyID}}/secondRound/{{match.$key}}">Update</a>
-                            <div class="row">
-                                <div class="tourney-match-panel large-12 clearfix">
-                                    <div class="tourney-date text-center">
-                                        <h6 class="large-12 columns">{{match.date}}</h6>
-                                    </div>
-                                    <div class="tourney-away-team clearfix">
-                                        <img class="team-tourney-img left" ng-src="{{match.homeTeam.picture}}">
-                                        <h6 class="left">{{match.homeTeam.name}}</h6>
-                                        <h6 class="right">{{match.homeTeam.status}}</h6>
-                                    </div>
-                                    <div class="vs-tourney clearfix text-center">
-                                        <h6>vs</h6>
-                                    </div>
-                                    <div class="tourney-home-team">
-                                        <img class="team-tourney-img left" ng-src="{{match.awayTeam.picture}}">
-                                        <h6 class="left">{{match.awayTeam.name}}</h6>
-                                        <h6 class="right">{{match.awayTeam.status}}</h6>
-                                    </div>
+                            <div class="tourney-match-panel large-12 small-12 small-centered clearfix">
+                                <div class="tourney-date text-center">
+                                    <h6 class="large-12 columns">{{match.date}}</h6>
+                                </div>
+                                <div class="tourney-away-team clearfix">
+                                    <img class="team-tourney-img left" ng-src="{{match.homeTeam.picture}}">
+                                    <h6 class="left">{{match.homeTeam.name}}</h6>
+                                    <h6 class="right">{{match.homeTeam.status}}</h6>
+                                </div>
+                                <div class="vs-tourney clearfix text-center">
+                                    <h6>vs</h6>
+                                </div>
+                                <div class="tourney-home-team">
+                                    <img class="team-tourney-img left" ng-src="{{match.awayTeam.picture}}">
+                                    <h6 class="left">{{match.awayTeam.name}}</h6>
+                                    <h6 class="right">{{match.awayTeam.status}}</h6>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!-- Final Round -->
+                </div>
+                <!-- Final Round -->
+                <div class="second-round-tourney-bracket large-3 medium-3 columns left">
                     <div class="row">
-                        <div class="second-round-tourney-bracket large-3 columns">
-                            <div class="row">
-                                <h3 class="page-title large-10 small-9 columns">Final<span>Round</span></h3>
-                            </div>
+                        <h3 class="page-title large-10 small-9 columns">Final<span>Round</span></h3>
+                    </div>
 
-                            <div ng-repeat="match in selectedTournament.thirdRound | toArray">
-                                <a href="#/tournamentmatch/{{tournyID}}/thirdRound/{{match.$key}}">Edit</a>
-                                <a href="#/updatetournamentmatch/{{tournyID}}/thirdRound/{{match.$key}}">Update</a>
-                                <div class="row">
-                                    <div class="tourney-match-panel large-12 clearfix">
-                                        <div class="tourney-date text-center">
-                                            <h6 class="large-12 columns">{{match.date}}</h6>
-                                        </div>
-                                        <div class="tourney-away-team clearfix">
-                                            <img class="team-tourney-img left" ng-src="{{match.homeTeam.picture}}">
-                                            <h6 class="left">{{match.homeTeam.name}}</h6>
-                                            <h6 class="right">{{match.homeTeam.status}}</h6>
-                                        </div>
-                                        <div class="vs-tourney clearfix text-center">
-                                            <h6>vs</h6>
-                                        </div>
-                                        <div class="tourney-home-team">
-                                            <img class="team-tourney-img left" ng-src="{{match.awayTeam.picture}}">
-                                            <h6 class="left">{{match.awayTeam.name}}</h6>
-                                            <h6 class="right">{{match.awayTeam.status}}</h6>
-                                        </div>
-                                    </div>
+                    <div ng-repeat="match in selectedTournament.thirdRound | toArray">
+                        <a href="#/tournamentmatch/{{tournyID}}/thirdRound/{{match.$key}}">Edit</a>
+                        <a href="#/updatetournamentmatch/{{tournyID}}/thirdRound/{{match.$key}}">Update</a>
+                        <div class="row">
+                            <div class="tourney-match-panel large-12 clearfix">
+                                <div class="tourney-date text-center">
+                                    <h6 class="large-12 columns">{{match.date}}</h6>
+                                </div>
+                                <div class="tourney-away-team clearfix">
+                                    <img class="team-tourney-img left" ng-src="{{match.homeTeam.picture}}">
+                                    <h6 class="left">{{match.homeTeam.name}}</h6>
+                                    <h6 class="right">{{match.homeTeam.status}}</h6>
+                                </div>
+                                <div class="vs-tourney clearfix text-center">
+                                    <h6>vs</h6>
+                                </div>
+                                <div class="tourney-home-team">
+                                    <img class="team-tourney-img left" ng-src="{{match.awayTeam.picture}}">
+                                    <h6 class="left">{{match.awayTeam.name}}</h6>
+                                    <h6 class="right">{{match.awayTeam.status}}</h6>
                                 </div>
                             </div>
                         </div>
-                    </div><!-- End Final Round -->
+                    </div>
+                </div>
+                <!-- End Final Round -->
 
-                </div><!-- Page Content -->
-            </div><!-- End Page Container -->
-        </div> <!-- End Row -->
-    </div><!-- End Page -->
+            </div><!-- Page Content -->
+        </div><!-- End Page Container -->
+    </div> <!-- End Row -->
+</div><!-- End Page -->
