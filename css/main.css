@@ -238,10 +238,35 @@ ul .phone-number a {
     color: #008cba;
     font-weight: 500;
 }
+ul .address-li p{
+    font-weight: 100;
+    color: #ccc;
+    font-size: 1em;
+    margin-left: 13px;
+}
+ul .address-li i {
+    color: orange;
+    font-size: 1em;
+}
 ul .phone-number i {
     color: orange;
     font-size: 1.25em;
     font-weight: 500;
+}
+.welcome-message i{
+    font-weight: 100;
+    color: darkgoldenrod;
+    font-size: 5.25em;
+}
+.welcome-message h6{
+    font-weight: 300;
+    color: #fff;
+    font-size: 1.25em;
+    text-transform: uppercase;
+}
+.welcome-message p{
+    font-weight: 100;
+    color: #ccc;
 }
 /*******
  News Page
