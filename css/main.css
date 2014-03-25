@@ -141,9 +141,6 @@ p{
     font-weight: 100;
 }
 
-.margin {
-    margin-bottom: 50px;
-}
 /*******
  Home Page
  *******/
@@ -190,9 +187,14 @@ p{
 }
 .featured-news{
     border-top: 3px solid darkorange;
+    border-bottom: 1px dashed white;
     background-color: #111;
-    margin-bottom: 30px;
     padding-bottom: 25px;
+}
+.welcome-home {
+    background-color: #222;
+    border-bottom: 1px dashed #ccc;
+    padding-bottom: 30px;
 }
 .news-main-image, .news-image{
     height: 345px;
@@ -222,9 +224,25 @@ p{
 }
 .featured-bg{
     background-color: #111;
-
 }
-
+.play-here {
+    background-color: #333;
+    border-top: 3px solid #008cba;
+}
+.address li{
+    color: white;
+    font-weight: 100;
+    font-size: 0.80em;
+}
+ul .phone-number a {
+    color: #008cba;
+    font-weight: 500;
+}
+ul .phone-number i {
+    color: orange;
+    font-size: 1.25em;
+    font-weight: 500;
+}
 /*******
  News Page
  *******/
