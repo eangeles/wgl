@@ -257,6 +257,8 @@ ul .phone-number i {
     font-weight: 100;
     color: darkgoldenrod;
     font-size: 5.25em;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 .welcome-message h6{
     font-weight: 300;
@@ -266,6 +268,7 @@ ul .phone-number i {
 }
 .welcome-message p{
     font-weight: 100;
+    font-size: 0.90em;
     color: #ccc;
 }
 /*******
