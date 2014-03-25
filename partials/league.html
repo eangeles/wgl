@@ -1,72 +1,72 @@
 <div class="page" ng-controller="leagues">
     <div class="row">
-        <!-- Header BG -->
-        <div class="header-top"></div>
         <!-- Page Container -->
         <div class="page-content-container">
-            <div class="row">
-                <div class="large-12 columns">
-                    <!-- Admin Controls -->
-                    <h6 class="admin-add large-2 medium-2 small-6 columns"><a ng-href="#/leagueaddteam/{{tempRouteParam}}"><button><h6>Add Team</h6></button></a></h6>
-                    <h6 class="admin-add large-10 medium-10 small-6 columns"><a ng-href="#/leagueaddmatch/{{tempRouteParam}}"><button><h6>Add Match</h6></button></a></h6>
-                </div>
-            </div>
-            <!-- Standings Column -->
-            <div class="large-4 columns">
+            <div class="page-content">
                 <div class="row">
-                    <h3 class="page-title large-12 small-9 columns">{{selectedLeague.name}}<span>Standings</span></h3>
+                    <div class="large-12 columns">
+                        <!-- Admin Controls -->
+                        <h6 class="admin-add large-2 medium-2 small-6 columns"><a ng-href="#/leagueaddteam/{{tempRouteParam}}"><button><h6>Add Team</h6></button></a></h6>
+                        <h6 class="admin-add large-10 medium-10 small-6 columns"><a ng-href="#/leagueaddmatch/{{tempRouteParam}}"><button><h6>Add Match</h6></button></a></h6>
+                    </div>
                 </div>
-                <table>
-                    <thead>
-                    <tr>
-                        <th width="50">Rank</th>
-                        <th width="750">Team Name</th>
-                        <th width="100">Win</th>
-                        <th width="100">Lose</th>
-                    </tr>
-                    </thead>
-                    <tbody>
+                <!-- Standings Column -->
+                <div class="large-4 columns">
+                    <div class="row">
+                        <h3 class="page-title large-12 small-9 columns">{{selectedLeague.name}}<span>Standings</span></h3>
+                    </div>
+                    <table>
+                        <thead>
+                        <tr>
+                            <th width="50">Rank</th>
+                            <th width="750">Team Name</th>
+                            <th width="100">Win</th>
+                            <th width="100">Lose</th>
+                        </tr>
+                        </thead>
+                        <tbody>
                         <tr ng-repeat="leagueTeam in selectedLeagueTeams | toArray | orderBy: winSort">
                             <td>{{$index+1}}</td>
                             <td><a href="#/team/{{leagueTeam.$key}}">{{leagueTeam.name}}</a></td>
                             <td>{{leagueTeam.wins}}</td>
                             <td>{{leagueTeam.losses}}</td>
                         </tr>
-                    </tbody>
-                </table>
-            </div>
-            <!-- Upcoming Matches -->
-            <div class="large-8 columns">
-                <div class="row">
-                    <h3 class="page-title large-12 medium-12 small-9 columns">Upcoming<span>Matches</span></h3>
+                        </tbody>
+                    </table>
                 </div>
-                <div class="row">
-                    <a class="matches-link" href="#/leaguematch/{{tempRouteParam}}/{{leagueMatch.$key}}" ng-repeat="leagueMatch in selectedLeagueMatches | toArray | limitTo: 4">
-                        <div class="large-6 medium-4 small-12 columns">
-                            <div class="upcoming-match-info large-12 columns large-centered">
-                                <div class="large-4 medium-4 small-4     columns text-center">
-                                    <img class="upcoming-small-img" src="{{leagueMatch.awayTeam.picture}}" alt="Team Logo">
-                                    <h6>{{leagueMatch.awayTeam.name}}</h6>
-                                </div>
-                                <div class="large-4 medium-4 small-4 columns">
-                                    <div class="row text-center">
-                                        <h6 class="match-event-name">{{match.eventName}}</h6>
+                <!-- Upcoming Matches -->
+                <div class="large-8 columns">
+                    <div class="row">
+                        <h3 class="page-title large-12 medium-12 small-9 columns">Upcoming<span>Matches</span></h3>
+                    </div>
+                    <div class="row">
+                        <a class="matches-link" href="#/leaguematch/{{tempRouteParam}}/{{leagueMatch.$key}}" ng-repeat="leagueMatch in selectedLeagueMatches | toArray | limitTo: 4">
+                            <div class="large-6 medium-4 small-12 columns">
+                                <div class="upcoming-match-info large-12 columns large-centered">
+                                    <div class="large-4 medium-4 small-4     columns text-center">
+                                        <img class="upcoming-small-img" src="{{leagueMatch.awayTeam.picture}}" alt="Team Logo">
+                                        <h6>{{leagueMatch.awayTeam.name}}</h6>
                                     </div>
-                                    <div class="text-center">
-                                        <h6 class="match-team-vs"><span>vs</span> </h6>
-                                        <h6 class="match-date">{{leagueMatch.date}} </h6>
-                                        <h6 class="match-time">{{leagueMatch.time}}</h6>
+                                    <div class="large-4 medium-4 small-4 columns">
+                                        <div class="row text-center">
+                                            <h6 class="match-event-name">{{match.eventName}}</h6>
+                                        </div>
+                                        <div class="text-center">
+                                            <h6 class="match-team-vs"><span>vs</span> </h6>
+                                            <h6 class="match-date">{{leagueMatch.date}} </h6>
+                                            <h6 class="match-time">{{leagueMatch.time}}</h6>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="large-4 medium-4 small-4 columns text-center">
-                                    <img class="upcoming-small-img" src="{{leagueMatch.homeTeam.picture}}" alt="Team Logo">
-                                    <h6>{{leagueMatch.homeTeam.name}}</h6>
+                                    <div class="large-4 medium-4 small-4 columns text-center">
+                                        <img class="upcoming-small-img" src="{{leagueMatch.homeTeam.picture}}" alt="Team Logo">
+                                        <h6>{{leagueMatch.homeTeam.name}}</h6>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </a>
-                </div>
+                        </a>
+                    </div>
 
+                </div>
             </div>
         </div><!-- End Page Container -->
     </div> <!-- End Row -->

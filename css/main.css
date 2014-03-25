@@ -2,13 +2,14 @@
  General
  *******/
 .page-content-container{
-    /*background: rgba(45, 45, 51, 0.8);*/
     background: #222;
     border: 1px solid #333;
     overflow: hidden;
+    margin-top: 80px;
 }
 .page-content{
     padding-top: 20px;
+    border-top: 3px solid #008cba;
 }
 .content-h3{
     text-transform: uppercase;
@@ -72,25 +73,6 @@ footer{
 }
 .page-title span{
     font-weight: 300;
-    color: orange;
-}
-.header-top{
-    background: rgba(0, 140, 186, 0.7);
-    padding-left: 10px;
-    margin-top: 100px;
-    border: 1px solid #008cba;
-    height: 3px;
-
-}
-.header-top h3{
-    margin-bottom: 0;
-    text-transform: uppercase;
-    color: #fff;
-    font-weight: 500;
-    text-shadow: 0px 1px 1px #000;
-}
-.header-top h3 span{
-    font-weight: 500;
     color: orange;
 }
 li{
@@ -158,6 +140,10 @@ p{
     color: white;
     font-weight: 100;
 }
+
+.margin {
+    margin-bottom: 50px;
+}
 /*******
  Home Page
  *******/
@@ -203,7 +189,10 @@ p{
     margin: 5px 20px 0px 0px;
 }
 .featured-news{
-    border-bottom: 1px solid #606060;
+    border-top: 3px solid darkorange;
+    background-color: #111;
+    margin-bottom: 30px;
+    padding-bottom: 25px;
 }
 .news-main-image, .news-image{
     height: 345px;
@@ -230,6 +219,10 @@ p{
     height: 30px;
     border: 2px solid #fff;
     /*margin: 5px 5px 0 -20px;*/
+}
+.featured-bg{
+    background-color: #111;
+
 }
 
 /*******

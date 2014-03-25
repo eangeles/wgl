@@ -1,11 +1,9 @@
 <div class="page">
     <div class="row">
-        <!-- Header BG -->
-        <div class="header-top"></div>
         <!-- Page Container -->
         <div class="page-content-container">
             <div class="page-content">
-                <div class="large-12 columns">
+                <div class="welcome-home large-12 columns margin">
                     <div class="welcome">
                         <div class="row">
                             <h3 class="page-title large-12 column">Win<span>Gaming</span></h3>
@@ -16,95 +14,59 @@
                             </div>
                         </div>
                     </div>
-
-                    <div class="featured-news">
-                        <div class="row">
-                            <h3 class="page-title large-11 small-9 columns">Featured<span>News</span></h3>
-                            <h6 class="home-more-news large-1 small-3 columns right"><a href="#/news">more...</a></h6>
-                            <div class="row" ng-controller="news">
-                                <!-- Recent News content -->
-                                <!-- Medium + Desktop -->
-                                <div class="large-8 medium-8 columns">
-                                    <div ng-repeat="post in news | toArray | orderObjectBy: 'date':true | limitTo: 1">
-                                        <a ng-href="#/newspage/{{post.$key}}">
-                                            <div class="news-content news-main large-12 medium-12 small-12">
-                                                <div class="hide-for-small">
-                                                    <img class="news-main-image large-12 medium-12 small-12" ng-src="{{post.image}}" alt="News">
+                </div>
+                <div class="featured-news large-12 columns">
+                    <div class="">
+                        <h3 class="page-title large-11 small-9 columns">Featured<span>News</span></h3>
+                        <h6 class="home-more-news large-1 small-3 columns right"><a href="#/news">more...</a></h6>
+                        <div class="row" ng-controller="news">
+                            <!-- Recent News content -->
+                            <!-- Medium + Desktop -->
+                            <div class="large-8 medium-8 columns">
+                                <div ng-repeat="post in news | toArray | orderObjectBy: 'date':true | limitTo: 1">
+                                    <a ng-href="#/newspage/{{post.$key}}">
+                                        <div class="news-content news-main large-12 medium-12 small-12">
+                                            <div class="hide-for-small">
+                                                <img class="news-main-image large-12 medium-12 small-12" ng-src="{{post.image}}" alt="News">
+                                            </div>
+                                            <div class="show-for-small">
+                                                <img class="news-image large-12 medium-12 small-12" ng-src="{{post.image}}" alt="News">
+                                            </div>
+                                            <div class="news column">
+                                                <div class="news-title">
+                                                    <h5>{{post.title}}</h5>
                                                 </div>
-                                                <div class="show-for-small">
-                                                    <img class="news-image large-12 medium-12 small-12" ng-src="{{post.image}}" alt="News">
-                                                </div>
-                                                <div class="news column">
-                                                    <div class="news-title">
-                                                        <h5>{{post.title}}</h5>
-                                                    </div>
-                                                    <div class="news-info">
-                                                        <h6 class="left">{{post.poster}}</h6>
-                                                        <h6 class="right">{{post.date}}</h6>
-                                                    </div>
+                                                <div class="news-info">
+                                                    <h6 class="left">{{post.poster}}</h6>
+                                                    <h6 class="right">{{post.date}}</h6>
                                                 </div>
                                             </div>
-                                        </a>
-                                    </div>
+                                        </div>
+                                    </a>
                                 </div>
-                                <div class="large-4 medium-4 small-12 columns">
-                                    <div ng-repeat="post in news | toArray | orderObjectBy: 'date':true | limitTo: 3" ng-show="!$first">
-                                        <a ng-href="#/newspage/{{post.$key}}">
-                                            <div class="news-content news-small large-12 medium-6 small-12">
-                                                <div class="news-image">
-                                                    <img class="news-image large-12 medium-12 small-12" ng-src="{{post.image}}" alt="News">
+                            </div>
+                            <div class="large-4 medium-4 small-12 columns">
+                                <div ng-repeat="post in news | toArray | orderObjectBy: 'date':true | limitTo: 3" ng-show="!$first">
+                                    <a ng-href="#/newspage/{{post.$key}}">
+                                        <div class="news-content news-small large-12 medium-6 small-12">
+                                            <div class="news-image">
+                                                <img class="news-image large-12 medium-12 small-12" ng-src="{{post.image}}" alt="News">
+                                            </div>
+                                            <div class="news column">
+                                                <div class="news-title">
+                                                    <h5>{{post.title}}</h5>
                                                 </div>
-                                                <div class="news column">
-                                                    <div class="news-title">
-                                                        <h5>{{post.title}}</h5>
-                                                    </div>
-                                                    <div class="news-info">
-                                                        <h6 class="left">{{post.poster}}</h6>
-                                                        <h6 class="right">{{post.date}}</h6>
-                                                    </div>
+                                                <div class="news-info">
+                                                    <h6 class="left">{{post.poster}}</h6>
+                                                    <h6 class="right">{{post.date}}</h6>
                                                 </div>
                                             </div>
-                                        </a>
-                                    </div>
+                                        </div>
+                                    </a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!-- Upcoming Matches -->
-
-                    <!--<div class="featured-matches">-->
-                        <!--<div class="row">-->
-                            <!--<h3 class="page-title large-12 column">Upcoming<span>Matches</span></h3>-->
-                            <!--<div class="matches-panel-container text-center" ng-controller="matches">-->
-                                <!--<a class="matches-link" href="#/match/{{match.$key}}" ng-repeat="match in matches | toArray | limitTo:3">-->
-                                    <!--<div class="large-4 medium-4 small-12 columns">-->
-                                        <!--<div class="upcoming-match-info large-12 columns large-centered">-->
-                                            <!--&lt;!&ndash; Team Away &ndash;&gt;-->
-                                            <!--<div class="large-4 medium-4 small-4 columns">-->
-                                                <!--<img class="upcoming-small-img" src="{{match.awayTeam.picture}}" alt="Team Logo">-->
-                                                <!--<h6>{{match.awayTeam.name}}</h6>-->
-                                            <!--</div>-->
-                                            <!--<div class="large-4 medium-4 small-4 columns">-->
-                                                <!--<div class="row">-->
-                                                    <!--<h6 class="match-event-name">{{match.eventName}}</h6>-->
-                                                <!--</div>-->
-
-                                                <!--<h6 class="match-team-vs"><span>vs</span> </h6>-->
-                                                <!--<h6 class="match-date">{{match.date}} </h6>-->
-                                                <!--<h6 class="match-time">{{match.time}}</h6>-->
-                                            <!--</div>-->
-                                            <!--&lt;!&ndash; Team Home &ndash;&gt;-->
-                                            <!--<div class="large-4 medium-4 small-4 columns">-->
-                                                <!--<img class="upcoming-small-img" src="{{match.homeTeam.picture}}" alt="Team Logo">-->
-                                                <!--<h6>{{match.homeTeam.name}}</h6>-->
-                                            <!--</div>-->
-                                        <!--</div>-->
-                                    <!--</div>-->
-                                <!--</a>-->
-                            <!--</div>-->
-                        <!--</div>-->
-
-                    <!--</div>-->
                 </div>
             </div><!-- Page Content -->
         </div><!-- End Page Container -->
