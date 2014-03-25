@@ -36,10 +36,10 @@
 
                             <!-- Search or Add new game -->
                             <div class="large-12 medium-12 small-12 columns medium-centered large-centered">
-                                <input type="text" autocomplete="off" placeholder="Search Or Add Game" ng-model="tempGame.gameTitle" ng-change="typing=true" required>
+                                <input type="text" autocomplete="off" placeholder="Search Or Update Game" ng-model="tempGame.gameTitle" ng-change="typing=true" required>
                                 <ul ng-show="typing">
-                                    <li ng-repeat="(index,game) in games | toArray | filter:tempGame.gameTitle | limitTo:limit | orderBy:'gameTitle'">
-                                        <a ng-click="selectGame(game,index)">
+                                    <li ng-repeat="game in games | toArray | filter:tempGame.gameTitle | limitTo:limit | orderBy:'gameTitle'">
+                                        <a ng-click="selectGame(game,game.$key)">
                                             <div class="row">
                                                 <div class="searchOutcome large-12 columns">
                                                     <h6 class="left inline-list">{{game.gameTitle}}</h6>
@@ -113,7 +113,7 @@
         </div>
         <!-- Game Quantity -->
         <div class="large-12 medium-12 small-12 columns medium-centered large-centered">
-            <input type="tel" placeholder="Game Quantity" name="gameQuantity" ng-model="game.gameQuantity" required>
+            <input type="number" placeholder="Game Quantity" name="gameQuantity" ng-model="game.gameQuantity" required>
             <!-- Form Validation -->
             <div class="error" ng-show="form.gameQuantity.$dirty && form.gameQuantity.$invalid">
                 <small class="error" ng-show="form.gameQuantity.$error.required">Enter Quantity</small>

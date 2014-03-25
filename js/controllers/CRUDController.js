@@ -88,7 +88,6 @@ wgl.controller('gameController', ['$scope','$firebase','$location', function($sc
 
     $scope.typing = false;
     $scope.selectGame = function(game,index) {
-//        $scope.tempGame = game;
         $scope.tempGame = angular.fromJson(angular.toJson(game));
         $scope.tempGame.id = index;
         $scope.typing = false;
