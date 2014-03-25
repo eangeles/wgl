@@ -103,9 +103,9 @@
                 <div id="gts">
                     <div class="large-12 columns">
                         <!-- GTS Panel -->
-                        <div class="large-4 medium-6 small-12 columns left" ng-repeat="activeStation in activeStations | orderBy: activeStation.stationNumber">
+                        <div class="large-4 medium-6 small-12 columns left" ng-repeat="activeStation in activeStations | toArray | orderBy: activeStation.stationNumber">
                             <div class="gts-panels large-12">
-
+                                <a ng-click ="removeActiveStation(activeStation)">X</a>
                                 <div class="large-2 medium-2 small-2 columns">
                                     <h1 class="station-number left has-tip" data-tooltip title="{{activeStation.name}}">{{activeStation.stationNumber}}</h1>
                                 </div>

@@ -127,7 +127,7 @@ wgl.controller('gts', ['$scope','$routeParams','$firebase','$location','$timeout
     
     //Removes station from active and adds to empty
     $scope.removeActiveStation = function(station) {
-        $scope.activeStations.$remove(station.$id);
+        $scope.activeStations.$remove(station.$key);
         
         //temp object for empty station being added
         var tempEmptyStation = {
