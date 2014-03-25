@@ -13,7 +13,7 @@
                     </div>
                     <!-- Tourney Match Panels -->
                     <div ng-repeat="match in selectedTournament.firstRound | toArray">
-                        <a href="#/tournamentmatch/{{tournyID}}/firstRound/{{match.$key}}">Edit</a>
+                        <a href="#/tournamentmatch/{{tournyID}}/firstRound/{{match.$key}}">Edit |</a>
                         <a href="#/updatetournamentmatch/{{tournyID}}/firstRound/{{match.$key}}">Update</a>
                         <div class="row">
                             <div class="tourney-match-panel large-12 small-12 small-centered clearfix">
@@ -35,7 +35,6 @@
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
                 <!-- End 1st Round -->
@@ -47,7 +46,7 @@
                         <h3 class="page-title large-10 small-9 columns">Round<span>Two</span></h3>
                     </div>
                     <div ng-repeat="match in selectedTournament.secondRound | toArray">
-                        <a href="#/tournamentmatch/{{tournyID}}/secondRound/{{match.$key}}">Edit</a>
+                        <a href="#/tournamentmatch/{{tournyID}}/secondRound/{{match.$key}}">Edit |</a>
                         <a href="#/updatetournamentmatch/{{tournyID}}/secondRound/{{match.$key}}">Update</a>
                         <div class="row">
                             <div class="tourney-match-panel large-12 small-12 small-centered clearfix">
@@ -78,7 +77,7 @@
                     </div>
 
                     <div ng-repeat="match in selectedTournament.thirdRound | toArray">
-                        <a href="#/tournamentmatch/{{tournyID}}/thirdRound/{{match.$key}}">Edit</a>
+                        <a href="#/tournamentmatch/{{tournyID}}/thirdRound/{{match.$key}}">Edit |</a>
                         <a href="#/updatetournamentmatch/{{tournyID}}/thirdRound/{{match.$key}}">Update</a>
                         <div class="row">
                             <div class="tourney-match-panel large-12 clearfix">

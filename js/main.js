@@ -352,7 +352,7 @@ var newsPermission = function ($q, $rootScope, $location,$sce){
             $rootScope.html = '<a href="#\addnews">+</a>';
             $rootScope.addNews = $sce.trustAsHtml($rootScope.html);
 
-            $rootScope.html2 = 'Edit';
+            $rootScope.html2 = 'Edit |';
             $rootScope.editNews = $sce.trustAsHtml($rootScope.html2);
 
             $rootScope.html3 = 'Remove';

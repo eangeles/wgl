@@ -35,7 +35,7 @@ wgl.controller('gts', ['$scope','$routeParams','$firebase','$location','$timeout
 
     //variables used in updateTimer function
     var time,alert;
-    
+
     //timer event that runs through all the active stations and basically updates
     //all the timers with the correct time by calculating the change in time between
     //start time and the display time and reflects that in the html.

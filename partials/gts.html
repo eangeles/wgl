@@ -29,7 +29,7 @@
                             <div class="email-input large-12 medium-12 columns">
                                 <input type="text" ng-model="tempStation.name" placeholder="Enter Email" ng-change="userTyping=true">
                                 <ul ng-show="userTyping">
-                                    <li ng-repeat="user in users | filter:tempStation.name | limitTo:limit | orderBy:'name'">
+                                    <li ng-repeat="user in users | toArray |filter:tempStation.name | limitTo:limit | orderBy:'name'">
                                         <a ng-click="selectUser(user)">
                                             <div class="searchOutcome large-12 columns">
                                                 <h6 class="left inline-list">{{user.name}}</h6>
@@ -167,7 +167,6 @@
     <a class="close-reveal-modal">&#215;</a>
 </div>
 </div><!-- End Page -->
-
 
 <script>
     $(document).foundation();

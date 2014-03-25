@@ -6,6 +6,17 @@
         <div class="page-content-container">
             <div class="page-content">
                 <div class="large-12 columns">
+                    <div class="welcome">
+                        <div class="row">
+                            <h3 class="page-title large-12 column">Win<span>Gaming</span></h3>
+                            <img class="columns select-margin" src="./img/header.jpg" alt="Header">
+                            <div class="large-12 columns left text-center">
+                                <h3>Welcome to Win Gaming Lounge</h3>
+                                <p>"But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?"</p>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="featured-news">
                         <div class="row">
                             <h3 class="page-title large-11 small-9 columns">Featured<span>News</span></h3>
@@ -60,39 +71,40 @@
                         </div>
                     </div>
                     <!-- Upcoming Matches -->
-                    <div class="featured-matches">
-                        <div class="row">
-                            <h3 class="page-title large-12 column">Upcoming<span>Matches</span></h3>
-                            <div class="matches-panel-container text-center" ng-controller="matches">
-                                <a class="matches-link" href="#/match/{{match.$key}}" ng-repeat="match in matches | toArray | limitTo:3">
-                                    <div class="large-4 medium-4 small-12 columns">
-                                        <div class="upcoming-match-info large-12 columns large-centered">
-                                            <!-- Team Away -->
-                                            <div class="large-4 medium-4 small-4 columns">
-                                                <img class="upcoming-small-img" src="{{match.awayTeam.picture}}" alt="Team Logo">
-                                                <h6>{{match.awayTeam.name}}</h6>
-                                            </div>
-                                            <div class="large-4 medium-4 small-4 columns">
-                                                <div class="row">
-                                                    <h6 class="match-event-name">{{match.eventName}}</h6>
-                                                </div>
 
-                                                <h6 class="match-team-vs"><span>vs</span> </h6>
-                                                <h6 class="match-date">{{match.date}} </h6>
-                                                <h6 class="match-time">{{match.time}}</h6>
-                                            </div>
-                                            <!-- Team Home -->
-                                            <div class="large-4 medium-4 small-4 columns">
-                                                <img class="upcoming-small-img" src="{{match.homeTeam.picture}}" alt="Team Logo">
-                                                <h6>{{match.homeTeam.name}}</h6>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
+                    <!--<div class="featured-matches">-->
+                        <!--<div class="row">-->
+                            <!--<h3 class="page-title large-12 column">Upcoming<span>Matches</span></h3>-->
+                            <!--<div class="matches-panel-container text-center" ng-controller="matches">-->
+                                <!--<a class="matches-link" href="#/match/{{match.$key}}" ng-repeat="match in matches | toArray | limitTo:3">-->
+                                    <!--<div class="large-4 medium-4 small-12 columns">-->
+                                        <!--<div class="upcoming-match-info large-12 columns large-centered">-->
+                                            <!--&lt;!&ndash; Team Away &ndash;&gt;-->
+                                            <!--<div class="large-4 medium-4 small-4 columns">-->
+                                                <!--<img class="upcoming-small-img" src="{{match.awayTeam.picture}}" alt="Team Logo">-->
+                                                <!--<h6>{{match.awayTeam.name}}</h6>-->
+                                            <!--</div>-->
+                                            <!--<div class="large-4 medium-4 small-4 columns">-->
+                                                <!--<div class="row">-->
+                                                    <!--<h6 class="match-event-name">{{match.eventName}}</h6>-->
+                                                <!--</div>-->
 
-                    </div>
+                                                <!--<h6 class="match-team-vs"><span>vs</span> </h6>-->
+                                                <!--<h6 class="match-date">{{match.date}} </h6>-->
+                                                <!--<h6 class="match-time">{{match.time}}</h6>-->
+                                            <!--</div>-->
+                                            <!--&lt;!&ndash; Team Home &ndash;&gt;-->
+                                            <!--<div class="large-4 medium-4 small-4 columns">-->
+                                                <!--<img class="upcoming-small-img" src="{{match.homeTeam.picture}}" alt="Team Logo">-->
+                                                <!--<h6>{{match.homeTeam.name}}</h6>-->
+                                            <!--</div>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                <!--</a>-->
+                            <!--</div>-->
+                        <!--</div>-->
+
+                    <!--</div>-->
                 </div>
             </div><!-- Page Content -->
         </div><!-- End Page Container -->
