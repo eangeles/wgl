@@ -5,11 +5,13 @@
     background: #222;
     border: 1px solid #333;
     overflow: hidden;
-    margin-top: 80px;
+    margin-top: 150px;
+    border-bottom: 1px solid darkorange;
+    padding-bottom: 30px;
 }
 .page-content{
     padding-top: 20px;
-    border-top: 3px solid #008cba;
+    border-top: 1px solid #008cba;
 }
 .content-h3{
     text-transform: uppercase;
@@ -21,7 +23,7 @@
 footer{
     background: #222;
     height: 400px;
-    border-top: 3px solid #008cba ;
+    border-top: 1px dashed #7f7f7f;
 }
 .follow-facebook{
     font-size: 2em;
@@ -43,27 +45,6 @@ footer{
     padding-bottom: 50px;
 }
 
-.header-bg{
-    /*background: rgba(0, 140, 186, 0.7);*/
-    /*background: #33333a;*/
-    /*border-bottom: 5px solid #17A9CC ;*/
-    /*background: rgba(45, 45, 51, 0.8);*/
-    padding-left: 10px;
-    /*border: 1px solid #333;*/
-    /*box-shadow: 1px 1px 1px #008cba;*/
-}
-.header-bg h3{
-    margin-bottom: 0;
-    text-transform: uppercase;
-    color: #fff;
-    font-weight: 200;
-    font-size: 1.3em;
-
-}
-.header-bg h3 span{
-    font-weight: 300;
-    color: orange;
-}
 .page-title{
     font-weight: 200;
     color: #fff;
@@ -123,10 +104,9 @@ h1,h2,h3,h4,h5,h6{
 .desktop-logo{
     height: 45px;
     padding-left: 10px;
-
 }
 .contain-to-grid {
-    border-bottom: 2px solid #111;
+    box-shadow: 0 2px 2px #111;
 }
 
 .top-bar-section ul li a{
@@ -145,6 +125,22 @@ p{
     font-weight: 100;
 }
 
+.mobile-logo {
+    background: url(../img/logo.png) no-repeat center center;
+    width: 45px;
+    height: 45px;
+    background-size: contain;
+    margin: 0 auto;
+    margin-top: -47px;
+    display: block;
+}
+.f-topbar-fixed {
+    padding-top: 0px!important;
+}
+.mobile-nav li a:hover {
+    color: darkorange;
+    background: #444;
+}
 /*******
  Home Page
  *******/
@@ -190,14 +186,13 @@ p{
     margin: 5px 20px 0px 0px;
 }
 .featured-news{
-    border-top: 3px solid darkorange;
-    border-bottom: 1px dashed white;
-    background-color: #111;
+    border-bottom: 1px dashed #444;
+    background-color: #2f2f2f;
     padding-bottom: 25px;
 }
 .welcome-home {
     background-color: #222;
-    border-bottom: 1px dashed #ccc;
+    border-bottom: 1px dashed #444;
     padding-bottom: 30px;
 }
 .news-main-image, .news-image{
@@ -229,10 +224,6 @@ p{
 .featured-bg{
     background-color: #111;
 }
-.play-here {
-    background-color: #333;
-    border-top: 3px solid #008cba;
-}
 .address li{
     color: white;
     font-weight: 100;
@@ -259,14 +250,14 @@ ul .phone-number i {
 }
 .welcome-message i{
     font-weight: 100;
-    color: darkgoldenrod;
+    color: darkorange;
     font-size: 5.25em;
     margin-top: 20px;
     margin-bottom: 20px;
     text-shadow: 0 0 20px #111;
 }
 .welcome-message h6{
-    font-weight: 400;
+    font-weight: 100;
     color: #008cba;
     font-size: 1.50em;
     text-transform: uppercase;
@@ -362,12 +353,8 @@ ul .phone-number i {
     overflow: hidden;
 }
 .upcoming-match-info{
-    /*background: rgba(0, 0, 0, 0.9);*/
     background: #333;
     height: 180px;
-    /*position: relative;*/
-    /*top: 90px;*/
-    /*border-radius: 5px;*/
     overflow: hidden;
     padding: 1px 0 1px 0;
     margin-bottom: 20px;
@@ -561,6 +548,9 @@ ul .phone-number i {
     .tourney-match-panel {
         width: 90%;
         padding: 0 5px;
+    }
+    .page-content-container {
+        margin-top: 100px;
     }
 }
 

@@ -34,7 +34,7 @@ wgl.config(function ($routeProvider,$locationProvider){
         })
         .when("/leaguematch/:leagueID/:matchID", {
             title: 'League Match',
-            templateUrl:"partials/leagueMatch.html"
+            templateUrl:"partials/leaguematch.html"
         })
         .when("/team", {
             title: 'Team Page',
