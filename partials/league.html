@@ -40,10 +40,11 @@
                         <h3 class="page-title large-12 medium-12 small-9 columns">Upcoming<span>Matches</span></h3>
                     </div>
                     <div class="row">
-                        <a class="matches-link" href="#/leaguematch/{{tempRouteParam}}/{{leagueMatch.$key}}" ng-repeat="leagueMatch in selectedLeagueMatches | toArray | limitTo: 4">
-                            <div class="large-6 medium-4 small-12 columns">
+                        <div class="large-6 medium-4 small-12 left columns" ng-repeat="leagueMatch in selectedLeagueMatches | toArray | limitTo: 4">
+                            <a  ng-click="removeLeagueMatch(leagueMatch.$key)">Remove</a>
+                            <a class="matches-link" href="#/leaguematch/{{tempRouteParam}}/{{leagueMatch.$key}}">
                                 <div class="upcoming-match-info large-12 columns large-centered">
-                                    <div class="large-4 medium-4 small-4     columns text-center">
+                                    <div class="large-4 medium-4 small-4 columns text-center">
                                         <img class="upcoming-small-img" src="{{leagueMatch.awayTeam.picture}}" alt="Team Logo">
                                         <h6>{{leagueMatch.awayTeam.name}}</h6>
                                     </div>
@@ -62,8 +63,8 @@
                                         <h6>{{leagueMatch.homeTeam.name}}</h6>
                                     </div>
                                 </div>
-                            </div>
-                        </a>
+                            </a>
+                        </div>
                     </div>
 
                 </div>

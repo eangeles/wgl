@@ -8,85 +8,85 @@ wgl.controller('tournaments', ['$scope','$routeParams','$location','$rootScope',
         tournament.firstRound = [
             {
                 homeTeam: {
-                    name: "Placeholder Home Team",
-                    bio: "",
-                    wins: 0,
-                    losses: 0,
-                    picture: "",
-                    key: "",
-                    players: {}
+                    name:       "Home Team",
+                    bio:        "",
+                    wins:       0,
+                    losses:     0,
+                    picture:    "",
+                    key:        "",
+                    players:    {}
                 },
                 awayTeam: {
-                    name: "Placeholder Away Team",
-                    bio: "",
-                    wins: 0,
-                    losses: 0,
-                    picture: "",
-                    key: "",
-                    players: {}
+                    name:       "Away Team",
+                    bio:        "",
+                    wins:       0,
+                    losses:     0,
+                    picture:    "",
+                    key:        "",
+                    players:    {}
                 },
                 date: "01/02/2014"
             },
             {
                 homeTeam: {
-                    name: "Placeholder Home Team",
-                    bio: "",
-                    wins: 0,
-                    losses: 0,
-                    picture: "",
-                    key: "",
-                    players: {}
+                    name:       "Home Team",
+                    bio:        "",
+                    wins:       0,
+                    losses:     0,
+                    picture:    "",
+                    key:        "",
+                    players:    {}
                 },
                 awayTeam: {
-                    name: "Placeholder Away Team",
-                    bio: "",
-                    wins: 0,
-                    losses: 0,
-                    picture: "",
-                    key: "",
-                    players: {}
+                    name:       "Away Team",
+                    bio:        "",
+                    wins:       0,
+                    losses:     0,
+                    picture:    "",
+                    key:        "",
+                    players:    {}
                 },
                 date: "01/02/2014"
             },
             {
                 homeTeam: {
-                    name: "Placeholder Home Team",
-                    bio: "",
-                    wins: 0,
-                    losses: 0,
-                    picture: "",
-                    key: "",
-                    players: {}
+                    name:       "Home Team",
+                    bio:        "",
+                    wins:       0,
+                    losses:     0,
+                    picture:    "",
+                    key:        "",
+                    players:    {}
                 },
                 awayTeam: {
-                    name: "Placeholder Away Team",
-                    bio: "",
-                    wins: 0,
-                    losses: 0,
-                    picture: "",
-                    key: "",
-                    players: {}
+                    name:       "Away Team",
+                    bio:        "",
+                    wins:       0,
+                    losses:     0,
+                    picture:    "",
+                    key:        "",
+                    players:    {}
                 },
                 date: "01/02/2014"
             },
             {
                 homeTeam: {
-                    name: "Placeholder Home Team",
-                    bio: "",
-                    wins: 0,
-                    losses: 0,
-                    picture: "",
-                    key: "",
-                    players: {}
+                    name:       "Home Team",
+                    bio:        "",
+                    wins:       0,
+                    losses:     0,
+                    picture:    "",
+                    key:        "",
+                    players:    {}
                 },
                 awayTeam: {
-                    name: "Placeholder Away Team",
-                    bio: "",
-                    wins: 0,
-                    losses: 0,
-                    picture: "",
-                    key: "",
-                    players: {}
+                    name:       "Away Team",
+                    bio:        "",
+                    wins:       0,
+                    losses:     0,
+                    picture:    "",
+                    key:        "",
+                    players:    {}
                 },
                 date: "01/02/2014"
             }
@@ -94,43 +94,43 @@ wgl.controller('tournaments', ['$scope','$routeParams','$location','$rootScope',
         tournament.secondRound = [
             {
                 homeTeam: {
-                    name: "Placeholder Home Team",
-                    bio: "",
-                    wins: 0,
-                    losses: 0,
-                    picture: "",
-                    key: "",
-                    players: {}
+                    name:       "Home Team",
+                    bio:        "",
+                    wins:       0,
+                    losses:     0,
+                    picture:    "",
+                    key:        "",
+                    players:    {}
                 },
                 awayTeam: {
-                    name: "Placeholder Away Team",
-                    bio: "",
-                    wins: 0,
-                    losses: 0,
-                    picture: "",
-                    key: "",
-                    players: {}
+                    name:       "Away Team",
+                    bio:        "",
+                    wins:       0,
+                    losses:     0,
+                    picture:    "",
+                    key:        "",
+                    players:    {}
                 },
                 date: "01/02/2014"
             },
             {
                 homeTeam: {
-                    name: "Placeholder Home Team",
-                    bio: "",
-                    wins: 0,
-                    losses: 0,
-                    picture: "",
-                    key: "",
-                    players: {}
+                    name:       "Home Team",
+                    bio:        "",
+                    wins:       0,
+                    losses:     0,
+                    picture:    "",
+                    key:        "",
+                    players:    {}
                 },
                 awayTeam: {
-                    name: "Placeholder Away Team",
-                    bio: "",
-                    wins: 0,
-                    losses: 0,
-                    picture: "",
-                    key: "",
-                    players: {}
+                    name:       "Away Team",
+                    bio:        "",
+                    wins:       0,
+                    losses:     0,
+                    picture:    "",
+                    key:        "",
+                    players:    {}
                 },
                 date: "01/02/2014"
             }
@@ -138,22 +138,22 @@ wgl.controller('tournaments', ['$scope','$routeParams','$location','$rootScope',
         tournament.thirdRound = [
             {
                 homeTeam: {
-                    name: "Placeholder Home Team",
-                    bio: "",
-                    wins: 0,
-                    losses: 0,
-                    picture: "",
-                    key: "",
-                    players: {}
+                    name:       "Home Team",
+                    bio:        "",
+                    wins:       0,
+                    losses:     0,
+                    picture:    "",
+                    key:        "",
+                    players:    {}
                 },
                 awayTeam: {
-                    name: "Placeholder Away Team",
-                    bio: "",
-                    wins: 0,
-                    losses: 0,
-                    picture: "",
-                    key: "",
-                    players: {}
+                    name:       "Away Team",
+                    bio:        "",
+                    wins:       0,
+                    losses:     0,
+                    picture:    "",
+                    key:        "",
+                    players:    {}
                 },
                 date: "01/02/2014"
             }
