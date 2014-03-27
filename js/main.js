@@ -369,7 +369,7 @@ var leaguesPermission = function ($q, $rootScope, $location,$sce){
             $rootScope.html = '<a href="#\addleague">+</a>';
             $rootScope.addLeagues = $sce.trustAsHtml($rootScope.html);
 
-            $rootScope.html2 = 'Edit';
+            $rootScope.html2 = 'Edit |';
             $rootScope.editLeagues = $sce.trustAsHtml($rootScope.html2);
 
             $rootScope.html3 = 'Remove';
@@ -386,7 +386,7 @@ var teamsPermission = function ($q, $rootScope, $location,$sce){
             $rootScope.html = "<a href='#/addteam'>+</a>";
             $rootScope.addTeams = $sce.trustAsHtml($rootScope.html);
 
-            $rootScope.html2 = 'Edit';
+            $rootScope.html2 = 'Edit |';
             $rootScope.editTeams = $sce.trustAsHtml($rootScope.html2);
 
             $rootScope.html3 = 'Remove';

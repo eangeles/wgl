@@ -3,23 +3,29 @@
         <!-- Page Container -->
         <div class="page-content-container">
             <div class="page-content">
-                <div class="large-12 columns large-centered">
-                    <h3 class="page-title large-11 medium-11 small-9 columns">Teams</h3>
-                    <h6 class="add-news large-1 medium-1 small-3 columns right" ng-bind-html="addTeams"></h6>
-                    <!-- Team Panels -->
-                    <div ng-repeat="team in teams | orderByPriority">
-                        <a ng-href="#/team/{{team.$id}}">
-                            <div class="large-2 medium-2 small-6 columns">
-                                <div>
-                                    <img class="teams-image large-11 medium-12 small-12" ng-src="{{team.picture}}" alt="Team Logo">
+                <div class="row">
+                    <div class="large-12 columns large-centered">
+                        <h3 class="page-title large-11 medium-11 small-9 columns">Teams</h3>
+                        <h6 class="add-news large-1 medium-1 small-3 columns right" ng-bind-html="addTeams"></h6>
+                        <!-- Team Panels -->
+                        <div ng-repeat="team in teams | orderByPriority">
+                            <a ng-href="#/team/{{team.$id}}">
+                                <div class="large-2 medium-2 small-6 columns">
+                                    <div class="select-margin">
+                                        <img class="teams-image large-11 medium-12 small-12" ng-src="{{team.picture}}" alt="Team Logo">
+                                    </div>
+
+                                    <div class="team-info text-center">
+                                        <a ng-href="">{{team.name}}</a>
+                                    </div>
+                                    <div class="text-center select-margin">
+                                        <a ng-href="#/editteam/{{team.$id}}" ng-bind-html="editTeams"></a>
+                                        <a ng-click="removeTeam(team.$id)" ng-bind-html="removeTeams"></a>
+                                    </div>
+
                                 </div>
-                                <div class="team-info">
-                                    <a ng-href="">{{team.name}}</a>
-                                    <a ng-href="#/editteam/{{team.$id}}" ng-bind-html="editTeams"></a>
-                                    <a ng-click="removeTeam(team.$id)" ng-bind-html="removeTeams"></a>
-                                </div>
-                            </div>
-                        </a>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div><!-- Page Content -->
