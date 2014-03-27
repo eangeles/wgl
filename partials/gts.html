@@ -1,11 +1,11 @@
 <div class="page" ng-controller="gts">
     
     <div class="row">
-        <div class="row">
-        <div class="alert-box success radius" ng-repeat="alert in alerts | toArray">
-            <p>Station: {{alert.stationNumber}} | <img class="alert-photo" src="{{alert.profilePicture}}"> {{alert.user}}'s time is up!</p>
-            <a ng-click="removeAlert(alert.$key)" class="close">&times;</a>
-        </div>
+        <div class="row" id="alert-row">
+            <div class="alert-box success radius" ng-repeat="alert in alerts | toArray">
+                <p>Station: {{alert.stationNumber}} | <img class="alert-photo" src="{{alert.profilePicture}}"> {{alert.user}}'s time is up!</p>
+                <a ng-click="removeAlert(alert.$key)" class="close">&times;</a>
+            </div>
         </div>
         <!-- Page Container -->
         <div class="page-content-container">
