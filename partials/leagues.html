@@ -3,28 +3,30 @@
         <!-- Page Container -->
         <div class="page-content-container">
             <div class="page-content">
-                <div class="large-12 columns">
-                    <h3 class="page-title large-10 small-9 columns">WIN<span>Leagues</span></h3>
-                    <h6 class="add-news large-1 small-3 columns right" ng-bind-html="addLeagues"></h6>
-                    <!-- Leagues content -->
-                    <div ng-repeat="league in leagues | toArray">
-                        <a ng-href="#/league/{{league.$key}}">
-                            <div class="news-content large-4 medium-4 small-12 columns">
-                                <div class="news-image">
-                                    <img class="news-image large-12 medium-12 small-12" ng-src="{{league.image}}" alt="League Image">
-                                </div>
-                                <div class="news column">
-                                    <div class="news-title">
-                                        <a ng-href="#/editleague/{{league.$key}}" ng-bind-html="editLeagues"></a>
-                                        <a ng-click="removeLeague(league.$key)" ng-bind-html="removeLeagues"></a>
-                                        <h5>{{league.name}}</h5>
+                <div class="row">
+                    <div class="large-12 columns">
+                        <h3 class="page-title large-10 small-9 columns">WIN<span>Leagues</span></h3>
+                        <h6 class="add-news large-1 small-3 columns right" ng-bind-html="addLeagues"></h6>
+                        <!-- Leagues content -->
+                        <div ng-repeat="league in leagues | toArray">
+                            <a ng-href="#/league/{{league.$key}}">
+                                <div class="news-content large-4 medium-4 small-12 columns">
+                                    <div class="news-image">
+                                        <img class="news-image large-12 medium-12 small-12" ng-src="{{league.image}}" alt="League Image">
                                     </div>
-                                    <div class="news-info large-12">
-                                        <h6 class="left large-12">{{league.season}}</h6>
+                                    <div class="news column">
+                                        <div class="news-title">
+                                            <a ng-href="#/editleague/{{league.$key}}" ng-bind-html="editLeagues"></a>
+                                            <a ng-click="removeLeague(league.$key)" ng-bind-html="removeLeagues"></a>
+                                            <h5>{{league.name}}</h5>
+                                        </div>
+                                        <div class="news-info large-12">
+                                            <h6 class="left large-12">{{league.season}}</h6>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </a>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div><!-- Page Content -->

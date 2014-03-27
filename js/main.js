@@ -366,7 +366,7 @@ var leaguesPermission = function ($q, $rootScope, $location,$sce){
     $rootScope.loginObj.$getCurrentUser().then(function(){
         if($rootScope.loginObj.user.userType === 'Admin'){
 
-            $rootScope.html = '<a href="#\addleague">add</a>';
+            $rootScope.html = '<a href="#\addleague">+</a>';
             $rootScope.addLeagues = $sce.trustAsHtml($rootScope.html);
 
             $rootScope.html2 = 'Edit';

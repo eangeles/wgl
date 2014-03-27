@@ -48,11 +48,11 @@
                     </ul>
                 </li>
                 <li><a href="#/news">News</a></li>
-                <li class="has-dropdown" ng-controller="leagues">
+                <li ng-controller="leagues">
                     <a href="#/leagues">Leagues</a>
-                    <ul class="dropdown">
-                        <li ng-repeat="league in leagues | toArray"><a ng-href="#/league/{{league.$key}}">{{league.name}}</a></li>
-                    </ul>
+                    <!--<ul class="dropdown">-->
+                        <!--<li ng-repeat="league in leagues | toArray"><a ng-href="#/league/{{league.$key}}">{{league.name}}</a></li>-->
+                    <!--</ul>-->
                 <li><a href="#/tournaments">Tournaments</a></li>
                 <li class="has-dropdown">
                     <a href="javascript: void(0)">Competitors</a>
@@ -79,11 +79,11 @@
                     <!-- Right Nav Section -->
                     <ul class="right">
                         <li><a href="#/news">News</a></li>
-                        <li class="has-dropdown" ng-controller="leagues">
+                        <li ng-controller="leagues">
                             <a href="#/leagues">Leagues</a>
-                            <ul class="dropdown">
-                                <li ng-repeat="league in leagues | toArray"><a ng-href="#/league/{{league.$key}}">{{league.name}}</a></li>
-                            </ul>
+                            <!--<ul class="dropdown">-->
+                                <!--<li ng-repeat="league in leagues | toArray"><a ng-href="#/league/{{league.$key}}">{{league.name}}</a></li>-->
+                            <!--</ul>-->
                         </li>
                         <li><a href="#/tournaments">Tournaments</a></li>
                         <li class="has-dropdown">
