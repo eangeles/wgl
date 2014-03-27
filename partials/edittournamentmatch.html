@@ -4,9 +4,9 @@
         <div class="page-content-container">
             <div class="page-content">
                 <div class="large-12 columns">
-                    <form class="large-6 columns large-centered">
+                    <form class="large-6 columns large-centered" name="form" novalidate>
                         <h3 class="page-title text-center">Edit<span> Tournament Match</span></h3>
-                        <input type="text" placeholder="Team Away" ng-model="selectedTournamentMatch.awayTeam.name" ng-change="awayTeamTyping=true">
+                        <input type="text" placeholder="Team Away" ng-model="selectedTournamentMatch.awayTeam.name" ng-change="awayTeamTyping=true" required>
                         <!-- Autocomplete -->
                         <ul ng-show="awayTeamTyping">
                             <li ng-repeat="team in teams | toArray | filter:selectedTournamentMatch.awayTeam.name | limitTo:5 | orderBy:'name'">
@@ -21,7 +21,7 @@
                             </li>
                         </ul>
                         <input type="hidden" ng-model="selectedTournamentMatch.awayTeam" />
-                        <input type="text" placeholder="Team Home" ng-model="selectedTournamentMatch.homeTeam.name" ng-change="homeTeamTyping=true">
+                        <input type="text" placeholder="Team Home" ng-model="selectedTournamentMatch.homeTeam.name" ng-change="homeTeamTyping=true" required>
                         <!-- Autocomplete -->
                         <ul ng-show="homeTeamTyping">
                             <li ng-repeat="team in teams | toArray | filter:selectedTournamentMatch.homeTeam.name | limitTo:5 | orderBy:'name'">
@@ -37,9 +37,9 @@
                         </ul>
                         <input type="hidden" ng-model="selectedTournamentMatch.homeTeam" />
                         
-                        <input type="text" placeholder="Date" ng-model="selectedTournamentMatch.date">
+                        <input type="text" placeholder="Date" ng-model="selectedTournamentMatch.date" required >
 
-                        <a href="#/tournament/{{tournyID}}"> <button class="button large-12 medium-12 small-12" ng-click="updateMatch(selectedTournamentMatch)" value="Update">Update</button></a>
+                        <a href="#/tournament/{{tournyID}}"> <button class="button large-12 medium-12 small-12" ng-disabled="form.$invalid" ng-click="updateMatch(selectedTournamentMatch)" value="Update">Update</button></a>
                         <a href="#/tournament/{{tournyID}}"> <button class="button large-12 medium-12 small-12">back</button></a>
                     </form>
                 </div>

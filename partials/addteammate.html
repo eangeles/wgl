@@ -5,9 +5,9 @@
             <div class="page-content">
                 <div class="large-12 columns" ng-controller="Login">
                     <!-- Add Player to team form -->
-                    <form class="large-6 columns large-centered">
+                    <form class="large-6 columns large-centered" name="form" novalidate>
                         <h3 class="page-title text-center">Add<span>TeamMate</span></h3>
-                        <input type="text" placeholder="TeamMate Name" ng-model="player.name" ng-change="userTyping=true">
+                        <input type="text" placeholder="TeamMate Name" ng-model="player.name" ng-change="userTyping=true" required>
                         <!-- Autocomplete -->
                         <ul ng-show="userTyping">
                             <li ng-repeat="user in users | toArray | filter:player | limitTo:limit | orderBy:'displayName'">
@@ -21,7 +21,7 @@
                                 </a>
                             </li>
                         </ul>
-                        <input type="submit" class="button large-12 medium-12 small-12" ng-click="addPlayerToTeam(player)" value="Add TeamMate">
+                        <input type="submit" class="button large-12 medium-12 small-12" ng-disabled="form.$invalid" ng-click="addPlayerToTeam(player)" value="Add TeamMate">
                         <a href="#/team/{{selectedTeamID}}"> <button class="button large-12 medium-12 small-12">back</button></a>
                     </form>
                 </div>

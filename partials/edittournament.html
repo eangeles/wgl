@@ -4,14 +4,14 @@
         <div class="page-content-container">
             <div class="page-content">
                 <div class="large-12 columns">
-                    <form class="large-6 columns large-centered">
+                    <form class="large-6 columns large-centered" name="form" novalidate>
                         <h3 class="page-title text-center">Edit<span>Tournament</span></h3>
-                        <input type="text" placeholder="Tournament Name" ng-model="selectedTournament.name">
-                        <input type="text" placeholder="Tournament Image" ng-model="selectedTournament.image">
-                        <input type="date" placeholder="Season" ng-model="selectedTournament.startDate">
-                        <input type="date" placeholder="Season" ng-model="selectedTournament.endDate">
+                        <input type="text" placeholder="Tournament Name" ng-model="selectedTournament.name" required>
+                        <input type="text" placeholder="Tournament Image" ng-model="selectedTournament.image" rquired>
+                        <input type="date" placeholder="Season Start Date" ng-model="selectedTournament.startDate" required>
+                        <input type="date" placeholder="Season End Date" ng-model="selectedTournament.endDate" required>
 
-                        <input type="submit" class="button large-12" ng-click="updateTournament(selectedTournament)" value="Update">
+                        <input type="submit" class="button large-12" ng-disabled="form.$invalid" ng-click="updateTournament(selectedTournament)" value="Update">
                         <a href="#/tournaments"> <button class="button large-12 medium-12 small-12">back</button></a>
                     </form>
                 </div>

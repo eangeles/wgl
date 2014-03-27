@@ -4,7 +4,7 @@
         <div class="page-content-container">
             <div class="page-content">
                 <div class="large-12 columns">
-                    <form class="large-6 columns large-centered">
+                    <form class="large-6 columns large-centered" name="form" novalidate>
                         <h3 class="page-title text-center">Update<span>Status</span></h3>
                         <img src="{{selectedTournamentMatch.awayTeam.picture}}" alt="Team Logo" class="team-tourney-img" ng-model="match.awayTeam.picture">
                         <h6 ng-model="awayTeamName">{{selectedTournamentMatch.awayTeam.name}}</h6>
@@ -12,7 +12,7 @@
                         <!--<select class="select-margin" ng-model="match.awayTeam.name">-->
                             <!--<option SELECTED>{{selectedTournamentMatch.awayTeam.name}}</option>-->
                         <!--</select>-->
-                        <select class="select-margin" ng-model="match.awayTeam.status">
+                        <select class="select-margin" ng-model="match.awayTeam.status" required>
                             <option value="" disabled selected>Select Option</option>
                             <option>Winner</option>
                             <option>Loser</option>
@@ -20,12 +20,12 @@
                         <h6 ng-model="match.date">{{selectedTournamentMatch.date}}</h6>
                         <img src="{{selectedTournamentMatch.homeTeam.picture}}" alt="Team Logo" class="team-tourney-img" ng-model="match.homeTeam.picture">
                         <h6 ng-model="match.homeTeam.name">{{selectedTournamentMatch.homeTeam.name}}</h6>
-                        <select class="select-margin" ng-model="match.homeTeam.status">
+                        <select class="select-margin" ng-model="match.homeTeam.status" required>
                             <option value="" disabled selected>Select Option</option>
                             <option>Winner</option>
                             <option>Loser</option>
                         </select>
-                        <a href="#/tournament/{{tournyID}}"> <button class="button large-12 medium-12 small-12" ng-click="updateStatus(match)" value="Update">Update</button></a>
+                        <a href="#/tournament/{{tournyID}}"> <button class="button large-12 medium-12 small-12" ng-disabled="form.$invalid" ng-click="updateStatus(match)" value="Update">Update</button></a>
                         <a href="#/tournament/{{tournyID}}"> <button class="button large-12 medium-12 small-12">back</button></a>
                     </form>
                 </div>

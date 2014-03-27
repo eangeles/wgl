@@ -4,15 +4,14 @@
         <div class="page-content-container">
             <div class="page-content">
                 <div class="large-12 columns">
-                    <form class="large-6 medium-6 columns medium-centered large-centered">
+                    <form class="large-6 medium-6 columns medium-centered large-centered" name="form" novalidate>
                         <h3 class="page-title text-center">Add<span>Team</span></h3>
-                        <input type="text" placeholder="Team Name" ng-model="team.name">
-                        <input type="text" placeholder="http://localhost:8888/thewgl/wgl/img/defaultteamlogo.jpg" ng-model="team.picture">
-                        <textarea placeholder="Team Bio" rows="10" cols="80" ng-model="team.bio">
-
+                        <input type="text" placeholder="Team Name" ng-model="team.name" required>
+                        <input type="text" placeholder="http://localhost:8888/thewgl/wgl/img/defaultteamlogo.jpg" ng-model="team.picture" required>
+                        <textarea placeholder="Team Bio" rows="10" cols="80" ng-model="team.bio" required>
                         </textarea>
 
-                        <input type="submit" class="button large-12 medium-12 small-12" ng-click="addTeam(team)" value="Add">
+                        <input type="submit" class="button large-12 medium-12 small-12" ng-disabled="form.$invalid" ng-click="addTeam(team)" value="Add">
                         <a href="#/teams"> <button class="button large-12 medium-12 small-12">back</button></a>
                     </form>
                 </div>
