@@ -454,6 +454,11 @@ ul .phone-number i {
     border: 2px solid #fff;
     margin-top: -4px;
 }
+#alert-row {
+    margin-top: 50px;
+    position: absolute;
+}
+
 .gts-hr {
     padding: 0 20px 0 20px;
 }
@@ -570,7 +575,4 @@ ul .phone-number i {
 
 @media only screen and (min-width: 64.063em) {
 
-}
-#alert-row {
-    margin-top: 50px;
 }
