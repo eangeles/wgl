@@ -75,10 +75,12 @@ wgl.controller('Login', ['$scope','$rootScope','$firebase', '$sce', function mtC
 
     $scope.selectPlayer = function (gamer) {
         $scope.player.name = angular.fromJson(angular.toJson(gamer.displayName));
-        $scope.player.email = angular.fromJson(angular.toJson(gamer.email));
+        $scope.player.first_name = angular.fromJson(angular.toJson(gamer.first_name));
+        $scope.player.last_name = angular.fromJson(angular.toJson(gamer.last_name));
         $scope.player.picture = angular.fromJson(angular.toJson(gamer.profilePicture));
+        $scope.player.id = angular.fromJson(angular.toJson(gamer.id));
         $scope.userTyping = false;
-        console.log(gamer);
+        console.log($scope.player);
     };
 
 }]);

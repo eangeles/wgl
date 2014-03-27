@@ -68,10 +68,11 @@ wgl.controller('leagues', ['$scope','$routeParams','$location','$rootScope','$fi
 
     //add team to league
     $scope.userTyping = false;
-    $scope.selectTeam = function(team) {
+    $scope.selectTeam = function(team, id) {
         if (team.players) {
             $scope.team.players = team.players;
         }
+        $scope.team.id = id;
         $scope.team.name = angular.fromJson(angular.toJson(team.name));
         $scope.team.picture = angular.fromJson(angular.toJson(team.picture));
         $scope.userTyping = false;

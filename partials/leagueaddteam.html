@@ -15,7 +15,7 @@
                         <!-- Autocomplete -->
                         <ul ng-show="userTyping">
                             <li ng-repeat="team in teams | toArray | filter:team.name | limitTo:5 | orderBy:'name'">
-                                <a ng-click="selectTeam(team)">
+                                <a ng-click="selectTeam(team, team.$key)">
                                     <div class="row">
                                         <div class="searchOutcome large-12 columns">
                                             <h6 class="left inline-list">{{team.name}}</h6>

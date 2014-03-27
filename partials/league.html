@@ -27,7 +27,7 @@
                         <tbody>
                         <tr ng-repeat="leagueTeam in selectedLeagueTeams | toArray | orderBy: winSort">
                             <td>{{$index+1}}</td>
-                            <td><a href="#/team/{{leagueTeam.$key}}">{{leagueTeam.name}}</a></td>
+                            <td><a href="#/team/{{leagueTeam.id}}">{{leagueTeam.name}}</a></td>
                             <td>{{leagueTeam.wins}}</td>
                             <td>{{leagueTeam.losses}}</td>
                         </tr>
@@ -41,7 +41,7 @@
                     </div>
                     <div class="row">
                         <div class="large-6 medium-4 small-12 left columns" ng-repeat="leagueMatch in selectedLeagueMatches | toArray | limitTo: 4">
-                            <a  ng-click="removeLeagueMatch(leagueMatch.$key)">Remove</a>
+                            <a ng-click="removeLeagueMatch(leagueMatch.$key)">Remove</a>
                             <a class="matches-link" href="#/leaguematch/{{tempRouteParam}}/{{leagueMatch.$key}}">
                                 <div class="upcoming-match-info large-12 columns large-centered">
                                     <div class="large-4 medium-4 small-4 columns text-center">
