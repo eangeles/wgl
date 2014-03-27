@@ -50,24 +50,20 @@ wgl.controller('leagues', ['$scope','$routeParams','$location','$rootScope','$fi
     });
 
     $scope.addTeamToLeague = function(team) {
-        //hardcoded until we figure out how to manage them
-        team.wins =     5;
-        team.losses =   10;
-        console.log(team);
+        team.wins =     1;
+        team.losses =   1;
         $scope.selectedLeagueTeams.$add(team);
         $location.path("/league/" + $routeParams.leagueID);
     }
 
     $scope.addMatchToLeague = function(match) {
-        console.log(match);
         $scope.selectedLeagueMatches.$add(match);
         $location.path("/league/" + $routeParams.leagueID);
     }
     
     $scope.removeLeagueMatch = function(id) {
-        console.log(id);
-        //$scope.selectedLeagueMatches.$remove(id);
-        //$location.path("/league/" + $routeParams.leagueID);
+        $scope.selectedLeagueMatches.$remove(id);
+        $location.path("/league/" + $routeParams.leagueID);
     }
 
     //add team to league
@@ -111,7 +107,7 @@ wgl.controller('leagues', ['$scope','$routeParams','$location','$rootScope','$fi
             console.log($scope.match.selectLoser);
         }
 
-        console.log(outcome, test);
+//        console.log(outcome, test);
     }
 
     $scope.updateStanding = function(standing, teamID){
