@@ -225,10 +225,11 @@ p{
 .login-user-img{
     height: 30px;
     border: 2px solid #fff;
+    margin-right: 5px;
     /*margin: 5px 5px 0 -20px;*/
 }
 .featured-bg{
-    background-color: #111;
+    background-color: #414141;
 }
 .address li{
     color: white;

@@ -3,6 +3,10 @@
         <!-- Page Container -->
         <div class="page-content-container">
             <div class="page-content">
+                <div class="large-12 columns select-margin">
+                    <a href="#/teams">back</a>
+                </div>
+
                 <!-- Team Logo -->
                 <div class="large-2 columns left">
                     <img class="team-profile-logo" ng-src="{{selectedTeam.picture}}" alt="team-logo">
@@ -17,10 +21,10 @@
                 <!-- Team Roster -->
                 <div class="large-6 columns">
                     <h3 class="page-title large-10 small-9 columns">Team<span>Roster</span></h3>
-                    <h6 class="add-news large-1 small-3 columns right"><a ng-href="#/addteammate/{{selectedTeamID}}" >+</a></h6>
-                    <div class="large-3 columns left" ng-repeat="player in selectedTeamPlayers | orderByPriority">
-                        <a class="right delete-player" ng-click="removePlayerFromTeam(player.$id)">X</a>
-                        <img ng-src="{{player.picture}}" />
+                    <h6 class="add-news large-1 small-3 columns right"><a ng-href="#/addteammate/{{selectedTeamID}}" ng-bind-html="addPlayer"></a></h6>
+                    <div class="large-3 columns left select-margin" ng-repeat="player in selectedTeamPlayers | orderByPriority">
+                        <a class="right delete-player" ng-click="removePlayerFromTeam(player.$id)" ng-bind-html="removePlayer"></a>
+                        <img  ng-src="{{player.picture}}" alt="Player Profile Picture"/>
                         <a ng-href="#/gamer_page/{{player.id}}">{{player.name}}</a>
                     </div>
                 </div>

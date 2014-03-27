@@ -36,10 +36,6 @@ wgl.config(function ($routeProvider,$locationProvider){
             title: 'League Match',
             templateUrl:"partials/leaguematch.html"
         })
-        .when("/team", {
-            title: 'Team Page',
-            templateUrl:"partials/team.html"
-        })
         .when("/gamer_page/:playerID", {
             title: 'Gamer Page',
             templateUrl:"partials/gamer_page.html"
@@ -54,23 +50,38 @@ wgl.config(function ($routeProvider,$locationProvider){
         })
         .when("/tournament/:tournamentID", {
             title: 'Tournament',
-            templateUrl:"partials/tournament.html"
+            templateUrl:"partials/tournament.html",
+            resolve: {
+                factory: tournamentPermission
+            }
         })
         .when("/tournamentmatch/:tournamentID/:matchRound/:matchID", {
             title: 'Edit Match',
             templateUrl:"partials/edittournamentmatch.html",
+            resolve: {
+                factory: checkPermission
+            }
         })
         .when("/tournaments", {
             title: 'Tournaments',
-            templateUrl:"partials/tournaments.html"
+            templateUrl:"partials/tournaments.html",
+            resolve: {
+                factory: tourneyPermission
+            }
         })
         .when("/addTournament", {
             title: 'Add Tournament',
-            templateUrl:"partials/addtournament.html"
+            templateUrl:"partials/addtournament.html",
+            resolve: {
+                factory: checkPermission
+            }
         })
         .when("/editTournament/:tournamentID", {
             title: 'Edit Tournament',
-            templateUrl:"partials/edittournament.html"
+            templateUrl:"partials/edittournament.html",
+            resolve: {
+                factory: checkPermission
+            }
         })
         .when("/updatetournamentmatch/:tournamentID/:matchRound/:matchID", {
             title: 'Update Match Outcome',
@@ -92,7 +103,10 @@ wgl.config(function ($routeProvider,$locationProvider){
         })
         .when("/team/:teamID", {
             title: 'Team',
-            templateUrl:"partials/team.html"
+            templateUrl:"partials/team.html",
+            resolve: {
+                factory: teamPermission
+            }
         })
         .when("/teams", {
             title: 'Teams',
@@ -394,7 +408,53 @@ var teamsPermission = function ($q, $rootScope, $location,$sce){
         }
     });
 }
+// If the userType is Admin, Admin function will show for that page.
+var tourneyPermission = function ($q, $rootScope, $location,$sce){
 
+    $rootScope.loginObj.$getCurrentUser().then(function(){
+        if($rootScope.loginObj.user.userType === 'Admin'){
+
+            $rootScope.html = "<a href='#/addTournament'>+</a>";
+            $rootScope.addTourney = $sce.trustAsHtml($rootScope.html);
+
+            $rootScope.html2 = 'Edit |';
+            $rootScope.editTourney = $sce.trustAsHtml($rootScope.html2);
+
+            $rootScope.html3 = 'Remove';
+            $rootScope.removeTourney = $sce.trustAsHtml($rootScope.html3);
+        }
+    });
+}
+// If the userType is Admin, Admin function will show for that page.
+var tournamentPermission = function ($q, $rootScope, $location,$sce){
+
+    $rootScope.loginObj.$getCurrentUser().then(function(){
+        if($rootScope.loginObj.user.userType === 'Admin'){
+
+            $rootScope.html = "Edit |";
+            $rootScope.editMatch = $sce.trustAsHtml($rootScope.html);
+
+            $rootScope.html2 = 'Update';
+            $rootScope.editStatus = $sce.trustAsHtml($rootScope.html2);
+
+        }
+    });
+}
+// If the userType is Admin, Admin function will show for that page.
+var teamPermission = function ($q, $rootScope, $location,$sce){
+
+    $rootScope.loginObj.$getCurrentUser().then(function(){
+        if($rootScope.loginObj.user.userType === 'Admin'){
+
+            $rootScope.html = "+";
+            $rootScope.addPlayer = $sce.trustAsHtml($rootScope.html);
+
+            $rootScope.html2 = 'X';
+            $rootScope.removePlayer = $sce.trustAsHtml($rootScope.html2);
+
+        }
+    });
+}
 
 
 

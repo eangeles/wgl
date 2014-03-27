@@ -6,7 +6,7 @@
                 <div class="row">
                     <div class="large-12 columns">
                         <h3 class="page-title large-10 small-9 columns">WIN<span>Tournaments</span></h3>
-                        <h6 class="add-news large-1 small-3 columns right"><a href="#/addTournament">+</a></h6>
+                        <h6 class="add-news large-1 small-3 columns right" ng-bind-html="addTourney"></h6>
                         <!-- Tournament content -->
                         <div ng-repeat="tournament in tournaments | toArray">
                             <a ng-href="#/tournament/{{tournament.$key}}">
@@ -16,8 +16,8 @@
                                     </div>
                                     <div class="news column">
                                         <div class="news-title">
-                                            <a ng-href="#/editTournament/{{tournament.$key}}">Edit |</a>
-                                            <a ng-click="removeTournament(tournament.$key)">Remove</a>
+                                            <a ng-href="#/editTournament/{{tournament.$key}}" ng-bind-html="editTourney"></a>
+                                            <a ng-click="removeTournament(tournament.$key)" ng-bind-html="removeTourney"></a>
                                             <h5>{{tournament.name}}</h5>
                                         </div>
                                         <div class="news-info large-12">

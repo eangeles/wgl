@@ -11,8 +11,8 @@
                     </div>
                     <!-- Tourney Match Panels -->
                     <div ng-repeat="match in selectedTournament.firstRound | toArray">
-                        <a href="#/tournamentmatch/{{tournyID}}/firstRound/{{match.$key}}">Edit |</a>
-                        <a href="#/updatetournamentmatch/{{tournyID}}/firstRound/{{match.$key}}">Update</a>
+                        <a href="#/tournamentmatch/{{tournyID}}/firstRound/{{match.$key}}" ng-bind-html="editMatch"></a>
+                        <a href="#/updatetournamentmatch/{{tournyID}}/firstRound/{{match.$key}}" ng-bind-html="editStatus"></a>
                         <div class="row">
                             <div class="tourney-match-panel large-12 small-12 small-centered clearfix">
                                 <div class="tourney-date text-center">
@@ -44,8 +44,8 @@
                         <h3 class="page-title large-10 small-9 columns">Round<span>Two</span></h3>
                     </div>
                     <div ng-repeat="match in selectedTournament.secondRound | toArray">
-                        <a href="#/tournamentmatch/{{tournyID}}/secondRound/{{match.$key}}">Edit |</a>
-                        <a href="#/updatetournamentmatch/{{tournyID}}/secondRound/{{match.$key}}">Update</a>
+                        <a href="#/tournamentmatch/{{tournyID}}/firstRound/{{match.$key}}" ng-bind-html="editMatch"></a>
+                        <a href="#/updatetournamentmatch/{{tournyID}}/firstRound/{{match.$key}}" ng-bind-html="editStatus"></a>
                         <div class="row">
                             <div class="tourney-match-panel large-12 small-12 small-centered clearfix">
                                 <div class="tourney-date text-center">
@@ -75,8 +75,8 @@
                     </div>
 
                     <div ng-repeat="match in selectedTournament.thirdRound | toArray">
-                        <a href="#/tournamentmatch/{{tournyID}}/thirdRound/{{match.$key}}">Edit |</a>
-                        <a href="#/updatetournamentmatch/{{tournyID}}/thirdRound/{{match.$key}}">Update</a>
+                        <a href="#/tournamentmatch/{{tournyID}}/firstRound/{{match.$key}}" ng-bind-html="editMatch"></a>
+                        <a href="#/updatetournamentmatch/{{tournyID}}/firstRound/{{match.$key}}" ng-bind-html="editStatus"></a>
                         <div class="row">
                             <div class="tourney-match-panel large-12 clearfix">
                                 <div class="tourney-date text-center">
