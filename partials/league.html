@@ -27,7 +27,7 @@
                         <tbody>
                         <tr ng-repeat="leagueTeam in selectedLeagueTeams | toArray | orderBy: winSort">
                             <td>{{$index+1}}</td>
-                            <td><a href="#/team/{{leagueTeam.id}}">{{leagueTeam.name}}</a></td>
+                            <td><a href="#/team/{{leagueTeam.id}}">{{leagueTeam.name}}</a><a ng-click="removeLeagueTeam(leagueTeam.$key)">X</a></td>
                             <td>{{leagueTeam.wins}}</td>
                             <td>{{leagueTeam.losses}}</td>
                         </tr>

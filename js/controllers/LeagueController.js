@@ -65,6 +65,11 @@ wgl.controller('leagues', ['$scope','$routeParams','$location','$rootScope','$fi
         $scope.selectedLeagueMatches.$remove(id);
         $location.path("/league/" + $routeParams.leagueID);
     }
+    
+    $scope.removeLeagueTeam = function(id) {
+        $scope.selectedLeagueTeams.$remove(id);
+        $location.path("/league/" + $routeParams.leagueID);
+    }
 
     //add team to league
     $scope.userTyping = false;
