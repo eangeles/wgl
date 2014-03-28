@@ -192,7 +192,7 @@ wgl.controller('userController', ['$scope','$firebase','$location', function($sc
             userRef.update(info);
             $("#update_user_btn").css({backgroundColor: "#17A9CC"}).html("Update");
             isUserUpdateClicked = false;
-            $location.path("/users");
+            $location.path("/gts");
         } else {
             $("#update_user_btn").css({backgroundColor: "#458B00"}).html("Are you sure?"); 
             isUserUpdateClicked = true;
