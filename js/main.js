@@ -37,7 +37,10 @@ wgl.config(function ($routeProvider,$locationProvider){
         })
         .when("/leaguematch/:leagueID/:matchID", {
             title: 'League Match',
-            templateUrl:"partials/leaguematch.html"
+            templateUrl:"partials/leaguematch.html",
+            resolve: {
+                factory: leagueMatchPermission
+            }
         })
         .when("/gamer_page/:playerID", {
             title: 'Gamer Page',
@@ -479,7 +482,18 @@ var leaguePermission = function ($q, $rootScope, $location,$sce){
         }
     });
 }
+// If the userType is Admin, Admin function will show for that page.
+var leagueMatchPermission = function ($q, $rootScope, $location,$sce){
 
+    $rootScope.loginObj.$getCurrentUser().then(function(){
+        if($rootScope.loginObj.user.userType === 'Admin'){
+
+            $rootScope.html = 'Update Standings';
+            $rootScope.editStandings = $sce.trustAsHtml($rootScope.html);
+
+        }
+    });
+}
 
 
 

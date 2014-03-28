@@ -128,9 +128,6 @@ wgl.controller('leagues', ['$scope','$routeParams','$location','$rootScope','$fi
         return -team.wins;
     }
 
-    $scope.openModal = function (){
-
-    }
 
 }]);
 
