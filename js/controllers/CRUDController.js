@@ -191,8 +191,8 @@ wgl.controller('userController', ['$scope','$firebase','$location', function($sc
             var userRef = new Firebase("https://thewgl.firebaseio.com/thewgl/users/" + info.id);
             userRef.update(info);
             $("#update_user_btn").css({backgroundColor: "#17A9CC"}).html("Update");
-            console.log(info);
             isUserUpdateClicked = false;
+            $location.path("/users");
         } else {
             $("#update_user_btn").css({backgroundColor: "#458B00"}).html("Are you sure?"); 
             isUserUpdateClicked = true;
@@ -205,7 +205,9 @@ wgl.controller('userController', ['$scope','$firebase','$location', function($sc
     $scope.limit = 5;
     $scope.selectUser = function (gamer, id) {
         $scope.userInfos.displayName = angular.fromJson(angular.toJson(gamer.displayName));
-        $scope.userInfos.email = angular.fromJson(angular.toJson(gamer.email));
+        if ($scope.userInfos.email) {
+            $scope.userInfos.email = angular.fromJson(angular.toJson(gamer.email));
+        };
         $scope.userInfos.userType = angular.fromJson(angular.toJson(gamer.userType));
         $scope.userInfos.id = id;
 
