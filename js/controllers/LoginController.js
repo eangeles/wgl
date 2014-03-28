@@ -1,4 +1,4 @@
-wgl.controller('Login', ['$scope','$rootScope','$firebase', '$sce', function mtCtrl($scope,$rootScope,$firebase,$sce){
+wgl.controller('Login', ['$scope','$rootScope','$location','$firebase', '$sce', function mtCtrl($scope,$rootScope,$location,$firebase,$sce){
 
     var usersURL = "https://thewgl.firebaseio.com/thewgl/users/";
     $scope.users = $firebase(new Firebase(usersURL));
@@ -8,6 +8,8 @@ wgl.controller('Login', ['$scope','$rootScope','$firebase', '$sce', function mtC
         var usersRef = new Firebase(usersURL);
         usersRef.child(user.id).once('value', function(snapshot) {
             var exists = (snapshot.val() !== null);
+            
+            $scope.userID = user.id;
 
             if (snapshot.val() !== null) {
                 $rootScope.loginObj.user = snapshot.val();
@@ -58,6 +60,10 @@ wgl.controller('Login', ['$scope','$rootScope','$firebase', '$sce', function mtC
             $("#add_user_btn").css({backgroundColor: "#458B00"}).html("Are you sure?"); 
             isUserClicked = true;
         } 
+    }
+    
+    $scope.goToGamerPage = function() {
+        $location.path("/gamer_page/" + $scope.userID);
     }
 
     //auto complete

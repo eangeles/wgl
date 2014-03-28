@@ -41,7 +41,7 @@
             <ul class="off-canvas-list mobile-nav">
 
                 <li ng-hide="loginObj.user"><label><a class="login" ng-click="loginObj.$login('facebook')"><i class="fa fa-facebook"></i> Login</a></label> </li>
-                <li class="has-dropdown" ng-show="loginObj.user"><a href="#/" ng-click="goToGamerPage()"><img class="login-user-img" src="{{loginObj.user.profilePicture}}">{{loginObj.user.first_name}}</a>
+                <li class="has-dropdown" ng-show="loginObj.user"><a ng-click="goToGamerPage()"><img class="login-user-img" src="{{loginObj.user.profilePicture}}">{{loginObj.user.first_name}}</a>
                     <ul class="dropdown">
                         <li ng-bind-html="adminView"></li>
                         <li><a class="login" ng-click="loginObj.$logout()">Logout</a></li>
@@ -93,7 +93,7 @@
                             </ul>
                         </li>
                         <li ng-hide="loginObj.user"><a class="login" ng-click="loginObj.$login('facebook')"><i class="fa fa-facebook"></i> Login</a> </li>
-                        <li class="has-dropdown" ng-show="loginObj.user"><a href="#/gamer_page/{{$key}}"> <img class="login-user-img" src="{{loginObj.user.profilePicture}}">{{loginObj.user.first_name}}</a>
+                        <li class="has-dropdown" ng-show="loginObj.user"><a ng-click="goToGamerPage()"> <img class="login-user-img" src="{{loginObj.user.profilePicture}}">{{loginObj.user.first_name}}</a>
                             <ul class="dropdown">
                                 <li ng-bind-html="adminView"></li>
                                 <li><a class="login" ng-click="loginObj.$logout()">Logout</a></li>
