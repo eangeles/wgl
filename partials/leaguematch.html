@@ -78,6 +78,7 @@
 <div id="team-standing-modal" class="reveal-modal small" data-reveal>
     <!-- Standings Column -->
     <div class="large-12 columns" ng-controller="leagues">
+
         <table>
             <thead>
             <tr>
@@ -95,10 +96,19 @@
 <!--                <input type="hidden" ng-model="standing.leagueTeam" value="{{leagueTeam}}">-->
                 <td><input type="text" placeholder="{{leagueTeam.wins}}" value="" ng-model="standing.wins"></td>
                 <td><input type="text" placeholder="{{leagueTeam.losses}}" value="" ng-model="standing.losses"></td>
-                <td><button class="button" ng-click="updateStanding(standing, leagueTeam.$key)">Update</button></td>
+                <td><button class="button" ng-click="updateStanding(standing, leagueTeam.$key)" ng-click="openModal">Update</button></td>
             </tr>
             </tbody>
         </table>
+
+    </div>
+    <a class="close-reveal-modal">&#215;</a>
+</div>
+<div id="confirm-modal" class="reveal-modal small" data-reveal>
+    <!-- Standings Column -->
+    <div class="large-12 columns" ng-controller="leagues">
+
+        <h1>Success!</h1>
 
     </div>
     <a class="close-reveal-modal">&#215;</a>

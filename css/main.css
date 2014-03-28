@@ -130,6 +130,10 @@ p{
     color: white;
     font-weight: 100;
 }
+.mobile-bar {
+    margin-left: 10px;
+    font-size: 1.35em;
+}
 
 .mobile-logo {
     background: url(../img/logo.png) no-repeat center center;

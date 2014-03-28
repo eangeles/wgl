@@ -23,7 +23,10 @@ wgl.config(function ($routeProvider,$locationProvider){
         })
         .when("/league/:leagueID", {
             title: 'League',
-            templateUrl:"partials/league.html"
+            templateUrl:"partials/league.html",
+            resolve: {
+                factory: leaguePermission
+            }
         })
         .when("/leagues", {
             title: 'Leagues',
@@ -455,7 +458,27 @@ var teamPermission = function ($q, $rootScope, $location,$sce){
         }
     });
 }
+// If the userType is Admin, Admin function will show for that page.
+var leaguePermission = function ($q, $rootScope, $location,$sce){
 
+    $rootScope.loginObj.$getCurrentUser().then(function(){
+        if($rootScope.loginObj.user.userType === 'Admin'){
+
+            $rootScope.html = "<button><h6>Add Team</h6></button>";
+            $rootScope.leaugeAddTeam = $sce.trustAsHtml($rootScope.html);
+
+            $rootScope.html2 = '<button><h6>Add Match</h6></button>';
+            $rootScope.leagueAddMatch = $sce.trustAsHtml($rootScope.html2);
+
+            $rootScope.html3 = "X";
+            $rootScope.xTeam = $sce.trustAsHtml($rootScope.html3);
+
+            $rootScope.html4 = 'Remove';
+            $rootScope.leagueRemoveMatch = $sce.trustAsHtml($rootScope.html4);
+
+        }
+    });
+}
 
 
 
