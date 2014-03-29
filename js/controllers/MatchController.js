@@ -1,4 +1,3 @@
-var numMatches;
 wgl.controller('matches', ['$scope','$routeParams','$location','$rootScope','$firebase', 'sharedProperties', function mtCtrl($scope, $routeParams, $location, $rootScope, $firebase, sharedProperties) {
 
     //Match Crud
@@ -7,17 +6,7 @@ wgl.controller('matches', ['$scope','$routeParams','$location','$rootScope','$fi
     $scope.matches = $firebase(new Firebase(matchesURL));
     $scope.teams = $firebase(new Firebase(teamsURL));
     
-    
-    // TESTING
-    //=========================
-    var dataRef = new Firebase('https://thewgl.firebaseio.com/thewgl/matches/');
-    dataRef.on('value', function(snapshot) {
-        numMatches = snapshot.numChildren();
-    });
-    
-    
     $scope.addMatch = function(match) { 
-        console.log(match);
         $scope.matches.$add(match);
         $location.path("/upcomingmatches");
     };
@@ -28,17 +17,11 @@ wgl.controller('matches', ['$scope','$routeParams','$location','$rootScope','$fi
     
     var updateRef = "";
     $scope.updateMatch = function(match) {
-        console.log(match);
         updateRef = new Firebase("https://thewgl.firebaseio.com/thewgl/matches/" + $routeParams.matchID);
-//        updateRef.update({
-//            
-//        });
-//        $location.path("/matches");
     }
     
     //Team specific crud
     $scope.selectedMatch = $firebase(new Firebase("https://thewgl.firebaseio.com/thewgl/matches/" + $routeParams.matchID));
-    //need to create a seperate match url for the ones coming from a league
 
     //Add Team Auto complete
     $scope.awayTeamTyping = false;

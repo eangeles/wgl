@@ -36,9 +36,10 @@ wgl.controller('leagues', ['$scope','$routeParams','$location','$rootScope','$fi
     //Specific Match
     $scope.selectedLeagueMatch = $firebase(new Firebase("https://thewgl.firebaseio.com/thewgl/leagues/" + $routeParams.leagueID + "/matches/" + $routeParams.matchID));
 
-    //SelectedMatch
+    //Selected League
     $scope.selectedLeague = $firebase(new Firebase("https://thewgl.firebaseio.com/thewgl/leagues/" + $routeParams.leagueID));
 
+    //testing out the sharedProperties service for transferring data to 
     leagueRef.on('value', function(snapshot) {
         if(snapshot.val() === null) {
 
@@ -55,7 +56,7 @@ wgl.controller('leagues', ['$scope','$routeParams','$location','$rootScope','$fi
         $scope.selectedLeagueTeams.$add(team);
         $location.path("/league/" + $routeParams.leagueID);
     }
-
+    
     $scope.addMatchToLeague = function(match) {
         $scope.selectedLeagueMatches.$add(match);
         $location.path("/league/" + $routeParams.leagueID);
@@ -83,7 +84,6 @@ wgl.controller('leagues', ['$scope','$routeParams','$location','$rootScope','$fi
         $scope.userTyping = false;
     };
 
-    //add match to league
     //Add Team Auto complete
     $scope.awayTeamTyping = false;
     //Filter user search and select to input
@@ -102,20 +102,17 @@ wgl.controller('leagues', ['$scope','$routeParams','$location','$rootScope','$fi
         $scope.homeTeamTyping = false;
     };
 
+    //updates the status of each winner/loser
     $scope.selectWinner = function(outcome, test){
-
         if($scope.match.selectWinner){
             $scope.match.selectWinner = outcome;
-            console.log('winner');
         }
         if($scope.match.selectLoser){
             $scope.match.selectLoser = test;
-            console.log($scope.match.selectLoser);
         }
-
-//        console.log(outcome, test);
     }
 
+    //updates the wins/losses for a certain team
     $scope.updateStanding = function(standing, teamID){
         var updateRef = new Firebase("https://thewgl.firebaseio.com/thewgl/leagues/" + $routeParams.leagueID + "/teams/"+ teamID);
         updateRef.update({
@@ -124,6 +121,7 @@ wgl.controller('leagues', ['$scope','$routeParams','$location','$rootScope','$fi
         });
     }
 
+    //filter for team win sorting
     $scope.winSort = function(team) {
         return -team.wins;
     }

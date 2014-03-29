@@ -5,19 +5,16 @@ wgl.controller('teams', ['$scope','$routeParams','$location','$rootScope','$fire
     $scope.teams = $firebase(new Firebase(teamsURL));
     
     $scope.addTeam = function(team) { 
-        console.log(team);
         $scope.teams.$add(team);
         $location.path("/teams");
     };
 
     $scope.removeTeam = function(teamID) {
-        console.log(teamID);
         $scope.teams.$remove(teamID);
     }
     
     $scope.updateTeam = function(team) {
         var updateRef = $firebase(new Firebase("https://thewgl.firebaseio.com/thewgl/teams/" + $routeParams.teamID));
-        console.log(team.bio, team.name, team.picture);
         updateRef.$set({
             bio:      team.bio,
             name:     team.name,
@@ -43,6 +40,7 @@ wgl.controller('teams', ['$scope','$routeParams','$location','$rootScope','$fire
         $scope.selectedTeamPlayers.$remove(memberID);
     }
 
+    //sorter for team standings
     $scope.teamSort = function(team) {
         return -team.wins;
     }
@@ -57,7 +55,6 @@ wgl.controller('teams', ['$scope','$routeParams','$location','$rootScope','$fire
         $scope.team.name.$id = id;
         $scope.team.name.$ref = ref;
         $scope.userTyping = false;
-        console.log( $scope.team.picture);
     };
 
 

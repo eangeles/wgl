@@ -4,9 +4,11 @@ wgl.controller('tournaments', ['$scope','$routeParams','$location','$rootScope',
     $scope.tournaments = $firebase(new Firebase("https://thewgl.firebaseio.com/thewgl/tournaments/"));
     $scope.teams = $firebase(new Firebase("https://thewgl.firebaseio.com/thewgl/teams/"));
 
+    //adds a shell for a tournament using premade objects so that we can update the matches ourselves
     $scope.addTournament = function(tournament) {
         tournament.firstRound = [
             {
+                //each object has a home team an away team and a date
                 homeTeam: {
                     name:       "Home Team",
                     bio:        "",
@@ -158,7 +160,6 @@ wgl.controller('tournaments', ['$scope','$routeParams','$location','$rootScope',
                 date: "01/02/2014"
             }
         ];
-        console.log(tournament);
         $scope.tournaments.$add(tournament);
         $location.path("/tournaments");
     };
@@ -205,17 +206,12 @@ wgl.controller('tournaments', ['$scope','$routeParams','$location','$rootScope',
                 status: ''
             }
         });
-        console.log(match);
     }
 
+    //updates the winner/loser of each match
     $scope.updateStatus = function(match) {
         updateHomeMatchRef.update({status: match.homeTeam.status});
-
-        updateAwayMatchRef.update({
-             status: match.awayTeam.status
-
-        })
-        console.log(match);
+        updateAwayMatchRef.update({status: match.awayTeam.status});
     }
 
 
@@ -223,15 +219,15 @@ wgl.controller('tournaments', ['$scope','$routeParams','$location','$rootScope',
     $scope.awayTeamTyping = false;
     //Filter user search and select to input
     $scope.updateTeamAway = function(team) {
-        $scope.selectedTournamentMatch.awayTeam.name = angular.fromJson(angular.toJson(team.name));
-        $scope.selectedTournamentMatch.awayTeam = angular.fromJson(angular.toJson(team));
+        $scope.selectedTournamentMatch.awayTeam.name =  angular.fromJson(angular.toJson(team.name));
+        $scope.selectedTournamentMatch.awayTeam =       angular.fromJson(angular.toJson(team));
         $scope.awayTeamTyping = false;
     };
 
     $scope.homeTeamTyping = false;
     $scope.updateTeamHome = function(team) {
-        $scope.selectedTournamentMatch.homeTeam.name = angular.fromJson(angular.toJson(team.name));
-        $scope.selectedTournamentMatch.homeTeam = angular.fromJson(angular.toJson(team));
+        $scope.selectedTournamentMatch.homeTeam.name =  angular.fromJson(angular.toJson(team.name));
+        $scope.selectedTournamentMatch.homeTeam =       angular.fromJson(angular.toJson(team));
         $scope.homeTeamTyping = false;
     };
 
