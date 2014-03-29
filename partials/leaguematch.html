@@ -18,7 +18,6 @@
                                 <a ng-href="#/gamer_page/{{player.id}}">{{player.name}}</a>
                             </div>
                         </div>
-
                     </div>
                 </div>
                 <div class="large-2 columns left">
@@ -30,7 +29,6 @@
 
                         <a data-reveal-id="team-standing-modal" ng-bind-html="editStandings"></a>
                     </div>
-
 
                 </div>
                 <div class="large-5 columns">
@@ -64,7 +62,7 @@
                                 disqus-identifier="{{selectedLeagueMatch.time}}"
                                 disqus-title="{{selectedLeagueMatch.date}}"
                                 disqus-url="http://localhost:8888/wgl/#/leaguematch/"
-                                    disqus-category-id="leagueMatch"
+                                disqus-category-id="leagueMatch"
                                 disqus-disable-mobile="false">
                     </dir-disqus>
                 </div>
@@ -93,7 +91,7 @@
             <tr ng-repeat="leagueTeam in selectedLeagueTeams | toArray">
                 <td>{{$index+1}}</td>
                 <td><a href="#/team/{{leagueTeam.$key}}">{{leagueTeam.name}}</a></td>
-<!--                <input type="hidden" ng-model="standing.leagueTeam" value="{{leagueTeam}}">-->
+                <!--                <input type="hidden" ng-model="standing.leagueTeam" value="{{leagueTeam}}">-->
                 <td><input type="text" placeholder="{{leagueTeam.wins}}" value="" ng-model="standing.wins"></td>
                 <td><input type="text" placeholder="{{leagueTeam.losses}}" value="" ng-model="standing.losses"></td>
                 <td><button class="button" ng-click="updateStanding(standing, leagueTeam.$key)" ng-click="openModal">Update</button></td>

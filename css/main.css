@@ -327,12 +327,7 @@ ul .phone-number i {
 .newspage-p{
     color: #fff;
 }
-/*******
- Team Page
- *******/
-/*.team-profile-logo{*/
-    /*height: 100px;*/
-/*}*/
+
 .team-profile-name{
     padding-left: 10px;
 }
@@ -581,8 +576,4 @@ ul .phone-number i {
         width: 95%;
         padding: 0 5px;
     }
-}
-
-@media only screen and (min-width: 64.063em) {
-
 }

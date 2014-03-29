@@ -17,10 +17,6 @@
     <link href="./img/favicon.ico" rel="icon" type="image/x-icon" />
     <script src="js/modernizr.js"></script>
 
-    <script src="ckeditor/ckeditor.js"></script>
-
-
-
 </head>
 
 <body ng-controller="Login">
@@ -51,7 +47,7 @@
                 <li ng-controller="leagues">
                     <a href="#/leagues">Leagues</a>
                     <!--<ul class="dropdown">-->
-                        <!--<li ng-repeat="league in leagues | toArray"><a ng-href="#/league/{{league.$key}}">{{league.name}}</a></li>-->
+                    <!--<li ng-repeat="league in leagues | toArray"><a ng-href="#/league/{{league.$key}}">{{league.name}}</a></li>-->
                     <!--</ul>-->
                 <li><a href="#/tournaments">Tournaments</a></li>
                 <li class="has-dropdown">
@@ -82,7 +78,7 @@
                         <li ng-controller="leagues">
                             <a href="#/leagues">Leagues</a>
                             <!--<ul class="dropdown">-->
-                                <!--<li ng-repeat="league in leagues | toArray"><a ng-href="#/league/{{league.$key}}">{{league.name}}</a></li>-->
+                            <!--<li ng-repeat="league in leagues | toArray"><a ng-href="#/league/{{league.$key}}">{{league.name}}</a></li>-->
                             <!--</ul>-->
                         </li>
                         <li><a href="#/tournaments">Tournaments</a></li>
@@ -103,14 +99,10 @@
                 </section>
             </nav>
         </div>
-
-
         <!-- OFF CANVASS CONTENT GOES HERE -->
 
         <!--Container for the view templates-->
-        <div id="container" ng-view="">
-
-        </div>
+        <div id="container" ng-view=""></div>
 
         <footer>
             <div class="row">
